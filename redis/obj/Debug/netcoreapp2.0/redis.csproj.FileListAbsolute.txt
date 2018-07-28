@@ -1,0 +1,12 @@
+/data/danapinjam/redis/bin/Debug/netcoreapp2.0/redis.deps.json
+/data/danapinjam/redis/bin/Debug/netcoreapp2.0/redis.dll
+/data/danapinjam/redis/bin/Debug/netcoreapp2.0/redis.pdb
+/data/danapinjam/redis/bin/Debug/netcoreapp2.0/log.dll
+/data/danapinjam/redis/bin/Debug/netcoreapp2.0/log.pdb
+/data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.csprojAssemblyReference.cache
+/data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.csproj.CoreCompileInputs.cache
+/data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.AssemblyInfoInputs.cache
+/data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.AssemblyInfo.cs
+/data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.csproj.CopyComplete
+/data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.dll
+/data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.pdb

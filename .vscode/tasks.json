@@ -1,0 +1,56 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/IF.AdminSystem/IF.AdminSystem.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+
+        {
+            "label": "build log",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/log/log.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build Encryption",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Encryption/Encryption.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build dbnetcore.utlity",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/dbnetcore.utlity/dbnetcore.utlity.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build redis",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/redis/redis.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

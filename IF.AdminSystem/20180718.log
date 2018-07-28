@@ -1,0 +1,136 @@
+17:33:25 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：config exception
+17:33:25 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+17:33:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+17:33:26 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+17:33:41 [Error] MainInfoProvider::GetSelection [1]号服务器::获取失败，异常：Executing SQL statement (select selectName,selectValue,selectType from IFSelection where status = @iStatus order by selectType, orderIndex desc) failed(Exception). Reason: Object reference not set to an instance of an object.
+17:33:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:36:30 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：config exception
+17:36:30 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+17:36:30 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+17:36:31 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+17:36:41 [Error] MainInfoProvider::GetSelection [1]号服务器::获取失败，异常：Executing SQL statement (select selectName,selectValue,selectType from IFSelection where status = @iStatus order by selectType, orderIndex desc) failed(Exception). Reason: Object reference not set to an instance of an object.
+17:37:00 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:38:39 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：config exception
+17:38:39 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+17:38:39 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+17:38:40 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+17:38:49 [Error] MainInfoProvider::GetSelection [1]号服务器::获取失败，异常：Executing SQL statement (select selectName,selectValue,selectType from IFSelection where status = @iStatus order by selectType, orderIndex desc) failed(Exception). Reason: Object reference not set to an instance of an object.
+17:40:12 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：config exception
+18:08:27 [Debug] Startup::Startup [1]号服务器::Begin connect db
+18:09:20 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database= debit;Min Pool Size=1000;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+18:09:20 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+18:09:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+18:09:20 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+18:09:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:10:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:10:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:11:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:11:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:12:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:12:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:13:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:13:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:14:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:14:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:15:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:15:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:16:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:16:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:17:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:17:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:18:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:18:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:19:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:19:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:20:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:20:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:21:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:21:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:22:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:22:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:23:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:23:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:24:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:24:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:25:20 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:25:50 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:15:13 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:15:55 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database= debit;Min Pool Size=1000;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:15:55 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+19:15:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:15:56 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+19:16:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:29:06 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:29:51 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database= debit;Min Pool Size=1000;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:54:21 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:56:13 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database= debit;Min Pool Size=1000;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:56:13 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+19:56:13 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:56:13 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+19:57:37 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+20:00:51 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:02:38 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database= debit;Min Pool Size=1000;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:02:38 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+20:02:38 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:02:39 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+20:02:53 [Debug] ::OnActionExecuting [1]号服务器::/api/Main/GetSelection
+20:02:53 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+20:03:00 [Debug] ::OnActionExecuting [1]号服务器::/api/Main/GetInitAppConfig
+20:03:00 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+20:03:02 [Debug] ::OnActionExecuting [1]号服务器::/
+20:03:02 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+20:03:04 [Debug] ::OnActionExecuting [1]号服务器::/api/Main/GetInitAppConfig
+20:03:04 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+20:03:08 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+20:03:28 [Debug] ::OnActionExecuting [1]号服务器::/api/Main/GetInitAppConfig
+20:45:51 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:47:55 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database= debit;Min Pool Size=1000;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:47:55 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+20:47:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:47:56 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+20:48:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+20:48:42 [Debug] ::OnActionExecuting [1]号服务器::/api/Main/GetInitAppConfig
+21:11:53 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:11:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:11:54 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+21:12:20 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:12:21 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:12:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:12:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:14:19 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:14:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:14:20 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+21:14:41 [Error] MainInfoProvider::GetSelection [1]号服务器::获取失败，异常：Executing SQL statement (select selectName,selectValue,selectType from IFSelection where status = @iStatus order by selectType, orderIndex desc) failed(Exception). Reason: Object reference not set to an instance of an object.
+21:14:44 [Error] MainInfoProvider::GetSelection [1]号服务器::获取失败，异常：Executing SQL statement (select selectName,selectValue,selectType from IFSelection where status = @iStatus order by selectType, orderIndex desc) failed(Exception). Reason: Object reference not set to an instance of an object.
+21:14:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:15:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:15:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:16:45 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:16:45 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:16:46 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+21:17:15 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:17:45 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:18:15 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:18:41 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:18:41 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:18:42 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+21:18:51 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:26:04 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:26:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:26:05 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+21:26:17 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:26:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:26:34 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:26:36 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:26:37 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:27:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:27:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:28:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:28:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:29:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:29:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:30:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:30:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:31:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:31:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:32:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0

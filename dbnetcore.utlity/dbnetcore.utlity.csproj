@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Encryption\Encryption.csproj" />
+    <ProjectReference Include="..\log\log.csproj" />
+    <PackageReference Include="System.Data.SqlClient" Version="*" />
+    <PackageReference Include="Dapper" Version="1.50.2" />
+    <PackageReference Include="System.IO.FileSystem" Version="*" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+    <Compile Remove="HttpReqHandler.cs" />
+  </ItemGroup>
+</Project>

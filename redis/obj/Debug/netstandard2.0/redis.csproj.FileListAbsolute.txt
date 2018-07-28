@@ -1,0 +1,4 @@
+/data/danapinjam/redis/obj/Debug/netstandard2.0/redis.csprojAssemblyReference.cache
+/data/danapinjam/redis/obj/Debug/netstandard2.0/redis.csproj.CoreCompileInputs.cache
+/data/danapinjam/redis/obj/Debug/netstandard2.0/redis.AssemblyInfoInputs.cache
+/data/danapinjam/redis/obj/Debug/netstandard2.0/redis.AssemblyInfo.cs

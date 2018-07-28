@@ -1,0 +1,75 @@
+﻿@using System.Data;
+@{
+    ViewBag.Title = "DebitRecords";
+ Layout = "~/Views/Shared/_Layout.cshtml";
+    var dt = (ViewData["data"] as DataTable);
+
+
+
+}
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+
+<div class="cl pd-5 bg-1 bk-gray">
+
+    UserId:<input type="text" name="userId" id="userId" class="input-text Wdate"  style="width:120px;"  value="@ViewData["userId"]"/>
+    日期范围：
+    <input type="text" name="beginTime" value="@ViewData["beginTime"]" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" id="logmin" class="input-text Wdate" style="width:120px;">
+    -
+    <input type="text" name="endTime" value="@ViewData["endTime"]" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')}'})" id="logmax" class="input-text Wdate" style="width:120px;">
+
+    <button id="bt_query" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 查一下</button>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#bt_query").click(function () {
+            window.location.href = "DebitRecords?beginTime=" + $("#logmin").val() + "&endTime=" + $("#logmax").val()+"&userId="+$("#userId").val() + "&status=-1";
+        });
+    });
+
+</script>
+
+<table class="table table-border table-bordered table-bg">
+    <thead>
+        <tr>
+            <th colspan="15" scope="col">@ViewBag.Title</th>
+        </tr>
+        <tr class="text-c">
+            <th>debitId</th>
+            <th>debitMoney</th>
+            <th>Status</th>
+            <th>createTime</th>
+            <th>description</th>
+            <th>bankId</th>
+            <th>certificate</th>
+            <th>debitPeroid</th>
+            <th>payBackMoney</th>
+            <th>auditInfo</th>
+            <th>dayInterset</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (null != dt)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                <tr class="text-c">
+                    <td>@Html.Raw(dt.Rows[i]["debitId"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["debitMoney"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["Status"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["createTime"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["description"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["bankId"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["certificate"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["debitPeroid"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["payBackMoney"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["auditInfo"])</td>
+                    <td>@Html.Raw(dt.Rows[i]["dayInterset"])</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
