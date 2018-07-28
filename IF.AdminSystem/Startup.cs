@@ -28,13 +28,12 @@ namespace IF.AdminSystem
             string DBName = config["AppSettings:DBName"];
             string publicKey = config["AppSettings:publicKey"];
             
-            /*
             DataBaseOperator.SetDbIniFilePath(".");
             Log.WriteDebugLog("Startup::Startup", "Begin connect db");
             string conStr = DataBasePool.AddDataBaseConnectionString(DBName, publicKey, 5, 5);
             DataBaseOperator.Init(DBName);
             Log.WriteSystemLog("WebApiApplication::Application_Start", "数据库连接串：{0}", conStr);
- */
+ 
 
             string serverInfo = config["AppSettings:RedisExchangeHosts"];
             string password = config["AppSettings:RedisExchangePwd"];
