@@ -25,7 +25,7 @@ namespace NF.AdminSystem.Controllers
         [HttpPost]
         [HttpGet]
         /// <summary>
-        /// 计算利率
+        /// 计算利率 2
         /// </summary>
         /// <param name="debitMoney"></param>
         /// <param name="debitPeroid"></param>
