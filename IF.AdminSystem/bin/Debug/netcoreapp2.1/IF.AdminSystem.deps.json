@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "79cc1b6f948b041aa78489854f369a260a6d2697"
+    "signature": "a407d209480248d653c50ab1e6d5dc6d039d051b"
   },
   "compilationOptions": {
     "defines": [
@@ -24,8 +24,6 @@
     ".NETCoreApp,Version=v2.1": {
       "IF.AdminSystem/1.0.0": {
         "dependencies": {
-          "Aliyun.Acs.Core": "1.0.0",
-          "Aliyun.Acs.Sts": "1.0.0",
           "DocaLabs.Http.Client.with.NewtonSoft.Json.Serializer": "3.0.0",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Cors": "2.1.1",
@@ -34,6 +32,8 @@
           "Microsoft.Extensions.Options": "2.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
+          "aliyun-net-sdk-core.vscode": "1.0.0",
+          "aliyun-net-sdk-sts.vscode": "1.0.0",
           "dbnetcore.utlity": "1.0.0",
           "redis": "1.0.0"
         },
@@ -42,35 +42,6 @@
         },
         "compile": {
           "IF.AdminSystem.dll": {}
-        }
-      },
-      "Aliyun.Acs.Core/1.0.0": {
-        "dependencies": {
-          "Microsoft.NETCore.App": "2.1.0"
-        },
-        "runtime": {
-          "lib/netcoreapp1.0/Aliyun.Acs.Core.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "lib/netcoreapp1.0/Aliyun.Acs.Core.dll": {}
-        }
-      },
-      "Aliyun.Acs.Sts/1.0.0": {
-        "dependencies": {
-          "Aliyun.Acs.Core": "1.0.0",
-          "Microsoft.NETCore.App": "2.1.0"
-        },
-        "runtime": {
-          "lib/netcoreapp1.0/Aliyun.Acs.Sts.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "lib/netcoreapp1.0/Aliyun.Acs.Sts.dll": {}
         }
       },
       "Dapper/1.50.2": {
@@ -604,6 +575,25 @@
           "Microsoft.NETCore.Platforms": "2.1.0",
           "Microsoft.NETCore.Targets": "2.1.0",
           "System.Runtime": "4.3.0"
+        }
+      },
+      "aliyun-net-sdk-core.vscode/1.0.0": {
+        "runtime": {
+          "aliyun-net-sdk-core.vscode.dll": {}
+        },
+        "compile": {
+          "aliyun-net-sdk-core.vscode.dll": {}
+        }
+      },
+      "aliyun-net-sdk-sts.vscode/1.0.0": {
+        "dependencies": {
+          "aliyun-net-sdk-core.vscode": "1.0.0"
+        },
+        "runtime": {
+          "aliyun-net-sdk-sts.vscode.dll": {}
+        },
+        "compile": {
+          "aliyun-net-sdk-sts.vscode.dll": {}
         }
       },
       "dbnetcore.utlity/1.0.0": {
@@ -3532,20 +3522,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Aliyun.Acs.Core/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-eTn6Qgpuw4z360mCCtXgm0dJ5K2RLUeco0R+g+W7CTqmb96+NHHtj2a5HNoFJlxZWtICzkn0l58D2L73ch+HDg==",
-      "path": "aliyun.acs.core/1.0.0",
-      "hashPath": "aliyun.acs.core.1.0.0.nupkg.sha512"
-    },
-    "Aliyun.Acs.Sts/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ZlaPGiQd/ZSUA92J4dZiFHq1W0oNarwU3CSccXHvXiottNw3GSJn6DHs3Q/q+EOKJlI1tyZ3Ku30EZakTUSxsQ==",
-      "path": "aliyun.acs.sts/1.0.0",
-      "hashPath": "aliyun.acs.sts.1.0.0.nupkg.sha512"
-    },
     "Dapper/1.50.2": {
       "type": "package",
       "serviceable": true,
@@ -3741,6 +3717,16 @@
       "sha512": "sha512-Z6YfyYTCg7lOZjJzBjONJTFKGN9/NIYKSxhU5GRd+DTwHSZyvWp1xuI5aR+dLg+ayyC5Xv57KiY4oJ0tMO89fQ==",
       "path": "system.threading.timer/4.3.0",
       "hashPath": "system.threading.timer.4.3.0.nupkg.sha512"
+    },
+    "aliyun-net-sdk-core.vscode/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "aliyun-net-sdk-sts.vscode/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "dbnetcore.utlity/1.0.0": {
       "type": "project",

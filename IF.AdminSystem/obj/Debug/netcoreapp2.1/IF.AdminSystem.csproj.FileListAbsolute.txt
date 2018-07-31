@@ -46,3 +46,8 @@
 /data/danapinjam/IF.AdminSystem/obj/Debug/netcoreapp2.1/Razor/Views/Home/agreement2.g.cshtml.cs
 /data/danapinjam/IF.AdminSystem/obj/Debug/netcoreapp2.1/Razor/Views/Home/Contactus.g.cshtml.cs
 /data/danapinjam/IF.AdminSystem/obj/Debug/netcoreapp2.1/Razor/Views/Home/Help.g.cshtml.cs
+/data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.dll
+/data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vscode.dll
+/data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vscode.pdb
+/data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb
+/data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/Regions/endpoints.xml

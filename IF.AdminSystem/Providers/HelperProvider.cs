@@ -32,19 +32,21 @@ namespace NF.AdminSystem.Providers
 
         private const string PolicyFile = "";
         //这里是权限配置，请参考oss的文档
-        //        private const string PolicyFile = @"{
-        //  ""Statement"": [
-        //    {
-        //      ""Action"": [
-        //        ""oss:PutObject""
-        //      ],
-        //      ""Effect"": ""Allow"",
-        //      ""Resource"": [""acs:oss:*:*:bucketName/*"", ""acs:oss:*:*:bucketName""]
-        //    }
-        //  ],
-        //  ""Version"": ""1""
-        //}";
-
+        
+        /*
+        private const string PolicyFile = @"{
+          ""Statement"": [
+            {
+              ""Action"": [
+                ""oss:PutObject""
+              ],
+              ""Effect"": ""Allow"",
+              ""Resource"": [""acs:oss:*:*:bucketName/*"", ""acs:oss:*:*:bucketName""]
+            }
+          ],
+          ""Version"": ""1""
+        }";
+         */
         public static string GetRequestContent(HttpContext context)
         {
             if (null == context.Request.Body)
@@ -131,14 +133,15 @@ namespace NF.AdminSystem.Providers
         private static AssumeRoleResponse assumeRole(String accessKeyId, String accessKeySecret, String roleArn,
             String roleSessionName, String policy, ProtocolType protocolType, long durationSeconds, string region)
         {
-            try
-            {
+          //  try
+          //  {
                 // 创建一个 Aliyun Acs Client, 用于发起 OpenAPI 请求
                 IClientProfile profile = DefaultProfile.GetProfile(region, accessKeyId, accessKeySecret);
                 DefaultAcsClient client = new DefaultAcsClient(profile);
 
                 // 创建一个 AssumeRoleRequest 并设置请求参数
                 AssumeRoleRequest request = new AssumeRoleRequest();
+                //request.Encoding = "utf-8";
                 //request.Version = STS_API_VERSION;
                 request.Method = MethodType.POST;
                 //request.Protocol = protocolType;
@@ -152,11 +155,12 @@ namespace NF.AdminSystem.Providers
                 AssumeRoleResponse response = client.GetAcsResponse(request);
 
                 return response;
-            }
-            catch (ClientException e)
-            {
-                throw e;
-            }
+            //}
+            //catch (ClientException e)
+            //{
+            //   Log.WriteErrorLog("HelperProvider::assumeRole", e.Message);
+            //    throw e;
+            //}
         }
 
         public static StsTokenModel GetToken(int userId)

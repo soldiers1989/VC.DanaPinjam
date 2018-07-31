@@ -1,0 +1,12 @@
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.deps.json
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.dll
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.pdb
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.dll
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/obj/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.csprojAssemblyReference.cache
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/obj/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.csproj.CoreCompileInputs.cache
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/obj/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.AssemblyInfoInputs.cache
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/obj/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.AssemblyInfo.cs
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/obj/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.csproj.CopyComplete
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/obj/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.dll
+/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/obj/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vs2017.pdb

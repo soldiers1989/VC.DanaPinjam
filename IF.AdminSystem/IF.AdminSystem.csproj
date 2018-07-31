@@ -4,8 +4,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App"/>
-    <PackageReference Include="Aliyun.Acs.Core" Version="1.0.0"/>
-    <PackageReference Include="Aliyun.Acs.Sts" Version="1.0.0"/>
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1"/>
     <PackageReference Include="DocaLabs.Http.Client.with.NewtonSoft.Json.Serializer" Version="3.0.0"/>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1"/>
@@ -14,5 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.1.2"/>
     <ProjectReference Include="..\redis\redis.csproj"/>
     <ProjectReference Include="..\dbnetcore.utlity\dbnetcore.utlity.csproj"/>
+    <ProjectReference Include="..\aliyun-net-sdk-sts\aliyun-net-sdk-sts.vscode.csproj"/>
+    <ProjectReference Include="..\aliyun-net-sdk-core\aliyun-net-sdk-core.vscode.csproj"/>
   </ItemGroup>
 </Project>
