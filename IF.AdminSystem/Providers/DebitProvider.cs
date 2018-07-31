@@ -162,6 +162,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                         int.TryParse(Convert.ToString(dt.Rows[i]["overdueDay"]), out info.overdueDay);
                         float.TryParse(Convert.ToString(dt.Rows[i]["dayInterset"]), out info.dayInterset);
                         float.TryParse(Convert.ToString(dt.Rows[i]["debitMoney"]), out info.debitMoney);
+                        float.TryParse(Convert.ToString(dt.Rows[i]["overdueMoney"]), out info.overdueMoney);
                         int.TryParse(Convert.ToString(dt.Rows[i]["Status"]), out info.status);
                         int.TryParse(Convert.ToString(dt.Rows[i]["bankId"]), out info.bankId);
                         int.TryParse(Convert.ToString(dt.Rows[i]["debitPeroid"]), out info.debitPeroid);
@@ -170,6 +171,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                         info.description = Convert.ToString(dt.Rows[i]["description"]);
                         info.certificate = Convert.ToString(dt.Rows[i]["certificate"]);
 
+                        info.payBackMoney = info.payBackMoney + info.overdueMoney;
                         info.releaseLoanTime = Convert.ToString(dt.Rows[i]["releaseLoanTime"]);
                         info.auditTime = Convert.ToString(dt.Rows[i]["statusTime"]);
                         info.repaymentTime = Convert.ToString(dt.Rows[i]["payBackDayTime"]);
