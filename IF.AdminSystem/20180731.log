@@ -89,3 +89,10 @@
 15:17:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
 15:18:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
 15:18:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:19:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:19:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:20:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:20:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:21:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:21:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:22:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
