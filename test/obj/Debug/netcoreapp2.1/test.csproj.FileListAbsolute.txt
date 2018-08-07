@@ -22,3 +22,4 @@
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vscode.dll
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vscode.pdb
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb
+/data/danapinjam/test/bin/Debug/netcoreapp2.1/Regions/endpoints.xml

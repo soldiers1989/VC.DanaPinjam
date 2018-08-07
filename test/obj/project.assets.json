@@ -7874,13 +7874,13 @@
     },
     "aliyun-net-sdk-core.vscode/1.0.0": {
       "type": "project",
-      "path": "../../project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj",
-      "msbuildProject": "../../project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj"
+      "path": "../aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj",
+      "msbuildProject": "../aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj"
     },
     "aliyun-net-sdk-sts.vscode/1.0.0": {
       "type": "project",
-      "path": "../../project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj",
-      "msbuildProject": "../../project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj"
+      "path": "../aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj",
+      "msbuildProject": "../aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj"
     },
     "dbnetcore.utlity/1.0.0": {
       "type": "project",
@@ -7949,17 +7949,17 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
+            "/data/danapinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj": {
+              "projectPath": "/data/danapinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj"
+            },
+            "/data/danapinjam/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj": {
+              "projectPath": "/data/danapinjam/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj"
+            },
             "/data/danapinjam/dbnetcore.utlity/dbnetcore.utlity.csproj": {
               "projectPath": "/data/danapinjam/dbnetcore.utlity/dbnetcore.utlity.csproj"
             },
             "/data/danapinjam/redis/redis.csproj": {
               "projectPath": "/data/danapinjam/redis/redis.csproj"
-            },
-            "/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj": {
-              "projectPath": "/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj"
-            },
-            "/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj": {
-              "projectPath": "/data/project/aliyun/aliyun-openapi-net-sdk/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj"
             }
           }
         }

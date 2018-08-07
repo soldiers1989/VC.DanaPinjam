@@ -1,0 +1,6 @@
+09:37:28 [Debug] Startup::Startup [1]号服务器::Begin connect db
+09:37:30 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+09:37:30 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+09:37:30 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+09:37:31 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+09:38:00 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
