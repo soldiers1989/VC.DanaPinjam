@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\log\log.csproj"/>
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1"/>
+    <PackageReference Include="DocaLabs.Http.Client.with.NewtonSoft.Json.Serializer" Version="3.0.0"/>
+    <ProjectReference Include="..\redis\redis.csproj"/>
+    <ProjectReference Include="..\dbnetcore.utlity\dbnetcore.utlity.csproj"/>
+  </ItemGroup>
+</Project>

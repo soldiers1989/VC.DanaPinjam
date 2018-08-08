@@ -51,6 +51,27 @@
                 "${workspaceFolder}/redis/redis.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build test",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/test/test.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+        ,
+        {
+            "label": "build loansservice",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/loansservice/loansservice.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

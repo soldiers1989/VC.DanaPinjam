@@ -6,57 +6,49 @@ namespace test
     {
         static void Main(string[] args)
         {
-            int _x = 0;
-            int y = 0;
-            int z = 0;
-            float f = 0f;
-            double d = 0d;
-            decimal de = 0;
-            long l = 0;
-            char c = 'a';
-            string s = "Hello World";
-
-            int[] ints = new int[10];
-
-            ints[3] = 10 + Convert.ToInt32("10000");
-            ints[4] = 19;
-
-            for (int i = 0; i < ints.Length; i ++)
-            {
-                Console.WriteLine(i + " = " + ints[i]);
-            }
-            Console.WriteLine("Hello World!");
-            _x = 1+1;
-            _x = _x > 0 ? y: z;
-            if (y != z)
-            {
-
-            }
-            /*
-            for (int i = 1; i < 10; i ++)
-            {
-                Console.WriteLine(i);
-            }
-            */
-            string a = "gfahkghfakghkjfdahgkfdagfhdakjghfdakjhgda";
-            //下面是一个demo，99乘法表
-
-            for (int i = 1; i < 10; i ++)
-            {
-                for (int j = 0; j < i; j ++)
-                {
-                    Console.Write(String.Format("{0} * {1} = {2} ", j+1 , i, i*(j+1)));
-                }
-                Console.WriteLine();
-            }
-            /*
+            
             object obj = HelperProvider.GetToken(27);
             
             string result = JsonConvert.SerializeObject(obj);
 
             Console.WriteLine("the result is :" + result);
 
-             */
+//$paramSignature = $email . $timestamp . $bankCode . $bankAccount . $amountTransfer . $purpose . $key; 
+//$signature = hash('sha256', $paramSignature);
+
+/*
+{'userId':3551,
+'amountTransfer':1,
+'bankAccount':'1680001297876',
+'bankCode':'008',
+'email':'test@chakratechnology.com',
+'purpose':'test',
+'timestamp':1,
+'senderId':27,
+'senderName':'f1',
+'signature':''
+} */
+
+            string email = "test@chakratechnology.com";
+            string timestamp = Convert.ToString((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000);
+            string bankCode = "008";
+            string bankAccount = "001001001";
+            string amountTransfer = "10001";
+            string purpose = "test";
+            string key = "de56f832487bc1ce1de5ff2cfacf8d9486c61da69df6fd61d5537b6b7d6d354d";
+
+            string paramSignature = email + timestamp + bankCode+bankAccount+amountTransfer+purpose+key;
+            string signature = HelperProvider.SHA256(paramSignature);
+            Console.WriteLine("signature:");
+
+            Console.WriteLine(signature);
+
+            Console.WriteLine("timestamp:");
+
+            Console.WriteLine(timestamp);
+
+
+            //$paramSignature = $email . $timestamp . $bankCode . $bankAccount . $accountName . $custRefNumber . $amountTransfer . $purpose . $disburseId . $secretKey; 
         }
     }
 }
