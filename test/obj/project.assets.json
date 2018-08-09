@@ -2638,6 +2638,23 @@
           "bin/placeholder/Encryption.dll": {}
         }
       },
+      "loansservice/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "DocaLabs.Http.Client.with.NewtonSoft.Json.Serializer": "3.0.0",
+          "Microsoft.AspNetCore.Cors": "2.1.1",
+          "dbnetcore.utlity": "1.0.0",
+          "log": "1.0.0",
+          "redis": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/loansservice.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/loansservice.dll": {}
+        }
+      },
       "log/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -7892,6 +7909,11 @@
       "path": "../Encryption/Encryption.csproj",
       "msbuildProject": "../Encryption/Encryption.csproj"
     },
+    "loansservice/1.0.0": {
+      "type": "project",
+      "path": "../loansservice/loansservice.csproj",
+      "msbuildProject": "../loansservice/loansservice.csproj"
+    },
     "log/1.0.0": {
       "type": "project",
       "path": "../log/log.csproj",
@@ -7918,6 +7940,7 @@
       "aliyun-net-sdk-core.vscode >= 1.0.0",
       "aliyun-net-sdk-sts.vscode >= 1.0.0",
       "dbnetcore.utlity >= 1.0.0",
+      "loansservice >= 1.0.0",
       "redis >= 1.0.0"
     ]
   },
@@ -7957,6 +7980,9 @@
             },
             "/data/danapinjam/dbnetcore.utlity/dbnetcore.utlity.csproj": {
               "projectPath": "/data/danapinjam/dbnetcore.utlity/dbnetcore.utlity.csproj"
+            },
+            "/data/danapinjam/loansservice/loansservice.csproj": {
+              "projectPath": "/data/danapinjam/loansservice/loansservice.csproj"
             },
             "/data/danapinjam/redis/redis.csproj": {
               "projectPath": "/data/danapinjam/redis/redis.csproj"

@@ -8,7 +8,7 @@ public class InquiryResponse
 
     public string bankCode = String.Empty;
 
-    public float amountTransfer = 0f;
+    public string amountTransfer = String.Empty;
 
     public string accountName = String.Empty;
 

@@ -20,6 +20,7 @@
           "aliyun-net-sdk-core.vscode": "1.0.0",
           "aliyun-net-sdk-sts.vscode": "1.0.0",
           "dbnetcore.utlity": "1.0.0",
+          "loansservice": "1.0.0",
           "redis": "1.0.0"
         },
         "runtime": {
@@ -1854,6 +1855,18 @@
           "Encryption.dll": {}
         }
       },
+      "loansservice/1.0.0": {
+        "dependencies": {
+          "DocaLabs.Http.Client.with.NewtonSoft.Json.Serializer": "3.0.0",
+          "Microsoft.AspNetCore.Cors": "2.1.1",
+          "dbnetcore.utlity": "1.0.0",
+          "log": "1.0.0",
+          "redis": "1.0.0"
+        },
+        "runtime": {
+          "loansservice.dll": {}
+        }
+      },
       "log/1.0.0": {
         "runtime": {
           "log.dll": {}
@@ -2998,6 +3011,11 @@
       "sha512": ""
     },
     "Encryption/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "loansservice/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

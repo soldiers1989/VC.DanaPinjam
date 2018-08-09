@@ -23,3 +23,5 @@
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/aliyun-net-sdk-sts.vscode.pdb
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/Regions/endpoints.xml
+/data/danapinjam/test/bin/Debug/netcoreapp2.1/loansservice.dll
+/data/danapinjam/test/bin/Debug/netcoreapp2.1/loansservice.pdb

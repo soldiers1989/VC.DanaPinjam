@@ -1,6 +1,7 @@
 using System;
 using System.Net;
 using System.Text;
+using Newtonsoft.Json;
 
 using YYLog.ClassLibrary;
 
@@ -15,19 +16,80 @@ public class HttpHelper
 		/// <param name="api"></param>
 		/// <param name="param"></param>
 		/// <returns></returns>
-		public InquiryResponse DuitkuInquiryRequest(DebitUserRecord record)
+		public InquiryResponse DuitkuInquiryRequest(InquiryRequest inquiryRequest)
 		{
 			InquiryResponse result = new InquiryResponse();
 			try
 			{
-                request("/webapi/api/disbursement/inquiry", "");
+				string data = JsonConvert.SerializeObject(inquiryRequest);
+                
+				string response = request("https://passport.duitku.com/webapi/api/disbursement/inquiry", data);
+
+				if (String.IsNullOrEmpty(response))
+				{
+					return new InquiryResponse();
+				}
+				else
+				{
+					result = JsonConvert.DeserializeObject<InquiryResponse>(response);
+				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
+				Log.WriteErrorLog("HttpHelper::DuitkuInquiryRequest", ex.Message);
 			}
 			return result;
 		}
 
+		public InquiryResponse DuitkuInquiryStatusRequest(InquiryStatusRequest inquiryRequest)
+		{
+			InquiryResponse result = new InquiryResponse();
+			try
+			{
+				string data = JsonConvert.SerializeObject(inquiryRequest);
+                
+				string response = request("https://passport.duitku.com/webapi/api/disbursement/inquirystatus", data);
+
+				if (String.IsNullOrEmpty(response))
+				{
+					return new InquiryResponse();
+				}
+				else
+				{
+					result = JsonConvert.DeserializeObject<InquiryResponse>(response);
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.WriteErrorLog("HttpHelper::DuitkuInquiryStatusRequest", ex.Message);
+			}
+			return result;
+		}
+
+		public InquiryResponse DuitkuTransferRequest(TransferRequest transferRequest)
+		{
+			InquiryResponse result = new InquiryResponse();
+			try
+			{
+				string data = JsonConvert.SerializeObject(transferRequest);
+                
+				string response = request("https://passport.duitku.com/webapi/api/disbursement/transfer", data);
+
+				if (String.IsNullOrEmpty(response))
+				{
+					return new InquiryResponse();
+				}
+				else
+				{
+					result = JsonConvert.DeserializeObject<InquiryResponse>(response);
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.WriteErrorLog("HttpHelper::DuitkuTransferRequest", ex.Message);
+			}
+			return result;
+		}
         string request(string api, string data)
 		{
             string result = String.Empty;
@@ -48,7 +110,7 @@ public class HttpHelper
 			}
 			catch (Exception ex)
 			{
-				
+				Log.WriteErrorLog("HttpHelper::request", ex.Message);
 			}
             
             return String.Empty;

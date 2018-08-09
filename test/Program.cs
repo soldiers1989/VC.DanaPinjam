@@ -7,11 +7,11 @@ namespace test
         static void Main(string[] args)
         {
             
-            object obj = HelperProvider.GetToken(27);
+            //object obj = HelperProvider.GetToken(27);
             
-            string result = JsonConvert.SerializeObject(obj);
+            //string result = JsonConvert.SerializeObject(obj);
 
-            Console.WriteLine("the result is :" + result);
+            //Console.WriteLine("the result is :" + result);
 
 //$paramSignature = $email . $timestamp . $bankCode . $bankAccount . $amountTransfer . $purpose . $key; 
 //$signature = hash('sha256', $paramSignature);
@@ -29,6 +29,7 @@ namespace test
 'signature':''
 } */
 
+            /*
             string email = "test@chakratechnology.com";
             string timestamp = Convert.ToString((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000);
             string bankCode = "008";
@@ -47,7 +48,21 @@ namespace test
 
             Console.WriteLine(timestamp);
 
+            */
+            LoanBank bank = new LoanBank();
 
+            DebitUserRecord record = new DebitUserRecord();
+            record.debitId = 111;
+            record.bankAccount = "7302921909";
+            record.bankCode = "008";
+            record.amountTransfer = 10000;
+            record.purpose = "test";
+            record.userId = 27;
+            record.userName = "HENDRA";
+
+            bank.Transfer(record);
+
+            //bank.CheckTransferStatus("10013");
             //$paramSignature = $email . $timestamp . $bankCode . $bankAccount . $accountName . $custRefNumber . $amountTransfer . $purpose . $disburseId . $secretKey; 
         }
     }
