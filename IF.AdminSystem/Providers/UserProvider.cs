@@ -947,6 +947,65 @@ namespace NF.AdminSystem.Providers
         }
 
 
+        public static DataProviderResultModel SaveUserBankInfoV2(UserBankInfoModel bankInfo)
+        {
+
+            DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                pc.Add("@iBankId", bankInfo.bankId);               
+                pc.Add("@iUserId", bankInfo.userId);               
+                pc.Add("@sBankName", bankInfo.bankName);               
+                pc.Add("@sSubBankName", bankInfo.subBankName);               
+                pc.Add("@sBankCode", bankInfo.bankCode);               
+                pc.Add("@sContact", bankInfo.contact);
+                pc.Add("@sContactName", bankInfo.contactName);
+                pc.Add("@sBniBankCode", bankInfo.bniBankCode);
+
+                Hashtable table = new Hashtable();
+                DataTable dt = dbo.ExecProcedure("p_user_editbankinfo_v2", pc.GetParams(), out table);
+                if (null != dt && dt.Rows.Count == 1)
+                {
+                    int.TryParse(Convert.ToString(dt.Rows[0][0]), out result.result);
+                    if (result.result == Result.SUCCESS)
+                    {
+                        int.TryParse(Convert.ToString(dt.Rows[0][1]), out bankInfo.bankId);
+                    }
+                    else
+                    {
+                        result.message = Convert.ToString(dt.Rows[0][2]);
+                        Log.WriteErrorLog("UserProvider::SaveUserBankInfo", "{0}|{1}", result.result, dt.Rows[0][1]);
+                        bankInfo.bankId = -1;
+                    }
+                }
+                else
+                {
+                    result.result = MainErrorModels.LOGIC_ERROR;
+                    result.message = "The database logic error.The function is UserProvider::SaveUserBankInfo";
+                }
+                result.data = bankInfo;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
+                result.message = "The database logic error.The function is UserProvider::SaveUserBankInfo";
+                Log.WriteErrorLog("UserProvider::SaveUserBankInfo", "获取失败：{0}，异常：{1}", bankInfo.userId, ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -1204,6 +1263,7 @@ namespace NF.AdminSystem.Providers
             }
             return result;
         }
+        
         /// <summary>
         /// 
         /// </summary>

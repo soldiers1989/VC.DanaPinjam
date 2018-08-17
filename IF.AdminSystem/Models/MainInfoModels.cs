@@ -6,6 +6,14 @@ using System.Web;
 namespace NF.AdminSystem.Models
 {
     [Serializable]
+    public class BankCode
+    {
+        public string bankCode = String.Empty;
+
+        public string bankName = String.Empty;
+    }
+
+    [Serializable]
     public class NoticeModel
     {
         public string title = String.Empty;

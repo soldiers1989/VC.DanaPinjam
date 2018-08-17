@@ -10,9 +10,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1"/>
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1"/>
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.1.2"/>
+    <PackageReference Include="System.Drawing.Common" Version="4.5.0"/>
     <ProjectReference Include="..\redis\redis.csproj"/>
     <ProjectReference Include="..\dbnetcore.utlity\dbnetcore.utlity.csproj"/>
     <ProjectReference Include="..\aliyun-net-sdk-sts\aliyun-net-sdk-sts.vscode.csproj"/>
     <ProjectReference Include="..\aliyun-net-sdk-core\aliyun-net-sdk-core.vscode.csproj"/>
+    <Reference Include="..\libs\EPPlus.dll"/>
   </ItemGroup>
 </Project>

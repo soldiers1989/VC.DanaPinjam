@@ -1,5 +1,6 @@
 ﻿using DBMonoUtility;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,13 +9,21 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YYLog.ClassLibrary;
 
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
+
 namespace NF.AdminSystem.Controllers
 {
     public class AuditController : Controller
     {
+        [AllowAnonymous]
         // GET: Audit
         public ActionResult DebitRecords(string userId, int status, string beginTime, string endTime)
         {
+            var package = new ExcelPackage();
+
+            var worksheet = package.Workbook.Worksheets.Add("DebitRecords");
+
             DataBaseOperator dbo = null;
             string result = String.Empty;
             try

@@ -53,7 +53,7 @@ namespace test
 
             DebitUserRecord record = new DebitUserRecord();
             record.debitId = 111;
-            record.bankAccount = "7302921909";
+            record.bankAccount = "1680001297876";
             record.bankCode = "008";
             record.amountTransfer = 10000;
             record.purpose = "test";
@@ -61,6 +61,7 @@ namespace test
             record.userName = "HENDRA";
 
             bank.Transfer(record);
+
 
             //bank.CheckTransferStatus("10013");
             //$paramSignature = $email . $timestamp . $bankCode . $bankAccount . $accountName . $custRefNumber . $amountTransfer . $purpose . $disburseId . $secretKey; 

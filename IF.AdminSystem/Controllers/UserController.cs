@@ -810,6 +810,53 @@ namespace NF.AdminSystem.Controllers
             return JsonConvert.SerializeObject(ret);
         }
 
+
+        [HttpPost]
+        [HttpGet]
+        [Route("SaveUserBankInfoV2")]
+        public ActionResult<string> SaveUserBankInfoV2()
+        {
+            HttpResultModel ret = new HttpResultModel();
+            ret.result = Result.SUCCESS;
+            try
+            {
+                string content = HelperProvider.GetRequestContent(HttpContext);
+                if(!String.IsNullOrEmpty(content))
+                {
+                    UserBankInfoModel bankInfo = JsonConvert.DeserializeObject<UserBankInfoModel>(content);
+
+                    if (null != bankInfo)
+                    {
+                        ///逻辑
+                        DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
+                        if (result.result == Result.SUCCESS)
+                        {
+                            ret.data = result.data;
+                        }
+                        else
+                        {
+                            ret.result = Result.ERROR;
+                            ret.errorCode = result.result;
+                            ret.message = result.message;
+                        }
+                        return JsonConvert.SerializeObject(ret);
+                    }
+                }
+                
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                ret.message = "The request body is empty.";
+            }
+            catch (Exception ex)
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.LOGIC_ERROR;
+                ret.message = "The program logic error from the UserController::SaveUserBankInfo function.";
+                Log.WriteErrorLog("UserController::SaveUserBankInfo", "异常：{0}", ex.Message);
+            }
+            return JsonConvert.SerializeObject(ret);
+        }
+
         [Route("GetUserPhotos")]
         [HttpPost]
         [HttpGet]

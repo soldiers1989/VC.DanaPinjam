@@ -406,6 +406,9 @@ namespace NF.AdminSystem.Models
         /// </summary>
         public int bankId = 0;
 
+        ///用户ID
+        public int userId = 0;
+
         /// <summary>
         /// 银行名
         /// </summary>
@@ -430,6 +433,9 @@ namespace NF.AdminSystem.Models
         /// 联系人
         /// </summary>
         public string contactName = String.Empty;
+
+        ///银行名对应的BankCode，在Main控制器中，GetBankCodes方法中
+        public string bniBankCode = String.Empty;
     }
 
     [Serializable]

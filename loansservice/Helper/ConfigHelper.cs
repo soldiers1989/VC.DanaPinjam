@@ -4,16 +4,16 @@ public class ConfigHelper
 {
     public static string GetDuitkuSecretKey()
     {
-        return "c43c22433ee54bd903c58892a17bf233f4aaabe54e63387952db2f9a82fc7421";
+        return "cb04aef7f466324cf88e568cffb8fbfe550df50aaf60869a8f1048368a040672";
     }
 
     public static int GetDuitkuUserId()
     {
-        return 4965;
+        return 7129;
     }
 
     public static string GetDuitkuEmail()
     {
-        return "test@chakratechnology.com";
+        return "cs@danapinjam.com";
     }
 }

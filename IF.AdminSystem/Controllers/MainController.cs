@@ -25,6 +25,44 @@ namespace NF.AdminSystem.Controllers
         [AllowAnonymous]
         [HttpPost]
         [HttpGet]
+        [Route("GetBankCodes")]
+        /// <summary>
+        /// 获取贷款种类
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult<string> GetBankCodes()
+        {
+            HttpResultModel ret = new HttpResultModel();
+            ret.result = Result.SUCCESS;
+            try
+            {
+                DataProviderResultModel result = MainInfoProvider.GetBankCodes();
+                if (result.result == Result.SUCCESS)
+                {
+                    ret.data = result.data;
+                }
+                else
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = result.result;
+                    ret.message = result.message;
+                }
+            }
+            catch (Exception ex)
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.LOGIC_ERROR;
+                ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
+
+                Log.WriteErrorLog("MainController::GetBankCodes", "异常：{0}", ex.Message);
+            }
+            
+            return JsonConvert.SerializeObject(ret);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [HttpGet]
         [Route("GetInitDebitStyle")]
         /// <summary>
         /// 获取贷款种类

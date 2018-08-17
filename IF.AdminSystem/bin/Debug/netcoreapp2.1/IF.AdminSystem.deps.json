@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "a407d209480248d653c50ab1e6d5dc6d039d051b"
+    "signature": "6ff4a95ee82ac1e22c69d65b396e9ffb4c8e63a1"
   },
   "compilationOptions": {
     "defines": [
@@ -32,10 +32,12 @@
           "Microsoft.Extensions.Options": "2.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
+          "System.Drawing.Common": "4.5.0",
           "aliyun-net-sdk-core.vscode": "1.0.0",
           "aliyun-net-sdk-sts.vscode": "1.0.0",
           "dbnetcore.utlity": "1.0.0",
-          "redis": "1.0.0"
+          "redis": "1.0.0",
+          "EPPlus": "4.5.2.1"
         },
         "runtime": {
           "IF.AdminSystem.dll": {}
@@ -390,6 +392,25 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "Microsoft.Win32.SystemEvents/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
       "MySql.Data/8.0.11": {
         "dependencies": {
           "Google.Protobuf": "3.5.1",
@@ -466,6 +487,35 @@
         },
         "compile": {
           "ref/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
+        }
+      },
+      "System.Drawing.Common/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.1.0",
+          "Microsoft.Win32.SystemEvents": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Drawing.Common.dll": {}
         }
       },
       "System.Net.NameResolution/4.3.0": {
@@ -638,6 +688,17 @@
         },
         "compile": {
           "redis.dll": {}
+        }
+      },
+      "EPPlus/4.5.2.1": {
+        "runtime": {
+          "EPPlus.dll": {
+            "assemblyVersion": "4.5.2.1",
+            "fileVersion": "4.5.2.1"
+          }
+        },
+        "compile": {
+          "EPPlus.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3641,6 +3702,13 @@
       "path": "microsoft.win32.primitives/4.3.0",
       "hashPath": "microsoft.win32.primitives.4.3.0.nupkg.sha512"
     },
+    "Microsoft.Win32.SystemEvents/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aXrCxI6PdEEJkqIDRYCe2oBRZ1gto5Ac1Y/WuahG/CD+PB5rAVFU7VpkBILBUQQG/NBtxbIRM0Q61m5uJQLTPw==",
+      "path": "microsoft.win32.systemevents/4.5.0",
+      "hashPath": "microsoft.win32.systemevents.4.5.0.nupkg.sha512"
+    },
     "MySql.Data/8.0.11": {
       "type": "package",
       "serviceable": true,
@@ -3675,6 +3743,13 @@
       "sha512": "sha512-gWwQv/Ug1qWJmHCmN17nAbxJYmQBM/E94QxKLksvUiiKB1Ld3Sc/eK1lgmbSjDFxkQhVuayI/cGFZhpBSodLrg==",
       "path": "system.configuration.configurationmanager/4.4.0",
       "hashPath": "system.configuration.configurationmanager.4.4.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LLI+GGolsv4K8Eu2PN5N3/1t4pM5zoU4fM3lWhSOawJuCjv9iQJJODjd4/QJIgpjlqxzQDMMoOjAaVuzrNJT0g==",
+      "path": "system.drawing.common/4.5.0",
+      "hashPath": "system.drawing.common.4.5.0.nupkg.sha512"
     },
     "System.Net.NameResolution/4.3.0": {
       "type": "package",
@@ -3745,6 +3820,11 @@
     },
     "redis/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EPPlus/4.5.2.1": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

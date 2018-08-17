@@ -95,5 +95,50 @@ namespace NF.AdminSystem.Providers
             }
             return result;
         }
+
+        public static DataProviderResultModel GetBankCodes()
+        {
+            DataBaseOperator dbo = null;
+            List<BankCode> infos = new List<BankCode>();
+            DataProviderResultModel result = new DataProviderResultModel();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                string sqlStr = @"select bankCode,bankName from IFBanksCode where status = 1 order by bankName";
+                DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
+
+                if (null != dt && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        BankCode info = new BankCode();
+                        info.bankCode = Convert.ToString(dt.Rows[i]["bankCode"]);
+                        info.bankName = Convert.ToString(dt.Rows[i]["bankName"]);
+                        
+                        infos.Add(info);
+                    }
+                }
+
+                result.result = Result.SUCCESS;
+                result.data = infos;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.result = Result.ERROR;
+                result.message = "The database logic error.The function is MainInfoProvider::GetBankCodes";
+                Log.WriteErrorLog("MainInfoProvider::GetBankCodes", "获取失败，异常：{0}", ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
     }
 }
