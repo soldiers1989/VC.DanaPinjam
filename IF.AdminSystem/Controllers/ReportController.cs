@@ -213,7 +213,6 @@ namespace NF.AdminSystem.Controllers
         [AllowAnonymous]
         public IActionResult DailyReport(string date)
         {
-            System.IO.File.Delete("/home/f1/下载/report.xlsx");
             string XlsxContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
             DataProviderResultModel model = ReportProvider.GetDailyReport(date);
@@ -281,7 +280,7 @@ namespace NF.AdminSystem.Controllers
                 worksheet.Cells[String.Format("F{0}", row)].Value = "Approved by,";
                 worksheet.Cells.AutoFitColumns();
 
-                return File(package.GetAsByteArray(), XlsxContentType, "report.xlsx");
+                return File(package.GetAsByteArray(), XlsxContentType, String.Format("{0}_report.xlsx", date.Replace("-", "")));
             }
         }
     }
