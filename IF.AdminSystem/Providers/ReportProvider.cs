@@ -19,7 +19,6 @@ namespace NF.AdminSystem.Providers
         {
             DataBaseOperator dbo = null;
             DataProviderResultModel result = new DataProviderResultModel();
-            List<DebitInfoModel> infos = new List<DebitInfoModel>();
             try
             {
                 dbo = new DataBaseOperator();
@@ -39,7 +38,7 @@ namespace NF.AdminSystem.Providers
             {
                 result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
                 result.message = "The database logic error.The function is ReportProvider::GetDailyReport";
-                Log.WriteErrorLog("ReportProvider::GetDailyReport", "获取失败：{0}，异常：{1}", dateId, ex.Message);
+                Log.WriteErrorLog("ReportProvider::GetDailyReport", "获取失败：{0}，异常：{1}", dateId, ex.StackTrace);
             }
             finally
             {
