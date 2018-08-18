@@ -219,7 +219,7 @@ namespace NF.AdminSystem.Controllers
 
             using (var package = new ExcelPackage())
             {
-                var worksheet = package.Workbook.Worksheets.Add("DAILY REPORT TEMPLATE");
+                var worksheet = package.Workbook.Worksheets.Add(String.Format("{0} DAILY REPORT", date));
 
                 setReleaseLoanHeader(worksheet);
 
