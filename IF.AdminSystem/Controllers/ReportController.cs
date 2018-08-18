@@ -74,14 +74,14 @@ namespace NF.AdminSystem.Controllers
             cell.Style.Fill.BackgroundColor.SetColor(Color.White);
         }
 
-        private void setReleaseLoanHeader(ExcelWorksheet worksheet)
+        private void setReleaseLoanHeader(ExcelWorksheet worksheet, string date)
         {
             worksheet.Cells["A1:B1"].Value = "PT. ANUGERAH DIGITAL NIAGA";
             worksheet.Cells["A1:B1"].Merge = true;
             setCellHeaderStyle(worksheet.Cells["A1"]);
 
             worksheet.Cells["A4:K5"].Merge = true;
-            worksheet.Cells["A4:K5"].Value = "DAILY REPORT";
+            worksheet.Cells["A4:K5"].Value = String.Format("{0} DAILY REPORT", date);
             setCellHeaderStyle(worksheet.Cells["A4:K5"], 20);
 
             worksheet.Cells["A7:A7"].Value = "Periode :";
@@ -219,9 +219,9 @@ namespace NF.AdminSystem.Controllers
 
             using (var package = new ExcelPackage())
             {
-                var worksheet = package.Workbook.Worksheets.Add(String.Format("{0} DAILY REPORT", date));
+                var worksheet = package.Workbook.Worksheets.Add("DAILY REPORT");
 
-                setReleaseLoanHeader(worksheet);
+                setReleaseLoanHeader(worksheet, date);
 
                 //Fill release loan data 
                 DataTable releaseLoan = model.data as DataTable;
