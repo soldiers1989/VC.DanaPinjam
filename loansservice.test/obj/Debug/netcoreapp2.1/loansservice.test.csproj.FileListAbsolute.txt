@@ -1,0 +1,14 @@
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.deps.json
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.runtimeconfig.json
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.runtimeconfig.dev.json
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.dll
+/data/danapinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.pdb
+/data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.csprojAssemblyReference.cache
+/data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.csproj.CoreCompileInputs.cache
+/data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.AssemblyInfoInputs.cache
+/data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.AssemblyInfo.cs
+/data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.dll
+/data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.pdb

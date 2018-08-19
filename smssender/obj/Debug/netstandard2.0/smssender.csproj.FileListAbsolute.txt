@@ -1,0 +1,9 @@
+/data/danapinjam/smssender/bin/Debug/netstandard2.0/smssender.deps.json
+/data/danapinjam/smssender/bin/Debug/netstandard2.0/smssender.dll
+/data/danapinjam/smssender/bin/Debug/netstandard2.0/smssender.pdb
+/data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.csprojAssemblyReference.cache
+/data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.csproj.CoreCompileInputs.cache
+/data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.AssemblyInfoInputs.cache
+/data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.AssemblyInfo.cs
+/data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.dll
+/data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.pdb
