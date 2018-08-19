@@ -213,75 +213,84 @@ namespace NF.AdminSystem.Controllers
         [AllowAnonymous]
         public IActionResult DailyReport(string date)
         {
-            string XlsxContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-
-            DataProviderResultModel model = ReportProvider.GetDailyReport(date);
-
-            using (var package = new ExcelPackage())
+            try
             {
-                var worksheet = package.Workbook.Worksheets.Add("DAILY REPORT");
+                string XlsxContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
-                setReleaseLoanHeader(worksheet, date);
+                DataProviderResultModel model = ReportProvider.GetDailyReport(date);
 
-                //Fill release loan data 
-                DataTable releaseLoan = model.data as DataTable;
-                int row = 11;
-                if (null != releaseLoan || releaseLoan.Rows.Count > 0)
+                using (var package = new ExcelPackage())
                 {
-                    worksheet.Cells["A11"].LoadFromDataTable(releaseLoan, PrintHeaders: false);
+                    var worksheet = package.Workbook.Worksheets.Add("DAILY REPORT");
+
+                    setReleaseLoanHeader(worksheet, date);
+
+                    //Fill release loan data 
+                    DataTable releaseLoan = model.data as DataTable;
+                    int row = 11;
+                    if (null != releaseLoan || releaseLoan.Rows.Count > 0)
+                    {
+                        worksheet.Cells["A11"].LoadFromDataTable(releaseLoan, PrintHeaders: false);
+                    }
+                    row += releaseLoan.Rows.Count;
+                    setCellBodyStyle(worksheet.Cells[String.Format("A11:E{0}", row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
+
+                    setPaybackLoanHeader("Daily Collection", worksheet, ref row);
+
+                    row += 2;
+                    model = ReportProvider.GetDailyPaybackReport(date);
+                    DataTable paybackLoan = model.data as DataTable;
+
+                    int bodyRow = row;
+                    if (null != paybackLoan && paybackLoan.Rows.Count > 0)
+                    {
+                        worksheet.Cells[String.Format("A{0}", row)].LoadFromDataTable(paybackLoan, PrintHeaders: false);
+                    }
+                    row += paybackLoan.Rows.Count;
+                    setCellBodyStyle(worksheet.Cells[String.Format("A{0}:K{1}", bodyRow, row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
+
+                    setPaybackLoanHeader("Extend Collection", worksheet, ref row);
+
+                    row += 2;
+                    model = ReportProvider.GetDailyExtendReport(date);
+                    DataTable extendLoan = model.data as DataTable;
+
+                    bodyRow = row;
+                    if (null != extendLoan && extendLoan.Rows.Count > 0)
+                    {
+                        worksheet.Cells[String.Format("A{0}", row)].LoadFromDataTable(extendLoan, PrintHeaders: false);
+                    }
+                    row += extendLoan.Rows.Count;
+                    setCellBodyStyle(worksheet.Cells[String.Format("A{0}:K{1}", bodyRow, row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
+
+                    setBadLoanHeader("Bad Debt Confirmed", worksheet, ref row);
+                    row += 2;
+
+                    model = ReportProvider.GetDailyBadReport(date);
+                    DataTable badLoan = model.data as DataTable;
+                    bodyRow = row;
+                    if (null != badLoan && badLoan.Rows.Count > 0)
+                    {
+                        worksheet.Cells[String.Format("A{0}", row)].LoadFromDataTable(badLoan, PrintHeaders: false);
+                    }
+                    row += badLoan.Rows.Count;
+                    setCellBodyStyle(worksheet.Cells[String.Format("A{0}:F{1}", bodyRow, row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
+
+                    row += 2;
+                    worksheet.Cells[String.Format("A{0}", row)].Value = "Prepared by,";
+                    worksheet.Cells[String.Format("C{0}", row)].Value = "Checked by,";
+                    worksheet.Cells[String.Format("F{0}", row)].Value = "Approved by,";
+                    worksheet.Cells.AutoFitColumns();
+
+                    return File(package.GetAsByteArray(), XlsxContentType, String.Format("{0}_report.xlsx", date.Replace("-", "")));
                 }
-                row += releaseLoan.Rows.Count;
-                setCellBodyStyle(worksheet.Cells[String.Format("A11:E{0}", row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
-
-                setPaybackLoanHeader("Daily Collection", worksheet, ref row);
-
-                row += 2;
-                model = ReportProvider.GetDailyPaybackReport(date);
-                DataTable paybackLoan = model.data as DataTable;
-
-                int bodyRow = row;
-                if (null != paybackLoan && paybackLoan.Rows.Count > 0)
-                {
-                    worksheet.Cells[String.Format("A{0}", row)].LoadFromDataTable(paybackLoan, PrintHeaders: false);
-                }
-                row += paybackLoan.Rows.Count;
-                setCellBodyStyle(worksheet.Cells[String.Format("A{0}:K{1}", bodyRow, row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
-
-                setPaybackLoanHeader("Extend Collection", worksheet, ref row);
-
-                row += 2;
-                model = ReportProvider.GetDailyExtendReport(date);
-                DataTable extendLoan = model.data as DataTable;
-
-                bodyRow = row;
-                if (null != extendLoan && extendLoan.Rows.Count > 0)
-                {
-                    worksheet.Cells[String.Format("A{0}", row)].LoadFromDataTable(extendLoan, PrintHeaders: false);
-                }
-                row += extendLoan.Rows.Count;
-                setCellBodyStyle(worksheet.Cells[String.Format("A{0}:K{1}", bodyRow, row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
-
-                setBadLoanHeader("Bad Debt Confirmed", worksheet, ref row);
-                row += 2;
-
-                model = ReportProvider.GetDailyBadReport(date);
-                DataTable badLoan = model.data as DataTable;
-                bodyRow = row;
-                if (null != badLoan && badLoan.Rows.Count > 0)
-                {
-                    worksheet.Cells[String.Format("A{0}", row)].LoadFromDataTable(badLoan, PrintHeaders: false);
-                }
-                row += badLoan.Rows.Count;
-                setCellBodyStyle(worksheet.Cells[String.Format("A{0}:F{1}", bodyRow, row)], 11, ExcelHorizontalAlignment.Center, ExcelVerticalAlignment.Center);
-
-                row += 2;
-                worksheet.Cells[String.Format("A{0}", row)].Value = "Prepared by,";
-                worksheet.Cells[String.Format("C{0}", row)].Value = "Checked by,";
-                worksheet.Cells[String.Format("F{0}", row)].Value = "Approved by,";
-                worksheet.Cells.AutoFitColumns();
-
-                return File(package.GetAsByteArray(), XlsxContentType, String.Format("{0}_report.xlsx", date.Replace("-", "")));
             }
+            catch (Exception ex)
+            { 
+                Log.WriteErrorLog("ReportController::DailyReport", ex.Message);
+                return Content(String.Format("An error occurred. Please try again.{0}", ex.Message));
+            }
+            
         }
     }
 }
