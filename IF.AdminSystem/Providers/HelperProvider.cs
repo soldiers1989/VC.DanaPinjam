@@ -231,6 +231,11 @@ namespace NF.AdminSystem.Providers
                 return new StsTokenModel() { status = Convert.ToInt32(e.ErrorCode) };
             }
         }
+
+        public static string PrefixOfDuitku()
+        {
+            return "119905";
+        }
     }
     
 }

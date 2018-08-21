@@ -37,7 +37,7 @@ namespace NF.AdminSystem.Controllers
                 }
                 else
                 {
-                    if (request.bin == "868005" ||request.bin == "119905") 
+                    if (request.bin == "868005" || request.bin == "119905")
                     {
                         string vaNo = request.vaNo.Replace(request.bin, "");
 
@@ -60,15 +60,15 @@ namespace NF.AdminSystem.Controllers
             return JsonConvert.SerializeObject(ret);
         }
 
-        [Route("GetDuitkuVAInfo")]
         [HttpPost]
         [HttpGet]
-        public ActionResult<string> GetDuitkuVAInfo(int userId,int debitId, int type)
+        public ActionResult GetDuitkuVAInfo(int userId, int debitId, int type)
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             try
             {
+                ///3为还款，4为延期
                 if (type != 3 && type != 4)
                 {
                     ret.result = Result.ERROR;
@@ -77,8 +77,38 @@ namespace NF.AdminSystem.Controllers
                 }
                 else
                 {
-                    //string vaNo = 
-                    
+                    ///这里验证debitId 与 用户
+                    string prefix = HelperProvider.PrefixOfDuitku();
+                    DataProviderResultModel result = null;
+
+                    result = type == 3 ? DebitProvider.GetUserExtendRecord(debitId) : DebitProvider.GetUserDebitRecord(debitId);
+
+                    if (result.result == Result.SUCCESS)
+                    {
+                        if (type == 3)
+                        {
+                            DebitExtendModel model = result.data as DebitExtendModel;
+                            ViewData["money"] = (model.extendFee + model.overdueMoney).ToString("N0").Replace(",",".");
+                        }
+                        else
+                        {
+                            DebitInfoModel model = result.data as DebitInfoModel;
+                            ViewData["money"] = (model.payBackMoney + model.overdueMoney).ToString("N0").Replace(",",".");
+                        }
+
+                        string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(12 - prefix.Length, '0'));
+                        ViewData["title"] = type == 3 ? "Extend" : "Payback";
+                        ViewData["vaNo"] = vaNo;
+                    }
+                    else
+                    {
+                        ret.result = result.result;
+                        ret.message = result.message;
+                    }
+
+
+
+                    return View();
                 }
             }
             catch (Exception ex)
@@ -89,7 +119,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::InquiryRequest", "异常：{0}", ex.Message);
             }
-            return JsonConvert.SerializeObject(ret);
+            return View();
         }
     }
 }

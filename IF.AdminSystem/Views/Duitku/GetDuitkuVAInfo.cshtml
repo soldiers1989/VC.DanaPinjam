@@ -1,0 +1,55 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+        <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/lib/html5shiv.js"></script>
+    <script type="text/javascript" src="/lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>@ViewData["title"]</title>
+    <style>
+        .panel-danger{border-color:#dd514c}
+        .panel-danger > .panel-header{ border-color:#dd514c; background-color:#dd514c; color:#fff}
+    </style>
+</head>
+<body>
+<div class="anel panel-danger">
+        <div class="panel-header">You can settle the loan in below merchant channel to @ViewData["title"]</div>
+
+        <div class="panel-body">
+
+        <p><b>TRANSFER via ATM or INTERNET BANKING</b></p>
+
+        <p>1.Select transfer interbank online menu</p>
+
+        <p>2.Select bank code CIMB Niaga:<B>022</B></p>
+
+        <p>3.Input beneiciary Bank Account:<B>@ViewData["vaNo"]</B></p>
+
+        <p>4.Input payment amount nominal:<B>Rp.@ViewData["money"]</B></p>
+
+        <p>5.Make sure beneficiary name is Kas Wagon Indonesia/NAMA ANDA</p>
+
+        <p>6.Settle your Account on or befor 7pm of you DUE DATE</p>
+    </div>
+</div>
+</body>
+</html>

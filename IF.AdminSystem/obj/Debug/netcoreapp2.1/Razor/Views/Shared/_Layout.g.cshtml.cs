@@ -54,7 +54,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(23, 1156, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "db407a691f5f408d9e5a90a0ae6518c1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4b31fd4a587a41078d812f002994865a", async() => {
                 BeginContext(29, 1143, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -91,7 +91,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(1180, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "80b839c148ed41eab99cdf14ff9a18c2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "194e4de6eec34d66a4826d249bab69dc", async() => {
                 BeginContext(1186, 42, true);
                 WriteLiteral("\n    <div class=\"page-container\">\n        ");
                 EndContext();

@@ -52,3 +52,4 @@
 /data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb
 /data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/Regions/endpoints.xml
 /data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/EPPlus.dll
+/data/danapinjam/IF.AdminSystem/obj/Debug/netcoreapp2.1/Razor/Views/Duitku/GetDuitkuVAInfo.g.cshtml.cs

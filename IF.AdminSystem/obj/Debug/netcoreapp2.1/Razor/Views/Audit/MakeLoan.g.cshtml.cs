@@ -63,7 +63,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\n<!DOCTYPE html>\n\n<html>\n");
             EndContext();
             BeginContext(50, 100, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffc021f19a184f66a32077cecbe5faaa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7de963833914969a9d7524f48f49a56", async() => {
                 BeginContext(56, 87, true);
                 WriteLiteral("\n    <meta name=\"viewport\" content=\"width=device-width\" />\n    <title>MakeLoan</title>\n");
                 EndContext();
@@ -83,7 +83,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(151, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bba62d87c2204ffaa08c2e9f58bdf1ac", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2f91f9307e34c5195ba09cad6dec61e", async() => {
                 BeginContext(157, 23, true);
                 WriteLiteral("\n    <div> \n    </div>\n");
                 EndContext();

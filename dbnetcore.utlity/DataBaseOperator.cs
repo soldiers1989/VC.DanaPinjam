@@ -120,7 +120,7 @@ namespace DBMonoUtility
 			//	throw new Exception ("Executing SQL statement (" + expr + ") failed(OracleException). Reason: " + ex1.Message);
 			//}
 			catch (Exception ex2) {
-				throw new Exception ("Executing SQL statement (" + expr + ") failed(Exception). Reason: " + ex2.Message);
+				throw new Exception ("Executing SQL statement (" + expr + ") failed(Exception). Reason: " + ex2.StackTrace);
 			} finally {
 				DataBasePool.ReleaseConnection(mUsePoolName, command.Connection);
 				if (null != reader) {

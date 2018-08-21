@@ -63,7 +63,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(58, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04e95c5b290744aa8db32507e0d9e8ea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8db41c779384445cbc0c3f8cba8c245f", async() => {
                 BeginContext(64, 91, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Contactus</title>\r\n");
                 EndContext();
@@ -83,7 +83,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(164, 128, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9613f9c384e747199737f6ff787b1dcd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9ed17b64acc24b11ae6b32c453324789", async() => {
                 BeginContext(170, 115, true);
                 WriteLiteral("\r\n    <h3>E-mail：cs@danapinjam.com</h3>\n    <h3>Whats App :081383662454</h3>\r\n    <h3>           087788876279</h3>\n");
                 EndContext();

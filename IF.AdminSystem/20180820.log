@@ -1,0 +1,388 @@
+20:54:27 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:54:32 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:54:32 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：172.22.0.12:6379
+20:54:32 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:54:42 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:54:47 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:54:58 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:55:02 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:55:03 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:55:13 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:55:32 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:56:02 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:56:32 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:57:33 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:57:38 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:57:38 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：172.22.0.12:6379
+20:57:38 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:57:43 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:57:54 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:58:04 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:58:08 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:58:14 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:58:24 [Debug] RedisPools::Init [1]号服务器::初使化Redis连接池,新建连接失败，返回redis.IsConnected==False,serverInfo=172.22.0.12:6379
+20:58:31 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+20:58:38 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+21:01:24 [Debug] Startup::Startup [1]号服务器::Begin connect db
+21:01:28 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+21:01:28 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:01:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:01:29 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+21:01:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:02:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:03:59 [Debug] Startup::Startup [1]号服务器::Begin connect db
+21:04:04 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+21:04:04 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:04:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:04:04 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+21:04:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:05:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:05:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:06:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:06:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:07:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:07:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:08:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:08:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:09:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:09:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:10:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:10:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:11:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:11:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:12:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:12:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:13:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:13:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:14:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:14:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:15:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:15:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:16:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:16:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:17:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:17:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:18:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:18:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:19:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:19:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:20:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:20:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:21:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:21:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:22:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:22:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:23:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:23:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:24:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:24:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:25:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:25:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:26:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:26:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:27:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:27:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:28:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:28:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:29:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:29:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:30:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:30:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:31:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:31:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:32:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:32:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:33:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:33:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:34:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:34:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:35:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:35:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:36:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:36:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:37:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:37:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:38:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:38:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:39:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:39:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:40:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:40:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:41:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:41:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:42:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:42:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:43:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:43:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:44:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:44:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:45:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:45:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:46:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:46:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:47:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:47:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:48:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:48:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:49:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:49:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:50:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:50:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:51:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:51:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:52:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:52:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:53:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:53:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:54:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:54:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:55:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:55:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:56:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:56:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:57:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:57:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:58:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:58:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:59:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+21:59:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:00:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:00:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:01:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:01:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:02:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:02:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:03:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:03:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:04:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:04:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:05:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:05:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:06:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:06:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:07:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:07:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:08:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:08:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:09:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:09:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:10:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:10:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:11:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:11:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:12:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:12:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:13:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:13:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:14:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:14:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:15:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:15:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:16:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:16:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:17:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:17:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:18:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:18:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:19:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:19:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:20:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:20:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:21:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:21:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:22:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:22:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:23:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:23:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:24:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:24:41 [Debug] Startup::Startup [1]号服务器::Begin connect db
+22:25:10 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+22:25:10 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+22:25:10 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:25:10 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+22:25:40 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:26:10 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:26:40 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:27:10 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:27:40 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:28:10 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:28:40 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:29:10 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:29:40 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:30:10 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:30:55 [Debug] Startup::Startup [1]号服务器::Begin connect db
+22:31:18 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+22:31:18 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+22:31:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:31:19 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+22:31:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:32:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:32:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:33:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:33:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:34:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:34:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:35:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:35:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:36:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:36:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:37:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:37:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:38:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:38:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:39:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:39:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:40:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:40:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:41:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:41:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:42:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:42:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:43:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:43:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:44:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:44:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:45:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:45:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:46:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:46:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:47:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:47:49 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:48:19 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:57:39 [Debug] Startup::Startup [1]号服务器::Begin connect db
+22:57:43 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+22:57:43 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+22:57:43 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:57:44 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+22:58:13 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:58:43 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:59:13 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+22:59:50 [Debug] Startup::Startup [1]号服务器::Begin connect db
+22:59:54 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+22:59:54 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+22:59:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:59:55 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+23:00:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:00:53 [Debug] Startup::Startup [1]号服务器::Begin connect db
+23:00:57 [SystemLog] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+23:00:57 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+23:00:57 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:00:58 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+23:01:27 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:01:57 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:02:27 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:02:57 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:03:27 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:03:57 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:04:27 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:04:57 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:05:27 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:05:57 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:06:27 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:06:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:07:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:07:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:08:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:08:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:09:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:09:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:10:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:10:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:11:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:11:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:12:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:12:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:13:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:13:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:14:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:14:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:15:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:15:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:16:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:16:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:17:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:17:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:18:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:18:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:19:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:19:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:20:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:20:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:21:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:21:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:22:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:22:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:23:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:23:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:24:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:24:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:25:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:25:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:26:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:26:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:27:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:27:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:28:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:28:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:29:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:29:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:30:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:30:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:31:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:31:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:32:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:32:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:33:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:33:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:34:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:34:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:35:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:35:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:36:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:36:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:37:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:37:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:38:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:38:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:39:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:39:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:40:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:40:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:41:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:41:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:42:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:42:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:43:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:43:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:44:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:44:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:45:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:45:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:46:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:46:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:47:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:47:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:48:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:48:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:49:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:49:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:50:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:50:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:51:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:51:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:52:28 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:52:58 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:53:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:53:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:54:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:54:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:55:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:55:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:56:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:56:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:57:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:57:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:58:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:58:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:59:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+23:59:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0

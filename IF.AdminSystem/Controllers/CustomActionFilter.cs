@@ -23,7 +23,7 @@ namespace NF.AdminSystem
     {
         public override async Task OnAuthorizationAsync(AuthorizationFilterContext filterContext)
         {
-            string path = filterContext.HttpContext.Request.Path;
+            string path = filterContext.HttpContext.Request.QueryString.ToString();
             var list = filterContext.ActionDescriptor.FilterDescriptors.Where(p=>((FilterDescriptor)p).Filter.GetType() == typeof(AllowAnonymousFilter));
 
             if (list.Count() == 1 || path.ToLower().IndexOf("isdebug") > -1)
