@@ -243,6 +243,7 @@ namespace NF.AdminSystem.Controllers
                 list.Add("agreementUrl2", "http://api.danapinjam.com/Home/agreement2");
                 list.Add("agreementUrl", "http://api.danapinjam.com/Home/agreement");
 
+                ///下面是第三方支付的说明页面
                 list.Add("atmh5url", "http://test.smalldebit.club/Duitku/GetDuitkuVAInfo");
 
                 ///以下是OSS的相关配置
