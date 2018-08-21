@@ -243,6 +243,8 @@ namespace NF.AdminSystem.Controllers
                 list.Add("agreementUrl2", "http://api.danapinjam.com/Home/agreement2");
                 list.Add("agreementUrl", "http://api.danapinjam.com/Home/agreement");
 
+                list.Add("atmh5url", "http://test.smalldebit.club/Duitku/GetDuitkuVAInfo");
+
                 ///以下是OSS的相关配置
                 list.Add("ossRegion", "ap-southeast-5");
                 list.Add("bucketName", "yjddebit");
