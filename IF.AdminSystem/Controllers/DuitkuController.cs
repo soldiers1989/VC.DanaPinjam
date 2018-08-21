@@ -96,7 +96,7 @@ namespace NF.AdminSystem.Controllers
                             ViewData["money"] = (model.payBackMoney + model.overdueMoney).ToString("N0").Replace(",",".");
                         }
 
-                        string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(12 - prefix.Length, '0'));
+                        string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(15 - prefix.Length, '0'));
                         ViewData["title"] = type == 3 ? "Extend" : "Payback";
                         ViewData["vaNo"] = vaNo;
                     }

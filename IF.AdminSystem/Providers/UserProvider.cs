@@ -977,14 +977,14 @@ namespace NF.AdminSystem.Providers
                     else
                     {
                         result.message = Convert.ToString(dt.Rows[0][2]);
-                        Log.WriteErrorLog("UserProvider::SaveUserBankInfo", "{0}|{1}", result.result, dt.Rows[0][1]);
+                        Log.WriteErrorLog("UserProvider::SaveUserBankInfoV2", "{0}|{1}", result.result, dt.Rows[0][1]);
                         bankInfo.bankId = -1;
                     }
                 }
                 else
                 {
                     result.result = MainErrorModels.LOGIC_ERROR;
-                    result.message = "The database logic error.The function is UserProvider::SaveUserBankInfo";
+                    result.message = "The database logic error.The function is UserProvider::SaveUserBankInfoV2";
                 }
                 result.data = bankInfo;
                 return result;
@@ -992,8 +992,8 @@ namespace NF.AdminSystem.Providers
             catch (Exception ex)
             {
                 result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
-                result.message = "The database logic error.The function is UserProvider::SaveUserBankInfo";
-                Log.WriteErrorLog("UserProvider::SaveUserBankInfo", "获取失败：{0}，异常：{1}", bankInfo.userId, ex.Message);
+                result.message = "The database logic error.The function is UserProvider::SaveUserBankInfoV2";
+                Log.WriteErrorLog("UserProvider::SaveUserBankInfoV2", "获取失败：{0}，异常：{1}", bankInfo.userId, ex.Message);
             }
             finally
             {
