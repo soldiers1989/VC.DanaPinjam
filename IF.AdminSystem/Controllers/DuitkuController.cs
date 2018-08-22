@@ -200,6 +200,7 @@ namespace NF.AdminSystem.Controllers
             return JsonConvert.SerializeObject(response);
         }
 
+        [Route("GetDuitkuVAInfo")]
         [HttpPost]
         [HttpGet]
         public ActionResult GetDuitkuVAInfo(int userId, int debitId, int type)
