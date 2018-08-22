@@ -89,10 +89,10 @@ namespace NF.AdminSystem.Providers
                 string sqlStr = @"insert into IFDuitkuCallbackLogs(merchantCode,amount,merchantOrderId,productDetail,additionalParam,
                             merchantUserId,reference,signature,issuer_name,issuer_bank,createTime)
                             values(@sMerchantCode,@sAmount,@sMerchantOrderId,@sProductDetail,@sAdditionalParam,
-                            @sMerchantUserId,@sReference,@sSignature,@sIssuer_name,@sIssuer_bank,now());"
+                            @sMerchantUserId,@sReference,@sSignature,@sIssuer_name,@sIssuer_bank,now());";
 
                 pc.Add("@sMerchantCode", request.merchantCode);
-                pc.Add("@sAmount", request.amount;
+                pc.Add("@sAmount", request.amount);
                 pc.Add("@sMerchantOrderId", request.merchantOrderId);
                 pc.Add("@sProductDetail", request.productDetail);
                 pc.Add("@sAdditionalParam", request.additionalParam);
@@ -119,11 +119,13 @@ namespace NF.AdminSystem.Providers
                     dbo = null;
                 }
             }
+            return result;
         }
 
         public static DataProviderResultModel SetDuitkuPaybackRecordStaus(CallbackRequestModel request)
         {
             DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
             try
             {
                 string sqlStr = @"update IFUserPayBackDebitRecord set status = @iStatus1,statusTime = now() 
@@ -136,10 +138,13 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@iStatus2", -2);
                 pc.Add("@iUserId", request.merchantUserId);
 
-                dbo.ExecuteStatement(sqlStr, pc.GetParams());
+                result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams());
+                result.result = Result.SUCCESS;
             }
             catch (Exception ex)
             {
+                result.result = Result.ERROR;
+                result.message = ex.Message;
                 Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "{0}", ex.Message);
             }
             finally
@@ -150,6 +155,7 @@ namespace NF.AdminSystem.Providers
                     dbo = null;
                 }
             }
+            return result;
         }
     }
 }

@@ -52,8 +52,8 @@ public class CallbackRequestModel
 
     public bool IsEmpty()
     {
-        return String.IsNullOrEmpty(request.merchantCode) 
-        || String.IsNullOrEmpty(request.amount) 
-        || String.IsNullOrEmpty(request.merchantOrderId);
+        return String.IsNullOrEmpty(merchantCode) 
+        || String.IsNullOrEmpty(amount) 
+        || String.IsNullOrEmpty(merchantOrderId);
     }
 }
