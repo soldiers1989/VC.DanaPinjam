@@ -12,10 +12,61 @@ using NF.AdminSystem.Providers;
 using Newtonsoft.Json;
 using RedisPools;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+
 namespace NF.AdminSystem.Controllers
 {
+    [Route("api/Duitku")]
     public class DuitkuController : Controller
     {
+        private AppSettingsModel ConfigSettings { get; set; }
+
+        public DuitkuController(IOptions<AppSettingsModel> settings)
+        {
+            ConfigSettings = settings.Value;
+        }
+        
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("CallbackRequest")]
+        public ActionResult<string> CallbackRequest([FromForm] CallbackRequestModel request)
+        {
+            try
+            {
+                if (!request.IsEmpty())
+                {
+                    string signature = request.merchantCode + request.amount + request.merchantOrderId + ConfigSettings.duitkuKey;
+                    signature = HelperProvider.MD5Encrypt32(signature);
+                    DataProviderResultModel result = DuitkuProvider.SaveDuitkuCallbackRecord(request);
+                    ///记录调用日志，最终需要写入数据库
+                    Log.WriteLog("DuitkuController::CallbackRequest", "{0} - {1}", result.result, JsonConvert.SerializeObject(request));
+
+                    //验证签名
+                    if (signature == request.signature)
+                    {
+                        ///验证通过
+                        DuitkuProvider.SaveDuitkuCallbackRecord(request);
+                    }
+                    else
+                    {
+                        ///签名不通过
+                        return "Bad Signature";
+                    }
+                    return "Success";
+                }
+                else
+                {
+                    return "Bad Parameter";
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("DuitkuController::CallbackRequest", "{0}", ex.Message);
+            }
+            return "Error";
+        }
+
         [AllowAnonymous]
         [HttpPost]
         [Route("InquiryRequest")]
@@ -25,39 +76,91 @@ namespace NF.AdminSystem.Controllers
         /// <returns></returns>
         public ActionResult<string> InquiryRequest([FromForm] DuitkuInquriyRequestModel request)
         {
-            HttpResultModel ret = new HttpResultModel();
-            ret.result = Result.SUCCESS;
+            DuitkuInquriyResponseModel response = new DuitkuInquriyResponseModel();
             try
             {
+                Log.WriteDebugLog("DuitkuController::InquiryRequest", "param is {0}", JsonConvert.SerializeObject(request));
+
+                response.statusCode = "01";
+                response.statusMessage = "Request is incorrect.";
                 if (request.IsEmpty())
                 {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                    ret.message = "Request content is empty.";
+                    response.statusCode = "01";
+                    response.statusMessage = "Request content is empty.";
                 }
                 else
                 {
-                    if (request.bin == "868005" || request.bin == "119905")
+                    if (request.bin == "868005" || request.bin == "119905" || request.bin == "119906")
                     {
                         string vaNo = request.vaNo.Replace(request.bin, "");
+                        if (vaNo.Length == (15 - HelperProvider.PrefixOfDuitku().Length))
+                        {
+                            string type = vaNo.Substring(0, 1);
+                            string debitId = vaNo.Substring(1);
+                            int iDebitId = -1;
+                            int.TryParse(debitId, out iDebitId);
 
+                            if (type == "3")
+                            {
+
+                                var ret = DebitProvider.GetUserExtendRecord(iDebitId);
+                                var model = ret.data as DebitExtendModel;
+                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
+
+                                if (result.result == Result.SUCCESS)
+                                {
+                                    response.statusCode = "00";
+                                    response.merchantOrderId = Convert.ToString(result.data);
+                                    response.vaNo = request.vaNo;
+                                    response.amount = Convert.ToString(model.extendFee + model.overdueMoney);
+                                    response.name = "DanaPinjam";
+                                }
+                                else
+                                {
+                                    response.statusCode = "01";
+                                    response.statusMessage = "Create extend record incorrect.";
+                                }
+                            }
+                            else if (type == "4")
+                            {
+                                var ret = DebitProvider.GetUserDebitRecord(iDebitId);
+                                var model = ret.data as DebitInfoModel;
+                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
+
+                                if (result.result == Result.SUCCESS)
+                                {
+                                    response.statusCode = "00";
+                                    response.merchantOrderId = Convert.ToString(result.data);
+                                    response.vaNo = request.vaNo;
+                                    response.amount = Convert.ToString(model.payBackMoney + model.overdueMoney);
+                                    response.name = "DanaPinjam";
+                                }
+                                else
+                                {
+                                    response.statusCode = "01";
+                                    response.statusMessage = "Create payback record incorrect.";
+                                }
+                            }
+                            else
+                            {
+                                response.statusCode = "01";
+                            }
+                        }
                     }
                     else
                     {
+                        response.statusCode = "01";
                         Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request.bin:{0}", request.bin);
                     }
-
                 }
             }
             catch (Exception ex)
             {
-                ret.result = Result.ERROR;
-                ret.errorCode = MainErrorModels.LOGIC_ERROR;
-                ret.message = "The program logic error from the UserController::InquiryRequest function.";
-
+                response.statusCode = "01";
+                response.statusMessage = ex.Message;
                 Log.WriteErrorLog("UserController::InquiryRequest", "异常：{0}", ex.Message);
             }
-            return JsonConvert.SerializeObject(ret);
+            return JsonConvert.SerializeObject(response);
         }
 
         [HttpPost]
@@ -88,12 +191,12 @@ namespace NF.AdminSystem.Controllers
                         if (type == 3)
                         {
                             DebitExtendModel model = result.data as DebitExtendModel;
-                            ViewData["money"] = (model.extendFee + model.overdueMoney).ToString("N0").Replace(",",".");
+                            ViewData["money"] = (model.extendFee + model.overdueMoney).ToString("N0").Replace(",", ".");
                         }
                         else
                         {
                             DebitInfoModel model = result.data as DebitInfoModel;
-                            ViewData["money"] = (model.payBackMoney + model.overdueMoney).ToString("N0").Replace(",",".");
+                            ViewData["money"] = (model.payBackMoney + model.overdueMoney).ToString("N0").Replace(",", ".");
                         }
 
                         string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(15 - prefix.Length, '0'));

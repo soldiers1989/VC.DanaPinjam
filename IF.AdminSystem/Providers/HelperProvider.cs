@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace NF.AdminSystem.Providers
 {
