@@ -384,6 +384,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                         result.message = "Only within loan, overdue, payback failed , can request extend";
                         return result;
                     }
+                    extend.userId = info.userId;
                     extend.debitId = info.debitId;
                     extend.debitMoney = info.debitMoney;
                     extend.debitPeroid = info.debitPeroid;

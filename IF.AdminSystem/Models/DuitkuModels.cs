@@ -3,6 +3,7 @@ using System;
 [Serializable]
 public class DuitkuInquriyRequestModel
 {
+    public string merchantCode { get; set; }
     public string bin { get; set; }
 
     public string vaNo { get; set; }
@@ -52,8 +53,8 @@ public class CallbackRequestModel
 
     public bool IsEmpty()
     {
-        return String.IsNullOrEmpty(merchantCode) 
-        || String.IsNullOrEmpty(amount) 
+        return String.IsNullOrEmpty(merchantCode)
+        || String.IsNullOrEmpty(amount)
         || String.IsNullOrEmpty(merchantOrderId);
     }
 }

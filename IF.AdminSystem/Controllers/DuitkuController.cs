@@ -26,7 +26,7 @@ namespace NF.AdminSystem.Controllers
         {
             ConfigSettings = settings.Value;
         }
-        
+
         [AllowAnonymous]
         [HttpPost]
         [Route("CallbackRequest")]
@@ -46,7 +46,7 @@ namespace NF.AdminSystem.Controllers
                     if (signature == request.signature)
                     {
                         ///验证通过
-                        DuitkuProvider.SaveDuitkuCallbackRecord(request);
+                        DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
                     }
                     else
                     {
@@ -81,76 +81,113 @@ namespace NF.AdminSystem.Controllers
             {
                 Log.WriteDebugLog("DuitkuController::InquiryRequest", "param is {0}", JsonConvert.SerializeObject(request));
 
-                response.statusCode = "01";
-                response.statusMessage = "Request is incorrect.";
-                if (request.IsEmpty())
+                string signature = request.merchantCode + request.action + request.vaNo + request.session + ConfigSettings.duitkuKey;
+
+                if (signature != request.signature)
                 {
                     response.statusCode = "01";
-                    response.statusMessage = "Request content is empty.";
+                    response.statusMessage = "signature is incorrect.";
                 }
                 else
                 {
-                    if (request.bin == "868005" || request.bin == "119905" || request.bin == "119906")
+                    // $params = $merchantCode . $action . $vaNo . $session . $apiKey;
+                    response.statusCode = "01";
+                    response.statusMessage = "Request is incorrect.";
+                    if (request.IsEmpty())
                     {
-                        string vaNo = request.vaNo.Replace(request.bin, "");
-                        if (vaNo.Length == (15 - HelperProvider.PrefixOfDuitku().Length))
+                        response.statusCode = "01";
+                        response.statusMessage = "Request content is empty.";
+                    }
+                    else
+                    {
+                        if (request.bin == "868005" || request.bin == "119905" || request.bin == "119906")
                         {
-                            string type = vaNo.Substring(0, 1);
-                            string debitId = vaNo.Substring(1);
-                            int iDebitId = -1;
-                            int.TryParse(debitId, out iDebitId);
-
-                            if (type == "3")
+                            string vaNo = request.vaNo.Replace(request.bin, "");
+                            if (vaNo.Length == (16 - HelperProvider.PrefixOfDuitku().Length))
                             {
+                                string type = vaNo.Substring(0, 1);
+                                string debitId = vaNo.Substring(1);
+                                int iDebitId = -1;
+                                int.TryParse(debitId, out iDebitId);
 
-                                var ret = DebitProvider.GetUserExtendRecord(iDebitId);
-                                var model = ret.data as DebitExtendModel;
-                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
-
-                                if (result.result == Result.SUCCESS)
+                                if (type == "3")
                                 {
-                                    response.statusCode = "00";
-                                    response.merchantOrderId = Convert.ToString(result.data);
-                                    response.vaNo = request.vaNo;
-                                    response.amount = Convert.ToString(model.extendFee + model.overdueMoney);
-                                    response.name = "DanaPinjam";
+                                    var ret = DebitProvider.GetUserExtendRecord(iDebitId);
+                                    if (ret.result == Result.SUCCESS)
+                                    {
+                                        var model = ret.data as DebitExtendModel;
+                                        var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
+
+                                        if (result.result == Result.SUCCESS)
+                                        {
+                                            response.statusCode = "00";
+                                            response.statusMessage = "success";
+                                            response.merchantOrderId = Convert.ToString(result.data);
+                                            response.vaNo = request.vaNo;
+                                            response.amount = Convert.ToString(model.extendFee + model.overdueMoney);
+                                            response.name = "DanaPinjam";
+                                        }
+                                        else
+                                        {
+                                            response.statusCode = "01";
+                                            response.statusMessage = "Create extend record incorrect.";
+                                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "Create extend record incorrect:{0}", result.message);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        response.statusCode = "01";
+                                        response.statusMessage = ret.message;
+                                    }
+                                }
+                                else if (type == "4")
+                                {
+                                    var ret = DebitProvider.GetUserDebitRecord(iDebitId);
+
+                                    if (ret.result == Result.SUCCESS)
+                                    {
+                                        var model = ret.data as DebitInfoModel;
+                                        var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
+
+                                        if (result.result == Result.SUCCESS)
+                                        {
+                                            response.statusCode = "00";
+                                            response.statusMessage = "success";
+                                            response.merchantOrderId = Convert.ToString(result.data);
+                                            response.vaNo = request.vaNo;
+                                            response.amount = Convert.ToString(model.payBackMoney + model.overdueMoney);
+                                            response.name = "DanaPinjam";
+                                        }
+                                        else
+                                        {
+                                            response.statusCode = "01";
+                                            response.statusMessage = "Create payback record incorrect.";
+                                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "Create payback record incorrect:{0}", result.message);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        response.statusCode = "01";
+                                        response.statusMessage = ret.message;
+                                    }
                                 }
                                 else
                                 {
                                     response.statusCode = "01";
-                                    response.statusMessage = "Create extend record incorrect.";
-                                }
-                            }
-                            else if (type == "4")
-                            {
-                                var ret = DebitProvider.GetUserDebitRecord(iDebitId);
-                                var model = ret.data as DebitInfoModel;
-                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
-
-                                if (result.result == Result.SUCCESS)
-                                {
-                                    response.statusCode = "00";
-                                    response.merchantOrderId = Convert.ToString(result.data);
-                                    response.vaNo = request.vaNo;
-                                    response.amount = Convert.ToString(model.payBackMoney + model.overdueMoney);
-                                    response.name = "DanaPinjam";
-                                }
-                                else
-                                {
-                                    response.statusCode = "01";
-                                    response.statusMessage = "Create payback record incorrect.";
+                                    Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request.type:{0}", type);
                                 }
                             }
                             else
                             {
                                 response.statusCode = "01";
+                                response.statusMessage = "va is incorrect.";
                             }
                         }
-                    }
-                    else
-                    {
-                        response.statusCode = "01";
-                        Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request.bin:{0}", request.bin);
+                        else
+                        {
+                            response.statusCode = "01";
+                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request.bin:{0}", request.bin);
+                        }
                     }
                 }
             }

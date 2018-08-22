@@ -54,7 +54,7 @@ namespace NF.AdminSystem.Providers
 
                     sqlStr = "select id from IFUserPayBackDebitRecord where debitId = @iDebitId and status = @iStatus and type = @iType";
                     pc.Add("@iDebitId", debitId);
-                    pc.Add("@iStatus", 0);
+                    pc.Add("@iStatus", -2);
                     pc.Add("@iType", type);
 
                     object obj = dbo.GetScalar(sqlStr, pc.GetParams(true));
