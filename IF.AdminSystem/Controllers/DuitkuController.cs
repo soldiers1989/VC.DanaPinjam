@@ -82,9 +82,9 @@ namespace NF.AdminSystem.Controllers
                 Log.WriteDebugLog("DuitkuController::InquiryRequest", "param is {0}", JsonConvert.SerializeObject(request));
 
                 string signature = request.merchantCode + request.action + request.vaNo + request.session + ConfigSettings.duitkuKey;
-                signature = HelperProvider.MD5Encrypt32(signature);
+                signature = HelperProvider.MD532(signature);
 
-                if (signature != request.signature.ToUpper())
+                if (signature != request.signature)
                 {
                     response.statusCode = "01";
                     response.statusMessage = "signature is incorrect.";

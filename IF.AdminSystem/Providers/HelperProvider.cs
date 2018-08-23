@@ -99,6 +99,19 @@ namespace NF.AdminSystem.Providers
             return pwd;
         }
 
+        public static string MD532(string str)
+        {
+            byte[] b = System.Text.Encoding.Default.GetBytes(str);
+
+            b = new System.Security.Cryptography.MD5CryptoServiceProvider().ComputeHash(b);
+            string ret = "";
+            for (int i = 0; i < b.Length; i++)
+            {
+                ret += b[i].ToString("x").PadLeft(2, '0');
+            }
+            return ret;
+        }
+
         /// <summary>
         /// 
         /// </summary>
