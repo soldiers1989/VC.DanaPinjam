@@ -83,8 +83,8 @@ namespace NF.AdminSystem.Controllers
 
                 string signature = request.merchantCode + request.action + request.vaNo + request.session + ConfigSettings.duitkuKey;
                 signature = HelperProvider.MD5Encrypt32(signature);
-                
-                if (signature != request.signature)
+
+                if (signature != request.signature.ToUpper())
                 {
                     response.statusCode = "01";
                     response.statusMessage = "signature is incorrect.";
