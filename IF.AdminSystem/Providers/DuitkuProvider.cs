@@ -102,7 +102,7 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@sIssuer_name", request.issuer_name);
                 pc.Add("@sIssuer_bank", request.issuer_bank);
 
-                result.data = dbo.ExecProcedure(sqlStr, pc.GetParams());
+                result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams());
                 result.result = Result.SUCCESS;
             }
             catch (Exception ex)
@@ -128,15 +128,15 @@ namespace NF.AdminSystem.Providers
             DataProviderResultModel result = new DataProviderResultModel();
             try
             {
-                string sqlStr = @"update IFUserPayBackDebitRecord set status = @iStatus1,statusTime = now() 
-                    where id = @iId and status = @iStatus2 and userId = @iUserId";
+                string sqlStr = @"update IFUserPayBackDebitRecord set status = @iStatus1,statusTime = now(),money=@fMoney 
+                    where id = @iId and status = @iStatus2";
 
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                pc.Add("@iStatus1", -2);
+                pc.Add("@iStatus1", 0);
+                pc.Add("@fMoney", request.amount);
                 pc.Add("@iId", request.merchantOrderId);
                 pc.Add("@iStatus2", -2);
-                pc.Add("@iUserId", request.merchantUserId);
 
                 result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams());
                 result.result = Result.SUCCESS;

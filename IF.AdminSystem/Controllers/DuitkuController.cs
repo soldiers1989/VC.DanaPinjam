@@ -37,7 +37,7 @@ namespace NF.AdminSystem.Controllers
                 if (!request.IsEmpty())
                 {
                     string signature = request.merchantCode + request.amount + request.merchantOrderId + ConfigSettings.duitkuKey;
-                    signature = HelperProvider.MD5Encrypt32(signature);
+                    signature = HelperProvider.MD532(signature);
                     DataProviderResultModel result = DuitkuProvider.SaveDuitkuCallbackRecord(request);
                     ///记录调用日志，最终需要写入数据库
                     Log.WriteLog("DuitkuController::CallbackRequest", "{0} - {1}", result.result, JsonConvert.SerializeObject(request));
