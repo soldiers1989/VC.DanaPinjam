@@ -23,7 +23,7 @@ namespace IF.AdminSystem
         public Startup(IConfiguration config)
         {
             Configuration = config;
-            Log.Init(1, 1024000, "yyyyMMdd", @".", LogType.Debug);
+            Log.Init(1, 10240000, "yyyyMMdd", @".", LogType.Debug);
 
             string DBName = config["AppSettings:DBName"];
             string publicKey = config["AppSettings:publicKey"];
@@ -32,7 +32,7 @@ namespace IF.AdminSystem
             Log.WriteDebugLog("Startup::Startup", "Begin connect db");
             string conStr = DataBasePool.AddDataBaseConnectionString(DBName, publicKey, 5, 5);
             DataBaseOperator.Init(DBName);
-            Log.WriteSystemLog("WebApiApplication::Application_Start", "数据库连接串：{0}", conStr);
+            Log.WriteDebugLog("WebApiApplication::Application_Start", "数据库连接串：{0}", conStr);
  
 
             string serverInfo = config["AppSettings:RedisExchangeHosts"];
