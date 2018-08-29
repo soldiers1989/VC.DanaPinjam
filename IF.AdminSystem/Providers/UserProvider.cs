@@ -963,7 +963,7 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@sBankCode", bankInfo.bankCode);               
                 pc.Add("@sContact", bankInfo.contact);
                 pc.Add("@sContactName", bankInfo.contactName);
-                pc.Add("@sBniBankCode", bankInfo.bniBankCode);
+                pc.Add("@sBniCode", bankInfo.bniBankCode);
 
                 Hashtable table = new Hashtable();
                 DataTable dt = dbo.ExecProcedure("p_user_editbankinfo_v2", pc.GetParams(), out table);
