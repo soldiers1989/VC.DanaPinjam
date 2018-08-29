@@ -261,7 +261,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::InquiryRequest", "异常：{0}", ex.Message);
             }
-            return View(ret.message));
+            return View();
         }
     }
 }
