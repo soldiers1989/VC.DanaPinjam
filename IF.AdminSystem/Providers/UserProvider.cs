@@ -157,7 +157,7 @@ namespace NF.AdminSystem.Providers
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = "select bankId,BankName,SubBankName,BankCode,Contact,ContactName from IFUserBankInfo where userId = @iUserId order by updateTime desc limit 1";
+                string sqlStr = "select bankId,BankName,SubBankName,BankCode,Contact,ContactName,BNICode from IFUserBankInfo where userId = @iUserId order by updateTime desc limit 1";
                 pc.Add("@iUserId", userId);
 
                 DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
@@ -170,6 +170,7 @@ namespace NF.AdminSystem.Providers
                     bankInfo.subBankName = Convert.ToString(dt.Rows[0]["SubBankName"]);
                     bankInfo.contact = Convert.ToString(dt.Rows[0]["Contact"]);
                     bankInfo.contactName = Convert.ToString(dt.Rows[0]["ContactName"]);
+                    bankInfo.bniBankCode = Convert.ToString(dt.Rows[0]["BNICode"]);
                     result.result = Result.SUCCESS;
                     result.data = bankInfo;
                 }
