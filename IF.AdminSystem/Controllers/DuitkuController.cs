@@ -259,7 +259,7 @@ namespace NF.AdminSystem.Controllers
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
                 ret.message = "The program logic error from the UserController::InquiryRequest function.";
 
-                Log.WriteErrorLog("UserController::InquiryRequest", "异常：{0}", ex.Message);
+                Log.WriteErrorLog("UserController::GetDuitkuVAInfo", "异常：{0}", ex.Message);
             }
             return View();
         }
