@@ -245,6 +245,7 @@ namespace NF.AdminSystem.Controllers
 
                 ///下面是第三方支付的说明页面
                 list.Add("atmh5url", "http://test.smalldebit.club/api/Duitku/GetDuitkuVAInfo");
+                list.Add("paymethod", "1");
 
                 ///以下是OSS的相关配置
                 list.Add("ossRegion", "ap-southeast-5");
