@@ -238,14 +238,29 @@ namespace NF.AdminSystem.Controllers
                         {
                             DebitInfoModel model = result.data as DebitInfoModel;
                             dataUserId = model.userId;
+
                             ViewData["money"] = (model.payBackMoney + model.overdueMoney).ToString("N0").Replace(",", ".");
                         }
 
                         if (userId == dataUserId)
                         {
-                            string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(15 - prefix.Length, '0'));
-                            ViewData["title"] = type == 3 ? "Extend" : "Payback";
-                            ViewData["vaNo"] = vaNo;
+                            DataProviderResultModel bankInfoResult = UserProvider.GetUserBankInfo(Convert.ToString(userId));
+
+                            if (bankInfoResult.result == Result.SUCCESS)
+                            {
+                                UserBankInfoModel bankInfo = bankInfoResult.data as UserBankInfoModel;
+
+                                string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(15 - prefix.Length, '0'));
+                                ViewData["title"] = type == 3 ? "Anda dapat melakukan pembayaran dengan menggunakan" : "Anda dapat melakukan pembayaran dengan menggunakan";
+                                ViewData["vaNo"] = vaNo;
+                                ViewData["userName"] = bankInfo.contactName;
+                            }
+                            else
+                            {
+                                ret.result = Result.ERROR;
+                                ret.message = "bank info inquiry is incorrect.";
+                            }
+
                         }
                         else
                         {

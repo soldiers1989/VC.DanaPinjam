@@ -32,23 +32,23 @@
 </head>
 <body>
 <div class="anel panel-danger">
-        <div class="panel-header">You can settle the loan in below merchant channel to @ViewData["title"]</div>
+        <div class="panel-header">@ViewData["title"]</div>
 
         <div class="panel-body">
 
-            <p><b>TRANSFER via ATM or INTERNET BANKING</b></p>
+            <p><b>Transfer via ATM atau Internet Banking atau Mobile Banking</b></p>
 
-            <p>1.Select transfer interbank online menu</p>
+            <p>1.Menu Pilih Transfer antar bank</p>
 
-            <p>2.Select bank code CIMB Niaga:<B>022</B></p>
+            <p>2.Masukan kode CIMB Niaga:<B>022</B></p>
 
-            <p>3.Input beneiciary Bank Account:<B>@ViewData["vaNo"]</B></p>
+            <p>3.Masukan nomor rekening Tujuan:<B>@ViewData["vaNo"]</B></p>
 
-            <p>4.Input payment amount nominal:<B>Rp.@ViewData["money"]</B></p>
+            <p>4.Masukan jumlah nominal pembayaran:<B>Rp.@ViewData["money"]</B></p>
 
-            <p>5.Make sure beneficiary name is Kas Wagon Indonesia/NAMA ANDA</p>
+            <p>5.Pastikan Nama yang tertera adalah DANA PINJAM/@ViewData["userName"]</p>
 
-            <p>6.Settle your Account on or befor 7pm of you DUE DATE</p>
+            <p>6.Bayarkan tagihan anda sebelum atau saat jatuh tempo</p>
         </div>
 </div>
 </body>
