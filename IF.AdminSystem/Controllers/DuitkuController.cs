@@ -227,30 +227,37 @@ namespace NF.AdminSystem.Controllers
 
                     if (result.result == Result.SUCCESS)
                     {
+                        int dataUserId = 0;
                         if (type == 3)
                         {
                             DebitExtendModel model = result.data as DebitExtendModel;
+                            dataUserId = model.userId;
                             ViewData["money"] = (model.extendFee + model.overdueMoney).ToString("N0").Replace(",", ".");
                         }
                         else
                         {
                             DebitInfoModel model = result.data as DebitInfoModel;
+                            dataUserId = model.userId;
                             ViewData["money"] = (model.payBackMoney + model.overdueMoney).ToString("N0").Replace(",", ".");
                         }
 
-                        string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(15 - prefix.Length, '0'));
-                        ViewData["title"] = type == 3 ? "Extend" : "Payback";
-                        ViewData["vaNo"] = vaNo;
+                        if (userId == dataUserId)
+                        {
+                            string vaNo = String.Format("{0}{1}{2}", prefix, type, debitId.ToString().PadLeft(15 - prefix.Length, '0'));
+                            ViewData["title"] = type == 3 ? "Extend" : "Payback";
+                            ViewData["vaNo"] = vaNo;
+                        }
+                        else
+                        {
+                            ret.result = Result.ERROR;
+                            ret.message = "params is incorrect.";
+                        }
                     }
                     else
                     {
                         ret.result = result.result;
                         ret.message = result.message;
                     }
-
-
-
-                    return View();
                 }
             }
             catch (Exception ex)
@@ -261,7 +268,17 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::GetDuitkuVAInfo", "异常：{0}", ex.Message);
             }
-            return View();
+
+            if (ret.result == Result.SUCCESS)
+            {
+                return View();
+            }
+            else
+            {
+                ViewData["refresh"] = HttpContext.Request.Path + HttpContext.Request.QueryString;
+                ViewData["message"] = ret.message;
+                return View("Error");
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using YYLog.ClassLibrary;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Options;
 
 namespace NF.AdminSystem.Controllers
 {
@@ -22,6 +23,13 @@ namespace NF.AdminSystem.Controllers
     [ApiController]
     public class MainController : ControllerBase
     {
+        private AppSettingsModel ConfigSettings { get; set; }
+
+        public MainController(IOptions<AppSettingsModel> settings)
+        {
+            ConfigSettings = settings.Value;
+        }
+
         [AllowAnonymous]
         [HttpPost]
         [HttpGet]
@@ -56,7 +64,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("MainController::GetBankCodes", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -88,7 +96,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("MainController::GetInitDebitStyle", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -146,7 +154,7 @@ namespace NF.AdminSystem.Controllers
                                 }
                                 //实际到帐，减去手续费
                                 info.actualMoney = style - info.debitFee;
-                                
+
                                 //逾期日息
                                 info.overdueDayInterest = style * overdueRate;
                                 list.Add(info);
@@ -198,10 +206,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("MainController::GetInitSlogen", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
-        
+
         [AllowAnonymous]
         [HttpPost]
         [HttpGet]
@@ -216,7 +224,7 @@ namespace NF.AdminSystem.Controllers
             ret.result = Result.SUCCESS;
             try
             {
-                
+
                 string version = HttpContext.Request.Headers["version"];
                 int iVersion = 0;
                 int.TryParse(version, out iVersion);
@@ -245,7 +253,7 @@ namespace NF.AdminSystem.Controllers
 
                 ///下面是第三方支付的说明页面
                 list.Add("atmh5url", "http://test.smalldebit.club/api/Duitku/GetDuitkuVAInfo");
-                list.Add("paymethod", "1");
+                list.Add("paymethod", String.IsNullOrEmpty(ConfigSettings.PayMethod) ? "1" : "2");
 
                 ///以下是OSS的相关配置
                 list.Add("ossRegion", "ap-southeast-5");
@@ -292,7 +300,7 @@ namespace NF.AdminSystem.Controllers
             }
             return JsonConvert.SerializeObject(ret);
         }
-        
+
         [HttpPost]
         [HttpGet]
         [AllowAnonymous]

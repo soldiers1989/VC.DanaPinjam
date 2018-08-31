@@ -60,7 +60,7 @@ namespace test
             record.userId = 27;
             record.userName = "HENDRA";
 
-            bank.Transfer(record);
+            //bank.Transfer(record);
 
 
             //bank.CheckTransferStatus("10013");

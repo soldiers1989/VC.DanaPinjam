@@ -8,4 +8,5 @@ public class AppSettingsModel
     public string publicKey { get; set; }
     public string prefixNo { get; set; }
     public string duitkuKey { get; set; }
+    public string PayMethod { get; set; }
 }

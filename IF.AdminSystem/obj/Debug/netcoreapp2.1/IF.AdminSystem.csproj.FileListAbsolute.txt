@@ -53,3 +53,4 @@
 /data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/Regions/endpoints.xml
 /data/danapinjam/IF.AdminSystem/bin/Debug/netcoreapp2.1/EPPlus.dll
 /data/danapinjam/IF.AdminSystem/obj/Debug/netcoreapp2.1/Razor/Views/Duitku/GetDuitkuVAInfo.g.cshtml.cs
+/data/danapinjam/IF.AdminSystem/obj/Debug/netcoreapp2.1/Razor/Views/Duitku/Error.g.cshtml.cs
