@@ -1,0 +1,21 @@
+13:04:57 [Debug] Startup::Startup [1]号服务器::Begin connect db
+13:04:59 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+13:04:59 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+13:04:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+13:05:00 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+13:05:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:05:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:06:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:06:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:07:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:07:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:08:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:08:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:09:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:09:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:10:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:10:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:11:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:11:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:12:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:12:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
