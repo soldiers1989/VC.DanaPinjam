@@ -203,3 +203,62 @@
 17:19:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
 17:19:39 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]插入审核记录 成功。
 17:20:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:03:03 [Debug] Startup::Startup [1]号服务器::Begin connect db
+18:03:04 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+18:03:04 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+18:03:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+18:03:05 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+18:03:16 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+18:03:25 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+18:03:25 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+18:03:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:04:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+18:04:19 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+18:04:19 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+18:04:25 [Error] UserController::InquiryRequest [1]号服务器::get lock fail.{"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+18:04:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:43:45 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:43:47 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:43:47 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+19:43:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:43:48 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+19:44:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:44:31 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+19:44:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:45:12 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199053000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+19:45:12 [Debug] DuitkuController::InquiryRequest [1]号服务器::签名验证没有通过:1a85352b1c96387398e0ed4d7e5dad2e - 传入为：cf885eaa09b8ebfef5944ab3e9434d03
+19:45:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:45:37 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199053000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+19:45:46 [Debug] DuitkuController::InquiryRequest [1]号服务器::签名验证没有通过:1a85352b1c96387398e0ed4d7e5dad2e - 传入为：cf885eaa09b8ebfef5944ab3e9434d03
+19:45:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:45:54 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199053000000120","session":"gfagafdgfda","action":"inquiry","signature":"1a85352b1c96387398e0ed4d7e5dad2e"}
+19:45:54 [Error] DuitkuController::InquiryRequest [1]号服务器::Get extend record incorrect:120 - Only within loan, overdue, payback failed , can request extend
+19:46:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:46:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:49:58 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:50:00 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:50:00 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+19:50:00 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:50:01 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+19:50:30 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:50:39 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+19:51:00 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:51:57 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:51:59 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:51:59 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+19:51:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:51:59 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+19:52:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:52:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:53:16 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+19:53:16 [Error] DuitkuController::InquiryRequest [1]号服务器::记录的状态为:3，不能申请延期 - 120
+19:53:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+19:53:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+20:01:35 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:01:37 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:01:37 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+20:01:37 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+20:01:38 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+20:01:46 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+20:01:46 [Error] DuitkuController::InquiryRequest [1]号服务器::记录的状态为:3，不能申请延期 - 120
+20:02:07 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0

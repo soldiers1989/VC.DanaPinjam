@@ -152,8 +152,10 @@ namespace NF.AdminSystem.Providers
                 Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新还款记录表的状态，结果为：{1}", request.merchantOrderId, result.data);
                 Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]查询还款记录表的数据，用户、还款类型、贷款记录ID。", request.merchantOrderId);
 
-                sqlStr = "select debitId,type,userId from IFUserPayBackDebitRecord where id = @iId";
-                pc.Add("iId", request.merchantOrderId);
+                sqlStr = "select debitId,type,userId from IFUserPayBackDebitRecord where id = @iId and status = @iStatus";
+                pc.Add("@iId", request.merchantOrderId);
+                pc.Add("@iStatus", -2);
+
                 DataTable paybackInfo = dbo.GetTable(sqlStr, pc.GetParams(true));
 
                 if (null != paybackInfo && paybackInfo.Rows.Count == 1)
@@ -246,7 +248,7 @@ namespace NF.AdminSystem.Providers
                 }
                 else
                 {
-                    Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "根据订单ID查找贷款ID失败。{0}", request.merchantOrderId);
+                    Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "根据订单ID查找贷款ID失败，有可能该订单已处理。{0}", request.merchantOrderId);
                 }
                 result.result = Result.SUCCESS;
             }

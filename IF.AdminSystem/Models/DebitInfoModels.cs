@@ -34,6 +34,8 @@ namespace NF.AdminSystem.Models
 
         public float extendFee = 0f;
 
+        public int status = -1;
+
         public float overdueMoney = 0;
     }
 

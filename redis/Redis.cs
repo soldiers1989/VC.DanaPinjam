@@ -8,328 +8,379 @@ using YYLog.ClassLibrary;
 
 namespace RedisPools
 {
-	/// <summary>
-	/// Redis操作类，内部采用了连接池
-	/// </summary>
-	public class Redis
-	{
-		RedisPools _pool = null;
+    /// <summary>
+    /// Redis操作类，内部采用了连接池
+    /// </summary>
+    public class Redis
+    {
+        RedisPools _pool = null;
 
-		public Redis()
-		{
-			_pool = RedisPools.GetInstance("TestRedisPool");
-		}
+        public Redis()
+        {
+            _pool = RedisPools.GetInstance("TestRedisPool");
+        }
 
-		public Redis(string poolName)
-		{
-			_pool = RedisPools.GetInstance(poolName);
-		}
+        public Redis(string poolName)
+        {
+            _pool = RedisPools.GetInstance(poolName);
+        }
 
-		public long HashDelete(RedisKey key, RedisValue hashField)
-		{
-			return HashDelete(key, new RedisValue[] { hashField });
-		}
+        public long HashDelete(RedisKey key, RedisValue hashField)
+        {
+            return HashDelete(key, new RedisValue[] { hashField });
+        }
 
-		public long HashDelete(RedisKey key, RedisValue[] hashField)
-		{
-			ConnectionMultiplexer conn = null;
+        public long HashDelete(RedisKey key, RedisValue[] hashField)
+        {
+            ConnectionMultiplexer conn = null;
 
-			try
-			{
-				conn = _pool.GetConnection();
-				IDatabase db = conn.GetDatabase();
+            try
+            {
+                conn = _pool.GetConnection();
+                IDatabase db = conn.GetDatabase();
 
-				return db.HashDelete(key, hashField);
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::HashExists", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+                return db.HashDelete(key, hashField);
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::HashExists", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-			return -1;
-		}
+            return -1;
+        }
 
-		public long KeyDelete(RedisKey key)
-		{
-			return KeyDelete(new RedisKey[] { key });
-		}
+        public long KeyDelete(RedisKey key)
+        {
+            return KeyDelete(new RedisKey[] { key });
+        }
 
-		public long KeyDelete(RedisKey[] key)
-		{
-			ConnectionMultiplexer conn = null;
+        public long KeyDelete(RedisKey[] key)
+        {
+            ConnectionMultiplexer conn = null;
 
-			try
-			{
-				conn = _pool.GetConnection();
-				IDatabase db = conn.GetDatabase();
+            try
+            {
+                conn = _pool.GetConnection();
+                IDatabase db = conn.GetDatabase();
 
-				return db.KeyDelete(key);
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::HashExists", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+                return db.KeyDelete(key);
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::HashExists", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-			return -1;
-		}
+            return -1;
+        }
 
-		public bool StringSet(string key, RedisValue val)
-		{
-			return StringSet(key, val, TimeSpan.MaxValue);
-		}
+        public bool LockTake(RedisKey key, RedisValue value, int t = 10)
+        {
+            ConnectionMultiplexer conn = null;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="key"></param>
-		/// <param name="val"></param>
-		/// <param name="t">失效时间，单位秒</param>
-		/// <returns></returns>
-		public bool StringSet(string key, RedisValue val, int t)
-		{
-			TimeSpan ts = new TimeSpan(0, 0, t);
-			return StringSet(key, val, ts);
-		}
+            try
+            {
+                conn = _pool.GetConnection();
+                IDatabase db = conn.GetDatabase();
 
-		public bool StringSet(string key, RedisValue val, TimeSpan ts)
-		{
-			ConnectionMultiplexer conn = null;
+                return db.LockTake(key, value, new TimeSpan(0, 0, t));
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::LockTake", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-			try
-			{
-				conn = _pool.GetConnection();
+            return false;
+        }
 
-				if (null == conn)
-				{
-					Log.WriteErrorLog("Redis::StringSet", "获取连接返回为空。");
-				}
-				else
-				{
-					IDatabase db = conn.GetDatabase();
-					return db.StringSet(key, val, ts);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::StringSet", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+        public bool LockRelease(RedisKey key, RedisValue value)
+        {
+            ConnectionMultiplexer conn = null;
 
-			return false;
-		}
+            try
+            {
+                conn = _pool.GetConnection();
+                IDatabase db = conn.GetDatabase();
+                return db.LockRelease(key, value);
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::LockRelease", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-		public bool HashExists(string key, RedisValue val)
-		{
-			ConnectionMultiplexer conn = null;
+            return false;
+        }
 
-			try
-			{
-				conn = _pool.GetConnection();
-				if (null == conn)
-				{
-					Log.WriteErrorLog("Redis::HashExists", "获取连接返回为空。");
-				}
-				else
-				{
-					IDatabase db = conn.GetDatabase();
+        public bool StringSet(string key, RedisValue val)
+        {
+            return StringSet(key, val, TimeSpan.MaxValue);
+        }
 
-					return db.HashExists(key, val);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::HashExists", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="val"></param>
+        /// <param name="t">失效时间，单位秒</param>
+        /// <returns></returns>
+        public bool StringSet(string key, RedisValue val, int t)
+        {
+            TimeSpan ts = new TimeSpan(0, 0, t);
+            return StringSet(key, val, ts);
+        }
 
-			return false;
-		}
+        public bool StringSet(string key, RedisValue val, TimeSpan ts)
+        {
+            ConnectionMultiplexer conn = null;
 
-		public RedisValue StringIncrement(string key, RedisValue val)
-		{
-			ConnectionMultiplexer conn = null;
+            try
+            {
+                conn = _pool.GetConnection();
 
-			try
-			{
-				conn = _pool.GetConnection();
-				if (null == conn)
-				{
-					Log.WriteErrorLog("Redis::StringIncrement", "获取连接返回为空。");
-				}
-				else
-				{
-					IDatabase db = conn.GetDatabase();
+                if (null == conn)
+                {
+                    Log.WriteErrorLog("Redis::StringSet", "获取连接返回为空。");
+                }
+                else
+                {
+                    IDatabase db = conn.GetDatabase();
+                    return db.StringSet(key, val, ts);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::StringSet", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-					return db.HashGet(key, val);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::StringIncrement", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+            return false;
+        }
 
-			return 0;
-		}
+        public bool HashExists(string key, RedisValue val)
+        {
+            ConnectionMultiplexer conn = null;
 
-		public double StringIncrement(string key, double d)
-		{
-			ConnectionMultiplexer conn = null;
+            try
+            {
+                conn = _pool.GetConnection();
+                if (null == conn)
+                {
+                    Log.WriteErrorLog("Redis::HashExists", "获取连接返回为空。");
+                }
+                else
+                {
+                    IDatabase db = conn.GetDatabase();
 
-			try
-			{
-				conn = _pool.GetConnection();
-				if (null == conn)
-				{
-					Log.WriteErrorLog("Redis::StringIncrement", "获取连接返回为空。");
-				}
-				else
-				{
-					IDatabase db = conn.GetDatabase();
-					return db.StringIncrement(key, d);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::StringIncrement", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+                    return db.HashExists(key, val);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::HashExists", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-			return -1;
-		}
+            return false;
+        }
 
-		public RedisValue HashGet(RedisKey key, RedisValue hashFeld)
-		{
-			ConnectionMultiplexer conn = null;
+        public RedisValue StringIncrement(string key, RedisValue val)
+        {
+            ConnectionMultiplexer conn = null;
 
-			try
-			{
-				conn = _pool.GetConnection();
-				if (null == conn)
-				{
-					Log.WriteErrorLog("Redis::HashGet", "获取连接返回为空。");
-				}
-				else
-				{
-					IDatabase db = conn.GetDatabase();
-					return db.HashGet(key, hashFeld);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::HashGet", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+            try
+            {
+                conn = _pool.GetConnection();
+                if (null == conn)
+                {
+                    Log.WriteErrorLog("Redis::StringIncrement", "获取连接返回为空。");
+                }
+                else
+                {
+                    IDatabase db = conn.GetDatabase();
 
-			return RedisValue.EmptyString;
-		}
+                    return db.HashGet(key, val);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::StringIncrement", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-		public RedisValue[] HashGet(RedisKey key, RedisValue[] hashFelds)
-		{
-			ConnectionMultiplexer conn = null;
+            return 0;
+        }
 
-			try
-			{
-				conn = _pool.GetConnection();
-				if (null == conn)
-				{
-					Log.WriteErrorLog("Redis::HashGet", "获取连接返回为空。");
-				}
-				else
-				{
-					IDatabase db = conn.GetDatabase();
-					return db.HashGet(key, hashFelds);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::HashGet", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+        public double StringIncrement(string key, double d)
+        {
+            ConnectionMultiplexer conn = null;
 
-			return new RedisValue[]{};
-		}
+            try
+            {
+                conn = _pool.GetConnection();
+                if (null == conn)
+                {
+                    Log.WriteErrorLog("Redis::StringIncrement", "获取连接返回为空。");
+                }
+                else
+                {
+                    IDatabase db = conn.GetDatabase();
+                    return db.StringIncrement(key, d);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::StringIncrement", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
 
-		public RedisValue StringGet(string key)
-		{
-			ConnectionMultiplexer conn = null;
+            return -1;
+        }
 
-			try
-			{
-				conn = _pool.GetConnection();
-				if (null == conn)
-				{
-					Log.WriteErrorLog("Redis::StringGet", "获取连接返回为空。");
-				}
-				else
-				{
-					IDatabase db = conn.GetDatabase();
-					return db.StringGet(key);
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.WriteErrorLog("Redis::StringGet", ex.Message);
-			}
-			finally
-			{
-				if (null != conn)
-				{
-					_pool.ReleaseConnection(conn);
-				}
-			}
+        public RedisValue HashGet(RedisKey key, RedisValue hashFeld)
+        {
+            ConnectionMultiplexer conn = null;
 
-			return String.Empty;
-		}
-	}
+            try
+            {
+                conn = _pool.GetConnection();
+                if (null == conn)
+                {
+                    Log.WriteErrorLog("Redis::HashGet", "获取连接返回为空。");
+                }
+                else
+                {
+                    IDatabase db = conn.GetDatabase();
+                    return db.HashGet(key, hashFeld);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::HashGet", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
+
+            return RedisValue.EmptyString;
+        }
+
+        public RedisValue[] HashGet(RedisKey key, RedisValue[] hashFelds)
+        {
+            ConnectionMultiplexer conn = null;
+
+            try
+            {
+                conn = _pool.GetConnection();
+                if (null == conn)
+                {
+                    Log.WriteErrorLog("Redis::HashGet", "获取连接返回为空。");
+                }
+                else
+                {
+                    IDatabase db = conn.GetDatabase();
+                    return db.HashGet(key, hashFelds);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::HashGet", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
+
+            return new RedisValue[] { };
+        }
+
+        public RedisValue StringGet(string key)
+        {
+            ConnectionMultiplexer conn = null;
+
+            try
+            {
+                conn = _pool.GetConnection();
+                if (null == conn)
+                {
+                    Log.WriteErrorLog("Redis::StringGet", "获取连接返回为空。");
+                }
+                else
+                {
+                    IDatabase db = conn.GetDatabase();
+                    return db.StringGet(key);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteErrorLog("Redis::StringGet", ex.Message);
+            }
+            finally
+            {
+                if (null != conn)
+                {
+                    _pool.ReleaseConnection(conn);
+                }
+            }
+
+            return String.Empty;
+        }
+    }
 }
