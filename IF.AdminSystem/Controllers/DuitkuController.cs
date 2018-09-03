@@ -45,11 +45,13 @@ namespace NF.AdminSystem.Controllers
                     //验证签名
                     if (signature == request.signature)
                     {
+                        Log.WriteDebugLog("DuitkuController::CallbackRequest", "签名验证通过:{0} - 传入为：{1}", signature, request.signature);
                         ///验证通过
                         DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
                     }
                     else
                     {
+                        Log.WriteDebugLog("DuitkuController::CallbackRequest", "签名验证没有通过:{0} - 传入为：{1}", signature, request.signature);
                         ///签名不通过
                         return "Bad Signature";
                     }
@@ -57,6 +59,7 @@ namespace NF.AdminSystem.Controllers
                 }
                 else
                 {
+                    Log.WriteDebugLog("DuitkuController::CallbackRequest", "参数异常，缺少必要的参数:{0}", JsonConvert.SerializeObject(request));
                     return "Bad Parameter";
                 }
             }
@@ -88,6 +91,7 @@ namespace NF.AdminSystem.Controllers
                 {
                     response.statusCode = "01";
                     response.statusMessage = "signature is incorrect.";
+                    Log.WriteDebugLog("DuitkuController::InquiryRequest", "签名验证没有通过:{0} - 传入为：{1}", signature, request.signature);
                 }
                 else
                 {
@@ -98,6 +102,7 @@ namespace NF.AdminSystem.Controllers
                     {
                         response.statusCode = "01";
                         response.statusMessage = "Request content is empty.";
+                        Log.WriteDebugLog("DuitkuController::InquiryRequest", "参数异常，缺少必要的参数:{0}", JsonConvert.SerializeObject(request));
                     }
                     else
                     {
@@ -110,7 +115,7 @@ namespace NF.AdminSystem.Controllers
                                 string debitId = vaNo.Substring(1);
                                 int iDebitId = -1;
                                 int.TryParse(debitId, out iDebitId);
-
+                                ///3 － 延期；4 － 还款
                                 if (type == "3")
                                 {
                                     var ret = DebitProvider.GetUserExtendRecord(iDebitId);
@@ -132,13 +137,14 @@ namespace NF.AdminSystem.Controllers
                                         {
                                             response.statusCode = "01";
                                             response.statusMessage = "Create extend record incorrect.";
-                                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "Create extend record incorrect:{0}", result.message);
+                                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "Create extend record incorrect:{0} - {1}", iDebitId, result.message);
                                         }
                                     }
                                     else
                                     {
                                         response.statusCode = "01";
                                         response.statusMessage = ret.message;
+                                        Log.WriteErrorLog("DuitkuController::InquiryRequest", "Get extend record incorrect:{0} - {1}", iDebitId, ret.message);
                                     }
                                 }
                                 else if (type == "4")
@@ -163,31 +169,33 @@ namespace NF.AdminSystem.Controllers
                                         {
                                             response.statusCode = "01";
                                             response.statusMessage = "Create payback record incorrect.";
-                                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "Create payback record incorrect:{0}", result.message);
+                                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "Create payback record incorrect:{0} - {1}", iDebitId, result.message);
                                         }
                                     }
                                     else
                                     {
                                         response.statusCode = "01";
                                         response.statusMessage = ret.message;
+                                        Log.WriteErrorLog("DuitkuController::InquiryRequest", "get debit record incorrect.{0} message = {1}", iDebitId, ret.message);
                                     }
                                 }
                                 else
                                 {
                                     response.statusCode = "01";
-                                    Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request.type:{0}", type);
+                                    Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request.type:{0} debitId = {1}", type, iDebitId);
                                 }
                             }
                             else
                             {
                                 response.statusCode = "01";
                                 response.statusMessage = "va is incorrect.";
+                                Log.WriteErrorLog("DuitkuController::InquiryRequest", "va is incorrect. request.type:{0}", vaNo);
                             }
                         }
                         else
                         {
                             response.statusCode = "01";
-                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request.bin:{0}", request.bin);
+                            Log.WriteErrorLog("DuitkuController::InquiryRequest", "param is incorrect. request:{0}", JsonConvert.SerializeObject(request));
                         }
                     }
                 }

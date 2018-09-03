@@ -1,0 +1,205 @@
+15:54:59 [Debug] Startup::Startup [1]号服务器::Begin connect db
+15:55:01 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+15:55:01 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+15:55:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+15:55:01 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+15:55:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:56:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:56:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:57:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:57:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:58:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:58:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:59:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+15:59:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:00:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:00:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:01:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:01:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:02:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:02:11 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199053000000120","session":"gfagafdgfda","action":"inquiry","signature":"inquiry"}
+16:02:25 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199053000000120","session":"gfagafdgfda","action":"inquiry","signature":"inquiry"}
+16:02:52 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:03:10 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199053000000120","session":"gfagafdgfda","action":"inquiry","signature":"1a85352b1c96387398e0ed4d7e5dad2e"}
+16:03:22 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:03:52 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:04:19 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"94","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"1810990b83c37a567896ff1754cae15a","issuer_name":null,"issuer_bank":null}
+16:04:22 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:04:33 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"94","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+16:04:39 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始更新还款记录表的状态
+16:05:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:05:18 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新还款记录表的状态，结果为：1
+16:05:19 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+16:05:40 [Error] DuitkuController::CallbackRequest [1]号服务器::Transaction has already been rolled back or is not pending
+16:06:22 [Debug] Startup::Startup [1]号服务器::Begin connect db
+16:06:23 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+16:06:23 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+16:06:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+16:06:24 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+16:06:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:07:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:07:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:08:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:08:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:09:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:09:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:10:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:10:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:11:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:11:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:12:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:12:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:13:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:13:53 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:14:23 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:14:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:15:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:15:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:16:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:16:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:17:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:17:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:18:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:18:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:19:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:19:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:20:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:20:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:21:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:21:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:22:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:22:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:23:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:23:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:24:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:24:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:25:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:25:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:26:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:26:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:27:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:27:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:28:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:28:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:29:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:29:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:30:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:30:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:31:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:31:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:32:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:32:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:33:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:33:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:34:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:34:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:35:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:35:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:36:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:36:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:37:18 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"94","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+16:37:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始更新还款记录表的状态
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新还款记录表的状态，结果为：0
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询到还款记录，用户：27、还款类型:3、贷款记录ID:120。
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间。
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间 成功。
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始插入审核记录。
+16:37:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]插入审核记录 成功。
+16:37:25 [Error] DuitkuController::CallbackRequest [1]号服务器::Transaction has already been rolled back or is not pending
+16:37:41 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"94","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+16:37:45 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始更新还款记录表的状态
+16:37:45 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新还款记录表的状态，结果为：0
+16:37:45 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+16:37:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:37:55 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询到还款记录，用户：27、还款类型:3、贷款记录ID:120。
+16:38:01 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间。
+16:38:07 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间 成功。
+16:38:08 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始插入审核记录。
+16:38:15 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]插入审核记录 成功。
+16:38:26 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:41:22 [Debug] Startup::Startup [1]号服务器::Begin connect db
+16:41:24 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+16:41:24 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+16:41:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+16:41:24 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+16:41:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:42:24 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:42:29 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"94","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+16:42:37 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始更新还款记录表的状态
+16:42:37 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新还款记录表的状态，结果为：0
+16:42:37 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+16:42:45 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询到还款记录，用户：27、还款类型:3、贷款记录ID:120。
+16:42:45 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间。
+16:42:51 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间 成功。
+16:42:51 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始插入审核记录。
+16:42:53 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]插入审核记录 成功。
+16:42:54 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:43:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:43:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:44:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:44:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:45:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:45:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:46:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:46:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:47:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:47:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:48:25 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+16:48:55 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:12:04 [Debug] Startup::Startup [1]号服务器::Begin connect db
+17:12:06 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+17:12:06 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+17:12:06 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+17:12:07 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+17:12:16 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"94","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+17:12:16 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始更新还款记录表的状态
+17:12:16 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新还款记录表的状态，结果为：0
+17:12:16 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+17:12:24 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询到还款记录，用户：27、还款类型:3、贷款记录ID:120。
+17:12:37 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:12:57 [Error] DuitkuController::CallbackRequest [1]号服务器::Transaction has already been rolled back or is not pending
+17:13:07 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:13:57 [Debug] Startup::Startup [1]号服务器::Begin connect db
+17:13:59 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+17:13:59 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+17:13:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+17:13:59 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+17:14:05 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"94","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+17:14:05 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始更新还款记录表的状态
+17:14:05 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新还款记录表的状态，结果为：0
+17:14:05 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+17:14:14 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询到还款记录，用户：27、还款类型:3、贷款记录ID:120。
+17:14:15 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]查询到用户应还时间2018-09-10
+17:14:19 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间。
+17:14:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:14:45 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]更新贷款记录表状态及最后还款时间 成功。
+17:14:45 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]开始插入审核记录。
+17:14:52 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[94]插入审核记录 成功。
+17:14:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:15:32 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:16:02 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:16:32 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:16:45 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"1a85352b1c96387398e0ed4d7e5dad2e"}
+17:17:02 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:17:16 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"1a85352b1c96387398e0ed4d7e5dad2e"}
+17:17:33 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:17:36 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+17:18:03 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:18:20 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"95","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+17:18:33 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:18:46 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"95","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"97abf4bc38c958956c55fdb0d8a78886","issuer_name":null,"issuer_bank":null}
+17:19:01 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"95","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"f83d9963a2ec05b503b77a6e80dd9879","issuer_name":null,"issuer_bank":null}
+17:19:03 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:19:19 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]开始更新还款记录表的状态
+17:19:19 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]更新还款记录表的状态，结果为：1
+17:19:19 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+17:19:19 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+17:19:22 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]查询到用户应还时间2018-09-17
+17:19:22 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]更新贷款记录表状态及最后还款时间。
+17:19:30 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]更新贷款记录表状态及还款时间 成功。
+17:19:33 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]开始插入审核记录。
+17:19:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+17:19:39 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[95]插入审核记录 成功。
+17:20:05 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0

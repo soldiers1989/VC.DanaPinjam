@@ -125,27 +125,144 @@ namespace NF.AdminSystem.Providers
         public static DataProviderResultModel SetDuitkuPaybackRecordStaus(CallbackRequestModel request)
         {
             DataBaseOperator dbo = null;
+            IDbConnection conn = null;
+            IDbTransaction tran = null;
+            int dbret = -1;
+
             DataProviderResultModel result = new DataProviderResultModel();
             try
             {
+                Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始更新还款记录表的状态", request.merchantOrderId);
                 string sqlStr = @"update IFUserPayBackDebitRecord set status = @iStatus1,statusTime = now(),money=@fMoney 
                     where id = @iId and status = @iStatus2";
 
                 dbo = new DataBaseOperator();
+                conn = dbo.GetConnection();
+                tran = dbo.BeginTransaction(conn);
+
                 ParamCollections pc = new ParamCollections();
-                pc.Add("@iStatus1", 0);
+                pc.Add("@iStatus1", 1);
                 pc.Add("@fMoney", request.amount);
                 pc.Add("@iId", request.merchantOrderId);
                 pc.Add("@iStatus2", -2);
+                result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
 
-                result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams());
+                tran.Commit();
+
+                Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新还款记录表的状态，结果为：{1}", request.merchantOrderId, result.data);
+                Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]查询还款记录表的数据，用户、还款类型、贷款记录ID。", request.merchantOrderId);
+
+                sqlStr = "select debitId,type,userId from IFUserPayBackDebitRecord where id = @iId";
+                pc.Add("iId", request.merchantOrderId);
+                DataTable paybackInfo = dbo.GetTable(sqlStr, pc.GetParams(true));
+
+                if (null != paybackInfo && paybackInfo.Rows.Count == 1)
+                {
+                    string debitId = Convert.ToString(paybackInfo.Rows[0]["debitId"]);
+                    string type = Convert.ToString(paybackInfo.Rows[0]["type"]);
+                    string userId = Convert.ToString(paybackInfo.Rows[0]["userId"]);
+
+                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]查询到还款记录，用户：{1}、还款类型:{2}、贷款记录ID:{3}。"
+                    , request.merchantOrderId, userId, type, debitId);
+
+                    sqlStr = @"select date_format(now(),'%Y-%m-%d') now,date_format(payBackDayTime,'%Y-%m-%d') payBackDayTime 
+                            from IFUserDebitRecord where debitId = @iDebitId";
+
+                    pc.Add("@iDebitId", debitId);
+                    DataTable debitInfo = dbo.GetTable(sqlStr, pc.GetParams(true));
+                    if (null != debitInfo && debitInfo.Rows.Count == 1)
+                    {
+                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]查询到用户应还时间{1}"
+                        , request.merchantOrderId, debitInfo.Rows[0]["payBackDayTime"]);
+
+                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间。", request.merchantOrderId);
+
+                        tran = conn.BeginTransaction();
+                        ///3 － 延期；4 － 还款
+                        if (type == "3")
+                        {
+                            //如果还款日期大于当前日期，延期后的时间是从还款时间＋7天（相当于提前延期）。
+                            //如果还款日期小于当前日期，延期时间是从当天＋7天。
+                            DateTime now = DateTime.Now;
+                            DateTime payback = DateTime.Now;
+
+                            DateTime.TryParse(Convert.ToString(debitInfo.Rows[0]["payBackDayTime"]), out payback);
+                            DateTime.TryParse(Convert.ToString(debitInfo.Rows[0]["now"]), out now);
+
+                            TimeSpan ts = payback.Subtract(now);
+                            if (ts.Days >= 0)
+                            {
+                                sqlStr = "update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(paybackdayTime, interval 7 day),statusTime = now() where debitId = @iDebitId";
+                            }
+                            else
+                            {
+                                sqlStr = "update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(now(), interval 7 day),statusTime = now() where debitId = @iDebitId";
+                            }
+
+                            pc.Add("@iStatus", 1);
+                            pc.Add("@iDebitId", debitId);
+                            dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+
+                            Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间 成功({1})。", request.merchantOrderId, dbret);
+                            Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始插入审核记录。", request.merchantOrderId);
+
+                            sqlStr = @"insert into IFUserAduitDebitRecord(AduitType,debitId,status,description,adminId,auditTime)
+	                    values(@iAuditType, @iDebitId, @iAuditStatus, @sAuditDescription, @iUserId, now());";
+
+                            pc.Add("@iAuditType", 2);
+                            pc.Add("@iDebitId", debitId);
+                            pc.Add("@iAuditStatus", 1);
+                            pc.Add("@sAuditDescription", "extend success.");
+                            pc.Add("@iUserId", -1);
+
+                            dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                            Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
+                        }
+                        if (type == "4")
+                        {
+                            sqlStr = "update IFUserDebitRecord set status = @iStatus,userPaybackTime=now(),statusTime = now() where debitId = @iDebitId";
+                            pc.Add("@iStatus", 3);
+                            pc.Add("@iDebitId", debitId);
+                            dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+
+                            Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及还款时间 成功({1})。", request.merchantOrderId, dbret);
+                            Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始插入审核记录。", request.merchantOrderId);
+
+                            sqlStr = @"insert into IFUserAduitDebitRecord(AduitType,debitId,status,description,adminId,auditTime)
+	                    values(@iAuditType, @iDebitId, @iAuditStatus, @sAuditDescription, @iUserId, now());";
+
+                            pc.Add("@iAuditType", 3);
+                            pc.Add("@iDebitId", debitId);
+                            pc.Add("@iAuditStatus", 3);
+                            pc.Add("@sAuditDescription", "payback success.");
+                            pc.Add("@iUserId", -1);
+
+                            dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+
+                            Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
+                        }
+                        tran.Commit();
+                    }
+                }
+                else
+                {
+                    Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "根据订单ID查找贷款ID失败。{0}", request.merchantOrderId);
+                }
                 result.result = Result.SUCCESS;
             }
             catch (Exception ex)
             {
+                try
+                {
+                    if (null != tran)
+                    {
+                        tran.Rollback();
+                    }
+                }
+                catch { }
                 result.result = Result.ERROR;
                 result.message = ex.Message;
-                Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "{0}", ex.Message);
+                Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "{0} 订单在执行时发生异常： {1}", request.merchantOrderId, ex.Message);
             }
             finally
             {
