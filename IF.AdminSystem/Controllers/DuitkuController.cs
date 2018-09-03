@@ -104,7 +104,7 @@ namespace NF.AdminSystem.Controllers
                         if (request.bin == "868005" || request.bin == "119905" || request.bin == "119906")
                         {
                             string vaNo = request.vaNo.Replace(request.bin, "");
-                            if (vaNo.Length == (16 - HelperProvider.PrefixOfDuitku().Length))
+                            if (vaNo.Length == (16 - ConfigSettings.prefixNo.Length))
                             {
                                 string type = vaNo.Substring(0, 1);
                                 string debitId = vaNo.Substring(1);
@@ -220,7 +220,7 @@ namespace NF.AdminSystem.Controllers
                 else
                 {
                     ///这里验证debitId 与 用户
-                    string prefix = HelperProvider.PrefixOfDuitku();
+                    string prefix = ConfigSettings.prefixNo;//HelperProvider.PrefixOfDuitku();
                     DataProviderResultModel result = null;
 
                     result = type == 3 ? DebitProvider.GetUserExtendRecord(debitId) : DebitProvider.GetUserDebitRecord(debitId);

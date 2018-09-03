@@ -23,7 +23,7 @@ namespace IF.AdminSystem
         public Startup(IConfiguration config)
         {
             Configuration = config;
-            Log.Init(1, 10240000, "yyyyMMdd", @".", LogType.Debug);
+            Log.Init(1, 50240000, "yyyyMMdd", @"./logs/", LogType.Debug);
 
             string DBName = config["AppSettings:DBName"];
             string publicKey = config["AppSettings:publicKey"];

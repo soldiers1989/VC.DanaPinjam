@@ -1,4 +1,5 @@
 ﻿using System;
+using DBMonoUtility;
 
 namespace loansservice
 {
@@ -7,7 +8,8 @@ namespace loansservice
         private TaskThread taskThread = null;
         public void Start()
         {
-            taskThread.Init();
+            DataBasePool.AddDataBaseConnectionString("debit", "!%(**$*@^77f1fjj", 5, 5);
+            taskThread = new TaskThread();
             taskThread.Start();
         }
 

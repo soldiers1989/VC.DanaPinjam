@@ -19,3 +19,4 @@
 13:11:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
 13:12:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
 13:12:59 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+13:13:29 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0

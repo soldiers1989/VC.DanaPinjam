@@ -4,8 +4,10 @@ using YYLog.ClassLibrary;
 
 public class LoanBank
 {
-    public bool Transfer(DebitUserRecord record)
+    public bool Transfer(DebitUserRecord record, out string errMsg)
     {
+        errMsg = String.Empty;
+
         HttpHelper http = new HttpHelper();
 
         InquiryRequest request = new InquiryRequest();
@@ -19,6 +21,7 @@ public class LoanBank
 
         Log.WriteDebugLog("LoanBank::Transfer", "request info:{0}", JsonConvert.SerializeObject(request));
 
+        //查询，验证转帐的银行信息
         InquiryResponse response = http.DuitkuInquiryRequest(request);
 
         Log.WriteDebugLog("LoanBank::Transfer step 1 check bank account :", "{0}", JsonConvert.SerializeObject(response));
@@ -48,18 +51,22 @@ public class LoanBank
                 }
                 else
                 {
+                    errMsg = String.Format("{0}({1})", response.responseDesc, response.responseCode);
                     Log.WriteErrorLog("LoanBank::Transfer", response.responseDesc);
-                    return false;    
+                    return false;
                 }
             }
             else
             {
                 Log.WriteErrorLog("LoanBank::Transfer", "银行卡对应的名字与用户填写的名字不同：{0}!={1}", response.accountName, record.userName);
+                errMsg = String.Format("the bank accountName:{0} incorrect.", record.userName);
+
                 return false;
             }
         }
         else
         {
+            errMsg = String.Format("{0}({1})", response.responseDesc, response.responseCode);
             Log.WriteErrorLog("LoanBank::Transfer", response.responseDesc);
             return false;
         }

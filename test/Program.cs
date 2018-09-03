@@ -1,4 +1,5 @@
 ﻿using System;
+using loansservice;
 using Newtonsoft.Json;
 namespace test
 {
@@ -49,6 +50,12 @@ namespace test
             Console.WriteLine(timestamp);
 
             */
+            ControlCenter cc = new ControlCenter();
+
+            cc.Start();
+
+            
+            /*
             LoanBank bank = new LoanBank();
 
             DebitUserRecord record = new DebitUserRecord();
@@ -59,7 +66,7 @@ namespace test
             record.purpose = "test";
             record.userId = 27;
             record.userName = "HENDRA";
-
+            */
             //bank.Transfer(record);
 
 
