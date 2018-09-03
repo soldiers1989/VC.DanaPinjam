@@ -386,6 +386,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     }
                     extend.userId = info.userId;
                     extend.debitId = info.debitId;
+                    extend.status = info.status;
                     extend.debitMoney = info.debitMoney;
                     extend.debitPeroid = info.debitPeroid;
                     extend.overdueMoney = info.overdueMoney;
