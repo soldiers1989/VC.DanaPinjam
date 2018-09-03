@@ -201,7 +201,7 @@ namespace NF.AdminSystem.Providers
                                 needPayMoney = (float)Math.Round(extendInfo.extendFee + extendInfo.overdueMoney, 0);
                                 amoutMoney = (float)Math.Round(amoutMoney, 0);
                                 Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "核对应还金额 needPayMoney:{0} - amoutMoney:{1}", needPayMoney, amoutMoney);
-                                if (needPayMoney == amoutMoney)
+                                if (amoutMoney >= needPayMoney)
                                 {
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对上，系统自动审核。");
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间。", request.merchantOrderId);
@@ -275,7 +275,7 @@ namespace NF.AdminSystem.Providers
                                 needPayMoney = (float)Math.Round(debitModel.payBackMoney + debitModel.overdueMoney, 0);
                                 amoutMoney = (float)Math.Round(amoutMoney, 0);
                                 Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "核对应还金额 needPayMoney:{0} - amoutMoney:{1}", needPayMoney, amoutMoney);
-                                if (needPayMoney == amoutMoney)
+                                if (amoutMoney >= needPayMoney)
                                 {
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对上，进入系统审核。");
 
