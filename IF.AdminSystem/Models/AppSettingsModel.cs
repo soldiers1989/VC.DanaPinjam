@@ -9,4 +9,6 @@ public class AppSettingsModel
     public string prefixNo { get; set; }
     public string duitkuKey { get; set; }
     public string PayMethod { get; set; }
+
+    public string atmh5url {get;set;}
 }
