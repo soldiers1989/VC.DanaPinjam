@@ -107,7 +107,6 @@ namespace NF.AdminSystem.Controllers
                     }
                     else
                     {
-                        // $params = $merchantCode . $action . $vaNo . $session . $apiKey;
                         response.statusCode = "01";
                         response.statusMessage = "Request is incorrect.";
                         if (request.IsEmpty())
@@ -146,7 +145,7 @@ namespace NF.AdminSystem.Controllers
                                                     response.statusMessage = "success";
                                                     response.merchantOrderId = Convert.ToString(result.data);
                                                     response.vaNo = request.vaNo;
-                                                    response.amount = Convert.ToString(model.extendFee + model.overdueMoney);
+                                                    response.amount = "0";//Convert.ToString(model.extendFee + model.overdueMoney);
                                                     response.name = "DanaPinjam";
                                                 }
                                                 else
@@ -188,7 +187,7 @@ namespace NF.AdminSystem.Controllers
                                                     response.statusMessage = "success";
                                                     response.merchantOrderId = Convert.ToString(result.data);
                                                     response.vaNo = request.vaNo;
-                                                    response.amount = Convert.ToString(model.payBackMoney + model.overdueMoney);
+                                                    response.amount = "0";//Convert.ToString(model.payBackMoney + model.overdueMoney);
                                                     response.name = "DanaPinjam";
                                                 }
                                                 else
