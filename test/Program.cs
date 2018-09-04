@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using loansservice;
 using Newtonsoft.Json;
 namespace test
@@ -54,7 +55,13 @@ namespace test
 
             cc.Start();
 
-            
+            Console.ReadLine();
+            Console.WriteLine("service is exit.");
+
+            while(true)
+            {
+                Thread.Sleep(100000);
+            }
             /*
             LoanBank bank = new LoanBank();
 

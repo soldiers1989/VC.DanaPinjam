@@ -337,7 +337,7 @@ namespace NF.AdminSystem.Providers
                     }
                     else
                     {
-                        Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "查找贷款ID失败，记录不存在。{0}", debitId);    
+                        Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "查找贷款ID失败，记录不存在。{0}", debitId);
                     }
                 }
                 else
@@ -364,6 +364,10 @@ namespace NF.AdminSystem.Providers
             {
                 if (null != dbo)
                 {
+                    if (null != conn)
+                    {
+                        dbo.ReleaseConnection(conn);
+                    }
                     dbo.Close();
                     dbo = null;
                 }

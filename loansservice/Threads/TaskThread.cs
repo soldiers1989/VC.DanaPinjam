@@ -24,15 +24,16 @@ public class TaskThread
         {
             List<DebitUserRecord> taskList = BusinessDao.GetReadyReleaseDebitRecords();
             LoanBank bank = new LoanBank();
+            Log.WriteDebugLog("TaskThread::threadProc", "待放款数据为：{0}条", taskList.Count);
             if (taskList.Count > 0)
             {
                 foreach (DebitUserRecord record in taskList)
                 {
-                    BusinessDao.SetDebitRecordStatus(record.debitId, 5, "正在执行放款");
+                    BusinessDao.SetDebitRecordStatus(record.debitId, 5, "release loan");
                     string errMsg = String.Empty;
                     if (bank.Transfer(record, out errMsg))
                     {
-                        BusinessDao.SetDebitRecordStatus(record.debitId, 1, "放款成功");
+                        BusinessDao.SetDebitRecordStatus(record.debitId, 1, "release loan success.");
                     }
                     else
                     {

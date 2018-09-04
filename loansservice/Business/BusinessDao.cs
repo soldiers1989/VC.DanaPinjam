@@ -35,7 +35,7 @@ public class BusinessDao
 
                     record.userName = Convert.ToString(dt.Rows[i]["contactName"]);
                     float ftmp = 0f;
-                    float.TryParse(Convert.ToString(dt.Rows[i]["userId"]), out ftmp);
+                    float.TryParse(Convert.ToString(dt.Rows[i]["actualMoney"]), out ftmp);
                     record.amountTransfer = ftmp;
 
                     int.TryParse(Convert.ToString(dt.Rows[i]["debitId"]), out tmp);
@@ -73,13 +73,29 @@ public class BusinessDao
         {
             dbo = new DataBaseOperator();
             conn = dbo.GetConnection();
-            string sqlStr = "update IFUserDebitRecord set status = @iStatus,StatusTime = now() where debitId = @iDebitId";
+
+            string sqlStr = String.Empty;
             ParamCollections pc = new ParamCollections();
-            pc.Add("@iStatus", status);
-            pc.Add("@iDebitId", debitId);
+            if (status == 1)
+            {
+                sqlStr = "update IFUserDebitRecord set status = @iStatus,StatusTime = now(),releaseLoanTime=now(),payBackDayTime=date_add(now(),interval 7 day) where debitId = @iDebitId";
+                pc.Add("@iStatus", status);
+                pc.Add("@iDebitId", debitId);
+                Log.WriteDebugLog("BusinesssDao::SetDebitRecordStatus", "放款成功，{0} － {1}", debitId, status);
+            }
+            else
+            {
+                sqlStr = "update IFUserDebitRecord set status = @iStatus,StatusTime = now() where debitId = @iDebitId";
+                pc.Add("@iStatus", status);
+                pc.Add("@iDebitId", debitId);
+                Log.WriteDebugLog("BusinesssDao::SetDebitRecordStatus", "设置状态，{0} - {1}", debitId, status);
+            }
+
             tran = dbo.BeginTransaction(conn);
 
             int ret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
+            Log.WriteDebugLog("BusinesssDao::SetDebitRecordStatus", "执行成功({0}){1} － {2}", ret, debitId, status);
+            Log.WriteDebugLog("BusinesssDao::SetDebitRecordStatus", "准备插入描述 {0} - {1} {2}", debitId, status, auditMsg);
 
             sqlStr = @"insert into IFUserAduitDebitRecord(AduitType,debitId,status,description,adminId,auditTime)
 	                        values(@iAuditType, @iDebitId, @iAuditStatus, @sMsg, -1, now());";
@@ -90,6 +106,7 @@ public class BusinessDao
             pc.Add("@sMsg", auditMsg);
 
             ret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
+            Log.WriteDebugLog("BusinesssDao::SetDebitRecordStatus", "执行成功({0}){1} － {2}", ret, debitId, status);
 
             tran.Commit();
 
@@ -97,7 +114,7 @@ public class BusinessDao
         }
         catch (Exception ex)
         {
-            Log.WriteErrorLog("BusinessDao::SetDebitRecordStatus", ex.Message);
+            Log.WriteErrorLog("BusinessDao::SetDebitRecordStatus", "出现异常{0}", ex.Message);
         }
         finally
         {

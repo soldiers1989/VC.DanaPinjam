@@ -1,5 +1,6 @@
 ﻿using System;
 using DBMonoUtility;
+using YYLog.ClassLibrary;
 
 namespace loansservice
 {
@@ -8,7 +9,15 @@ namespace loansservice
         private TaskThread taskThread = null;
         public void Start()
         {
-            DataBasePool.AddDataBaseConnectionString("debit", "!%(**$*@^77f1fjj", 5, 5);
+            Log.Init(1, 50240000, "yyyyMMdd", @"./logs/", LogType.Debug);
+
+            DataBaseOperator.SetDbIniFilePath(".");
+            Log.WriteDebugLog("ControlCenter::Startup", "Begin connect db");
+            
+            string connStr = DataBasePool.AddDataBaseConnectionString("debit", "!%(**$*@^77f1fjj", 5, 5);
+
+            Log.WriteDebugLog("ControlCenter::Startup", connStr);
+            DataBaseOperator.Init("debit");
             taskThread = new TaskThread();
             taskThread.Start();
         }
