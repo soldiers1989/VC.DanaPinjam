@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using YYLog.ClassLibrary;
+using Microsoft.Extensions.Options;
 
 namespace NF.AdminSystem.Controllers
 {
@@ -24,6 +25,13 @@ namespace NF.AdminSystem.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private AppSettingsModel ConfigSettings { get; set; }
+
+        public UserController(IOptions<AppSettingsModel> settings)
+        {
+            ConfigSettings = settings.Value;
+        }
+
         [HttpGet]
         [HttpPost]
         [AllowAnonymous]
@@ -35,7 +43,7 @@ namespace NF.AdminSystem.Controllers
         /// <returns></returns>
         public ActionResult<string> GetVerificateCode(string phone)
         {
-            string smsType = ConfigurationManager.AppSettings.Get("SMSType");
+            string smsType = ConfigSettings.SMSType;
             int type = 1;
             int.TryParse(smsType, out type);
             return getVerificateCode(phone, type);
