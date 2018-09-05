@@ -244,7 +244,7 @@ namespace NF.AdminSystem.Controllers
                 list.Add("appName", "PINJAM CEPAT");
                 list.Add("totalLoan", "3000000");
                 list.Add("totalPeople", "1000");
-                list.Add("downloadUrl", "http://test.smalldebit.club/");
+                list.Add("downloadUrl", "http://www.danapinjam.com/");
                 list.Add("aboutUrl", "http://api.danapinjam.com/Home/about");
                 list.Add("helpUrl", "http://api.danapinjam.com/Home/Help");
                 list.Add("contactusUrl", "http://api.danapinjam.com/Home/contactus");

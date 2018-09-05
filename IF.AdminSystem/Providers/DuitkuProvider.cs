@@ -228,7 +228,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iAuditType", 2);
                                     pc.Add("@iDebitId", debitId);
                                     pc.Add("@iAuditStatus", 1);
-                                    pc.Add("@sAuditDescription", "extend success.");
+                                    pc.Add("@sAuditDescription", "Proses perpanjangan disetujui.");
                                     pc.Add("@iUserId", -1);
 
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
@@ -255,7 +255,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iAuditType", 2);
                                     pc.Add("@iDebitId", debitId);
                                     pc.Add("@iAuditStatus", 0);
-                                    pc.Add("@sAuditDescription", "auditing.");
+                                    pc.Add("@sAuditDescription", "Perpanjangan sedang di audit.");//延期申请（审核中）
                                     pc.Add("@iUserId", -1);
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
@@ -293,7 +293,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iAuditType", 3);
                                     pc.Add("@iDebitId", debitId);
                                     pc.Add("@iAuditStatus", 3);
-                                    pc.Add("@sAuditDescription", "payback success.");
+                                    pc.Add("@sAuditDescription", "Proses pembayaran disetujui.");
                                     pc.Add("@iUserId", -1);
 
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
@@ -324,7 +324,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iAuditType", 3);
                                     pc.Add("@iDebitId", debitId);
                                     pc.Add("@iAuditStatus", 0);
-                                    pc.Add("@sAuditDescription", "payback auditing.");
+                                    pc.Add("@sAuditDescription", "Pembayaran sedang di audit");//还款申请（审核中）
                                     pc.Add("@iUserId", -1);
 
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));

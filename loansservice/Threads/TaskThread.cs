@@ -29,7 +29,7 @@ public class TaskThread
             {
                 foreach (DebitUserRecord record in taskList)
                 {
-                    BusinessDao.SetDebitRecordStatus(record.debitId, 5, "release loan");
+                    BusinessDao.SetDebitRecordStatus(record.debitId, 5, "Pencairan dana sedang dalam proses");
                     string errMsg = String.Empty;
                     if (bank.Transfer(record, out errMsg))
                     {
