@@ -74,10 +74,10 @@ namespace DBMonoUtility
             return GetTable(expr, new ParamCollections().GetParams());
         }
 
-		public IDbConnection GetConnection()
-		{
-			return mPool.GetConnection(mUsePoolName);
-		}
+        public IDbConnection GetConnection()
+        {
+            return mPool.GetConnection(mUsePoolName);
+        }
 
         /// <summary>
         /// 获取数据文法，返回数据表对象
@@ -156,6 +156,70 @@ namespace DBMonoUtility
             return data;
         }
 
+        public DataTable GetTable(string expr, List<ParamItem> param, IDbConnection conn)
+        {
+            DataTable data = null;
+            IDbCommand command = null;
+            IDataReader reader = null;
+
+            try
+            {
+                if (prepareCommand(ref expr, param, conn, out command))
+                {
+                    command.CommandTimeout = 120;
+                    reader = command.ExecuteReader();
+                    if (null != reader)
+                        data = new DataTable();
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        data.Columns.Add(reader.GetName(i));
+                    }
+
+                    object o = null;
+                    int count = reader.FieldCount;
+                    while (reader.Read())
+                    {
+                        DataRow row = data.NewRow();
+                        row.BeginEdit();
+                        for (int i = 0; i < count; i++)
+                        {
+                            o = reader.GetValue(i);
+                            row[i] = null != o ? o.ToString().Replace(@"\0", "").Replace("\0", "").Replace("&#x0;", "") : null;
+                        }
+                        row.EndEdit();
+                        data.Rows.Add(row);
+                    }
+                }
+                else
+                {
+                    throw new Exception("prepareCommand 发生异常，返回失败。");
+                }
+            }
+            //catch (OracleException ex1) {
+            //	throw new Exception ("Executing SQL statement (" + expr + ") failed(OracleException). Reason: " + ex1.Message);
+            //}
+            catch (Exception ex2)
+            {
+                throw new Exception("Executing SQL statement (" + expr + ") failed(Exception). Reason: " + ex2.StackTrace);
+            }
+            finally
+            {
+                if (null != reader)
+                {
+                    reader.Close();
+                    reader.Dispose();
+                    reader = null;
+                }
+                if (null != command)
+                {
+                    command.Parameters.Clear();
+                    command.Dispose();
+                    command = null;
+                }
+            }
+            return data;
+        }
+
         public int GetCount(string expr, List<ParamItem> param)
         {
             int count = 0;
@@ -207,7 +271,7 @@ namespace DBMonoUtility
             return null;
         }
 
-		public int ExecuteStatement(string expr, List<ParamItem> param, IDbConnection conn)
+        public int ExecuteStatement(string expr, List<ParamItem> param, IDbConnection conn)
         {
             int result = -1;
             IDbCommand command = null;
@@ -492,10 +556,10 @@ namespace DBMonoUtility
             GC.SuppressFinalize(this);
         }
 
-		public void ReleaseConnection(IDbConnection conn)
-		{
-			DataBasePool.ReleaseConnection(mUsePoolName, conn);
-		}
+        public void ReleaseConnection(IDbConnection conn)
+        {
+            DataBasePool.ReleaseConnection(mUsePoolName, conn);
+        }
         /// <summary>
         /// 
         /// </summary>

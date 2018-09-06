@@ -42,6 +42,7 @@ namespace NF.AdminSystem.Controllers
                     string signature = request.merchantCode + request.amount + request.merchantOrderId + ConfigSettings.duitkuKey;
                     signature = HelperProvider.MD532(signature);
                     DataProviderResultModel result = DuitkuProvider.SaveDuitkuCallbackRecord(request);
+                    string guid = Convert.ToString(result.data);
                     ///记录调用日志，最终需要写入数据库
                     Log.WriteLog("DuitkuController::CallbackRequest", "{0} - {1}", result.result, JsonConvert.SerializeObject(request));
 
@@ -53,10 +54,15 @@ namespace NF.AdminSystem.Controllers
                         DataProviderResultModel ret = DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
                         if (ret.result == Result.SUCCESS)
                         {
+                            Log.WriteErrorLog("DuitkuController::CallbackRequest", "回调操作成功。");
+                            DuitkuProvider.SetDuitkuCallbackRecordStatus(guid, 1);
                             return "Success";
                         }
                         else
                         {
+                            Log.WriteErrorLog("DuitkuController::CallbackRequest", "回调操作失败。");
+                            DuitkuProvider.SetDuitkuCallbackRecordStatus(guid, -1);
+
                             return "Error";
                         }
                     }

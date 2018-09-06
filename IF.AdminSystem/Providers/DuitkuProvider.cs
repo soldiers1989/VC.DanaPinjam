@@ -78,7 +78,7 @@ namespace NF.AdminSystem.Providers
             return result;
         }
 
-        public static DataProviderResultModel SaveDuitkuCallbackRecord(CallbackRequestModel request)
+        public static DataProviderResultModel SetDuitkuCallbackRecordStatus(string guid, int status)
         {
             DataProviderResultModel result = new DataProviderResultModel();
             DataBaseOperator dbo = null;
@@ -86,11 +86,52 @@ namespace NF.AdminSystem.Providers
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"insert into IFDuitkuCallbackLogs(merchantCode,amount,merchantOrderId,productDetail,additionalParam,
-                            merchantUserId,reference,signature,issuer_name,issuer_bank,createTime)
-                            values(@sMerchantCode,@sAmount,@sMerchantOrderId,@sProductDetail,@sAdditionalParam,
-                            @sMerchantUserId,@sReference,@sSignature,@sIssuer_name,@sIssuer_bank,now());";
+                string sqlStr = @"update IFDuitkuCallbackLogs set status = @iStatus,statusTime = now() where guid = @sGuid";
 
+                pc.Add("@iStatus", status);
+                pc.Add("@sGuid", guid);
+
+                result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams());
+                result.result = Result.SUCCESS;
+            }
+            catch (Exception ex)
+            {
+                result.result = Result.ERROR;
+                result.message = ex.Message;
+                Log.WriteErrorLog("DuitkuProvider::SetDuitkuCallbackRecordStatus", "{0}", ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
+
+
+        public static DataProviderResultModel SaveDuitkuCallbackRecord(CallbackRequestModel request)
+        {
+            DataProviderResultModel result = new DataProviderResultModel();
+            DataBaseOperator dbo = null;
+            IDbConnection conn = null;
+            IDbTransaction tran = null;
+
+            try
+            {
+                dbo = new DataBaseOperator();
+                conn = dbo.GetConnection();
+                tran = dbo.BeginTransaction(conn);
+
+                ParamCollections pc = new ParamCollections();
+                string sqlStr = @"insert into IFDuitkuCallbackLogs(merchantCode,amount,merchantOrderId,productDetail,additionalParam,
+                            merchantUserId,reference,signature,issuer_name,issuer_bank,createTime,guid)
+                            values(@sMerchantCode,@sAmount,@sMerchantOrderId,@sProductDetail,@sAdditionalParam,
+                            @sMerchantUserId,@sReference,@sSignature,@sIssuer_name,@sIssuer_bank,now(),@sGuid);";
+
+                string guid = Guid.NewGuid().ToString();
                 pc.Add("@sMerchantCode", request.merchantCode);
                 pc.Add("@sAmount", request.amount);
                 pc.Add("@sMerchantOrderId", request.merchantOrderId);
@@ -101,9 +142,14 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@sSignature", request.signature);
                 pc.Add("@sIssuer_name", request.issuer_name);
                 pc.Add("@sIssuer_bank", request.issuer_bank);
+                pc.Add("@sGuid", guid);
 
-                result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams());
+                dbo.ExecuteStatement(sqlStr, pc.GetParams());
+
+                result.data = guid;
                 result.result = Result.SUCCESS;
+
+                tran.Commit();
             }
             catch (Exception ex)
             {
@@ -115,6 +161,10 @@ namespace NF.AdminSystem.Providers
             {
                 if (null != dbo)
                 {
+                    if (null != conn)
+                    {
+                        dbo.ReleaseConnection(conn);
+                    }
                     dbo.Close();
                     dbo = null;
                 }
@@ -347,7 +397,7 @@ namespace NF.AdminSystem.Providers
                     result.result = Result.ERROR;
                     Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "根据订单ID查找贷款ID失败，有可能该订单已处理。{0}", request.merchantOrderId);
                 }
-                
+
             }
             catch (Exception ex)
             {
