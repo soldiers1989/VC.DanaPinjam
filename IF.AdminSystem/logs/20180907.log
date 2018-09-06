@@ -1,0 +1,122 @@
+00:03:15 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:03:19 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:03:19 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:03:20 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:03:38 [Error] DuitkuController::CallbackRequest [1]号服务器::Transaction has already been committed or is not pending
+00:04:14 [Error] DuitkuController::CallbackRequest [1]号服务器::Transaction has already been committed or is not pending
+00:05:52 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:05:56 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:05:56 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:05:57 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:06:13 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:06:15 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:06:18 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:06:29 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::根据订单ID查找贷款ID失败，有可能该订单已处理。101
+00:06:42 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作失败。
+00:08:05 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:08:07 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:08:12 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:08:21 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+00:08:21 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+00:08:31 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+00:08:34 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-09-24
+00:08:46 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::核对应还金额 needPayMoney:1500000 - amoutMoney:1500000
+00:08:46 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::金额对上，进入系统审核。
+00:08:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及还款时间 成功(1)。
+00:08:50 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始插入审核记录。
+00:08:52 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入审核记录 成功(1)。
+00:08:52 [Error] DuitkuController::CallbackRequest [1]号服务器::Transaction has already been committed or is not pending
+00:09:43 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:09:43 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:09:47 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:09:47 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+00:09:47 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+00:09:56 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+00:10:02 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-09-24
+00:10:20 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::核对应还金额 needPayMoney:1500000 - amoutMoney:1500000
+00:13:25 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:13:27 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:13:27 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:13:28 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:14:04 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:14:04 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:14:07 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:14:08 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+00:14:08 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+00:14:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+00:14:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-09-24
+00:14:11 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::核对应还金额 needPayMoney:1500000 - amoutMoney:1500000
+00:14:11 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::金额对上，进入系统审核。
+00:14:12 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及还款时间 成功(1)。
+00:14:12 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始插入审核记录。
+00:14:12 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入审核记录 成功(1)。
+00:14:30 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::101 订单在执行时发生异常： Transaction has already been committed or is not pending
+00:16:56 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:16:58 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:16:58 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:16:58 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:17:07 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:17:07 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:17:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:17:15 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::101 订单在执行时发生异常： Object reference not set to an instance of an object.
+00:17:26 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作失败。
+00:18:02 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:19:36 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:19:37 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:19:37 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:19:38 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:19:49 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:19:49 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:19:53 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:19:57 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::根据订单ID查找贷款ID失败，有可能该订单已处理。101
+00:20:05 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作失败。
+00:20:39 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:20:39 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:20:42 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:20:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+00:20:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+00:20:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+00:21:20 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-09-24
+00:21:24 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::核对应还金额 needPayMoney:1500000 - amoutMoney:1500000
+00:21:24 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::金额对上，进入系统审核。
+00:21:28 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及还款时间 成功(1)。
+00:21:28 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始插入审核记录。
+00:21:38 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入审核记录 成功(1)。
+00:21:53 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+00:22:35 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:25:35 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:25:37 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:25:37 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:25:38 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:25:46 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:25:46 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:25:47 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:25:53 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::根据订单ID查找贷款ID失败，有可能该订单已处理。101
+00:25:55 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作失败。
+00:26:21 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:26:21 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:26:23 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:26:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+00:26:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+00:26:28 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::101 订单在执行时发生异常： Exception of type 'System.Exception' was thrown.
+00:26:32 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作失败。
+00:27:40 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:27:42 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:27:42 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:27:42 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:27:55 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:27:55 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:27:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:28:02 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+00:28:02 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+00:28:17 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::101 订单在执行时发生异常： Exception of type 'System.Exception' was thrown.
+00:29:14 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:29:16 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:29:16 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:29:17 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:29:24 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"d6971c7df1bc86dfb90d991dd518af2c","issuer_name":null,"issuer_bank":null}
+00:29:24 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:d6971c7df1bc86dfb90d991dd518af2c - 传入为：d6971c7df1bc86dfb90d991dd518af2c
+00:29:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+00:29:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+00:29:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+00:29:35 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::101 订单在执行时发生异常： Exception of type 'System.Exception' was thrown.

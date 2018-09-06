@@ -148,8 +148,6 @@ namespace NF.AdminSystem.Providers
 
                 result.data = guid;
                 result.result = Result.SUCCESS;
-
-                tran.Commit();
             }
             catch (Exception ex)
             {
@@ -220,9 +218,7 @@ namespace NF.AdminSystem.Providers
                     pc.Add("@fMoney", request.amount);
                     pc.Add("@iId", request.merchantOrderId);
                     pc.Add("@iStatus2", -2);
-                    result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
-
-                    tran.Commit();
+                    result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true),conn);
 
                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新还款记录表的状态，结果为：{1}", request.merchantOrderId, result.data);
 
@@ -236,7 +232,7 @@ namespace NF.AdminSystem.Providers
                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]查询到用户应还时间{1}"
                         , request.merchantOrderId, debitInfo.Rows[0]["payBackDayTime"]);
 
-                        tran = conn.BeginTransaction();
+                        //tran = conn.BeginTransaction();
                         ///3 － 延期；4 － 还款
                         if (type == "3")
                         {
@@ -275,7 +271,7 @@ namespace NF.AdminSystem.Providers
 
                                     pc.Add("@iStatus", 1);
                                     pc.Add("@iDebitId", debitId);
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间 成功({1})。", request.merchantOrderId, dbret);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始插入审核记录。", request.merchantOrderId);
@@ -289,7 +285,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@sAuditDescription", "Proses perpanjangan disetujui.");
                                     pc.Add("@iUserId", -1);
 
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
                                 }
                                 else
@@ -300,12 +296,12 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iStatus1", 0);
                                     pc.Add("@fMoney", request.amount);
                                     pc.Add("@iId", request.merchantOrderId);
-                                    result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     sqlStr = "update IFUserDebitRecord set status = @iStatus,statusTime = now() where debitId = @iDebitId";
                                     pc.Add("@iStatus", 6);
                                     pc.Add("@iDebitId", debitId);
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     sqlStr = @"insert into IFUserAduitDebitRecord(AduitType,debitId,status,description,adminId,auditTime)
 	                            values(@iAuditType, @iDebitId, @iAuditStatus, @sAuditDescription, @iUserId, now());";
@@ -315,7 +311,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iAuditStatus", 0);
                                     pc.Add("@sAuditDescription", "Perpanjangan sedang di audit.");//延期申请（审核中）
                                     pc.Add("@iUserId", -1);
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
                                 }
                             }
@@ -340,7 +336,7 @@ namespace NF.AdminSystem.Providers
                                     sqlStr = "update IFUserDebitRecord set status = @iStatus,userPaybackTime=now(),statusTime = now() where debitId = @iDebitId";
                                     pc.Add("@iStatus", 3);
                                     pc.Add("@iDebitId", debitId);
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及还款时间 成功({1})。", request.merchantOrderId, dbret);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始插入审核记录。", request.merchantOrderId);
@@ -354,7 +350,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@sAuditDescription", "Proses pembayaran disetujui.");
                                     pc.Add("@iUserId", -1);
 
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
                                 }
@@ -366,12 +362,12 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iStatus1", 0);
                                     pc.Add("@fMoney", request.amount);
                                     pc.Add("@iId", request.merchantOrderId);
-                                    result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     sqlStr = "update IFUserDebitRecord set status = @iStatus,userPaybackTime=now(),statusTime = now() where debitId = @iDebitId";
                                     pc.Add("@iStatus", 2);
                                     pc.Add("@iDebitId", debitId);
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及还款时间 成功({1})。", request.merchantOrderId, dbret);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始插入审核记录。", request.merchantOrderId);
@@ -385,19 +381,20 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@sAuditDescription", "Pembayaran sedang di audit");//还款申请（审核中）
                                     pc.Add("@iUserId", -1);
 
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
                                 }
                             }
-                            tran.Commit();
                         }
                         result.result = Result.SUCCESS;
+                        tran.Commit();
                     }
                     else
                     {
                         result.result = Result.ERROR;
                         Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "查找贷款ID失败，记录不存在。{0}", debitId);
+                        tran.Rollback();
                     }
                 }
                 else
@@ -408,24 +405,14 @@ namespace NF.AdminSystem.Providers
             }
             catch (Exception ex)
             {
-                try
-                {
-                    if (null != tran)
-                    {
-                        tran.Rollback();
-                    }
-                }
-                catch { }
+                if (null != tran)
+                    tran.Rollback();
                 result.result = Result.ERROR;
                 result.message = ex.Message;
                 Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "{0} 订单在执行时发生异常： {1}", request.merchantOrderId, ex.Message);
             }
             finally
             {
-                if (null != tran)
-                {
-                    tran.Commit();
-                }
                 if (null != dbo)
                 {
                     if (null != conn)
