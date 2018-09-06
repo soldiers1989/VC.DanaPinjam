@@ -55,8 +55,7 @@ namespace test
 
             cc.Start();
 
-            Console.ReadLine();
-            Console.WriteLine("service is exit.");
+            
 
             while(true)
             {

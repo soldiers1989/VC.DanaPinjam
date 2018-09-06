@@ -334,17 +334,20 @@ namespace NF.AdminSystem.Providers
                             }
                             tran.Commit();
                         }
+                        result.result = Result.SUCCESS;
                     }
                     else
                     {
+                        result.result = Result.ERROR;
                         Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "查找贷款ID失败，记录不存在。{0}", debitId);
                     }
                 }
                 else
                 {
+                    result.result = Result.ERROR;
                     Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "根据订单ID查找贷款ID失败，有可能该订单已处理。{0}", request.merchantOrderId);
                 }
-                result.result = Result.SUCCESS;
+                
             }
             catch (Exception ex)
             {

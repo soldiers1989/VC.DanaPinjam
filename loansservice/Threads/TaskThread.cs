@@ -29,15 +29,22 @@ public class TaskThread
             {
                 foreach (DebitUserRecord record in taskList)
                 {
-                    BusinessDao.SetDebitRecordStatus(record.debitId, 5, "Pencairan dana sedang dalam proses");
-                    string errMsg = String.Empty;
-                    if (bank.Transfer(record, out errMsg))
+                    try
                     {
-                        BusinessDao.SetDebitRecordStatus(record.debitId, 1, "release loan success.");
+                        BusinessDao.SetDebitRecordStatus(record.debitId, 5, "Pencairan dana sedang dalam proses");
+                        string errMsg = String.Empty;
+                        if (bank.Transfer(record, out errMsg))
+                        {
+                            BusinessDao.SetDebitRecordStatus(record.debitId, 1, "release loan success.");
+                        }
+                        else
+                        {
+                            BusinessDao.SetDebitRecordStatus(record.debitId, -1, errMsg);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        BusinessDao.SetDebitRecordStatus(record.debitId, -1, errMsg);
+                        Log.WriteErrorLog("TaskThread::threadProc", ex.Message);
                     }
                 }
             }

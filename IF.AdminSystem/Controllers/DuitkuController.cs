@@ -50,7 +50,15 @@ namespace NF.AdminSystem.Controllers
                     {
                         Log.WriteDebugLog("DuitkuController::CallbackRequest", "签名验证通过:{0} - 传入为：{1}", signature, request.signature);
                         ///验证通过
-                        DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
+                        DataProviderResultModel ret = DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
+                        if (ret.result == Result.SUCCESS)
+                        {
+                            return "Success";
+                        }
+                        else
+                        {
+                            return "Error";
+                        }
                     }
                     else
                     {
@@ -58,7 +66,6 @@ namespace NF.AdminSystem.Controllers
                         ///签名不通过
                         return "Bad Signature";
                     }
-                    return "Success";
                 }
                 else
                 {

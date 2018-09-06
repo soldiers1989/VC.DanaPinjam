@@ -154,8 +154,15 @@ namespace DBMonoUtility
                 {
                     if (_maxConns > (conns.Count + _busyPools.Count))
                     {
-                        conn = getDbConnection(poolName);
-                        conn.Open();
+                        for (int i = 0; i < 3; i++)
+                        {
+                            conn = getDbConnection(poolName);
+                            conn.Open();
+                            if (conn.State == ConnectionState.Open)
+                            {
+                                break;
+                            }
+                        }
                     }
                 }
 
@@ -251,9 +258,9 @@ namespace DBMonoUtility
                                         }
                                     }
                                     catch (Exception ex)
-                                    { 
-										Log.WriteErrorLog("DataBasePool::checkProc", ex.Message);
-									}
+                                    {
+                                        Log.WriteErrorLog("DataBasePool::checkProc", ex.Message);
+                                    }
                                 }
                             }
                         }

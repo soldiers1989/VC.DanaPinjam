@@ -146,7 +146,7 @@ namespace RedisPools
 		{
 			while (!_isBreak)
 			{
-				Log.WriteDebugLog("RedisPools::checkConnection", "空闲连接数：{0}, 进行中连接数：{1}", _aLivePool.Count, _busyPool.Count);
+				//Log.WriteDebugLog("RedisPools::checkConnection", "空闲连接数：{0}, 进行中连接数：{1}", _aLivePool.Count, _busyPool.Count);
 
 				try
 				{
