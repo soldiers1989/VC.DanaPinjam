@@ -153,12 +153,20 @@ namespace NF.AdminSystem.Providers
             }
             catch (Exception ex)
             {
+                if (null != tran)
+                {
+                    tran.Rollback();
+                }
                 result.result = Result.ERROR;
                 result.message = ex.Message;
                 Log.WriteErrorLog("DuitkuProvider::SaveDuitkuCallbackRecord", "{0}", ex.Message);
             }
             finally
             {
+                if (null != tran)
+                {
+                    tran.Commit();
+                }
                 if (null != dbo)
                 {
                     if (null != conn)
@@ -397,7 +405,6 @@ namespace NF.AdminSystem.Providers
                     result.result = Result.ERROR;
                     Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "根据订单ID查找贷款ID失败，有可能该订单已处理。{0}", request.merchantOrderId);
                 }
-
             }
             catch (Exception ex)
             {
@@ -415,6 +422,10 @@ namespace NF.AdminSystem.Providers
             }
             finally
             {
+                if (null != tran)
+                {
+                    tran.Commit();
+                }
                 if (null != dbo)
                 {
                     if (null != conn)
