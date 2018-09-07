@@ -897,6 +897,7 @@ namespace NF.AdminSystem.Controllers
         /// <returns></returns>
         [HttpGet]
         [HttpPost]
+        [Route("EditUserPhotos")]
         public ActionResult<string> EditUserPhotos(int userId, int type, string url)
         {
             HttpResultModel ret = new HttpResultModel();
