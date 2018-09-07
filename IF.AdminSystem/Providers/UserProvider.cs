@@ -316,18 +316,17 @@ namespace NF.AdminSystem.Providers
                     personalInfo.residentialCity = Convert.ToString(dt.Rows[0]["residentialCity"]);
 
 
-                    int.TryParse(Convert.ToString(dt.Rows[0]["occupancyDuration"]), out tmp);
-                    personalInfo.occupancyDuration = tmp;
+                    //int.TryParse(Convert.ToString(dt.Rows[0]["occupancyDuration"]), out tmp);
+                    personalInfo.occupancyDuration = Convert.ToString(dt.Rows[0]["occupancyDuration"]);
 
-                    int.TryParse(Convert.ToString(dt.Rows[0]["numberOfChildren"]), out tmp);
-                    personalInfo.numberOfChildren = tmp;
+                    //int.TryParse(Convert.ToString(dt.Rows[0]["numberOfChildren"]), out tmp);
+                    personalInfo.numberOfChildren = Convert.ToString(dt.Rows[0]["numberOfChildren"]);
 
-                    int.TryParse(Convert.ToString(dt.Rows[0]["maritalStatus"]), out tmp);
-                    personalInfo.maritalStatus = tmp;
-
+                    //int.TryParse(Convert.ToString(dt.Rows[0]["maritalStatus"]), out tmp);
+                    personalInfo.maritalStatus = Convert.ToString(dt.Rows[0]["maritalStatus"]);
                     
-                    int.TryParse(Convert.ToString(dt.Rows[0]["education"]), out tmp);
-                    personalInfo.education = tmp;
+                    //int.TryParse(Convert.ToString(dt.Rows[0]["education"]), out tmp);
+                    personalInfo.education = Convert.ToString(dt.Rows[0]["education"]);
                     personalInfo.birthday = Convert.ToString(dt.Rows[0]["birthday"]);
                     personaNumber++;
                     if (!String.IsNullOrEmpty(personalInfo.birthday))

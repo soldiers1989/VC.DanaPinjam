@@ -342,17 +342,17 @@ namespace NF.AdminSystem.Models
         /// <summary>
         /// 教育程度
         /// </summary>
-        public int education { get; set; } = - 1;
+        public string education { get; set; }
 
         /// <summary>
         /// 婚姻状态
         /// </summary>
-        public int maritalStatus { get; set; } = -1;
+        public string maritalStatus { get; set; }
 
         /// <summary>
         /// 有几个小孩
         /// </summary>
-        public int numberOfChildren { get; set; } = 0;
+        public string numberOfChildren { get; set; }
 
         /// <summary>
         /// 居住城市
@@ -382,7 +382,7 @@ namespace NF.AdminSystem.Models
         /// <summary>
         /// 居住时长
         /// </summary>
-        public int occupancyDuration { get; set; } = 0;
+        public string occupancyDuration { get; set; }
 
         /// <summary>
         /// 社交帐号
