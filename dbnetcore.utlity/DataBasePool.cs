@@ -218,7 +218,55 @@ namespace DBMonoUtility
                         foreach (string name in new IteratorIsolateCollection(_pools.Keys))
                         {
                             Hashtable conns = _pools[name] as Hashtable;
-                            //Log.WriteDebugLog("DataBasePool::checkProc", "空闲连接数为：{0}，处理中连接：{1}", conns.Count, _busyPools.Count);
+                            Log.WriteDebugLog("DataBasePool::checkProc", "空闲连接数为：{0}，处理中连接：{1}", conns.Count, _busyPools.Count);
+                            foreach (IDbConnection c in new IteratorIsolateCollection(conns.Keys))
+                            {
+                                try
+                                {
+                                    DateTime expire = (DateTime)conns[c];
+                                    if (((expire.AddMilliseconds(_maxIdle)) < DateTime.Now))
+                                    {
+                                        Log.WriteDebugLog("DataBasePool::checkProc", "链接已超时，最后使用时间{0}，从链接池中移除，将重新打开。", expire.ToString("yyyy-MM-dd hh:mm:ss"));
+                                        c.Close();
+                                        conns.Remove(c);
+
+                                        try
+                                        {
+                                            IDbConnection conn = getDbConnection(name);
+                                            if (conn.State == ConnectionState.Open)
+                                            {
+                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
+                                                conns[conn] = DateTime.Now;
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Log.WriteErrorLog("DataBasePool::checkProc", "重新打开连接失败，{0}", ex.Message);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (c.State != ConnectionState.Open)
+                                        {
+                                            c.Open();
+
+                                            if (c.State != ConnectionState.Open)
+                                            {
+                                                c.Close();
+                                                conns.Remove(c);
+                                                Log.WriteWarning("DataBasePool::checkProc", "尝试打开关闭的链接失败，从连接池中移除连接，c.State = {0}, 最后使用时间为：{1}", c.State, expire);
+                                            }
+                                        }
+
+                                        //Log.WriteWarning("DataBasePool::checkProc", "连接状态：c.State = {0}, 最后使用时间为：{1}", c.State, expire);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Log.WriteErrorLog("DataBasePool::checkProc", ex.Message);
+                                }
+                            }
+                            /*
                             if (null != conns && conns.Count > 0 && _minConns < (conns.Count + _busyPools.Count))
                             {
                                 foreach (IDbConnection c in new IteratorIsolateCollection(conns.Keys))
@@ -235,54 +283,10 @@ namespace DBMonoUtility
                             }
                             else
                             {
-                                foreach (IDbConnection c in new IteratorIsolateCollection(conns.Keys))
-                                {
-                                    try
-                                    {
-                                        DateTime expire = (DateTime)conns[c];
-                                        if (((expire.AddMilliseconds(_maxIdle)) < DateTime.Now))
-                                        {
-                                            if (c.State != ConnectionState.Open)
-                                            {
-                                                c.Open();
-
-                                                if (c.State != ConnectionState.Open)
-                                                {
-                                                    c.Close();
-                                                    conns.Remove(c);
-                                                    Log.WriteWarning("DataBasePool::checkProc", "尝试打开关闭的链接失败，从连接池中移除连接，c.State = {0}, 最后使用时间为：{1}", c.State, expire);
-                                                }
-                                            }
-
-                                            Log.WriteWarning("DataBasePool::checkProc", "连接状态：c.State = {0}, 最后使用时间为：{1}", c.State, expire);
-                                        }
-                                        else
-                                        {
-                                            Log.WriteDebugLog("DataBasePool::checkProc", "链接已超时，最后使用时间{0}，从链接池中移除，将重新打开。", expire.ToString("yyyy-MM-dd hh:mm:ss"));
-                                            c.Close();
-                                            conns.Remove(c);
-
-                                            try
-                                            {
-                                                IDbConnection conn = getDbConnection(name);
-                                                if (conn.State == ConnectionState.Open)
-                                                {
-                                                    Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
-                                                    conns[conn] = DateTime.Now;
-                                                }
-                                            }
-                                            catch (Exception ex)
-                                            { 
-                                                Log.WriteErrorLog("DataBasePool::checkProc", "重新打开连接失败，{0}", ex.Message);
-                                            }
-                                        }
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Log.WriteErrorLog("DataBasePool::checkProc", ex.Message);
-                                    }
-                                }
+                                
                             }
+
+                            */
                         }
                 }
                 catch (Exception ex)
