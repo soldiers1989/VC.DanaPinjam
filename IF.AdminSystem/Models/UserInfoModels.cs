@@ -265,7 +265,7 @@ namespace NF.AdminSystem.Models
         /// <summary>
         /// 月收入
         /// </summary>
-        public int monthIncome { get; set; } = 0;
+        public string monthIncome { get; set; }
 
         /// <summary>
         /// 公司名
@@ -280,17 +280,17 @@ namespace NF.AdminSystem.Models
         /// <summary>
         /// 公司所在城市
         /// </summary>
-        public int companyCity { get; set; } = 0;
+        public string companyCity { get; set; }
 
         /// <summary>
         /// 公司所在区
         /// </summary>
-        public int companyDistrics { get; set; } = 0;
+        public string companyDistrics { get; set; }
 
         /// <summary>
         /// 公司所在选区
         /// </summary>
-        public int companyDistricts { get; set; } = 0;
+        public string companyDistricts { get; set; }
 
         /// <summary>
         /// 公司地址

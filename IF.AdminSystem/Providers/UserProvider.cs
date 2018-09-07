@@ -268,8 +268,8 @@ namespace NF.AdminSystem.Providers
                         userInfo.workingPercent++;
                     }
 
-                    int.TryParse(Convert.ToString(dt.Rows[0]["monthIncome"]), out tmp);
-                    workingInfo.monthIncome = tmp;
+                    //int.TryParse(Convert.ToString(dt.Rows[0]["monthIncome"]), out tmp);
+                    workingInfo.monthIncome = Convert.ToString(dt.Rows[0]["monthIncome"]);
 
                     workInfoNumber++;
                     workingInfo.typeOfWork = Convert.ToString(dt.Rows[0]["typeOfWork"]);
