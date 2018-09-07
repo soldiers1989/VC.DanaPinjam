@@ -499,6 +499,7 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@iCertificateUserId", userId);
 
                 int count = dbo.GetCount(sqlStr, pc.GetParams(true));
+                Log.WriteDebugLog("UserProvider::UploadUserCertficate", "用户是否存在照片：{0}", count);
                 if (count == 0)
                 {
                     sqlStr = @"insert into IFCertificate(url, certificateType, CertificateUserId, createTime)
@@ -507,7 +508,9 @@ namespace NF.AdminSystem.Providers
                     pc.Add("@iCertificateType", type);
                     pc.Add("@iCertificateUserId", userId);
 
-                    dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                    int ret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+
+                    Log.WriteDebugLog("UserProvider::UploadUserCertficate", "用户不存在照片，插入({0})", ret);
                 }
                 else
                 {
@@ -529,7 +532,9 @@ namespace NF.AdminSystem.Providers
                         pc.Add("@iCertificateType", type);
                         pc.Add("@iCertificateUserId", userId);
 
-                        dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                        int ret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+
+                        Log.WriteDebugLog("UserProvider::UploadUserCertficate", "用户不存在贷款中记录，插入({0})", ret);
                     }
                 }
                 result.result = Result.SUCCESS;

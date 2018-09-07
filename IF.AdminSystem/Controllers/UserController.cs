@@ -916,6 +916,7 @@ namespace NF.AdminSystem.Controllers
                 ret.result = result.result;
                 if (result.result != Result.SUCCESS)
                 {
+                    Log.WriteDebugLog("UserController::EditUserPhotos", "保存失败，清除用户缓存。");
                     ret.message = result.message;
                 }
                 else
