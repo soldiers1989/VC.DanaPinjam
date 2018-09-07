@@ -22,31 +22,51 @@ public class TaskThread
     {
         while (!_isbreak)
         {
-            List<DebitUserRecord> taskList = BusinessDao.GetReadyReleaseDebitRecords();
-            LoanBank bank = new LoanBank();
-            Log.WriteDebugLog("TaskThread::threadProc", "待放款数据为：{0}条", taskList.Count);
-            if (taskList.Count > 0)
+            int week = Convert.ToInt32(DateTime.Now.DayOfWeek.ToString("d"));
+            int beginHour = 8;
+            int endHour = 21;
+            if (week > 0 && week < 6)
             {
-                foreach (DebitUserRecord record in taskList)
+                if (DateTime.Now.Hour >= beginHour && DateTime.Now.Hour <= endHour)
                 {
-                    try
+                    List<DebitUserRecord> taskList = BusinessDao.GetReadyReleaseDebitRecords();
+                    LoanBank bank = new LoanBank();
+                    Log.WriteDebugLog("TaskThread::threadProc", "今天是星期:{0} 是放款日,放款时间段：{1}点- {2}点，待放款数据为：{3}条"
+                                                    , week, beginHour, endHour, taskList.Count);
+
+                    if (taskList.Count > 0)
                     {
-                        BusinessDao.SetDebitRecordStatus(record.debitId, 5, "Pencairan dana sedang dalam proses");
-                        string errMsg = String.Empty;
-                        if (bank.Transfer(record, out errMsg))
+                        foreach (DebitUserRecord record in taskList)
                         {
-                            BusinessDao.SetDebitRecordStatus(record.debitId, 1, "release loan success.");
+                            try
+                            {
+                                BusinessDao.SetDebitRecordStatus(record.debitId, 5, "Pencairan dana sedang dalam proses");
+                                string errMsg = String.Empty;
+                                if (bank.Transfer(record, out errMsg))
+                                {
+                                    BusinessDao.SetDebitRecordStatus(record.debitId, 1, "Uang anda telah berhasil di transfer.");
+                                }
+                                else
+                                {
+                                    BusinessDao.SetDebitRecordStatus(record.debitId, -1, errMsg);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Log.WriteErrorLog("TaskThread::threadProc", ex.Message);
+                            }
                         }
-                        else
-                        {
-                            BusinessDao.SetDebitRecordStatus(record.debitId, -1, errMsg);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.WriteErrorLog("TaskThread::threadProc", ex.Message);
                     }
                 }
+                else
+                {
+                    Log.WriteDebugLog("TaskThread::threadProc", "今天是星期:{0} 放款时间段：{1}点- {2}点，现在是：{3}点"
+                                                    , week, beginHour, endHour, DateTime.Now.Hour);
+                }
+            }
+            else
+            {
+                Log.WriteDebugLog("TaskThread::threadProc", "今天是星期:{0} 不放款。", week);
             }
             Thread.Sleep(10 * 1000);
         }

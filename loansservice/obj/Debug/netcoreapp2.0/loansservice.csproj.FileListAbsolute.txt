@@ -16,3 +16,4 @@
 /data/danapinjam/loansservice/obj/Debug/netcoreapp2.0/loansservice.csproj.CopyComplete
 /data/danapinjam/loansservice/obj/Debug/netcoreapp2.0/loansservice.dll
 /data/danapinjam/loansservice/obj/Debug/netcoreapp2.0/loansservice.pdb
+/data/danapinjam/loansservice/bin/Debug/netcoreapp2.0/loansservice.dll.config

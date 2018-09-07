@@ -34,6 +34,14 @@ namespace NF.AdminSystem.Controllers
         }
 
         [AllowAnonymous]
+        public ActionResult info()
+        {
+            ViewBag.Title = "Info";
+
+            return View();
+        }
+
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Title = "About Page";

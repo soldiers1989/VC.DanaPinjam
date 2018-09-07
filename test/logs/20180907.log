@@ -1,0 +1,22 @@
+15:55:19 [Debug] ControlCenter::Startup [1]号服务器::Begin connect db
+15:55:29 [Debug] ControlCenter::Startup [1]号服务器::server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+15:56:36 [Debug] ControlCenter::Startup [1]号服务器::Begin connect db
+15:56:46 [Debug] ControlCenter::Startup [1]号服务器::server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+15:56:46 [SystemLog] TaskThread::Start [1]号服务器::The release loan task thread is ready start.
+15:56:46 [SystemLog] TaskThread::Start [1]号服务器::The thread is already started.
+15:56:46 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:56:46 [Debug] TaskThread::threadProc [1]号服务器::今天是星期:5 放款日,7点- 22点，待放款数据为：0条
+15:56:56 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:58:15 [Debug] ControlCenter::Startup [1]号服务器::Begin connect db
+15:58:25 [Debug] ControlCenter::Startup [1]号服务器::server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+15:58:25 [SystemLog] TaskThread::Start [1]号服务器::The release loan task thread is ready start.
+15:58:25 [SystemLog] TaskThread::Start [1]号服务器::The thread is already started.
+15:58:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:58:25 [Debug] TaskThread::threadProc [1]号服务器::今天是星期:5 是放款日,放款时间段：8点- 21点，待放款数据为：0条
+15:58:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:58:36 [Debug] TaskThread::threadProc [1]号服务器::今天是星期:5 是放款日,放款时间段：8点- 21点，待放款数据为：0条
+15:58:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:58:46 [Debug] TaskThread::threadProc [1]号服务器::今天是星期:5 是放款日,放款时间段：8点- 21点，待放款数据为：0条
+15:58:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:58:56 [Debug] TaskThread::threadProc [1]号服务器::今天是星期:5 是放款日,放款时间段：8点- 21点，待放款数据为：0条
+15:59:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0

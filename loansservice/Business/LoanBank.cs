@@ -37,7 +37,8 @@ public class LoanBank
         {
             Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对银行帐号信息，返回成功。", record.debitId);
             Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对帐户名称，record：{0} ，response：{1}", record.userName.Trim().ToUpper(), response.accountName.Trim().ToUpper());
-            if (response.accountName.Trim().ToUpper() == record.userName.Trim().ToUpper())
+            if (response.accountName.Replace(" ", "").Trim().ToUpper()
+                .IndexOf(record.userName.Replace(" ", "").Trim().ToUpper())> -1)
             {
                 Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 帐户名称正确，初使化请求准备转帐。", record.debitId);
                 TransferRequest transferRequest = new TransferRequest();
