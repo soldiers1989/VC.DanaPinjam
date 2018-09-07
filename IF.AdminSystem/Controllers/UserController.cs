@@ -920,10 +920,12 @@ namespace NF.AdminSystem.Controllers
                 }
                 else
                 {
+                    Log.WriteDebugLog("UserController::EditUserPhotos", "保存成功，清除用户缓存。");
                     ret.message = "success";
                     Redis redis = HelperProvider.GetRedis();
                     string key = String.Format("UserAllInfo_{0}", userId);
-                    redis.KeyDelete(key);
+                    long lret = redis.KeyDelete(key);
+                    Log.WriteDebugLog("UserController::EditUserPhotos", "清除用户缓存。({0})", lret);
                 }
             }
             catch (Exception ex)
