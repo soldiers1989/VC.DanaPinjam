@@ -384,3 +384,25 @@
 10:34:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
 10:34:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
 10:34:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:27:36 [Debug] Startup::Startup [1]号服务器::Begin connect db
+13:27:38 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+13:27:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:27:38 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+13:27:38 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+13:27:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:27:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:28:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:28:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:28:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:28:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:28:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:28:53 [Warning] CustomActionFilter::OnActionExecuting [1]号服务器::   Token validation failed. version:
+13:28:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:30:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:30:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0

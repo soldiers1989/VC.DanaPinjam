@@ -900,6 +900,7 @@ namespace NF.AdminSystem.Controllers
         [Route("EditUserPhotos")]
         public ActionResult<string> EditUserPhotos(int userId, int type, string url)
         {
+            Log.WriteDebugLog("UserController::EditUserPhotos", "用户照片上传：{0} - {1} - {2}", userId, type, url);
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             try
@@ -919,6 +920,7 @@ namespace NF.AdminSystem.Controllers
                 }
                 else
                 {
+                    ret.message = "success";
                     Redis redis = HelperProvider.GetRedis();
                     string key = String.Format("UserAllInfo_{0}", userId);
                     redis.KeyDelete(key);
