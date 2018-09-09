@@ -63,7 +63,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(58, 133, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "025f6f7d88914a048c94ea14e49f8be5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c601d535b93c4cf795f7a27e7b8dbc65", async() => {
                 BeginContext(64, 120, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>PERJANJIAN PINJAMAN BERBASIS TEKNOLOGI</title>\r\n");
                 EndContext();
@@ -83,7 +83,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(193, 30786, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8da4764f88614ba285e2416ea1efd99e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c6f528e56404764a7e8ed0e654c0354", async() => {
                 BeginContext(199, 30773, true);
                 WriteLiteral(@"
     <h2>PERJANJIAN PINJAMAN BERBASIS TEKNOLOGI</h2>

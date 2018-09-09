@@ -60,7 +60,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\n<!DOCTYPE html>\n\n<html>\n");
             EndContext();
             BeginContext(49, 1366, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1297c7ef7502466cbe58dd7d99513ce3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "72eb3091e9524e4e8362933c5763b5fd", async() => {
                 BeginContext(55, 1158, true);
                 WriteLiteral(@"
         <meta charset=""utf-8"">
@@ -107,7 +107,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(1416, 355, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0f56b8b1c244aa6941e4987cdda187e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7e09b58311ea43f8a68226386ba9d03c", async() => {
                 BeginContext(1422, 146, true);
                 WriteLiteral("\n<div class=\"anel panel-danger\">\n        <div class=\"panel-header\">Request is incorrect.</div>\n\n        <div class=\"panel-body\">\n            <p><a");
                 EndContext();

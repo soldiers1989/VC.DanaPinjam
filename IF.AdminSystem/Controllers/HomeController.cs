@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web; 
+using System.Web;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NF.AdminSystem.Controllers
 {
+    [Route("api/Home")]
     public class HomeController : Controller
     {
         [AllowAnonymous]
+        [Route("agreement")]
         public ActionResult agreement()
         {
             ViewBag.Title = "agreement";
@@ -18,6 +20,7 @@ namespace NF.AdminSystem.Controllers
         }
 
         [AllowAnonymous]
+        [Route("agreement2")]
         public ActionResult agreement2()
         {
             ViewBag.Title = "agreement";
@@ -26,6 +29,7 @@ namespace NF.AdminSystem.Controllers
         }
 
         [AllowAnonymous]
+        [Route("Index")]
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
@@ -34,6 +38,7 @@ namespace NF.AdminSystem.Controllers
         }
 
         [AllowAnonymous]
+        [Route("info")]
         public ActionResult info()
         {
             ViewBag.Title = "Info";
@@ -42,6 +47,7 @@ namespace NF.AdminSystem.Controllers
         }
 
         [AllowAnonymous]
+        [Route("About")]
         public ActionResult About()
         {
             ViewBag.Title = "About Page";
@@ -50,14 +56,16 @@ namespace NF.AdminSystem.Controllers
         }
 
         [AllowAnonymous]
+        [Route("Help")]
         public ActionResult Help()
         {
             ViewBag.Title = "Help Page";
 
             return View();
         }
-        
+
         [AllowAnonymous]
+        [Route("Contactus")]
         public ActionResult Contactus()
         {
             ViewBag.Title = "Contactus Page";

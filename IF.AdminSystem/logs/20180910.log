@@ -1,0 +1,122 @@
+00:47:33 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:47:42 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:47:42 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:47:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:47:42 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+00:47:42 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:47:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:48:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:48:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:48:12 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:48:12 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:48:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:48:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:48:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:48:42 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:48:42 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:48:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:49:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:49:12 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:49:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:47:42】,即将回收,conn.IsConnected == True！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：1个空闲连接，重建了1个链接。
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:47:42】,即将回收,conn.IsConnected == True！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：2个空闲连接，重建了2个链接。
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:47:42】,即将回收,conn.IsConnected == True！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：3个空闲连接，重建了3个链接。
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:47:42】,即将回收,conn.IsConnected == True！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：4个空闲连接，重建了4个链接。
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:47:42】,即将回收,conn.IsConnected == True！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:49:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：5个空闲连接，重建了5个链接。
+00:49:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:49:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:49:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:49:42 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:49:42 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:49:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:50:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:50:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:50:12 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:49:12】,即将回收,conn.IsConnected == True！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：1个空闲连接，重建了1个链接。
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:49:12】,即将回收,conn.IsConnected == True！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：2个空闲连接，重建了2个链接。
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:49:12】,即将回收,conn.IsConnected == True！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：3个空闲连接，重建了3个链接。
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:49:12】,即将回收,conn.IsConnected == True！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::清除了：4个空闲连接，重建了4个链接。
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:49:12】,即将回收,conn.IsConnected == True！
+00:50:12 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:50:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：5个空闲连接，重建了5个链接。
+00:50:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:50:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:50:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:50:43 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:50:43 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:50:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:51:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:51:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:51:13 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:50:12】,即将回收,conn.IsConnected == True！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：1个空闲连接，重建了1个链接。
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:50:12】,即将回收,conn.IsConnected == True！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：2个空闲连接，重建了2个链接。
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:50:12】,即将回收,conn.IsConnected == True！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：3个空闲连接，重建了3个链接。
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:50:12】,即将回收,conn.IsConnected == True！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：4个空闲连接，重建了4个链接。
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:50:12】,即将回收,conn.IsConnected == True！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:51:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：5个空闲连接，重建了5个链接。
+00:51:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:51:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+00:51:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:51:43 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:51:43 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:51:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:52:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:52:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:52:13 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:51:13】,即将回收,conn.IsConnected == True！
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：1个空闲连接，重建了1个链接。
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：1个空闲连接，重建了1个链接。
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:51:13】,即将回收,conn.IsConnected == True！
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：2个空闲连接，重建了2个链接。
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::检测到连接已超时,最近使用该连接的时间为【2018/9/10 上午12:51:13】,即将回收,conn.IsConnected == True！
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::重新创建链接成功,conn.IsConnected == False！
+00:52:13 [Warning] RedisPools::checkConnection [1]号服务器::清除了：3个空闲连接，重建了3个链接。
+00:52:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:52:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:52:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:54:28 [Debug] Startup::Startup [1]号服务器::Begin connect db
+00:54:37 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+00:54:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:54:37 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+00:54:37 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+00:54:37 [SystemLog] RedisPools::Init [1]号服务器::初使化Redis连接池,成功创建[5]个连接！
+00:54:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:54:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:55:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:55:07 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：5, 进行中连接数：0
+00:55:07 [Warning] RedisPools::checkConnection [1]号服务器::总连接数：5，都是空闲连接：5，将对多余空闲连接进行回收。
+00:55:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+00:55:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
