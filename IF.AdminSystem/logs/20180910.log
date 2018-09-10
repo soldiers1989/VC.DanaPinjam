@@ -512,3 +512,54 @@
 15:37:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
 15:38:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
 15:38:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:00:00 [Debug] Startup::Startup [1]号服务器::Begin connect db
+16:00:20 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+16:00:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:00:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:02:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:02:40 [Error] Redis::StringGet [1]号服务器::ValueFactory attempted to access the Value property of this instance.
+16:02:42 [Error] Redis::StringSet [1]号服务器::ValueFactory attempted to access the Value property of this instance.
+16:02:57 [Error] Redis::StringGet [1]号服务器::ValueFactory attempted to access the Value property of this instance.
+16:02:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:02:59 [Error] Redis::StringSet [1]号服务器::ValueFactory attempted to access the Value property of this instance.
+16:03:04 [Error] Redis::StringGet [1]号服务器::ValueFactory attempted to access the Value property of this instance.
+16:03:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:03:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:03:37 [Error] Redis::StringSet [1]号服务器::ValueFactory attempted to access the Value property of this instance.
+16:03:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:03:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:04:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:04:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:04:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:04:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:04:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:04:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:05:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:05:07 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-10 04:00:06，从链接池中移除，将重新打开。
+16:05:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：0
+16:05:17 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-10 04:00:12，从链接池中移除，将重新打开。
+16:05:17 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-10 04:00:09，从链接池中移除，将重新打开。
+16:05:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：2，处理中连接：0
+16:05:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-10 04:00:20，从链接池中移除，将重新打开。
+16:05:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:05:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:05:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:06:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:06:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:06:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:06:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:06:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:06:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:07:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:07:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:07:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:07:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:07:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:07:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:08:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:08:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：0
+16:08:17 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-10 04:03:12，从链接池中移除，将重新打开。
+16:08:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+16:08:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+16:08:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+16:08:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
