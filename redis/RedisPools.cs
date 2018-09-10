@@ -235,21 +235,30 @@ namespace RedisPools
             {
                 if (_aLivePool.Count > 0)
                 {
-                    for (int i = 0; i <_aLivePool.Count; i ++)
+                    for (int i = 0; i < _aLivePool.Count; i++)
                     {
                         int index = r.Next(0, _aLivePool.Count);
-                        ConnectionMultiplexer cm = _aLivePool[index] as ConnectionMultiplexer;
-                        if (cm.IsConnected)
+                        int eachIndex = 0;
+                        bool match = false;
+                        foreach (ConnectionMultiplexer cm in new IteratorIsolateCollection(_aLivePool))
                         {
-                            conn = cm;
-                            _aLivePool.Remove(cm);
-                            break;
-                        }
-                        else
-                        {
-                            Log.WriteWarning("RedisPools::GetConnection", "获取连接时发现cm.IsConnected==false,从连接池中移除");
-                            cm.Close();
-                            _aLivePool.Remove(cm);
+                            if (eachIndex == index ||match)
+                            {
+                                match = true;
+                                if (cm.IsConnected)
+                                {
+                                    conn = cm;
+                                    _aLivePool.Remove(cm);
+                                    break;
+                                }
+                                else
+                                {
+                                    Log.WriteWarning("RedisPools::GetConnection", "获取连接时发现cm.IsConnected==false,从连接池中移除");
+                                    cm.Close();
+                                    _aLivePool.Remove(cm);
+                                }
+                            }
+                            eachIndex ++;    
                         }
                     }
                 }
