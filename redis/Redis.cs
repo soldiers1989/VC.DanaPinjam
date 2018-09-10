@@ -13,11 +13,19 @@ namespace RedisPools
     /// </summary>
     public class Redis
     {
+        private static ConnectionMultiplexer conn = null;
         RedisPools _pool = null;
 
         public Redis()
         {
-            _pool = RedisPools.GetInstance("TestRedisPool");
+            //_pool = RedisPools.GetInstance("TestRedisPool");
+
+            ConfigurationOptions config = new ConfigurationOptions();
+
+            config.EndPoints.Add("127.0.0.1:6379");
+            config.Password = "";
+            config.AbortOnConnectFail = false;
+            conn = ConnectionMultiplexer.Connect(config);
         }
 
         public Redis(string poolName)
@@ -32,11 +40,11 @@ namespace RedisPools
 
         public long HashDelete(RedisKey key, RedisValue[] hashField)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //conn = _pool.GetConnection();
                 IDatabase db = conn.GetDatabase();
 
                 return db.HashDelete(key, hashField);
@@ -45,6 +53,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::HashExists", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -52,7 +61,7 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return -1;
         }
 
@@ -63,11 +72,11 @@ namespace RedisPools
 
         public long KeyDelete(RedisKey[] key)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //conn = _pool.GetConnection();
                 IDatabase db = conn.GetDatabase();
 
                 return db.KeyDelete(key);
@@ -76,6 +85,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::HashExists", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -83,17 +93,17 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return -1;
         }
 
         public bool LockTake(RedisKey key, RedisValue value, int t = 10)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //conn = _pool.GetConnection();
                 IDatabase db = conn.GetDatabase();
 
                 return db.LockTake(key, value, new TimeSpan(0, 0, t));
@@ -102,6 +112,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::LockTake", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -109,17 +120,17 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return false;
         }
 
         public bool LockRelease(RedisKey key, RedisValue value)
         {
-            ConnectionMultiplexer conn = null;
+            // ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //   conn = _pool.GetConnection();
                 IDatabase db = conn.GetDatabase();
                 return db.LockRelease(key, value);
             }
@@ -127,6 +138,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::LockRelease", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -134,6 +146,7 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
+            */
 
             return false;
         }
@@ -158,11 +171,11 @@ namespace RedisPools
 
         public bool StringSet(string key, RedisValue val, TimeSpan ts)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //conn = _pool.GetConnection();
 
                 if (null == conn)
                 {
@@ -178,6 +191,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::StringSet", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -185,17 +199,17 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return false;
         }
 
         public bool HashExists(string key, RedisValue val)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //conn = _pool.GetConnection();
                 if (null == conn)
                 {
                     Log.WriteErrorLog("Redis::HashExists", "获取连接返回为空。");
@@ -211,6 +225,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::HashExists", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -218,17 +233,17 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return false;
         }
 
         public RedisValue StringIncrement(string key, RedisValue val)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //  conn = _pool.GetConnection();
                 if (null == conn)
                 {
                     Log.WriteErrorLog("Redis::StringIncrement", "获取连接返回为空。");
@@ -244,6 +259,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::StringIncrement", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -251,17 +267,17 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return 0;
         }
 
         public double StringIncrement(string key, double d)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //conn = _pool.GetConnection();
                 if (null == conn)
                 {
                     Log.WriteErrorLog("Redis::StringIncrement", "获取连接返回为空。");
@@ -276,6 +292,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::StringIncrement", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -283,17 +300,17 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return -1;
         }
 
         public RedisValue HashGet(RedisKey key, RedisValue hashFeld)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //conn = _pool.GetConnection();
                 if (null == conn)
                 {
                     Log.WriteErrorLog("Redis::HashGet", "获取连接返回为空。");
@@ -308,6 +325,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::HashGet", ex.Message);
             }
+            /*
             finally
             {
                 if (null != conn)
@@ -315,7 +333,7 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return RedisValue.EmptyString;
         }
 
@@ -353,11 +371,11 @@ namespace RedisPools
 
         public RedisValue StringGet(string key)
         {
-            ConnectionMultiplexer conn = null;
+            //ConnectionMultiplexer conn = null;
 
             try
             {
-                conn = _pool.GetConnection();
+                //  conn = _pool.GetConnection();
                 if (null == conn)
                 {
                     Log.WriteErrorLog("Redis::StringGet", "获取连接返回为空。");
@@ -372,6 +390,8 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("Redis::StringGet", ex.Message);
             }
+
+            /*
             finally
             {
                 if (null != conn)
@@ -379,7 +399,7 @@ namespace RedisPools
                     _pool.ReleaseConnection(conn);
                 }
             }
-
+ */
             return String.Empty;
         }
     }
