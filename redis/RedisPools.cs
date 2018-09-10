@@ -93,7 +93,7 @@ namespace RedisPools
                     _checkThread.Start();
                 }
                 */
-                
+
                 ConfigurationOptions config = new ConfigurationOptions();
 
                 string[] servers = serverInfo.Split(';');
@@ -231,6 +231,7 @@ namespace RedisPools
         /// <returns></returns>
         public ConnectionMultiplexer GetConnection()
         {
+            /*
             ConnectionMultiplexer conn = null;
 
             lock (_aLivePool)
@@ -274,10 +275,13 @@ namespace RedisPools
             }
 
             return conn;
+            */
+
+            return getConnection();
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        private static ConnectionMultiplexer getConnection()
+        public static ConnectionMultiplexer getConnection()
         {
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(_config);
             redis.ConnectionFailed += redis_ConnectionFailed;
@@ -293,6 +297,15 @@ namespace RedisPools
         /// <returns></returns>
         public bool ReleaseConnection(ConnectionMultiplexer conn)
         {
+            try{
+                conn.Close();
+                conn.Dispose();
+                conn = null;
+            }
+            catch (Exception e)
+            {}
+            return true;
+            /*
             try
             {
                 lock (_busyPool)
@@ -312,6 +325,7 @@ namespace RedisPools
                 Log.WriteErrorLog("RedisPools::ReleaseConnection", ex.Message);
             }
             return false;
+             */
         }
 
         public static void Exit()
