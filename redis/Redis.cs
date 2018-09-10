@@ -19,16 +19,30 @@ namespace RedisPools
         public Redis()
         {
             //_pool = RedisPools.GetInstance("TestRedisPool");
-
-            ConfigurationOptions config = new ConfigurationOptions();
-
-            config.EndPoints.Add("127.0.0.1:6379");
-            config.Password = "";
-            config.AbortOnConnectFail = false;
-            if (null == conn)
-                conn = ConnectionMultiplexer.Connect(config);
+            conn = GetConnection();
         }
 
+        private static readonly object GetConnectionLock = new object();
+        public static ConnectionMultiplexer GetConnection()
+        {
+            if (conn == null)
+            {
+                lock (GetConnectionLock)
+                {
+                    if (conn == null)
+                    {
+                        ConfigurationOptions config = new ConfigurationOptions();
+
+                        config.EndPoints.Add("127.0.0.1:6379");
+                        config.Password = "";
+                        config.AbortOnConnectFail = false;
+
+                        conn = ConnectionMultiplexer.Connect(config);
+                    }
+                }
+            }
+            return conn;
+        }
         public Redis(string poolName)
         {
             _pool = RedisPools.GetInstance(poolName);
