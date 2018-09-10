@@ -3,8 +3,7 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="StackExchange.Redis" Version="1.2.6"/>
-    <ProjectReference Include="..\log\log.csproj" />
-
+    <ProjectReference Include="..\log\log.csproj"/>
+    <PackageReference Include="StackExchange.Redis" Version="2.0.495"/>
   </ItemGroup>
 </Project>

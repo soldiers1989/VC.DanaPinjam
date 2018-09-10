@@ -1,0 +1,66 @@
+13:11:50 [Debug] ControlCenter::Startup [1]号服务器::Begin connect db
+13:11:54 [Debug] ControlCenter::Startup [1]号服务器::server=5afec7056e210.sgcdb.myqcloud.com;port=5010;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+13:11:54 [SystemLog] TaskThread::Start [1]号服务器::The release loan task thread is ready start.
+13:11:54 [SystemLog] TaskThread::Start [1]号服务器::The thread is already started.
+13:11:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:11:54 [Debug] TaskThread::threadProc [1]号服务器::今天是星期:1 是放款日,放款时间段：8点- 21点，待放款数据为：11条
+13:11:54 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，143984 - 5
+13:11:54 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)143984 － 5
+13:11:54 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 143984 - 5 Pencairan dana sedang dalam proses
+13:11:54 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)143984 － 5
+13:11:55 [Debug] LoanBank::Transfer [1]号服务器::准备转帐，查询银行信息。143984
+13:11:55 [Debug] LoanBank::Transfer [1]号服务器::request info:{"amountTransfer":"1000000","bankAccount":"4501489951","bankCode":"","purpose":"duitku auto release loan.Rp1000000","senderId":5687,"senderName":"Mariana Widiawati","userId":7129,"email":"cs@danapinjam.com","timestamp":1536556315051,"signature":"E9A7868D593DB3E3645807353D7956B236B25B05055FF6EC751D7E3FD6A3744A"}
+13:11:56 [Debug] LoanBank::Transfer [1]号服务器::核对银行帐号信息：{"email":"cs@danapinjam.com","bankCode":"","amountTransfer":"1000000.0","accountName":"","custRefNumber":"","disburseId":0,"isNameSimilar":false,"responseCode":"-149","responseDesc":"Bank not found"}
+13:11:56 [Error] LoanBank::Transfer [1]号服务器::转帐失败：Bank not found
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，143984 - -1
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)143984 － -1
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 143984 - -1 Bank not found(-149)
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)143984 － -1
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，144996 - 5
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)144996 － 5
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 144996 - 5 Pencairan dana sedang dalam proses
+13:11:56 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)144996 － 5
+13:11:56 [Debug] LoanBank::Transfer [1]号服务器::准备转帐，查询银行信息。144996
+13:11:56 [Debug] LoanBank::Transfer [1]号服务器::request info:{"amountTransfer":"1000000","bankAccount":"312801023874538","bankCode":"","purpose":"duitku auto release loan.Rp1000000","senderId":16134,"senderName":"agustina setiya rini","userId":7129,"email":"cs@danapinjam.com","timestamp":1536556316849,"signature":"F6CFA079EE8E58447EB6AA6B826E523530B88B737FAEF4AD51C89715619ECFA4"}
+13:11:57 [Debug] LoanBank::Transfer [1]号服务器::核对银行帐号信息：{"email":"cs@danapinjam.com","bankCode":"","amountTransfer":"1000000.0","accountName":"","custRefNumber":"","disburseId":0,"isNameSimilar":false,"responseCode":"-149","responseDesc":"Bank not found"}
+13:11:57 [Error] LoanBank::Transfer [1]号服务器::转帐失败：Bank not found
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，144996 - -1
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)144996 － -1
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 144996 - -1 Bank not found(-149)
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)144996 － -1
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，142008 - 5
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)142008 － 5
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 142008 - 5 Pencairan dana sedang dalam proses
+13:11:57 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)142008 － 5
+13:11:57 [Debug] LoanBank::Transfer [1]号服务器::准备转帐，查询银行信息。142008
+13:11:57 [Debug] LoanBank::Transfer [1]号服务器::request info:{"amountTransfer":"1000000","bankAccount":"137001002602505","bankCode":"","purpose":"duitku auto release loan.Rp1000000","senderId":22081,"senderName":"nur khayati","userId":7129,"email":"cs@danapinjam.com","timestamp":1536556317950,"signature":"44A6ACB35DE20781D8B32C927B3C0BEE4A1BC59CC0A9DCB76E2E698CEB2AD953"}
+13:11:58 [Debug] LoanBank::Transfer [1]号服务器::核对银行帐号信息：{"email":"cs@danapinjam.com","bankCode":"","amountTransfer":"1000000.0","accountName":"","custRefNumber":"","disburseId":0,"isNameSimilar":false,"responseCode":"-149","responseDesc":"Bank not found"}
+13:11:58 [Error] LoanBank::Transfer [1]号服务器::转帐失败：Bank not found
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，142008 - -1
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)142008 － -1
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 142008 - -1 Bank not found(-149)
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)142008 － -1
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，145246 - 5
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)145246 － 5
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 145246 - 5 Pencairan dana sedang dalam proses
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)145246 － 5
+13:11:58 [Debug] LoanBank::Transfer [1]号服务器::准备转帐，查询银行信息。145246
+13:11:58 [Debug] LoanBank::Transfer [1]号服务器::request info:{"amountTransfer":"1000000","bankAccount":"569401007056533","bankCode":"","purpose":"duitku auto release loan.Rp1000000","senderId":35840,"senderName":"Indarti Lina Puspadewi","userId":7129,"email":"cs@danapinjam.com","timestamp":1536556318760,"signature":"73C6252D52EBD5EED811BCA7DE61EE7A98F779910F9F73471F20EA5157558E64"}
+13:11:58 [Debug] LoanBank::Transfer [1]号服务器::核对银行帐号信息：{"email":"cs@danapinjam.com","bankCode":"","amountTransfer":"1000000.0","accountName":"","custRefNumber":"","disburseId":0,"isNameSimilar":false,"responseCode":"-149","responseDesc":"Bank not found"}
+13:11:58 [Error] LoanBank::Transfer [1]号服务器::转帐失败：Bank not found
+13:11:58 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，145246 - -1
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)145246 － -1
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 145246 - -1 Bank not found(-149)
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)145246 － -1
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，141500 - 5
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)141500 － 5
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 141500 - 5 Pencairan dana sedang dalam proses
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)141500 － 5
+13:11:59 [Debug] LoanBank::Transfer [1]号服务器::准备转帐，查询银行信息。141500
+13:11:59 [Debug] LoanBank::Transfer [1]号服务器::request info:{"amountTransfer":"1000000","bankAccount":"1070561375","bankCode":"","purpose":"duitku auto release loan.Rp1000000","senderId":39484,"senderName":"ainul fitroh","userId":7129,"email":"cs@danapinjam.com","timestamp":1536556319536,"signature":"F60F202E4F5BC897C9024AE4DCEA0C336165707794B93A6DB7279D89E4649E4D"}
+13:11:59 [Debug] LoanBank::Transfer [1]号服务器::核对银行帐号信息：{"email":"cs@danapinjam.com","bankCode":"","amountTransfer":"1000000.0","accountName":"","custRefNumber":"","disburseId":0,"isNameSimilar":false,"responseCode":"-149","responseDesc":"Bank not found"}
+13:11:59 [Error] LoanBank::Transfer [1]号服务器::转帐失败：Bank not found
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::设置状态，141500 - -1
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)141500 － -1
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::准备插入描述 141500 - -1 Bank not found(-149)
+13:11:59 [Debug] BusinesssDao::SetDebitRecordStatus [1]号服务器::执行成功(1)141500 － -1

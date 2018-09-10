@@ -116,7 +116,11 @@ namespace RedisPools
                 _config = config;
                 for (int i = 0; i < initConns && initConns > _aLivePool.Count; i++)
                 {
-                    ConnectionMultiplexer redis = getConnection();
+                    ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(_config);
+                    redis.ConnectionFailed += redis_ConnectionFailed;
+                    redis.ErrorMessage += redis_ErrorMessage;
+                    redis.InternalError += redis_InternalError;
+
                     //添加到活跃池
                     if (redis.IsConnected)
                     {
@@ -144,66 +148,68 @@ namespace RedisPools
             return _initialized;
         }
 
-        private static void checkConnection()
-        {
-            while (!_isBreak)
-            {
-                Log.WriteDebugLog("RedisPools::checkConnection", "空闲连接数：{0}, 进行中连接数：{1}", _aLivePool.Count, _busyPool.Count);
-
-                try
+        /*
+                private static void checkConnection()
                 {
-                    if (_busyPool.Count == 0 && _aLivePool.Count > 0)
+                    while (!_isBreak)
                     {
-                        int clearCount = 0;
-                        int recreateCount = 0;
-                        Log.WriteWarning("RedisPools::checkConnection", "总连接数：{0}，都是空闲连接：{1}，将对多余空闲连接进行回收。", _aLivePool.Count + _busyPool.Count, _aLivePool.Count);
-                        foreach (ConnectionMultiplexer conn in new IteratorIsolateCollection(_aLivePool.Keys))
+                        Log.WriteDebugLog("RedisPools::checkConnection", "空闲连接数：{0}, 进行中连接数：{1}", _aLivePool.Count, _busyPool.Count);
+
+                        try
                         {
-                            DateTime expire = (DateTime)_aLivePool[conn];
-
-                            if (((expire.AddMilliseconds(_maxIdle)) < DateTime.Now || !conn.IsConnected))
+                            if (_busyPool.Count == 0 && _aLivePool.Count > 0)
                             {
-                                Log.WriteWarning("RedisPools::checkConnection", "检测到连接已超时,最近使用该连接的时间为【{0}】,即将回收,conn.IsConnected == {1}！", expire, conn.IsConnected);
-
-                                try
+                                int clearCount = 0;
+                                int recreateCount = 0;
+                                Log.WriteWarning("RedisPools::checkConnection", "总连接数：{0}，都是空闲连接：{1}，将对多余空闲连接进行回收。", _aLivePool.Count + _busyPool.Count, _aLivePool.Count);
+                                foreach (ConnectionMultiplexer conn in new IteratorIsolateCollection(_aLivePool.Keys))
                                 {
-                                    conn.Dispose();
+                                    DateTime expire = (DateTime)_aLivePool[conn];
 
-                                    ConnectionMultiplexer newConn = null;
-                                    newConn = getConnection();
-                                    lock (_aLivePool)
+                                    if (((expire.AddMilliseconds(_maxIdle)) < DateTime.Now || !conn.IsConnected))
                                     {
-                                        _aLivePool.Remove(conn);
-                                        if (null != newConn)
-                                        {
-                                            _aLivePool[newConn] = DateTime.Now;
-                                            Log.WriteWarning("RedisPools::checkConnection", "重新创建链接成功,conn.IsConnected == {0}！", newConn.IsConnected);
-                                            recreateCount++;
-                                        }
+                                        Log.WriteWarning("RedisPools::checkConnection", "检测到连接已超时,最近使用该连接的时间为【{0}】,即将回收,conn.IsConnected == {1}！", expire, conn.IsConnected);
 
-                                        clearCount++;
+                                        try
+                                        {
+                                            conn.Dispose();
+
+                                            ConnectionMultiplexer newConn = null;
+                                            newConn = getConnection();
+                                            lock (_aLivePool)
+                                            {
+                                                _aLivePool.Remove(conn);
+                                                if (null != newConn)
+                                                {
+                                                    _aLivePool[newConn] = DateTime.Now;
+                                                    Log.WriteWarning("RedisPools::checkConnection", "重新创建链接成功,conn.IsConnected == {0}！", newConn.IsConnected);
+                                                    recreateCount++;
+                                                }
+
+                                                clearCount++;
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Log.WriteErrorLog("RedisPools::checkConnection", ex.Message);
+                                        }
+                                    }
+
+                                    if (clearCount > 0)
+                                    {
+                                        Log.WriteWarning("RedisPools::checkConnection", "清除了：{0}个空闲连接，重建了{1}个链接。", clearCount, recreateCount);
                                     }
                                 }
-                                catch (Exception ex)
-                                {
-                                    Log.WriteErrorLog("RedisPools::checkConnection", ex.Message);
-                                }
-                            }
-
-                            if (clearCount > 0)
-                            {
-                                Log.WriteWarning("RedisPools::checkConnection", "清除了：{0}个空闲连接，重建了{1}个链接。", clearCount, recreateCount);
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            Log.WriteErrorLog("RedisPools::checkConnection", "发生异常：{0}", ex.Message);
+                        }
+                        Thread.Sleep(30 * 1000);
                     }
                 }
-                catch (Exception ex)
-                {
-                    Log.WriteErrorLog("RedisPools::checkConnection", "发生异常：{0}", ex.Message);
-                }
-                Thread.Sleep(30 * 1000);
-            }
-        }
+         */
 
         #region redis 事件处理
         static void redis_InternalError(object sender, InternalErrorEventArgs e)
@@ -281,7 +287,7 @@ namespace RedisPools
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]
-        public static ConnectionMultiplexer getConnection()
+        public ConnectionMultiplexer getConnection()
         {
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(_config);
             redis.ConnectionFailed += redis_ConnectionFailed;
@@ -297,13 +303,14 @@ namespace RedisPools
         /// <returns></returns>
         public bool ReleaseConnection(ConnectionMultiplexer conn)
         {
-            try{
+            try
+            {
                 conn.Close();
                 conn.Dispose();
                 conn = null;
             }
             catch (Exception e)
-            {}
+            { }
             return true;
             /*
             try
