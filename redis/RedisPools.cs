@@ -240,7 +240,7 @@ namespace RedisPools
                         int index = r.Next(0, _aLivePool.Count);
                         int eachIndex = 0;
                         bool match = false;
-                        foreach (ConnectionMultiplexer cm in new IteratorIsolateCollection(_aLivePool))
+                        foreach (ConnectionMultiplexer cm in new IteratorIsolateCollection(_aLivePool.Keys))
                         {
                             if (eachIndex == index ||match)
                             {
