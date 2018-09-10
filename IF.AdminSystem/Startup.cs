@@ -37,7 +37,7 @@ namespace IF.AdminSystem
 
             string serverInfo = config["AppSettings:RedisExchangeHosts"];
             string password = config["AppSettings:RedisExchangePwd"];
-            //RedisPools.RedisPools.Init(serverInfo, Proxy.None, 5, password);
+            RedisPools.RedisPools.Init(serverInfo, Proxy.None, 5, password);
 
 
         }
