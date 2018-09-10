@@ -230,13 +230,15 @@ namespace RedisPools
         public ConnectionMultiplexer GetConnection()
         {
             ConnectionMultiplexer conn = null;
-
+            Random r = new Random();
             lock (_aLivePool)
             {
                 if (_aLivePool.Count > 0)
                 {
-                    foreach (ConnectionMultiplexer cm in new IteratorIsolateCollection(_aLivePool.Keys))
+                    for (int i = 0; i <_aLivePool.Count; i ++)
                     {
+                        int index = r.Next(0, _aLivePool.Count);
+                        ConnectionMultiplexer cm = _aLivePool[index] as ConnectionMultiplexer;
                         if (cm.IsConnected)
                         {
                             conn = cm;
