@@ -17,7 +17,7 @@ namespace RedisPools
 		/// <summary>
 		/// 最少连接
 		/// </summary>
-		private static int _minConns = 10;
+		private static int _minConns = 200;
 
 		private static bool _isBreak = false;
 
