@@ -25,7 +25,8 @@ namespace RedisPools
             config.EndPoints.Add("127.0.0.1:6379");
             config.Password = "";
             config.AbortOnConnectFail = false;
-            conn = ConnectionMultiplexer.Connect(config);
+            if (null == conn)
+                conn = ConnectionMultiplexer.Connect(config);
         }
 
         public Redis(string poolName)
