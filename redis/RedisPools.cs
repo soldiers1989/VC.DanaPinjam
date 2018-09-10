@@ -84,6 +84,7 @@ namespace RedisPools
 
             try
             {
+                /*
                 if (null == _checkThread)
                 {
                     _checkThread = new Thread(new ThreadStart(checkConnection));
@@ -91,7 +92,8 @@ namespace RedisPools
                     _checkThread.IsBackground = true;
                     _checkThread.Start();
                 }
-
+                */
+                
                 ConfigurationOptions config = new ConfigurationOptions();
 
                 string[] servers = serverInfo.Split(';');
