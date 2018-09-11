@@ -301,7 +301,7 @@ namespace NF.AdminSystem.Controllers
                             DebitInfoModel model = result.data as DebitInfoModel;
                             dataUserId = model.userId;
 
-                            ViewData["money"] = (model.payBackMoney + model.overdueMoney).ToString("N0").Replace(",", ".");
+                            ViewData["money"] = (model.payBackMoney).ToString("N0").Replace(",", ".");
                         }
 
                         if (userId == dataUserId)

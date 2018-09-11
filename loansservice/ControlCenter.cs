@@ -14,7 +14,7 @@ namespace loansservice
             DataBaseOperator.SetDbIniFilePath(".");
             Log.WriteDebugLog("ControlCenter::Startup", "Begin connect db");
             
-            string connStr = DataBasePool.AddDataBaseConnectionString("debit", "!%(**$*@^77f1fjj", 5, 5);
+            string connStr = DataBasePool.AddDataBaseConnectionString("debittest", "!%(**$*@^77f1fjj", 5, 5);
 
             Log.WriteDebugLog("ControlCenter::Startup", connStr);
             DataBaseOperator.Init("debit");

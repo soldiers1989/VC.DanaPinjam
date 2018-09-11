@@ -44,16 +44,28 @@ namespace NF.AdminSystem.Controllers
             ret.result = Result.SUCCESS;
             try
             {
-                DataProviderResultModel result = MainInfoProvider.GetBankCodes();
-                if (result.result == Result.SUCCESS)
+                Redis redis = HelperProvider.GetRedis();
+                string key = "BankCodes";
+                string retJson = redis.StringGet(key);
+
+                if (String.IsNullOrEmpty(retJson))
                 {
-                    ret.data = result.data;
+                    DataProviderResultModel result = MainInfoProvider.GetBankCodes();
+                    if (result.result == Result.SUCCESS)
+                    {
+                        ret.data = result.data;
+                    }
+                    else
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = result.result;
+                        ret.message = result.message;
+                    }
+                    redis.StringSet(key, JsonConvert.SerializeObject(ret), 300);
                 }
                 else
                 {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = result.result;
-                    ret.message = result.message;
+                    return retJson;
                 }
             }
             catch (Exception ex)

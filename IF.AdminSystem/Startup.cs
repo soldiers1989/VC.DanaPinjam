@@ -15,6 +15,7 @@ using YYLog.ClassLibrary;
 using DBMonoUtility;
 using StackExchange.Redis;
 using NF.AdminSystem;
+using System.Threading;
 
 namespace IF.AdminSystem
 {
@@ -34,6 +35,8 @@ namespace IF.AdminSystem
             DataBaseOperator.Init(DBName);
             Log.WriteDebugLog("WebApiApplication::Application_Start", "数据库连接串：{0}", conStr);
  
+            ThreadPool.SetMinThreads(100, 100);
+            ThreadPool.SetMaxThreads(2048, 2048);
 
             string serverInfo = config["AppSettings:RedisExchangeHosts"];
             string password = config["AppSettings:RedisExchangePwd"];

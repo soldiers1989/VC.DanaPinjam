@@ -176,7 +176,7 @@ namespace RedisPools
             }
             catch (Exception ex)
             {
-                Log.WriteErrorLog("Redis::StringSet", ex.Message);
+                Log.WriteErrorLog("Redis::StringSet", "{0} {1}", null == conn ? "" : Convert.ToString(conn.IsConnected), ex.Message);
             }
             finally
             {
@@ -370,7 +370,7 @@ namespace RedisPools
             }
             catch (Exception ex)
             {
-                Log.WriteErrorLog("Redis::StringGet", ex.Message);
+                Log.WriteErrorLog("Redis::StringSet", "{0} {1}", null == conn ? "" : Convert.ToString(conn.IsConnected), ex.Message);
             }
             finally
             {
