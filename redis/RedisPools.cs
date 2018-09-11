@@ -114,8 +114,11 @@ namespace RedisPools
 
                 _config = config;
 
-                ThreadPool.QueueUserWorkItem(connectRedis, initConns);
-                
+                //ThreadPool.QueueUserWorkItem(connectRedis, initConns);
+                if (null == _conn)
+                {
+                    _conn = getConnection();
+                }
             }
             catch (Exception ex)
             {
@@ -234,6 +237,11 @@ namespace RedisPools
         /// <returns></returns>
         public ConnectionMultiplexer GetConnection()
         {
+            if (null == _conn)
+            {
+                _conn = getConnection();
+            }
+            return _conn;
             ConnectionMultiplexer conn = null;
             Random r = new Random();
             lock (_aLivePool)
@@ -304,6 +312,7 @@ namespace RedisPools
         /// <returns></returns>
         public bool ReleaseConnection(ConnectionMultiplexer conn)
         {
+            /*
             try
             {
                 lock (_busyPool)
@@ -322,6 +331,7 @@ namespace RedisPools
             {
                 Log.WriteErrorLog("RedisPools::ReleaseConnection", ex.Message);
             }
+             */
             return false;
         }
 
