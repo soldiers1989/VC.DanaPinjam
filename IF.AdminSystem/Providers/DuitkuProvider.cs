@@ -326,7 +326,7 @@ namespace NF.AdminSystem.Providers
                                 float needPayMoney = 0f;
 
                                 float.TryParse(request.amount, out amoutMoney);
-                                needPayMoney = (float)Math.Round(debitModel.payBackMoney + debitModel.overdueMoney, 0);
+                                needPayMoney = (float)Math.Round(debitModel.payBackMoney, 0);
                                 amoutMoney = (float)Math.Round(amoutMoney, 0);
                                 Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "核对应还金额 needPayMoney:{0} - amoutMoney:{1}", needPayMoney, amoutMoney);
                                 if (amoutMoney >= needPayMoney)
