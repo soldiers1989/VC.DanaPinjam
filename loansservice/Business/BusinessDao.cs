@@ -70,7 +70,10 @@ public class BusinessDao
         try
         {
             dbo = new DataBaseOperator();
-            string sqlStr = @"select id from IFUserPayBackDebitRecord where type in (3,4) and status = -2 and ifnull(reTryTimes,0) < 3 and createTime < date_add(now(), interval -10 minute)  limit 10";
+            string sqlStr = @"select id from IFUserPayBackDebitRecord 
+                where type in (3,4) and status = -2 and ifnull(reTryTimes,0) < 3 
+                and createTime < date_add(now(), interval -10 minute) 
+                and createTime > '2018-09-13 22:00:00' limit 10";
             ParamCollections pc = new ParamCollections();
 
             DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
