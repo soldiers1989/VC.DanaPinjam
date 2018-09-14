@@ -63,6 +63,66 @@ public class BusinessDao
         return list;
     }
 
+    public static List<string> GetNeedCheckDebitRecords()
+    {
+        DataBaseOperator dbo = null;
+        List<string> list = new List<string>();
+        try
+        {
+            dbo = new DataBaseOperator();
+            string sqlStr = @"select id from IFUserPayBackDebitRecord where type in (3,4) and status = -2 and ifnull(reTryTimes,0) < 3 and createTime < date_add(now(), interval -10 minute)  limit 10";
+            ParamCollections pc = new ParamCollections();
+
+            DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
+            if (null != dt && dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    list.Add(Convert.ToString(dt.Rows[i]["id"]));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.WriteErrorLog("BusinessDao::GetNeedCheckDebitRecords", ex.Message);
+        }
+        finally
+        {
+            if (null != dbo)
+            {
+                dbo.Close();
+                dbo = null;
+            }
+        }
+        return list;
+    }
+
+    public static bool UpdateRedoUserPayBackRecordStatus(string orderId) 
+    {
+        DataBaseOperator dbo = null;
+        try
+        {
+            dbo = new DataBaseOperator();
+            string sqlStr = @"update IFUserPayBackDebitRecord set statusTime=now(),retryTimes=ifnull(retryTimes,0)+1 where id=@iOrderId";
+            ParamCollections pc = new ParamCollections();
+            pc.Add("@iOrderId", orderId);
+            dbo.ExecuteStatement(sqlStr, pc.GetParams());   
+            return true; 
+        }
+        catch (Exception ex)
+        {
+            Log.WriteErrorLog("BusinessDao::UpdateUserPayBackRecordStatus", ex.Message);
+        }
+        finally
+        {
+            if (null != dbo)
+            {
+                dbo.Close();
+                dbo = null;
+            }
+        }
+        return false;
+    }
     ///设置贷款记录的状态
     public static bool SetDebitRecordStatus(int debitId, int status, string auditMsg)
     {

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Threading;
+using DBMonoUtility;
 using loansservice;
 using Newtonsoft.Json;
+using YYLog.ClassLibrary;
+
 namespace test
 {
     class Program
@@ -51,11 +54,20 @@ namespace test
             Console.WriteLine(timestamp);
 
             */
+            
+            Log.Init(1, 50240000, "yyyyMMdd", @"./logs/", LogType.Debug);
+
+            DataBaseOperator.SetDbIniFilePath(".");
+            Log.WriteDebugLog("ControlCenter::Startup", "Begin connect db");
+            
+            string connStr = DataBasePool.AddDataBaseConnectionString("debittest", "!%(**$*@^77f1fjj", 5, 5);
+
+            Log.WriteDebugLog("ControlCenter::Startup", connStr);
+            DataBaseOperator.Init("debittest");
+
             ControlCenter cc = new ControlCenter();
 
             cc.Start();
-
-            
 
             while(true)
             {

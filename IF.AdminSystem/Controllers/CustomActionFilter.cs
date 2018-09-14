@@ -52,7 +52,6 @@ namespace NF.AdminSystem
             }
             else
             {
-                /*
                 Redis redis = HelperProvider.GetRedis();
                 string guid = redis.StringGet(String.Format("user_guid_{0}", userId));
                 
@@ -72,7 +71,6 @@ namespace NF.AdminSystem
 
                     Log.WriteDebugLog("CustomActionFilter::OnActionExecuting", "{0} {1} {2} {3} version:{4}", token, userId, qudao, ctoken, version);
                 }
-                 */
             }
 
             //await base.OnAuthorizationAsync(filterContext);

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\log\log.csproj"/>
@@ -8,5 +8,6 @@
     <PackageReference Include="DocaLabs.Http.Client.with.NewtonSoft.Json.Serializer" Version="3.0.0"/>
     <ProjectReference Include="..\redis\redis.csproj"/>
     <ProjectReference Include="..\dbnetcore.utlity\dbnetcore.utlity.csproj"/>
+    <ProjectReference Include="..\IF.AdminSystem\IF.AdminSystem.csproj"/>
   </ItemGroup>
 </Project>

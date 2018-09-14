@@ -26,3 +26,7 @@
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/loansservice.dll
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/loansservice.pdb
 /data/danapinjam/test/bin/Debug/netcoreapp2.1/loansservice.dll.config
+/data/danapinjam/test/bin/Debug/netcoreapp2.1/IF.AdminSystem.Views.dll
+/data/danapinjam/test/bin/Debug/netcoreapp2.1/IF.AdminSystem.Views.pdb
+/data/danapinjam/test/bin/Debug/netcoreapp2.1/IF.AdminSystem.dll
+/data/danapinjam/test/bin/Debug/netcoreapp2.1/IF.AdminSystem.pdb

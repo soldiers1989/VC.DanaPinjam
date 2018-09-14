@@ -16,4 +16,13 @@ public class ConfigHelper
     {
         return "cs@danapinjam.com";
     }
+
+    public static string GetDuitkuApiSecretKey()
+    {
+        return "b98bc13967735300dd62f2478eb6ebae";
+    }
+    public static string GetMerchantCode()
+    {
+        return "D0929";
+    }
 }

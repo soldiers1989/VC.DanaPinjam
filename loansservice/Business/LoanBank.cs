@@ -4,6 +4,35 @@ using YYLog.ClassLibrary;
 
 public class LoanBank
 {
+
+    public string MD532(string str)
+    {
+        byte[] b = System.Text.Encoding.Default.GetBytes(str);
+
+        b = new System.Security.Cryptography.MD5CryptoServiceProvider().ComputeHash(b);
+        string ret = "";
+        for (int i = 0; i < b.Length; i++)
+        {
+            ret += b[i].ToString("x").PadLeft(2, '0');
+        }
+        return ret;
+    }
+
+
+    public InquriyTransferResponse DuitkuOrderStatusInquiryRequest(string orderId, string merchantCode)
+    {
+        HttpHelper http = new HttpHelper();
+
+        InquiryTransferRequest request = new InquiryTransferRequest();
+        request.merchantOrderId = orderId;
+        request.merchantCode = merchantCode;
+        request.signature = MD532(String.Format("{0}{1}{2}", request.merchantCode, orderId, ConfigHelper.GetDuitkuApiSecretKey()));
+        Log.WriteDebugLog("LoanBank::Transfer", "request info:{0}", JsonConvert.SerializeObject(request));
+
+        //查询，验证转帐的银行信息
+        return http.DuitkuInquiryTransactionStatusRequest(request);
+    }
+
     public InquiryResponse DuitkuInquiryRequest(DebitUserRecord record)
     {
         HttpHelper http = new HttpHelper();
@@ -38,7 +67,7 @@ public class LoanBank
             Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对银行帐号信息，返回成功。", record.debitId);
             Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对帐户名称，record：{0} ，response：{1}", record.userName.Trim().ToUpper(), response.accountName.Trim().ToUpper());
             if (response.accountName.Replace(" ", "").Trim().ToUpper()
-                .IndexOf(record.userName.Replace(" ", "").Trim().ToUpper())> -1)
+                .IndexOf(record.userName.Replace(" ", "").Trim().ToUpper()) > -1)
             {
                 Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 帐户名称正确，初使化请求准备转帐。", record.debitId);
                 TransferRequest transferRequest = new TransferRequest();
@@ -80,7 +109,7 @@ public class LoanBank
         else
         {
             errMsg = String.Format("{0}({1})", response.responseDesc, response.responseCode);
-            Log.WriteErrorLog("LoanBank::Transfer","转帐失败：{0}", response.responseDesc);
+            Log.WriteErrorLog("LoanBank::Transfer", "转帐失败：{0}", response.responseDesc);
             return false;
         }
     }
