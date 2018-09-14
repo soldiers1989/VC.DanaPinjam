@@ -64,6 +64,17 @@
         }
         ,
         {
+            "label": "build loansservice.service",
+            "command": "sudo dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/loansservice.service/loansservice.service.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+        ,
+        {
             "label": "build loansservice",
             "command": "dotnet",
             "type": "process",

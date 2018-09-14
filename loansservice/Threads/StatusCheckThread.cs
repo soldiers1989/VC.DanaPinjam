@@ -11,7 +11,7 @@ public class StatusCheckThread
     private bool _isbreak = false;
     public void Start()
     {
-        Log.WriteSystemLog("StatusCheckThread::Start", "The release loan task thread is ready start.");
+        Log.WriteSystemLog("StatusCheckThread::Start", "The status check task thread is ready start.");
         _workThread = new Thread(new ThreadStart(threadProc));
         _workThread.Name = "Transfer Status Check Task Thread.";
         _workThread.IsBackground = true;
