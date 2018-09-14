@@ -11,50 +11,11 @@ namespace test
     {
         static void Main(string[] args)
         {
-            
-            //object obj = HelperProvider.GetToken(27);
-            
-            //string result = JsonConvert.SerializeObject(obj);
+            //AGUSTINUS WAHYU TETRA NO      !=agustinus wahyu tetra novranta
+            //：             !=
 
-            //Console.WriteLine("the result is :" + result);
-
-//$paramSignature = $email . $timestamp . $bankCode . $bankAccount . $amountTransfer . $purpose . $key; 
-//$signature = hash('sha256', $paramSignature);
-
-/*
-{'userId':3551,
-'amountTransfer':1,
-'bankAccount':'1680001297876',
-'bankCode':'008',
-'email':'test@chakratechnology.com',
-'purpose':'test',
-'timestamp':1,
-'senderId':27,
-'senderName':'f1',
-'signature':''
-} */
-
+            Console.WriteLine(Convert.ToString(Levenshtein("CHINTIA D W LASUT", "chintia dervini wulandari lasut".ToUpper())));
             /*
-            string email = "test@chakratechnology.com";
-            string timestamp = Convert.ToString((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000);
-            string bankCode = "008";
-            string bankAccount = "001001001";
-            string amountTransfer = "10001";
-            string purpose = "test";
-            string key = "de56f832487bc1ce1de5ff2cfacf8d9486c61da69df6fd61d5537b6b7d6d354d";
-
-            string paramSignature = email + timestamp + bankCode+bankAccount+amountTransfer+purpose+key;
-            string signature = HelperProvider.SHA256(paramSignature);
-            Console.WriteLine("signature:");
-
-            Console.WriteLine(signature);
-
-            Console.WriteLine("timestamp:");
-
-            Console.WriteLine(timestamp);
-
-            */
-            
             Log.Init(1, 50240000, "yyyyMMdd", @"./logs/", LogType.Debug);
 
             DataBaseOperator.SetDbIniFilePath(".");
@@ -73,6 +34,7 @@ namespace test
             {
                 Thread.Sleep(100000);
             }
+             */
             /*
             LoanBank bank = new LoanBank();
 
@@ -90,6 +52,71 @@ namespace test
 
             //bank.CheckTransferStatus("10013");
             //$paramSignature = $email . $timestamp . $bankCode . $bankAccount . $accountName . $custRefNumber . $amountTransfer . $purpose . $disburseId . $secretKey; 
+        }
+
+        /// <summary>
+        /// 比较两个字符串的相似度，并返回相似率。
+        /// </summary>
+        /// <param name="str1"></param>
+        /// <param name="str2"></param>
+        /// <returns></returns>
+        public static float Levenshtein(string str1, string str2)
+        {
+            char[] char1 = str1.ToCharArray();
+            char[] char2 = str2.ToCharArray();
+            //计算两个字符串的长度。  
+            int len1 = char1.Length;
+            int len2 = char2.Length;
+            //建二维数组，比字符长度大一个空间  
+            int[,] dif = new int[len1 + 1, len2 + 1];
+            //赋初值  
+            for (int a = 0; a <= len1; a++)
+            {
+                dif[a, 0] = a;
+            }
+            for (int a = 0; a <= len2; a++)
+            {
+                dif[0, a] = a;
+            }
+            //计算两个字符是否一样，计算左上的值  
+            int temp;
+            for (int i = 1; i <= len1; i++)
+            {
+                for (int j = 1; j <= len2; j++)
+                {
+                    if (char1[i - 1] == char2[j - 1])
+                    {
+                        temp = 0;
+                    }
+                    else
+                    {
+                        temp = 1;
+                    }
+                    //取三个值中最小的  
+                    dif[i, j] = Min(dif[i - 1, j - 1] + temp, dif[i, j - 1] + 1, dif[i - 1, j] + 1);
+                }
+            }
+            //计算相似度  
+            float similarity = 1 - (float)dif[len1, len2] / Math.Max(len1, len2);
+            return similarity;
+        }
+
+        /// <summary>
+        /// 求最小值
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        private static int Min(params int[] nums)
+        {
+            int min = int.MaxValue;
+            foreach (int item in nums)
+            {
+                if (min > item)
+                {
+                    min = item;
+                }
+            }
+            return min;
         }
     }
 }

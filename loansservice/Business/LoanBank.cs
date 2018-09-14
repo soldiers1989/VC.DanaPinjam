@@ -27,7 +27,7 @@ public class LoanBank
         request.merchantOrderId = orderId;
         request.merchantCode = merchantCode;
         request.signature = MD532(String.Format("{0}{1}{2}", request.merchantCode, orderId, ConfigHelper.GetDuitkuApiSecretKey()));
-        Log.WriteDebugLog("LoanBank::Transfer", "request info:{0}", JsonConvert.SerializeObject(request));
+        Log.WriteDebugLog("LoanBank::DuitkuOrderStatusInquiryRequest", "request info:{0}", JsonConvert.SerializeObject(request));
 
         //查询，验证转帐的银行信息
         return http.DuitkuInquiryTransactionStatusRequest(request);
@@ -66,10 +66,15 @@ public class LoanBank
         {
             Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对银行帐号信息，返回成功。", record.debitId);
             Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对帐户名称，record：{0} ，response：{1}", record.userName.Trim().ToUpper(), response.accountName.Trim().ToUpper());
-            if (response.accountName.Replace(" ", "").Trim().ToUpper()
-                .IndexOf(record.userName.Replace(" ", "").Trim().ToUpper()) > -1)
+            string bankUserName = response.accountName.Replace(" ", "").Trim().ToUpper();
+            string recordUserName = record.userName.Replace(" ", "").Trim().ToUpper();
+
+            float rate = HttpHelper.Levenshtein(bankUserName, recordUserName);
+
+            if (bankUserName.IndexOf(recordUserName) > -1
+                || rate > 0.7)
             {
-                Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 帐户名称正确，初使化请求准备转帐。", record.debitId);
+                Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 帐户名称正确，初使化请求准备转帐。相似度：{1}", record.debitId,rate);
                 TransferRequest transferRequest = new TransferRequest();
                 transferRequest.accountName = record.userName.ToUpper();
                 transferRequest.amountTransfer = response.amountTransfer;
@@ -100,7 +105,7 @@ public class LoanBank
             }
             else
             {
-                Log.WriteErrorLog("LoanBank::Transfer", "银行卡对应的名字与用户填写的名字不同：{0}!={1}", response.accountName, record.userName);
+                Log.WriteErrorLog("LoanBank::Transfer", "银行卡对应的名字与用户填写的名字不同：{0}!={1}，相似度：{2}", bankUserName, recordUserName,rate);
                 errMsg = String.Format("Bank Information Incorrect.accountName:{0} incorrect.", record.userName);
 
                 return false;
