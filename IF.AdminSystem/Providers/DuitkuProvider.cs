@@ -297,26 +297,32 @@ namespace NF.AdminSystem.Providers
                                 }
                                 else
                                 {
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对不上，进入人工审核。");
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对不上，将已还计入部份还款。");
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "应支付：{0}，收到用户支付：{1}，差额：{2}，历史支付：{3}。"
+                                    , needPayMoney, amoutMoney, needPayMoney - amoutMoney, extendInfo.partMoney);
+
                                     sqlStr = @"update IFUserPayBackDebitRecord set status = @iStatus1,statusTime = now(),money=@fMoney 
                                         where id = @iId";
-                                    pc.Add("@iStatus1", 0);
+                                    pc.Add("@iStatus1", 1);
                                     pc.Add("@fMoney", request.amount);
                                     pc.Add("@iId", request.merchantOrderId);
                                     result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
-                                    sqlStr = "update IFUserDebitRecord set status = @iStatus,statusTime = now() where debitId = @iDebitId";
-                                    pc.Add("@iStatus", 6);
+                                    sqlStr = "update IFUserDebitRecord set status = if(payBackDayTime < now(), 4, 1),statusTime = now() where debitId = @iDebitId";
+                                    //pc.Add("@iStatus", 1);
                                     pc.Add("@iDebitId", debitId);
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     sqlStr = @"insert into IFUserAduitDebitRecord(AduitType,debitId,status,description,adminId,auditTime)
 	                            values(@iAuditType, @iDebitId, @iAuditStatus, @sAuditDescription, @iUserId, now());";
-
+                                    //还款所需金额 ＝ 贷款金额 ＋ 逾期费 － 本次支付 － 历史支付金额
+                                    float needPaybackMoney = extendInfo.debitMoney + extendInfo.overdueMoney - amoutMoney - extendInfo.partMoney;
+                                    
                                     pc.Add("@iAuditType", 2);
                                     pc.Add("@iDebitId", debitId);
-                                    pc.Add("@iAuditStatus", 0);
-                                    pc.Add("@sAuditDescription", "Perpanjangan sedang di audit.");//延期申请（审核中）
+                                    pc.Add("@iAuditStatus", 1);
+                                    pc.Add("@sAuditDescription", String.Format("已支付Rp{0}，还款还需要支付Rp{1}，延期到[{2}]还需要支付Rp{3}."
+                                        ,amoutMoney, needPaybackMoney, DateTime.Now.AddDays(7).ToString("yyyy-MM-dd"), needPayMoney - amoutMoney));//延期申请（审核中）
                                     pc.Add("@iUserId", -1);
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);

@@ -34,6 +34,9 @@ namespace NF.AdminSystem.Models
 
         public float extendFee = 0f;
 
+        ///下次延期到的时间
+        public string extendDay = String.Empty;
+
         public int status = -1;
 
         public float overdueMoney = 0;
