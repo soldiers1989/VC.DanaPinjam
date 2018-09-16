@@ -37,6 +37,9 @@ namespace NF.AdminSystem.Models
         public int status = -1;
 
         public float overdueMoney = 0;
+
+        ///已还部份金额
+        public float partMoney = 0f;
     }
 
     [Serializable]
@@ -46,7 +49,11 @@ namespace NF.AdminSystem.Models
 
         public int userId;
 
+        ///贷款金额
         public float debitMoney = 0f;
+
+        ///已还部份金额
+        public float partMoney = 0f;
 
         public int status = 0;
 

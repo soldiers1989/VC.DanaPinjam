@@ -144,7 +144,7 @@ namespace NF.AdminSystem.Providers
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"select debitId,userId, debitMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
+                string sqlStr = @"select debitId,userId, debitMoney,ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
 certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
 (select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
                     from IFUserDebitRecord a where userId = @iUserId order by DebitId desc;";
@@ -162,6 +162,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                         int.TryParse(Convert.ToString(dt.Rows[i]["overdueDay"]), out info.overdueDay);
                         float.TryParse(Convert.ToString(dt.Rows[i]["dayInterset"]), out info.dayInterset);
                         float.TryParse(Convert.ToString(dt.Rows[i]["debitMoney"]), out info.debitMoney);
+                        float.TryParse(Convert.ToString(dt.Rows[i]["partMoney"]), out info.partMoney);
                         float.TryParse(Convert.ToString(dt.Rows[i]["overdueMoney"]), out info.overdueMoney);
                         int.TryParse(Convert.ToString(dt.Rows[i]["Status"]), out info.status);
                         int.TryParse(Convert.ToString(dt.Rows[i]["bankId"]), out info.bankId);
@@ -171,7 +172,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                         info.description = Convert.ToString(dt.Rows[i]["description"]);
                         info.certificate = Convert.ToString(dt.Rows[i]["certificate"]);
 
-                        info.payBackMoney = info.payBackMoney + info.overdueMoney;
+                        info.payBackMoney = info.payBackMoney + info.overdueMoney - info.partMoney;
                         info.releaseLoanTime = Convert.ToString(dt.Rows[i]["releaseLoanTime"]);
                         info.auditTime = Convert.ToString(dt.Rows[i]["statusTime"]);
                         info.repaymentTime = Convert.ToString(dt.Rows[i]["payBackDayTime"]);
@@ -278,7 +279,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"select debitId,userId, debitMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
+                string sqlStr = @"select debitId,userId, debitMoney, ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
 certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
 (select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
                     from IFUserDebitRecord a where DebitId = @iDebitId";
@@ -294,13 +295,14 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     int.TryParse(Convert.ToString(dt.Rows[0]["overdueDay"]), out info.overdueDay);
                     float.TryParse(Convert.ToString(dt.Rows[0]["dayInterset"]), out info.dayInterset);
                     float.TryParse(Convert.ToString(dt.Rows[0]["overdueMoney"]), out info.overdueMoney);
+                    float.TryParse(Convert.ToString(dt.Rows[0]["partMoney"]), out info.partMoney);
                     float.TryParse(Convert.ToString(dt.Rows[0]["debitMoney"]), out info.debitMoney);
                     int.TryParse(Convert.ToString(dt.Rows[0]["Status"]), out info.status);
                     int.TryParse(Convert.ToString(dt.Rows[0]["bankId"]), out info.bankId);
                     int.TryParse(Convert.ToString(dt.Rows[0]["debitPeroid"]), out info.debitPeroid);
                     float.TryParse(Convert.ToString(dt.Rows[0]["payBackMoney"]), out info.payBackMoney);
 
-                    info.payBackMoney = info.payBackMoney + info.overdueMoney;
+                    info.payBackMoney = info.payBackMoney + info.overdueMoney - info.partMoney;
                     info.createTime = Convert.ToString(dt.Rows[0]["createTime"]);
                     info.description = Convert.ToString(dt.Rows[0]["description"]);
                     info.releaseLoanTime = Convert.ToString(dt.Rows[0]["releaseLoanTime"]);
@@ -348,7 +350,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"select debitId,userId, debitMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
+                string sqlStr = @"select debitId,userId, debitMoney, ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
 certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
 (select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
                     from IFUserDebitRecord a where DebitId = @iDebitId";
@@ -364,6 +366,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     int.TryParse(Convert.ToString(dt.Rows[0]["overdueDay"]), out info.overdueDay);
                     float.TryParse(Convert.ToString(dt.Rows[0]["dayInterset"]), out info.dayInterset);
                     float.TryParse(Convert.ToString(dt.Rows[0]["overdueMoney"]), out info.overdueMoney);
+                    float.TryParse(Convert.ToString(dt.Rows[0]["partMoney"]), out info.partMoney);
                     float.TryParse(Convert.ToString(dt.Rows[0]["debitMoney"]), out info.debitMoney);
                     int.TryParse(Convert.ToString(dt.Rows[0]["Status"]), out info.status);
                     int.TryParse(Convert.ToString(dt.Rows[0]["bankId"]), out info.bankId);

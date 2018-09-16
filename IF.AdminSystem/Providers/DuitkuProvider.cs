@@ -32,6 +32,13 @@ namespace NF.AdminSystem.Providers
                 int count = dbo.GetCount(sqlStr, pc.GetParams(true));
                 if (count > 0)
                 {
+                    //重置状态。
+                    sqlStr = "update IFUserPayBackDebitRecord set statusTime=now(),reTryTimes=0 where debitId = @iDebitId and status = @iStatus and type = @iType";
+                    pc.Add("@iDebitId", debitId);
+                    pc.Add("@iStatus", -2);
+                    pc.Add("@iType", type);
+                    dbo.ExecuteStatement(sqlStr,pc.GetParams(true));
+
                     sqlStr = "select id from IFUserPayBackDebitRecord where debitId = @iDebitId and status = @iStatus and type = @iType";
                     pc.Add("@iDebitId", debitId);
                     pc.Add("@iStatus", -2);
@@ -252,7 +259,7 @@ namespace NF.AdminSystem.Providers
                                 float needPayMoney = 0f;
 
                                 float.TryParse(request.amount, out amoutMoney);
-                                needPayMoney = (float)Math.Round(extendInfo.extendFee + extendInfo.overdueMoney, 0);
+                                needPayMoney = (float)Math.Round(extendInfo.extendFee + extendInfo.overdueMoney - extendInfo.partMoney, 0);
                                 amoutMoney = (float)Math.Round(amoutMoney, 0);
                                 Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "核对应还金额 needPayMoney:{0} - amoutMoney:{1}", needPayMoney, amoutMoney);
                                 if (amoutMoney >= needPayMoney)
