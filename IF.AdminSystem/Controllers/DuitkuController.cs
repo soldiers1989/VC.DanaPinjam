@@ -294,7 +294,7 @@ namespace NF.AdminSystem.Controllers
                         {
                             DebitExtendModel model = result.data as DebitExtendModel;
                             dataUserId = model.userId;
-                            ViewData["money"] = (model.extendFee + model.overdueMoney).ToString("N0").Replace(",", ".");
+                            ViewData["money"] = (model.extendFee + model.overdueMoney - model.partMoney).ToString("N0").Replace(",", ".");
                         }
                         else
                         {

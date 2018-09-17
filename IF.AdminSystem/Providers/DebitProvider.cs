@@ -142,12 +142,13 @@ namespace NF.AdminSystem.Providers
             List<DebitInfoModel> infos = new List<DebitInfoModel>();
             try
             {
+                //限制返回记录条数。
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
                 string sqlStr = @"select debitId,userId, debitMoney,ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
 certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
 (select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
-                    from IFUserDebitRecord a where userId = @iUserId order by DebitId desc;";
+                    from IFUserDebitRecord a where userId = @iUserId order by DebitId desc limit 10;";
                 pc.Add("@iUserId", userId);
 
                 DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
@@ -390,6 +391,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     extend.userId = info.userId;
                     extend.debitId = info.debitId;
                     extend.status = info.status;
+                    extend.partMoney = info.partMoney;
                     extend.debitMoney = info.debitMoney;
                     extend.debitPeroid = info.debitPeroid;
                     extend.overdueMoney = info.overdueMoney;
