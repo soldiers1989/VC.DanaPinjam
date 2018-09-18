@@ -83,7 +83,7 @@ namespace NF.AdminSystem.Providers
         /// <param name="pass"></param>
         /// <param name="loginType"></param>
         /// <returns></returns>
-        public static DataProviderResultModel UserLogin(string phone, string pass, int loginType)
+        public static DataProviderResultModel UserLogin(string phone, string pass, string qudao, int loginType)
         {
             DataBaseOperator dbo = null;
             DataProviderResultModel result = new DataProviderResultModel();
@@ -108,9 +108,10 @@ namespace NF.AdminSystem.Providers
                 pass = HelperProvider.MD5Encrypt32(pass + flag);
                 pc.Add("@sUserName", phone);
                 pc.Add("@sPass", pass);
+                pc.Add("@sQudao", qudao);
                 pc.Add("@iloginType", Convert.ToString(loginType));
                 Hashtable outAl = new Hashtable();
-                DataTable dt = dbo.ExecProcedure("p_user_login", pc.GetParams(), out outAl);
+                DataTable dt = dbo.ExecProcedure("p_user_login_v2", pc.GetParams(), out outAl);
 
                 int ret = 0;
                 string message = String.Empty;

@@ -34,6 +34,7 @@ namespace NF.AdminSystem
             string userId = filterContext.HttpContext.Request.Headers["userId"];
             string qudao = filterContext.HttpContext.Request.Headers["qudao"];
             string version = filterContext.HttpContext.Request.Headers["version"];
+            string pkgName = filterContext.HttpContext.Request.Headers["pkgName"];
 
             if (String.IsNullOrEmpty(token))
             {

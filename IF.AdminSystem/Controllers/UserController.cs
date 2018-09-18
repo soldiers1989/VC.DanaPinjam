@@ -236,6 +236,8 @@ namespace NF.AdminSystem.Controllers
 
             int regType = 0;
             string qudao = String.Empty;
+
+            qudao = HttpContext.Request.Headers["pkgName"];
             try
             {
                 Redis redis = HelperProvider.GetRedis();
@@ -404,9 +406,10 @@ namespace NF.AdminSystem.Controllers
             ret.result = Result.SUCCESS;
             try
             {
+                string qudao = HttpContext.Request.Headers["pkgName"];
                 ///逻辑
                 phone = GetPhone(phone);
-                result = UserProvider.UserLogin(phone, password, loginType);
+                result = UserProvider.UserLogin(phone, password, qudao, loginType);
                 if (result.result > 0)
                 {
                     Redis redis = HelperProvider.GetRedis();
