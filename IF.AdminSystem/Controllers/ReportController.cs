@@ -18,6 +18,7 @@ using NF.AdminSystem.Providers;
 
 namespace NF.AdminSystem.Controllers
 {
+    [Route("Report")]
     public class ReportController : Controller
     {
         private void setCellHeaderStyle(ExcelRangeBase cell)
@@ -211,6 +212,7 @@ namespace NF.AdminSystem.Controllers
         }
 
         [AllowAnonymous]
+        [Route("DailyReport")]
         public IActionResult DailyReport(string date)
         {
             try

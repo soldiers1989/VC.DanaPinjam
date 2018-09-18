@@ -72,7 +72,7 @@ public class LoanBank
             float rate = HttpHelper.Levenshtein(bankUserName, recordUserName);
 
             if (bankUserName.IndexOf(recordUserName) > -1
-                || rate > 0.7)
+                || rate >= 0.7)
             {
                 Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 帐户名称正确，初使化请求准备转帐。相似度：{1}", record.debitId,rate);
                 TransferRequest transferRequest = new TransferRequest();
