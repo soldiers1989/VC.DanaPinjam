@@ -18,7 +18,7 @@ public class BusinessDao
             dbo = new DataBaseOperator();
             string sqlStr = @"select debitId,b.BNICode,b.BankCode, b.BankName, b.userId,b.ContactName,a.actualMoney 
                     from IFUserDebitRecord a,IFUserBankInfo b where a.status = @iStatus and a.audit_step = @iStep and 
-                    a.userId = b.userId and b.BNICode is not null and b.BNICode != '' limit 1";
+                    a.userId = b.userId and b.BNICode is not null and b.BNICode != '' limit 10";
             ParamCollections pc = new ParamCollections();
             pc.Add("@iStatus", 5);
             pc.Add("@iStep", 2);

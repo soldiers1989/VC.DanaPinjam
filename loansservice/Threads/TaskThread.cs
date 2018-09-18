@@ -27,8 +27,8 @@ public class TaskThread
             int endHour = 21;
             if (week > 0 && week < 6)
             {
-                //if (DateTime.Now.Hour >= beginHour && DateTime.Now.Hour <= endHour)
-                if (true)
+                if (DateTime.Now.Hour >= beginHour && DateTime.Now.Hour <= endHour)
+                //if (true)
                 {
                     List<DebitUserRecord> taskList = BusinessDao.GetReadyReleaseDebitRecords();
                     LoanBank bank = new LoanBank();
@@ -69,7 +69,7 @@ public class TaskThread
             {
                 Log.WriteDebugLog("TaskThread::threadProc", "今天是星期:{0} 不放款。", week);
             }
-            Thread.Sleep(60 * 1000);
+            Thread.Sleep(3 * 60 * 1000);
         }
     }
 
