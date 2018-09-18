@@ -28,6 +28,7 @@ public class TaskThread
             if (week > 0 && week < 6)
             {
                 //if (DateTime.Now.Hour >= beginHour && DateTime.Now.Hour <= endHour)
+                if (true)
                 {
                     List<DebitUserRecord> taskList = BusinessDao.GetReadyReleaseDebitRecords();
                     LoanBank bank = new LoanBank();
