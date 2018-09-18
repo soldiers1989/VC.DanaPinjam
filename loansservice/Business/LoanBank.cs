@@ -109,11 +109,11 @@ public class LoanBank
                             Log.WriteDebugLog("LoanBank::Transfer", "开始转帐，请求参数为:{0}", JsonConvert.SerializeObject(transferRequest));
 
                             response = http.DuitkuTransferRequest(transferRequest);
-                            
+
                             Log.WriteDebugLog("LoanBank::Transfer", "转帐结果为：{0}", JsonConvert.SerializeObject(response));
                             if (response.responseCode == "00")
                             {
-                                Log.WriteDebugLog("LoanBank::Transfer", "转帐成功：{0}", response.responseDesc);
+                                Log.WriteDebugLog("LoanBank::Transfer", "转帐成功,将结果写入缓存，避免重复打款。：{0}", response.responseDesc);
                                 redis.StringSet(retKey, JsonConvert.SerializeObject(response), 7200);
                                 return true;
                             }
