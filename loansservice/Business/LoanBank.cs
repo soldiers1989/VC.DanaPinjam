@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using RedisPools;
 using YYLog.ClassLibrary;
 
 public class LoanBank
@@ -53,68 +54,105 @@ public class LoanBank
     }
     public bool Transfer(DebitUserRecord record, out string errMsg)
     {
+        Redis redis = new Redis();
         errMsg = String.Empty;
-
-        HttpHelper http = new HttpHelper();
-        Log.WriteDebugLog("LoanBank::Transfer", "准备转帐，查询银行信息。{0}", record.debitId);
-        //查询，验证转帐的银行信息
-        InquiryResponse response = DuitkuInquiryRequest(record);
-
-        Log.WriteDebugLog("LoanBank::Transfer", "核对银行帐号信息：{0}", JsonConvert.SerializeObject(response));
-
-        if (response.responseCode == "00")
+        string key = String.Format("lock_{0}", record.debitId);
+        string retKey = String.Format("release_{0}", record.debitId);
+        if (redis.LockTake(key, record.debitId, 300))
         {
-            Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对银行帐号信息，返回成功。", record.debitId);
-            Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对帐户名称，record：{0} ，response：{1}", record.userName.Trim().ToUpper(), response.accountName.Trim().ToUpper());
-            string bankUserName = response.accountName.Replace(" ", "").Trim().ToUpper();
-            string recordUserName = record.userName.Replace(" ", "").Trim().ToUpper();
-
-            float rate = HttpHelper.Levenshtein(bankUserName, recordUserName);
-
-            if (bankUserName.IndexOf(recordUserName) > -1
-                || rate >= 0.7)
+            try
             {
-                Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 帐户名称正确，初使化请求准备转帐。相似度：{1}", record.debitId,rate);
-                TransferRequest transferRequest = new TransferRequest();
-                transferRequest.accountName = record.userName.ToUpper();
-                transferRequest.amountTransfer = response.amountTransfer;
-                transferRequest.bankCode = response.bankCode.Trim();
-                transferRequest.custRefNumber = response.custRefNumber.Trim();
-                transferRequest.disburseId = response.disburseId;
-
-                transferRequest.purpose = record.purpose;
-                transferRequest.bankAccount = record.bankAccount;
-                transferRequest.InitSingature();
-
-                Log.WriteDebugLog("LoanBank::Transfer", "开始转帐，请求参数为:{0}", JsonConvert.SerializeObject(transferRequest));
-
-                response = http.DuitkuTransferRequest(transferRequest);
-
-                Log.WriteDebugLog("LoanBank::Transfer", "转帐结果为：{0}", JsonConvert.SerializeObject(response));
-                if (response.responseCode == "00")
+                string transferResult = redis.StringGet(retKey);
+                if (!String.IsNullOrEmpty(transferResult))
                 {
-                    Log.WriteDebugLog("LoanBank::Transfer", "转帐成功：{0}", response.responseDesc);
-                    return true;
+                    InquiryResponse response = JsonConvert.DeserializeObject<InquiryResponse>(transferResult);
+                    if (response.responseCode == "00")
+                    {
+                        Log.WriteDebugLog("LoanBank::Transfer", "[{0}]早已转帐成功：{1}", record.debitId, response.responseDesc);
+                        return true;
+                    }
                 }
                 else
                 {
-                    errMsg = String.Format("{0}({1})", response.responseDesc, response.responseCode);
-                    Log.WriteErrorLog("LoanBank::Transfer", "转帐失败：{0}", response.responseDesc);
-                    return false;
+                    HttpHelper http = new HttpHelper();
+                    Log.WriteDebugLog("LoanBank::Transfer", "准备转帐，查询银行信息。{0}", record.debitId);
+                    //查询，验证转帐的银行信息
+                    InquiryResponse response = null;
+                    response = DuitkuInquiryRequest(record);
+                    
+                    Log.WriteDebugLog("LoanBank::Transfer", "核对银行帐号信息：{0}", JsonConvert.SerializeObject(response));
+
+                    if (response.responseCode == "00")
+                    {
+                        Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对银行帐号信息，返回成功。", record.debitId);
+                        Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 核对帐户名称，record：{0} ，response：{1}", record.userName.Trim().ToUpper(), response.accountName.Trim().ToUpper());
+                        string bankUserName = response.accountName.Replace(" ", "").Trim().ToUpper();
+                        string recordUserName = record.userName.Replace(" ", "").Trim().ToUpper();
+
+                        float rate = HttpHelper.Levenshtein(bankUserName, recordUserName);
+
+                        if (bankUserName.IndexOf(recordUserName) > -1
+                            || rate >= 0.7)
+                        {
+                            Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 帐户名称正确，初使化请求准备转帐。相似度：{1}%", record.debitId, rate*100);
+                            TransferRequest transferRequest = new TransferRequest();
+                            transferRequest.accountName = record.userName.ToUpper();
+                            transferRequest.amountTransfer = response.amountTransfer;
+                            transferRequest.bankCode = response.bankCode.Trim();
+                            transferRequest.custRefNumber = response.custRefNumber.Trim();
+                            transferRequest.disburseId = response.disburseId;
+
+                            transferRequest.purpose = record.purpose;
+                            transferRequest.bankAccount = record.bankAccount;
+                            transferRequest.InitSingature();
+
+                            Log.WriteDebugLog("LoanBank::Transfer", "开始转帐，请求参数为:{0}", JsonConvert.SerializeObject(transferRequest));
+
+                            response = http.DuitkuTransferRequest(transferRequest);
+                            
+                            Log.WriteDebugLog("LoanBank::Transfer", "转帐结果为：{0}", JsonConvert.SerializeObject(response));
+                            if (response.responseCode == "00")
+                            {
+                                Log.WriteDebugLog("LoanBank::Transfer", "转帐成功：{0}", response.responseDesc);
+                                redis.StringSet(retKey, JsonConvert.SerializeObject(response), 7200);
+                                return true;
+                            }
+                            else
+                            {
+                                errMsg = String.Format("{0}({1})", response.responseDesc, response.responseCode);
+                                Log.WriteErrorLog("LoanBank::Transfer", "转帐失败：{0}", response.responseDesc);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            Log.WriteErrorLog("LoanBank::Transfer", "银行卡对应的名字与用户填写的名字不同：{0}!={1}，相似度：{2}", bankUserName, recordUserName, rate);
+                            errMsg = String.Format("Bank Information Incorrect.accountName:{0} incorrect.", record.userName);
+
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        errMsg = String.Format("{0}({1})", response.responseDesc, response.responseCode);
+                        Log.WriteErrorLog("LoanBank::Transfer", "转帐失败：{0}", response.responseDesc);
+                        return false;
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Log.WriteErrorLog("LoanBank::Transfer", "银行卡对应的名字与用户填写的名字不同：{0}!={1}，相似度：{2}", bankUserName, recordUserName,rate);
-                errMsg = String.Format("Bank Information Incorrect.accountName:{0} incorrect.", record.userName);
-
-                return false;
+                Log.WriteErrorLog("LoanBank::Transfer", "转帐失败，发生异常：{0}", ex.Message);
             }
+            finally
+            {
+                redis.LockRelease(key, record.debitId);
+            }
+            return false;
         }
         else
         {
-            errMsg = String.Format("{0}({1})", response.responseDesc, response.responseCode);
-            Log.WriteErrorLog("LoanBank::Transfer", "转帐失败：{0}", response.responseDesc);
+            errMsg = "get lock fail.";
             return false;
         }
     }

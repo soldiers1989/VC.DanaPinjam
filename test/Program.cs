@@ -2,7 +2,9 @@
 using System.Threading;
 using DBMonoUtility;
 using loansservice;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using StackExchange.Redis;
 using YYLog.ClassLibrary;
 
 namespace test
@@ -35,7 +37,11 @@ namespace test
                 Thread.Sleep(100000);
             }
              */
-            /*
+
+            string serverInfo = "127.0.0.1:6379";
+            string password = "123!@#qweASD";
+            RedisPools.RedisPools.Init(serverInfo, Proxy.None, 200, password);
+
             LoanBank bank = new LoanBank();
 
             DebitUserRecord record = new DebitUserRecord();
@@ -46,8 +52,10 @@ namespace test
             record.purpose = "test";
             record.userId = 27;
             record.userName = "HENDRA";
-            */
-            //bank.Transfer(record);
+
+            string errMsg = String.Empty;
+
+            bank.Transfer(record, out errMsg);
 
 
             //bank.CheckTransferStatus("10013");

@@ -23,6 +23,10 @@ namespace loansservice.service
             Log.WriteDebugLog("ControlCenter::Startup", connStr);
             DataBaseOperator.Init("debit");
 
+            string serverInfo = "172.22.0.12:6379";
+            string password = "123!@#qweASD";
+            RedisPools.RedisPools.Init(serverInfo, Proxy.None, 200, password);
+
             ControlCenter cc = new ControlCenter();
 
             cc.Start();

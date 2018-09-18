@@ -1,5 +1,6 @@
 ﻿using System;
 using DBMonoUtility;
+using Microsoft.Extensions.Configuration;
 using YYLog.ClassLibrary;
 
 namespace loansservice
