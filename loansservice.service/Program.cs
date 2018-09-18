@@ -3,6 +3,8 @@ using System.Threading;
 using DBMonoUtility;
 using loansservice;
 using Newtonsoft.Json;
+
+using StackExchange.Redis;
 using YYLog.ClassLibrary;
 
 namespace loansservice.service
