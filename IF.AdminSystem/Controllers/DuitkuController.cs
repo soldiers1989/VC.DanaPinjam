@@ -150,7 +150,7 @@ namespace NF.AdminSystem.Controllers
                                             //状态为未还款，还款失败，逾期才能进行延期
                                             if (model.status == 1 || model.status == -2 || model.status == 4)
                                             {
-                                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
+                                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type, request.merchantCode);
 
                                                 if (result.result == Result.SUCCESS)
                                                 {
@@ -192,7 +192,7 @@ namespace NF.AdminSystem.Controllers
 
                                             if (model.status == -2 || model.status == 1 || model.status == 4)
                                             {
-                                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type);
+                                                var result = DuitkuProvider.CreatePayBack(model.userId, iDebitId, type, request.merchantCode);
 
                                                 if (result.result == Result.SUCCESS)
                                                 {
