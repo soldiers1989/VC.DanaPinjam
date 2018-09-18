@@ -54,7 +54,7 @@ public class StatusCheckThread
                 ///重做次数＋1
                 BusinessDao.UpdateRedoUserPayBackRecordStatus(orderId);
             }
-            Thread.Sleep(60 * 1000);
+            Thread.Sleep(10 * 60 * 1000);
         }
     }
 

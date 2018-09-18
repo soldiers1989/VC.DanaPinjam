@@ -40,11 +40,11 @@ public class TaskThread
                         {
                             try
                             {
-                                BusinessDao.SetDebitRecordStatus(record.debitId, 5, "Pencairan dana sedang dalam proses");
+                                BusinessDao.SetDebitRecordStatus(record.debitId, 5, "Pencairan dana sedang dalam proses(10002)");
                                 string errMsg = String.Empty;
                                 if (bank.Transfer(record, out errMsg))
                                 {
-                                    BusinessDao.SetDebitRecordStatus(record.debitId, 1, "Uang anda telah berhasil di transfer.");
+                                    BusinessDao.SetDebitRecordStatus(record.debitId, 1, "Uang anda telah berhasil di transfer(10002).");
                                 }
                                 else
                                 {
