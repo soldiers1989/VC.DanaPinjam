@@ -721,16 +721,16 @@ namespace NF.AdminSystem.Providers
                                 sqlStr += String.Format(@"insert into IFUserContacts(name,phone,callTime,recordType,createTime,userId,duration)
                                    values('{0}', '{1}', '{2}', {3},now(),{4}, {5});", records[i].name.Replace("'", ""), strPhone, records[i].callTime, type, userId, records[i].duration);
 
-                                if (submitNumber++ > 50)
+                                if (submitNumber++ > 30)
                                 {
                                     dbo.ExecuteStatement(sqlStr, pc.GetParams());
                                     submitNumber = 0;
                                     sqlStr = String.Empty;
                                 }
                             }
-                            catch (Exception eex)
+                            catch (Exception)
                             {
-                                Log.WriteErrorLog("UserProvider::UploadUserConacts", eex.Message);
+                                Log.WriteErrorLog("UserProvider::UploadUserConacts", "{0} 上传通讯录发生异常。记录数{1}", userId, records.Count);
                             }
                         }
                     }
@@ -747,16 +747,16 @@ namespace NF.AdminSystem.Providers
                                 sqlStr += String.Format(@"insert into IFUserContacts(name,phone,callTime,recordType,createTime,userId,duration)
                                    values('{0}', '{1}', '{2}', {3},now(),{4}, {5});", records[i].name.Replace("'", ""), strPhone, records[i].callTime, type, userId, records[i].duration);
 
-                                if (submitNumber++ > 50)
+                                if (submitNumber++ > 30)
                                 {
                                     dbo.ExecuteStatement(sqlStr, pc.GetParams());
                                     submitNumber = 0;
                                     sqlStr = String.Empty;
                                 }
                             }
-                            catch (Exception eex)
+                            catch (Exception)
                             {
-                                Log.WriteErrorLog("UserProvider::UploadUserConacts", eex.Message);
+                                Log.WriteErrorLog("UserProvider::UploadUserConacts", "{0} 上传通讯录发生异常。记录数{1}", userId, records.Count);
                             }
                         }
                     }
