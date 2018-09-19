@@ -59,6 +59,7 @@ namespace NF.AdminSystem.Providers
                     pc.Add("@iStatus", -2);
                     pc.Add("@iType", type);
                     pc.Add("@iDebitId", debitId);
+                    pc.Add("@sMerchantCode", merchantCode);
                     dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
 
                     sqlStr = "select id from IFUserPayBackDebitRecord where debitId = @iDebitId and status = @iStatus and type = @iType order by id desc limit 1";

@@ -1,0 +1,50 @@
+10:32:07 [Debug] Startup::Startup [1]号服务器::Begin connect db
+10:32:09 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+10:32:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:32:09 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+10:32:09 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:32:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:32:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:32:39 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:32:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:32:49 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+10:32:49 [Error] DuitkuController::InquiryRequest [1]号服务器::记录的状态为:3，不能申请延期 - 120
+10:32:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:32:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:33:09 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:33:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:33:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:33:23 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+10:33:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:33:39 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:33:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:33:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:34:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:34:09 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:34:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:34:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:34:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:34:39 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:34:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:34:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:35:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:35:09 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:35:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:35:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:35:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:36:15 [Debug] Startup::Startup [1]号服务器::Begin connect db
+10:36:16 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+10:36:16 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+10:36:16 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:36:16 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:36:20 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+10:36:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:36:36 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:36:46 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:36:46 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:36:56 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:37:02 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000120","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+10:37:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:37:16 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+10:37:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+10:37:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
