@@ -48,3 +48,346 @@
 10:37:16 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
 10:37:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
 10:37:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:16:36 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:16:39 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:16:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:16:39 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+19:16:39 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:16:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:16:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:17:09 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:17:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:17:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:17:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:17:39 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:17:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:17:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:18:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:18:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:18:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:18:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:18:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:18:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+19:19:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:19:28 [Debug] Startup::Startup [1]号服务器::Begin connect db
+19:19:31 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+19:19:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:19:31 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+19:19:31 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:19:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:19:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+19:20:01 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+19:20:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+23:21:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+23:21:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-19 07:19:54，从链接池中移除，将重新打开。
+23:21:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-19 07:19:29，从链接池中移除，将重新打开。
+23:21:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-19 07:19:31，从链接池中移除，将重新打开。
+23:21:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-19 07:19:30，从链接池中移除，将重新打开。
+23:21:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-19 07:19:29，从链接池中移除，将重新打开。
+23:21:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:21:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:21:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:21:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:22:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:22:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:22:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:22:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:22:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:22:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:22:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:22:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:23:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:23:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:23:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:23:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:23:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:23:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:23:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:23:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:24:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:24:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:24:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:24:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:24:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:24:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:24:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:24:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:25:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:25:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:25:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:25:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:25:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:25:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:25:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:25:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:26:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:26:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:26:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:26:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:26:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:26:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:26:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:26:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:27:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:27:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:27:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:27:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:27:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:27:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:27:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:27:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:28:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:28:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:28:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:28:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:28:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:28:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:28:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:28:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:29:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:29:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:29:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:29:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:29:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:29:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:29:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:29:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:30:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:30:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:30:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:30:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:30:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:30:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:30:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:30:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:31:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:31:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:31:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:31:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:31:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:31:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:31:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:31:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:32:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:32:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:32:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:32:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:32:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:32:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:32:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:32:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:33:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:33:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:33:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:33:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:33:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:33:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:33:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:33:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:34:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:34:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:34:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:34:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:34:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:34:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:34:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:34:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:35:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:35:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:35:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:35:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:35:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:35:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:35:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:35:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:36:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:36:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:36:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:36:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:36:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:36:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:36:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:36:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:37:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:37:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:37:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:37:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:37:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:37:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:37:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:37:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:38:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:38:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:38:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:38:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:38:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:38:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:38:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:38:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:39:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:39:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:39:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:39:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:39:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:39:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:39:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:39:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:40:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:40:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:40:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:40:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:40:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:40:47 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:40:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:40:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:41:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:41:17 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:41:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:41:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:41:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:41:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:41:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:41:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:42:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:42:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:42:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:42:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:42:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:42:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:42:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:42:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:43:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:43:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:43:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:43:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:43:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:43:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:43:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:43:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:44:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:44:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:44:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:44:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:44:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:44:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:44:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:44:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:45:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:45:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:45:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:45:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:45:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:45:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:45:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:45:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:46:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:46:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:46:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:46:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:46:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:46:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:46:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:46:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:47:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:47:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:47:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:47:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:47:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:47:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:47:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:47:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:48:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:48:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:48:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:48:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:48:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:48:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:48:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:48:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:49:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:49:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:49:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:49:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:49:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:49:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:49:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:49:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:50:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:50:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:50:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:50:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:50:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:50:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:50:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:50:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:51:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:51:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:51:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:51:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:51:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:51:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:51:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:51:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:52:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:52:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:52:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:52:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:52:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:52:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:52:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:52:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:53:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:53:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:53:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:53:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:53:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:53:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:53:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:53:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:54:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:54:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:54:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:54:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:54:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:54:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:54:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:54:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:55:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:55:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:55:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:55:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:55:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:55:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:55:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:56:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:56:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:56:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:56:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:56:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:56:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:56:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:56:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:57:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:57:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:57:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:57:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:57:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:57:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:57:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:57:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:58:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:58:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:58:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:58:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:58:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:58:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:58:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:58:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:59:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:59:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:59:18 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:59:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:59:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:59:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+23:59:48 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+23:59:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0

@@ -283,6 +283,7 @@ namespace NF.AdminSystem.Controllers
                 {
                     ///这里验证debitId 与 用户
                     string prefix = ConfigSettings.prefixNo;//HelperProvider.PrefixOfDuitku();
+                    ViewData["prefix"] = prefix;
                     DataProviderResultModel result = null;
 
                     result = type == 3 ? DebitProvider.GetUserExtendRecord(debitId) : DebitProvider.GetUserDebitRecord(debitId);

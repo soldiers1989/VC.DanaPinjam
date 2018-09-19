@@ -54,7 +54,7 @@ namespace NF.AdminSystem.Providers
                         userInfo.userName = userName;
                         userInfo.token = Guid.NewGuid().ToString();
                         result.data = userInfo;
-                        
+
                     }
                     result.message = Convert.ToString(dt.Rows[0][2]);
                 }
@@ -216,7 +216,7 @@ namespace NF.AdminSystem.Providers
             {
                 UserWorkingInfoModel workingInfo = new UserWorkingInfoModel();
                 UserPersonalInfoModel personalInfo = new UserPersonalInfoModel();
-                
+
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
                 string sqlStr = @"select userId,userName,fullName,ifnull(birthday,'') birthday,motherName,socialAccounts,phone,idcard,sex,occupancyDuration,education,numberOfChildren,
@@ -261,7 +261,7 @@ namespace NF.AdminSystem.Providers
                     {
                         userInfo.workingPercent++;
                     }
-                    
+
                     workInfoNumber++;
                     workingInfo.companyProvince = Convert.ToString(dt.Rows[0]["companyProvince"]);
                     if (!String.IsNullOrEmpty(workingInfo.companyProvince))
@@ -271,6 +271,10 @@ namespace NF.AdminSystem.Providers
 
                     //int.TryParse(Convert.ToString(dt.Rows[0]["monthIncome"]), out tmp);
                     workingInfo.monthIncome = Convert.ToString(dt.Rows[0]["monthIncome"]);
+                    if (String.IsNullOrEmpty(workingInfo.monthIncome))
+                    {
+                        workingInfo.monthIncome = "0";
+                    }
 
                     workInfoNumber++;
                     workingInfo.typeOfWork = Convert.ToString(dt.Rows[0]["typeOfWork"]);
@@ -319,15 +323,28 @@ namespace NF.AdminSystem.Providers
 
                     //int.TryParse(Convert.ToString(dt.Rows[0]["occupancyDuration"]), out tmp);
                     personalInfo.occupancyDuration = Convert.ToString(dt.Rows[0]["occupancyDuration"]);
-
+                    if (String.IsNullOrEmpty(personalInfo.occupancyDuration))
+                    {
+                        personalInfo.occupancyDuration = "0";
+                    }
                     //int.TryParse(Convert.ToString(dt.Rows[0]["numberOfChildren"]), out tmp);
                     personalInfo.numberOfChildren = Convert.ToString(dt.Rows[0]["numberOfChildren"]);
-
+                    if (String.IsNullOrEmpty(personalInfo.numberOfChildren))
+                    {
+                        personalInfo.numberOfChildren = "0";
+                    }
                     //int.TryParse(Convert.ToString(dt.Rows[0]["maritalStatus"]), out tmp);
                     personalInfo.maritalStatus = Convert.ToString(dt.Rows[0]["maritalStatus"]);
-                    
+                    if (String.IsNullOrEmpty(personalInfo.maritalStatus))
+                    {
+                        personalInfo.maritalStatus = "0";
+                    }
                     //int.TryParse(Convert.ToString(dt.Rows[0]["education"]), out tmp);
                     personalInfo.education = Convert.ToString(dt.Rows[0]["education"]);
+                    if (String.IsNullOrEmpty(personalInfo.education))
+                    {
+                        personalInfo.education = "0";
+                    }
                     personalInfo.birthday = Convert.ToString(dt.Rows[0]["birthday"]);
                     personaNumber++;
                     if (!String.IsNullOrEmpty(personalInfo.birthday))
@@ -342,7 +359,7 @@ namespace NF.AdminSystem.Providers
                     {
                         userInfo.personalPercent++;
                     }
-                    
+
                     int.TryParse(userId, out tmp);
                     personalInfo.userId = tmp;
                     personalInfo.userName = Convert.ToString(dt.Rows[0]["userName"]);
@@ -364,7 +381,7 @@ namespace NF.AdminSystem.Providers
                         userInfo.otherInfoPercent++;
                     }
 
-                    
+
                     otherInfoNumber++;
                     float x, y;
 
@@ -389,7 +406,7 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@iUserId", userId);
 
                 DataTable relationShip = dbo.GetTable(sqlStr, pc.GetParams(true));
-                
+
                 if (null != relationShip && relationShip.Rows.Count > 0)
                 {
                     for (int i = 0; i < relationShip.Rows.Count; i++)
@@ -428,7 +445,7 @@ namespace NF.AdminSystem.Providers
                 for (int i = 0; i < 4 - already; i++)
                 {
                     userInfo.userContactInfo.Add(new UserContactInfoModel { id = -1 });
-                    contactNumber+= 2;
+                    contactNumber += 2;
                 }
 
                 int cardNumber = 2;
@@ -436,7 +453,7 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@iCertificateType", 1);
                 pc.Add("@iCertificateUserId", userId);
 
-                
+
                 string url = Convert.ToString(dbo.GetScalar(sqlStr, pc.GetParams(true)));
                 if (!String.IsNullOrEmpty(url))
                 {
@@ -577,14 +594,16 @@ namespace NF.AdminSystem.Providers
 
                     if (result.result < 0)
                     {
-                        result.data = new { contactUploadNumber = 0, callRecordUploadNumber = 0};
+                        result.data = new { contactUploadNumber = 0, callRecordUploadNumber = 0 };
                         Log.WriteErrorLog("DebitProvider::UpdateUserConactNumber", "同步用户联系人数量异常");
                     }
                     else
                     {
                         result.result = Result.SUCCESS;
                         ///记录ID
-                        result.data = new { contactUploadNumber = Convert.ToString(dt.Rows[0][1]),
+                        result.data = new
+                        {
+                            contactUploadNumber = Convert.ToString(dt.Rows[0][1]),
                             callRecordUploadNumber = Convert.ToString(dt.Rows[0][2]),
                             location = Convert.ToString(dt.Rows[0][3])
                         };
@@ -694,7 +713,7 @@ namespace NF.AdminSystem.Providers
                 ParamCollections pc = new ParamCollections();
 
                 string sqlStr = "select count(1) from IFUserDebitRecord where status in (0,1,2,4,-2,5,6) and userId = @iUserId";
-                
+
                 pc.Add("@iUserId", userId);
                 int count = dbo.GetCount(sqlStr, pc.GetParams(true));
 
@@ -898,11 +917,11 @@ namespace NF.AdminSystem.Providers
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                pc.Add("@iBankId", bankId);               
-                pc.Add("@iUserId", userId);               
-                pc.Add("@sBankName", bankName);               
-                pc.Add("@sSubBankName", subBankName);               
-                pc.Add("@sBankCode", bankCode);               
+                pc.Add("@iBankId", bankId);
+                pc.Add("@iUserId", userId);
+                pc.Add("@sBankName", bankName);
+                pc.Add("@sSubBankName", subBankName);
+                pc.Add("@sBankCode", bankCode);
                 pc.Add("@sContact", contact);
                 pc.Add("@sContactName", contactName);
 
@@ -962,11 +981,11 @@ namespace NF.AdminSystem.Providers
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                pc.Add("@iBankId", bankInfo.bankId);               
-                pc.Add("@iUserId", bankInfo.userId);               
-                pc.Add("@sBankName", bankInfo.bankName);               
-                pc.Add("@sSubBankName", bankInfo.subBankName);               
-                pc.Add("@sBankCode", bankInfo.bankCode);               
+                pc.Add("@iBankId", bankInfo.bankId);
+                pc.Add("@iUserId", bankInfo.userId);
+                pc.Add("@sBankName", bankInfo.bankName);
+                pc.Add("@sSubBankName", bankInfo.subBankName);
+                pc.Add("@sBankCode", bankInfo.bankCode);
                 pc.Add("@sContact", bankInfo.contact);
                 pc.Add("@sContactName", bankInfo.contactName);
                 pc.Add("@sBniCode", bankInfo.bniBankCode);
@@ -1056,7 +1075,7 @@ namespace NF.AdminSystem.Providers
                     result.result = MainErrorModels.THE_USER_NOT_EXISTS;
                     result.message = "The user not exists.";
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -1072,7 +1091,7 @@ namespace NF.AdminSystem.Providers
                     dbo = null;
                 }
             }
-            return result; 
+            return result;
         }
 
         public static DataProviderResultModel SaveUserPersonalInfo(UserPersonalInfoModel model)
@@ -1245,7 +1264,7 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@iUserId", userId);
                 Hashtable outAl = new Hashtable();
                 DataTable dt = dbo.ExecProcedure("p_check_status_befor_modify", pc.GetParams(), out outAl);
-                
+
                 string message = String.Empty;
                 if (null != dt && dt.Rows.Count > 0)
                 {
@@ -1269,7 +1288,7 @@ namespace NF.AdminSystem.Providers
             }
             return result;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

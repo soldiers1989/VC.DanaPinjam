@@ -39,9 +39,15 @@
             <p><b>Transfer via ATM atau Internet Banking atau Mobile Banking</b></p>
 
             <p>1.Menu Pilih Transfer antar bank</p>
-
-            <p>2.Masukan kode CIMB Niaga:<B>022</B></p>
-
+            @if(Convert.ToString(ViewData["prefix"]) == "119905" || Convert.ToString(ViewData["prefix"]) == "119906")
+            {
+                <p>2.Masukan kode CIMB Niaga:<B>022</B></p>
+            }
+            else
+            {
+                <p>2.Masukan kode Permata Niaga:<B>013</B></p>
+            }
+            
             <p>3.Masukan nomor rekening Tujuan:<B>@ViewData["vaNo"]</B></p>
 
             <p>4.Masukan jumlah nominal pembayaran:<B>Rp.@ViewData["money"]</B></p>
