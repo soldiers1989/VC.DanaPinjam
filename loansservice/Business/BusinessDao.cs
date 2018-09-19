@@ -72,7 +72,7 @@ public class BusinessDao
             dbo = new DataBaseOperator();
             string sqlStr = @"select id from IFUserPayBackDebitRecord 
                 where type in (3,4) and status = -2 and ifnull(reTryTimes,0) < 3 
-                and createTime < date_add(now(), interval -10 minute) 
+                and createTime < date_add(now(), interval -30 minute) 
                 and createTime > '2018-09-13 22:00:00' order by reTryTimes limit 10";
             ParamCollections pc = new ParamCollections();
 

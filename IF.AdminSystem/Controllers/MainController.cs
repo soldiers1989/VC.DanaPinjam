@@ -257,11 +257,11 @@ namespace NF.AdminSystem.Controllers
                 list.Add("totalLoan", "3000000");
                 list.Add("totalPeople", "1000");
                 list.Add("downloadUrl", "http://www.danapinjam.com/");
-                list.Add("aboutUrl", "http://api.danapinjam.com/Home/about");
-                list.Add("helpUrl", "http://api.danapinjam.com/Home/Help");
-                list.Add("contactusUrl", "http://api.danapinjam.com/Home/contactus");
-                list.Add("agreementUrl2", "http://api.danapinjam.com/Home/agreement2");
-                list.Add("agreementUrl", "http://api.danapinjam.com/Home/agreement");
+                list.Add("aboutUrl", "http://api.danapinjam.com/api/Home/about");
+                list.Add("helpUrl", "http://api.danapinjam.com/api/Home/Help");
+                list.Add("contactusUrl", "http://api.danapinjam.com/api/Home/contactus");
+                list.Add("agreementUrl2", "http://api.danapinjam.com/api/Home/agreement2");
+                list.Add("agreementUrl", "http://api.danapinjam.com/api/Home/agreement");
 
                 ///下面是第三方支付的说明页面
                 list.Add("atmh5url", ConfigSettings.atmh5url);
