@@ -296,7 +296,7 @@ namespace NF.AdminSystem.Controllers
         public ActionResult<long> ClearUserInfo(int userId)
         {
             Redis redis = HelperProvider.GetRedis();
-            string key = String.Format("UserAllInfo_{0}", userId);
+            string key = String.Format("UserAllInfoV2_{0}", userId);
             long result = redis.KeyDelete(key);
 
             return result;
@@ -372,7 +372,7 @@ namespace NF.AdminSystem.Controllers
                     }
 
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", userId);
+                    string key = String.Format("UserAllInfoV2_{0}", userId);
                     redis.KeyDelete(key);
                 }
             }
@@ -420,7 +420,7 @@ namespace NF.AdminSystem.Controllers
                     redis.StringSet(String.Format("UserInfo_{0}", userInfo.userId), JsonConvert.SerializeObject(userInfo));
                     ret.data = userInfo;
 
-                    string key = String.Format("UserAllInfo_{0}", userInfo.userId);
+                    string key = String.Format("UserAllInfoV2_{0}", userInfo.userId);
                     redis.KeyDelete(key);
                 }
                 else
@@ -503,7 +503,7 @@ namespace NF.AdminSystem.Controllers
                 UserAllInfoModel userInfo = new UserAllInfoModel();
 
                 Redis redis = HelperProvider.GetRedis();
-                string key = String.Format("UserAllInfo_{0}", userId);
+                string key = String.Format("UserAllInfoV2_{0}", userId);
                 string info = redis.StringGet(key);
                 if (String.IsNullOrEmpty(info))
                 {
@@ -570,7 +570,7 @@ namespace NF.AdminSystem.Controllers
                 else
                 {
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", userInfo.userId);
+                    string key = String.Format("UserAllInfoV2_{0}", userInfo.userId);
                     redis.KeyDelete(key);
                 }
             }
@@ -618,7 +618,7 @@ namespace NF.AdminSystem.Controllers
                 else
                 {
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", workingInfo.userId);
+                    string key = String.Format("UserAllInfoV2_{0}", workingInfo.userId);
                     redis.KeyDelete(key);
                 }
             }
@@ -653,7 +653,7 @@ namespace NF.AdminSystem.Controllers
                 {
                     result.result = Result.SUCCESS;
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", contactInfo.userId);
+                    string key = String.Format("UserAllInfoV2_{0}", contactInfo.userId);
                     redis.KeyDelete(key);
                 }
                 else
@@ -737,7 +737,7 @@ namespace NF.AdminSystem.Controllers
                     if (userId > 0)
                     {
                         Redis redis = HelperProvider.GetRedis();
-                        string key = String.Format("UserAllInfo_{0}", userId);
+                        string key = String.Format("UserAllInfoV2_{0}", userId);
                         redis.KeyDelete(key);
                     }
                 }
@@ -927,7 +927,7 @@ namespace NF.AdminSystem.Controllers
                     Log.WriteDebugLog("UserController::EditUserPhotos", "保存成功，清除用户缓存。");
                     ret.message = "success";
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", userId);
+                    string key = String.Format("UserAllInfoV2_{0}", userId);
                     long lret = redis.KeyDelete(key);
                     Log.WriteDebugLog("UserController::EditUserPhotos", "清除用户缓存。({0})", lret);
                 }
@@ -984,7 +984,7 @@ namespace NF.AdminSystem.Controllers
                     ret.data = result.data;
 
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", userId);
+                    string key = String.Format("UserAllInfoV2_{0}", userId);
                     redis.KeyDelete(key);
 
                     Log.WriteDebugLog("UserController::PostUserCallRecord", "{0} use time:{1} ms", content.Length, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
@@ -1042,7 +1042,7 @@ namespace NF.AdminSystem.Controllers
                     ret.data = result.data;
 
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", userId);
+                    string key = String.Format("UserAllInfoV2_{0}", userId);
                     redis.KeyDelete(key);
 
                     Log.WriteDebugLog("UserController::PostUserConcats", "{0}", record.Count);
@@ -1100,7 +1100,7 @@ namespace NF.AdminSystem.Controllers
 
                     ret.data = UserProvider.UpdateUserConactNumber(location.userId).data;
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfo_{0}", location.userId);
+                    string key = String.Format("UserAllInfoV2_{0}", location.userId);
                     redis.KeyDelete(key);
 
                     Log.WriteDebugLog("UserController::PostUserLocation", "Return json is {0}", JsonConvert.SerializeObject(ret));
