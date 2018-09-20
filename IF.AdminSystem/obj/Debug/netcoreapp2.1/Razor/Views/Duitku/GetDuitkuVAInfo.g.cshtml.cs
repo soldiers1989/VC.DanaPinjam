@@ -60,7 +60,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\n<!DOCTYPE html>\n\n<html>\n");
             EndContext();
             BeginContext(49, 1366, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0811e4b3ee8248a7827016bd00657b00", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae437abb20da4b16b4d2d3883de0a91b", async() => {
                 BeginContext(55, 1158, true);
                 WriteLiteral(@"
         <meta charset=""utf-8"">
@@ -107,7 +107,7 @@ using IF.AdminSystem.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(1416, 1145, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "716d37bc8b864f9ab49365eca2fc4179", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "724ff963c5724ac18fa1b894a0ae2628", async() => {
                 BeginContext(1422, 67, true);
                 WriteLiteral("\n<div class=\"anel panel-danger\">\n        <div class=\"panel-header\">");
                 EndContext();

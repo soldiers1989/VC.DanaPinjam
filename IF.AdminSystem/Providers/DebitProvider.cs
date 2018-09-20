@@ -56,7 +56,7 @@ namespace NF.AdminSystem.Providers
             {
                 result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
                 result.message = "The database logic error.";
-                Log.WriteErrorLog("DebitProvider::GetUserBankInfo", "获取失败：{0},{1}，异常：{2}", debitMoney, debitPeriod, ex.Message);
+                Log.WriteErrorLog("DebitProvider::GetInterestRateByDebitStyle", "获取失败：{0},{1}，异常：{2}", debitMoney, debitPeriod, ex.Message);
             }
             finally
             {

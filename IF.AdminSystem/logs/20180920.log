@@ -235,3 +235,22 @@
 16:14:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
 16:14:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
 16:14:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+22:29:49 [Debug] Startup::Startup [1]号服务器::Begin connect db
+22:30:00 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=5ba3a0a4a8fca.sgcdb.myqcloud.com;port=5039;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=10;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+22:30:00 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+22:30:00 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:30:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:30:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:30:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:30:30 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:30:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:30:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:30:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:31:00 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:31:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:31:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:31:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:31:30 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+22:31:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:31:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+22:31:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
