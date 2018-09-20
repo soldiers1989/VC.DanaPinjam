@@ -137,6 +137,8 @@ namespace NF.AdminSystem.Controllers
                         DebitInfo info = new DebitInfo();
                         info.debitMoney = style;
                         info.debitPeriod = period;
+                        
+                        info.description = "Ketika Anda melakukan pinjam\r\nBiaya admin harus dibayar diawal";
                         DataProviderResultModel result = DebitProvider.GetInterestRateByDebitStyle(style, period);
                         if (result.result == Result.SUCCESS)
                         {
@@ -164,6 +166,7 @@ namespace NF.AdminSystem.Controllers
                                     //日息
                                     info.dailyInterest = style * rate / period;
                                 }
+                                info.adminFee = String.Format("Biaya Admin Rp {0}", info.debitFee);
                                 //实际到帐，减去手续费
                                 info.actualMoney = style - info.debitFee;
 

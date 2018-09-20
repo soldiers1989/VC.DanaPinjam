@@ -123,6 +123,11 @@ namespace NF.AdminSystem.Models
         public string description = String.Empty;
 
         /// <summary>
+        /// 费用描述
+        /// </summary>
+        public string adminFee = String.Empty;
+
+        /// <summary>
         /// 手续费
         /// </summary>
         public float debitFee = 0f;
