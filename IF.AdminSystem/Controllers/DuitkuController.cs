@@ -138,6 +138,7 @@ namespace NF.AdminSystem.Controllers
                                     string type = vaNo.Substring(0, 1);
                                     string debitId = vaNo.Substring(1);
                                     int iDebitId = -1;
+                                    request.merchantCode = String.Format("{0}{1}",request.bin, request.merchantCode);
                                     int.TryParse(debitId, out iDebitId);
                                     ///3 － 延期；4 － 还款
                                     if (type == "3")
