@@ -1,0 +1,85 @@
+21:50:32 [Debug] Startup::Startup [1]号服务器::Begin connect db
+21:50:34 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+21:50:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:50:34 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+21:50:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:50:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:50:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:51:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:51:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:51:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:51:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:51:34 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:51:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:51:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:51:53 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"c221e1ec80f18bb2d1a0190a6effc7bf","issuer_name":null,"issuer_bank":null}
+21:52:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:52:00 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证没有通过:8724b5419f3e882ebee6b36b3f6641fe - 传入为：c221e1ec80f18bb2d1a0190a6effc7bf
+21:52:04 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:52:05 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"500000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"8724b5419f3e882ebee6b36b3f6641fe","issuer_name":null,"issuer_bank":null}
+21:52:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:52:14 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:8724b5419f3e882ebee6b36b3f6641fe - 传入为：8724b5419f3e882ebee6b36b3f6641fe
+21:52:22 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+21:52:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:52:35 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:52:35 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:3、贷款记录ID:120。
+21:52:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:52:37 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+21:52:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+21:52:48 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+21:52:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-10-29
+21:52:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+21:53:06 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:53:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+21:53:14 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]核对应还金额 needPayMoney:600000 - amoutMoney:500000
+21:53:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+21:53:36 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]金额大于最小延期费，系统自动审核。用户[27]。
+21:53:37 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及最后还款时间。
+21:53:38 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:53:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+21:54:03 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及最后还款时间 成功(1)。
+21:54:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+21:54:05 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始插入审核记录。
+21:54:07 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入审核记录 成功(1)。
+21:54:07 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+21:54:08 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:54:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:54:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:54:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:54:38 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:54:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:54:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:55:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:55:08 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:55:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:55:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:55:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:55:35 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-25 09:50:34，从链接池中移除，将重新打开。
+21:55:35 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-25 09:50:33，从链接池中移除，将重新打开。
+21:55:35 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-09-25 09:50:33，从链接池中移除，将重新打开。
+21:55:38 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:55:42 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1600000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"8724b5419f3e882ebee6b36b3f6641fe","issuer_name":null,"issuer_bank":null}
+21:55:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：2，处理中连接：0
+21:55:47 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证没有通过:549bcc2f5a091cc47b361e1d0daa6bd5 - 传入为：8724b5419f3e882ebee6b36b3f6641fe
+21:55:53 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1600000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"549bcc2f5a091cc47b361e1d0daa6bd5","issuer_name":null,"issuer_bank":null}
+21:55:55 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:549bcc2f5a091cc47b361e1d0daa6bd5 - 传入为：549bcc2f5a091cc47b361e1d0daa6bd5
+21:56:10 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:56:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：2，处理中连接：0
+21:56:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+21:56:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：27、还款类型:4、贷款记录ID:120。
+21:56:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+21:56:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+21:56:10 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-11-05
+21:56:15 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]核对应还金额 needPayMoney:1600000 - amoutMoney:1600000
+21:56:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：1，处理中连接：1
+21:56:21 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]金额对上，系统自动审核。用户[27]全额还款次数＋1。
+21:56:25 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新用户全额还款次数成功（1）。
+21:56:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]逾期费用：100000，开始清算。
+21:56:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101][120]清算逾期费用 成功(1)。
+21:56:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及还款时间 成功(1)。
+21:56:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始插入审核记录。
+21:56:26 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入审核记录 成功(1)。
+21:56:26 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+21:56:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：2，处理中连接：0
+21:56:40 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+21:56:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：2，处理中连接：0

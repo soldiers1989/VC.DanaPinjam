@@ -264,36 +264,12 @@ namespace NF.AdminSystem.Providers
                                 float.TryParse(request.amount, out amoutMoney);
                                 needPayMoney = (float)Math.Round(extendInfo.extendFee + extendInfo.overdueMoney - extendInfo.partMoney, 0);
                                 amoutMoney = (float)Math.Round(amoutMoney, 0);
-                                Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "核对应还金额 needPayMoney:{0} - amoutMoney:{1}", needPayMoney, amoutMoney);
-                                if (amoutMoney >= needPayMoney)
+                                Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]核对应还金额 needPayMoney:{1} - amoutMoney:{2}", request.merchantOrderId, needPayMoney, amoutMoney);
+                                if (amoutMoney >= (extendInfo.extendFee - extendInfo.partMoney))
                                 {
                                     #region 全额延期逻辑
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对上，系统自动审核。");
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间。", request.merchantOrderId);
-                                    TimeSpan ts = payback.Subtract(now);
-                                    if (ts.Days >= 0)
-                                    {
-                                        sqlStr = @"update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(paybackdayTime, interval 7 day)
-                                            ,statusTime = now(),partMoney=@fPartMoney,overdueMoney = 0,overdueDay = 0
-                                        where debitId = @iDebitId";
-                                    }
-                                    else
-                                    {
-                                        sqlStr = @"update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(now(), interval 7 day)
-                                        ,statusTime = now(),partMoney=@fPartMoney,overdueMoney = 0,overdueDay = 0
-                                        where debitId = @iDebitId";
-                                    }
-
-                                    pc.Add("@iStatus", 1);
-                                    //如果多还了，就暂存到部份还款字段。
-                                    pc.Add("@fPartMoney", amoutMoney - needPayMoney);
-                                    pc.Add("@iDebitId", debitId);
-                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
-
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间 成功({1})。", request.merchantOrderId, dbret);
-
                                     //如果存在逾期，全额支付后需清算逾期
-                                    if (extendInfo.overdueMoney > 0)
+                                    if (extendInfo.overdueMoney > 0 && amoutMoney >= needPayMoney)
                                     {
                                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "逾期费用：{0}，开始清算。", extendInfo.overdueMoney);
                                         sqlStr = @"update IFUserDebitOverdueRecord set clearStatus=@iClearStatus,clearTime=now(),clearSource=@iClearSource 
@@ -304,8 +280,61 @@ namespace NF.AdminSystem.Providers
 
                                         dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}][{1}]清算逾期费用 成功({2})。", request.merchantOrderId, debitId, dbret);
-                                    }
 
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]金额大于最小延期费，系统自动审核。用户[{1}]。", request.merchantOrderId, extendInfo.userId);
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间。", request.merchantOrderId);
+                                        TimeSpan ts = payback.Subtract(now);
+                                        if (ts.Days >= 0)
+                                        {
+                                            sqlStr = @"update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(paybackdayTime, interval 7 day)
+                                            ,statusTime = now(),partMoney=@fPartMoney,overdueMoney = 0,overdueDay = 0
+                                        where debitId = @iDebitId";
+                                        }
+                                        else
+                                        {
+                                            sqlStr = @"update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(now(), interval 7 day)
+                                        ,statusTime = now(),partMoney=@fPartMoney,overdueMoney = 0,overdueDay = 0
+                                        where debitId = @iDebitId";
+                                        }
+
+                                        pc.Add("@iStatus", 1);
+                                        //如果多还了，就暂存到部份还款字段。
+                                        if (amoutMoney - needPayMoney > 0)
+                                        {
+                                            pc.Add("@fPartMoney", amoutMoney - needPayMoney);
+                                        }
+                                        else
+                                        {
+                                            pc.Add("@fPartMoney", 0);
+                                        }
+                                        pc.Add("@iDebitId", debitId);
+                                        dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间 成功({1})。", request.merchantOrderId, dbret);
+                                    }
+                                    else
+                                    {
+                                        //如果只还了最小的延期费，则不清算逾期费
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]金额大于最小延期费，系统自动审核。用户[{1}]。", request.merchantOrderId, extendInfo.userId);
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间，因为没有支付逾期费，所以。", request.merchantOrderId);
+                                        sqlStr = @"update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(paybackdayTime, interval 7 day)
+                                            ,statusTime = now(),partMoney=@fPartMoney
+                                        where debitId = @iDebitId";
+
+                                        pc.Add("@iStatus", 1);
+                                        //如果多还了，就暂存到部份还款字段。
+                                        if (amoutMoney - (extendInfo.extendFee - extendInfo.partMoney) > 0)
+                                        {
+                                            pc.Add("@fPartMoney", amoutMoney - (extendInfo.extendFee - extendInfo.partMoney));
+                                        }
+                                        else
+                                        {
+                                            pc.Add("@fPartMoney", 0);
+                                        }
+                                        pc.Add("@iDebitId", debitId);
+                                        dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
+
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间 成功({1})。", request.merchantOrderId, dbret);
+                                    }
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始插入审核记录。", request.merchantOrderId);
 
                                     sqlStr = @"insert into IFUserAduitDebitRecord(AduitType,debitId,status,description,adminId,auditTime)
@@ -324,9 +353,9 @@ namespace NF.AdminSystem.Providers
                                 else
                                 {
                                     #region 部份延期逻辑
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对不上，将已还计入部份还款。");
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "应支付：{0}，收到用户支付：{1}，差额：{2}，历史支付：{3}。"
-                                    , needPayMoney, amoutMoney, needPayMoney - amoutMoney, extendInfo.partMoney);
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]金额对不上，将已还计入部份还款。", request.merchantOrderId);
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]应支付：{1}，收到用户支付：{2}，差额：{3}，历史支付：{4}。"
+                                    , request.merchantOrderId, needPayMoney, amoutMoney, needPayMoney - amoutMoney, extendInfo.partMoney);
 
                                     sqlStr = @"update IFUserPayBackDebitRecord set status = @iStatus1,statusTime = now(),money=@fMoney 
                                         where id = @iId";
@@ -381,11 +410,15 @@ namespace NF.AdminSystem.Providers
                                 float.TryParse(request.amount, out amoutMoney);
                                 needPayMoney = (float)Math.Round(debitModel.payBackMoney, 0);
                                 amoutMoney = (float)Math.Round(amoutMoney, 0);
-                                Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "核对应还金额 needPayMoney:{0} - amoutMoney:{1}", needPayMoney, amoutMoney);
+                                Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]核对应还金额 needPayMoney:{1} - amoutMoney:{2}", request.merchantOrderId, needPayMoney, amoutMoney);
                                 if (amoutMoney >= needPayMoney)
                                 {
                                     #region 全额还款逻辑
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对上，进入系统审核。");
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]金额对上，系统自动审核。用户[{1}]全额还款次数＋1。", request.merchantOrderId, debitModel.userId);
+                                    sqlStr = @"update IFUsers set fullPaymentTimes = ifnull(fullPaymentTimes,0) + 1 where userId = @iUserId";
+                                    pc.Add("@iUserId", debitModel.userId);
+                                    dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新用户全额还款次数成功（{1}）。", request.merchantOrderId, dbret);
 
                                     sqlStr = @"update IFUserDebitRecord set status = @iStatus,userPaybackTime=now(),statusTime = now(),
                                             partMoney=@fPartMoney,overdueMoney = 0,overdueDay = 0
@@ -399,7 +432,7 @@ namespace NF.AdminSystem.Providers
                                     //如果存在逾期，全额支付后需清算逾期
                                     if (debitModel.overdueMoney > 0)
                                     {
-                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "逾期费用：{0}，开始清算。", debitModel.overdueMoney);
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]逾期费用：{1}，开始清算。", request.merchantOrderId, debitModel.overdueMoney);
                                         sqlStr = @"update IFUserDebitOverdueRecord set clearStatus=@iClearStatus,clearTime=now(),clearSource=@iClearSource 
                                             where debitId=@iDebitId";
                                         pc.Add("@iClearStatus", 1);
@@ -430,9 +463,9 @@ namespace NF.AdminSystem.Providers
                                 else
                                 {
                                     #region 部份还款逻辑
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "金额对不上，进入人工审核。");
-                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "应支付：{0}，收到用户支付：{1}，差额：{2}，历史支付：{3}。"
-                                    , needPayMoney, amoutMoney, needPayMoney - amoutMoney, debitModel.partMoney);
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]金额对不上，进入人工审核。", request.merchantOrderId);
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]应支付：{1}，收到用户支付：{2}，差额：{3}，历史支付：{4}。"
+                                    , request.merchantOrderId, needPayMoney, amoutMoney, needPayMoney - amoutMoney, debitModel.partMoney);
 
                                     sqlStr = @"update IFUserPayBackDebitRecord set status = @iStatus1,statusTime = now(),money=@fMoney 
                                         where id = @iId";
@@ -475,7 +508,7 @@ namespace NF.AdminSystem.Providers
                     else
                     {
                         result.result = Result.ERROR;
-                        Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "查找贷款ID失败，记录不存在。{0}", debitId);
+                        Log.WriteErrorLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]查找贷款ID失败，记录不存在。{1}", request.merchantOrderId, debitId);
                         tran.Rollback();
                     }
                 }
