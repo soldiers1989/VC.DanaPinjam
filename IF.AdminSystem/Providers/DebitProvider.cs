@@ -193,7 +193,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             {
                 result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
                 result.message = "The database logic error.The function is DebitProvider::GetUserDebitRecords";
-                Log.WriteErrorLog("DebitProvider::GetUserDebitRecords", "获取失败：{0}|{1}，异常：{2}", userId, ex.Message);
+                Log.WriteErrorLog("DebitProvider::GetUserDebitRecords", "获取失败：{0}，异常：{1}", userId, ex.Message);
             }
             finally
             {
@@ -259,7 +259,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             {
                 result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
                 result.message = "The database logic error.The function is DebitProvider::GetUserDebitAttention";
-                Log.WriteErrorLog("DebitProvider::GetUserDebitRecords", "获取失败：{0}|{1}，异常：{2}", userId, ex.Message);
+                Log.WriteErrorLog("DebitProvider::GetUserDebitRecords", "获取失败：{0}，异常：{1}", userId, ex.Message);
             }
             finally
             {

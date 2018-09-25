@@ -178,7 +178,7 @@ namespace NF.AdminSystem.Controllers
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
                 ret.message = "The program logic error from the DebitController::GetUserDebitRecords function.";
 
-                Log.WriteErrorLog("DebitController::GetUserDebitRecords", "异常：{0}", ex.Message);
+                Log.WriteErrorLog("DebitController::GetUserDebitRecords", "UserId:{0}，异常：{1}", userId, ex.Message);
             }
             
             return JsonConvert.SerializeObject(ret);
