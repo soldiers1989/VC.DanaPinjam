@@ -54,101 +54,50 @@ namespace NF.AdminSystem.Controllers
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             Redis redis = HelperProvider.GetRedis();
+            string lockKey = "lock_" + phone;
             try
             {
-                string IpAddress = string.Empty;
-
-                if (!String.IsNullOrEmpty(redis.StringGet(String.Format("send_{0}", phone))))
+                if (redis.LockTake(lockKey, phone))
                 {
-                    ret.result = Result.SUCCESS;
-                    ret.message = String.Format("Already send to {0}.", phone);
-                    ret.data = new { recordId = redis.StringGet(String.Format("send_{0}", phone)) };
+                    string IpAddress = string.Empty;
 
-                    Log.WriteDebugLog("UserController::getVerificateCode", "重复调用，可能是恶意。{0} Ip = {1}", phone, IpAddress);
-
-                    return JsonConvert.SerializeObject(ret);
-                }
-
-                redis.StringSet(String.Format("send_{0}", phone), DateTime.Now.ToString(), 30);
-                Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，开始判断是中国还是印尼手机号。Type = {1}", phone, type);
-                if (type == 0)
-                {
-                    string returnJson = String.Empty;
-                    DateTime beginTime = DateTime.Now;
-                    phone = GetPhone(phone);
-                    if (phone.IndexOf("8") == 0)
+                    if (!String.IsNullOrEmpty(redis.StringGet(String.Format("send_{0}", phone))))
                     {
-                        string sendUrl = String.Format("https://api.nexmo.com/verify/json?api_key={0}&api_secret={1}&number=+62" + phone + "&brand=pinjam&next_event_wait=60&pin_expiry=180",
-                            ConfigurationManager.AppSettings.Get("SMSApiKey"), ConfigurationManager.AppSettings.Get("SMSApiSecret"));
-                        Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，为印尼手机号，开始请求接口：{1}", phone, sendUrl);
-                        ///发送逻辑
-                        returnJson = HttpWebRequestHelper.Get(sendUrl);
-                    }
-                    else
-                    {
+                        ret.result = Result.SUCCESS;
+                        ret.message = String.Format("Already send to {0}.", phone);
+                        ret.data = new { recordId = redis.StringGet(String.Format("send_{0}", phone)) };
 
-                        string sendUrl = String.Format("https://api.nexmo.com/verify/json?api_key={0}&api_secret={1}&number=+86" + phone + "&brand=pinjam&next_event_wait=60&pin_expiry=180",
-                            ConfigurationManager.AppSettings.Get("SMSApiKey"), ConfigurationManager.AppSettings.Get("SMSApiSecret"));
+                        Log.WriteDebugLog("UserController::getVerificateCode", "重复调用，可能是恶意。{0} Ip = {1}", phone, IpAddress);
 
-                        Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，为中国手机号，开始请求接口：{1}", phone, sendUrl);
-
-                        ///发送逻辑
-                        returnJson = HttpWebRequestHelper.Get(sendUrl);
+                        return JsonConvert.SerializeObject(ret);
                     }
 
-                    Log.WriteDebugLog("UserController::GetVerificateCode", "发送接口返回结果：{0}, 耗时：{1}ms", returnJson, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
-                    var smsObj = JsonConvert.DeserializeObject<SMSSendResultModel>(returnJson);
-                    if (smsObj.status != 0)
+                    redis.StringSet(String.Format("send_{0}", phone), DateTime.Now.ToString(), 30);
+                    Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，开始判断是中国还是印尼手机号。Type = {1}", phone, type);
+                    if (type == 0)
                     {
-                        ret.result = Result.ERROR;
-                        ret.message = smsObj.error_text;
-                    }
-                    else
-                    {
-                        redis.StringSet("code_" + phone, smsObj.request_id, 300);
-                        ret.data = new { recordId = smsObj.request_id };
-                    }
-                }
-                else
-                {
-                    string returnJson = String.Empty;
-                    DateTime beginTime = DateTime.Now;
-                    phone = GetPhone(phone);
-                    string code = new Random().Next(666666, 999999).ToString();
-                    string guid = Guid.NewGuid().ToString();
-
-                    if (phone.IndexOf("8") == 0)
-                    {
-                        //SmsSingleSender sms = new SmsSingleSender(1400101142, "951f2eaeeec91b5f391b5123e064e541");
-                        //SmsSingleSenderResult smsResult = sms.Send(0, "62", phone, String.Format("Kode verifikasi Dana pinjam:{0},tolong isikan Dalam wakus 5 menit.", code), "", "");
-                        WaveCellSMSSingleSender.Authorization = ConfigSettings.WaveCellSMSAuthorization;
-                        WaveCellSMSSingleSender.SubAccountName = ConfigSettings.WaveCellSMSAccountName;
-                        WaveCellSMSSingleSender waveCellSMSSender = new WaveCellSMSSingleSender();
-                        phone = "+62" + phone;
-                        WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send(phone, String.Format("Kode verifikasi Dana pinjam:{0},tolong isikan Dalam wakus 5 menit.", code));
-                        Log.WriteDebugLog("UserController::GetVerificateCode", "{0}", JsonConvert.SerializeObject(sendRet));
-                        if (null == sendRet || sendRet.status.code != "QUEUED")
+                        string returnJson = String.Empty;
+                        DateTime beginTime = DateTime.Now;
+                        phone = GetPhone(phone);
+                        if (phone.IndexOf("8") == 0)
                         {
-                            ret.result = Result.ERROR;
-                            ret.message = sendRet.status.description;
+                            string sendUrl = String.Format("https://api.nexmo.com/verify/json?api_key={0}&api_secret={1}&number=+62" + phone + "&brand=pinjam&next_event_wait=60&pin_expiry=180",
+                                ConfigurationManager.AppSettings.Get("SMSApiKey"), ConfigurationManager.AppSettings.Get("SMSApiSecret"));
+                            Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，为印尼手机号，开始请求接口：{1}", phone, sendUrl);
+                            ///发送逻辑
+                            returnJson = HttpWebRequestHelper.Get(sendUrl);
                         }
                         else
                         {
-                            redis.StringSet("code_" + phone, guid, 300);
-                            ret.data = new { recordId = guid };
-                            redis.StringSet(guid, code);
+
+                            string sendUrl = String.Format("https://api.nexmo.com/verify/json?api_key={0}&api_secret={1}&number=+86" + phone + "&brand=pinjam&next_event_wait=60&pin_expiry=180",
+                                ConfigurationManager.AppSettings.Get("SMSApiKey"), ConfigurationManager.AppSettings.Get("SMSApiSecret"));
+
+                            Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，为中国手机号，开始请求接口：{1}", phone, sendUrl);
+
+                            ///发送逻辑
+                            returnJson = HttpWebRequestHelper.Get(sendUrl);
                         }
-                    }
-                    else
-                    {
-
-                        string sendUrl = String.Format("https://api.nexmo.com/verify/json?api_key={0}&api_secret={1}&number=+86" + phone + "&brand=pinjam&next_event_wait=60&pin_expiry=180",
-                            ConfigurationManager.AppSettings.Get("SMSApiKey"), ConfigurationManager.AppSettings.Get("SMSApiSecret"));
-
-                        Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，为中国手机号，开始请求接口：{1}", phone, sendUrl);
-
-                        ///发送逻辑
-                        returnJson = HttpWebRequestHelper.Get(sendUrl);
 
                         Log.WriteDebugLog("UserController::GetVerificateCode", "发送接口返回结果：{0}, 耗时：{1}ms", returnJson, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
                         var smsObj = JsonConvert.DeserializeObject<SMSSendResultModel>(returnJson);
@@ -163,6 +112,71 @@ namespace NF.AdminSystem.Controllers
                             ret.data = new { recordId = smsObj.request_id };
                         }
                     }
+                    else
+                    {
+                        string returnJson = String.Empty;
+                        DateTime beginTime = DateTime.Now;
+                        phone = GetPhone(phone);
+                        string code = new Random().Next(666666, 999999).ToString();
+                        string guid = Guid.NewGuid().ToString();
+
+                        if (phone.IndexOf("8") == 0)
+                        {
+                            //SmsSingleSender sms = new SmsSingleSender(1400101142, "951f2eaeeec91b5f391b5123e064e541");
+                            //SmsSingleSenderResult smsResult = sms.Send(0, "62", phone, String.Format("Kode verifikasi Dana pinjam:{0},tolong isikan Dalam wakus 5 menit.", code), "", "");
+                            WaveCellSMSSingleSender.Authorization = ConfigSettings.WaveCellSMSAuthorization;
+                            WaveCellSMSSingleSender.SubAccountName = ConfigSettings.WaveCellSMSAccountName;
+                            WaveCellSMSSingleSender waveCellSMSSender = new WaveCellSMSSingleSender();
+                            phone = "+62" + phone;
+                            WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send(phone, String.Format("Kode verifikasi Dana pinjam:{0},tolong isikan Dalam wakus 5 menit.", code));
+                            Log.WriteDebugLog("UserController::GetVerificateCode", "{0}", JsonConvert.SerializeObject(sendRet));
+                            if (null == sendRet || sendRet.status.code != "QUEUED")
+                            {
+                                ret.result = Result.ERROR;
+                                ret.message = sendRet.status.description;
+                            }
+                            else
+                            {
+                                redis.StringSet("code_" + phone, guid, 300);
+                                ret.data = new { recordId = guid };
+                                redis.StringSet(guid, code);
+                            }
+                        }
+                        else
+                        {
+
+                            string sendUrl = String.Format("https://api.nexmo.com/verify/json?api_key={0}&api_secret={1}&number=+86" + phone + "&brand=pinjam&next_event_wait=60&pin_expiry=180",
+                                ConfigurationManager.AppSettings.Get("SMSApiKey"), ConfigurationManager.AppSettings.Get("SMSApiSecret"));
+
+                            Log.WriteDebugLog("UserController::GetVerificateCode", "手机号为：{0}，为中国手机号，开始请求接口：{1}", phone, sendUrl);
+
+                            ///发送逻辑
+                            returnJson = HttpWebRequestHelper.Get(sendUrl);
+
+                            Log.WriteDebugLog("UserController::GetVerificateCode", "发送接口返回结果：{0}, 耗时：{1}ms", returnJson, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
+                            var smsObj = JsonConvert.DeserializeObject<SMSSendResultModel>(returnJson);
+                            if (smsObj.status != 0)
+                            {
+                                ret.result = Result.ERROR;
+                                ret.message = smsObj.error_text;
+                            }
+                            else
+                            {
+                                redis.StringSet("code_" + phone, smsObj.request_id, 300);
+                                ret.data = new { recordId = smsObj.request_id };
+                            }
+                        }
+                    }
+                    redis.LockRelease(lockKey, phone);
+                }
+                else
+                {
+                    Log.WriteDebugLog("UserController::getVertificateCode", "并发，过滤之");
+                    ret.result = Result.SUCCESS;
+                    ret.message = String.Format("Already send to {0}.", phone);
+                    ret.data = new { recordId = redis.StringGet(String.Format("send_{0}", phone)) };
+
+                    return JsonConvert.SerializeObject(ret);
                 }
             }
             catch (Exception ex)

@@ -295,3 +295,49 @@
 14:33:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
 14:33:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
 14:33:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：0，处理中连接：0
+14:56:18 [Debug] Startup::Startup [1]号服务器::Begin connect db
+14:56:21 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+14:56:21 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+14:56:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:21 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+14:56:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:51 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+14:56:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:47 [Debug] Startup::Startup [1]号服务器::Begin connect db
+14:57:51 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+14:57:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:51 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+14:57:51 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+14:58:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:08 [Debug] UserController::GetVerificateCode [1]号服务器::手机号为：081319988548，开始判断是中国还是印尼手机号。Type = 1
+14:58:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:19 [Debug] UserController::GetVerificateCode [1]号服务器::{"umid":"62a6b886-59c1-e811-814f-022a22cc1c71","clientMessageId":null,"destination":"6281319988548","encoding":"GSM7","status":{"code":"QUEUED","description":"SMS is accepted and queued for processing"}}
+14:58:21 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+14:58:25 [Debug] UserController::getVerificateCode [1]号服务器::重复调用，可能是恶意。081319988548 Ip = 
+14:58:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:28 [Debug] UserController::getVertificateCode [1]号服务器::并发，过滤之
+14:58:29 [Debug] UserController::getVertificateCode [1]号服务器::并发，过滤之
+14:58:30 [Debug] UserController::getVertificateCode [1]号服务器::并发，过滤之
+14:58:31 [Debug] UserController::getVertificateCode [1]号服务器::并发，过滤之
+14:58:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:51 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+14:58:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:21 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+14:59:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:51 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+14:59:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:21 [Debug] RedisPools::checkConnection [1]号服务器::空闲连接数：0, 进行中连接数：0
+15:00:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:31 [Debug] UserController::GetVerificateCode [1]号服务器::手机号为：081319988548，开始判断是中国还是印尼手机号。Type = 1
+15:00:32 [Debug] UserController::GetVerificateCode [1]号服务器::{"umid":"bbb6dbd8-59c1-e811-8144-02d9baaa9e6f","clientMessageId":null,"destination":"6281319988548","encoding":"GSM7","status":{"code":"QUEUED","description":"SMS is accepted and queued for processing"}}
+15:00:34 [Debug] UserController::getVertificateCode [1]号服务器::并发，过滤之
+15:00:35 [Debug] UserController::getVertificateCode [1]号服务器::并发，过滤之
+15:00:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
