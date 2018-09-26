@@ -137,7 +137,8 @@ namespace NF.AdminSystem.Controllers
                         DebitInfo info = new DebitInfo();
                         info.debitMoney = style;
                         info.debitPeriod = period;
-                        info.description = "Ketika Anda melakukan pinjam\r\nBiaya admin harus dibayar diawal";
+                        info.description = String.Format("Biaya Admin 3%, Bunga 1%\r\ntotal  biaya prosedur {0}k*3% + {0}k*1%*15={1}K"
+                        , (int)info.debitMoney/1000, (info.debitMoney * 0.03 + info.debitMoney * 0.01 * 15)/1000);
                         DataProviderResultModel result = DebitProvider.GetInterestRateByDebitStyle(style, period);
                         if (result.result == Result.SUCCESS)
                         {
