@@ -48,7 +48,7 @@ namespace NF.AdminSystem.Controllers
             int.TryParse(smsType, out type);
             return getVerificateCode(phone, type);
         }
-        
+
         public ActionResult<string> getVerificateCode(string phone, int type)
         {
             HttpResultModel ret = new HttpResultModel();
@@ -56,7 +56,7 @@ namespace NF.AdminSystem.Controllers
             Redis redis = HelperProvider.GetRedis();
             try
             {
-                string IpAddress =  string.Empty;
+                string IpAddress = string.Empty;
 
                 if (!String.IsNullOrEmpty(redis.StringGet(String.Format("send_{0}", phone))))
                 {
@@ -116,15 +116,21 @@ namespace NF.AdminSystem.Controllers
                     phone = GetPhone(phone);
                     string code = new Random().Next(666666, 999999).ToString();
                     string guid = Guid.NewGuid().ToString();
-                    SmsSingleSender sms = new SmsSingleSender(1400101142, "951f2eaeeec91b5f391b5123e064e541");
+
                     if (phone.IndexOf("8") == 0)
                     {
-                        SmsSingleSenderResult smsResult = sms.Send(0, "62", phone, String.Format("Kode verifikasi Dana pinjam:{0},tolong isikan Dalam wakus 5 menit.", code), "", "");
-
-                        if (smsResult.result != 0)
+                        //SmsSingleSender sms = new SmsSingleSender(1400101142, "951f2eaeeec91b5f391b5123e064e541");
+                        //SmsSingleSenderResult smsResult = sms.Send(0, "62", phone, String.Format("Kode verifikasi Dana pinjam:{0},tolong isikan Dalam wakus 5 menit.", code), "", "");
+                        WaveCellSMSSingleSender.Authorization = ConfigSettings.WaveCellSMSAuthorization;
+                        WaveCellSMSSingleSender.SubAccountName = ConfigSettings.WaveCellSMSAccountName;
+                        WaveCellSMSSingleSender waveCellSMSSender = new WaveCellSMSSingleSender();
+                        phone = "+62" + phone;
+                        WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send(phone, String.Format("Kode verifikasi Dana pinjam:{0},tolong isikan Dalam wakus 5 menit.", code));
+                        Log.WriteDebugLog("UserController::GetVerificateCode", "{0}", JsonConvert.SerializeObject(sendRet));
+                        if (null == sendRet || sendRet.status.code != "QUEUED")
                         {
                             ret.result = Result.ERROR;
-                            ret.message = smsResult.errmsg;
+                            ret.message = sendRet.status.description;
                         }
                         else
                         {
@@ -176,7 +182,7 @@ namespace NF.AdminSystem.Controllers
         /// <param name="phone"></param>
         /// <param name="code"></param>
         /// <returns></returns>
-        private int confrimVerificateCode(string phone, string recordId , string code)
+        private int confrimVerificateCode(string phone, string recordId, string code)
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
@@ -264,7 +270,7 @@ namespace NF.AdminSystem.Controllers
                     ret.result = Result.SUCCESS;
                     ret.errorCode = 0;
                     ret.message = result.message;
-                    
+
                     UserInfoModel userInfo = result.data as UserInfoModel;
                     string guid = Guid.NewGuid().ToString();
                     redis.StringSet(String.Format("user_guid_{0}", userInfo.userId), guid);
@@ -301,7 +307,7 @@ namespace NF.AdminSystem.Controllers
 
             return result;
         }
-        
+
         [AllowAnonymous]
         [HttpGet]
         [Route("SyncUserRegistration")]
@@ -333,7 +339,7 @@ namespace NF.AdminSystem.Controllers
             }
             return JsonConvert.SerializeObject(ret);
         }
-        
+
         [HttpGet]
         [HttpPost]
         [AllowAnonymous]
@@ -413,7 +419,7 @@ namespace NF.AdminSystem.Controllers
                 if (result.result > 0)
                 {
                     Redis redis = HelperProvider.GetRedis();
-                    UserInfoModel userInfo =  result.data as UserInfoModel;
+                    UserInfoModel userInfo = result.data as UserInfoModel;
                     string guid = Guid.NewGuid().ToString();
                     redis.StringSet(String.Format("user_guid_{0}", userInfo.userId), guid);
                     userInfo.token = HelperProvider.MD5Encrypt32(String.Format("{0}{1}", userInfo.userId, guid));
@@ -524,7 +530,7 @@ namespace NF.AdminSystem.Controllers
                 {
                     userInfo = JsonConvert.DeserializeObject<UserAllInfoModel>(info);
                 }
-                
+
                 ret.data = userInfo;
             }
             catch (Exception ex)
@@ -687,7 +693,7 @@ namespace NF.AdminSystem.Controllers
             try
             {
                 string content = HelperProvider.GetRequestContent(HttpContext);
-                
+
                 if (String.IsNullOrEmpty(content))
                 {
                     ret.result = Result.ERROR;
@@ -697,7 +703,7 @@ namespace NF.AdminSystem.Controllers
                 else
                 {
                     List<UserContactInfoModel> list = null;
-                    
+
                     if (content.IndexOf("\"data\":") > 0)
                     {
                         RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
@@ -832,7 +838,7 @@ namespace NF.AdminSystem.Controllers
             try
             {
                 string content = HelperProvider.GetRequestContent(HttpContext);
-                if(!String.IsNullOrEmpty(content))
+                if (!String.IsNullOrEmpty(content))
                 {
                     UserBankInfoModel bankInfo = JsonConvert.DeserializeObject<UserBankInfoModel>(content);
 
@@ -853,7 +859,7 @@ namespace NF.AdminSystem.Controllers
                         return JsonConvert.SerializeObject(ret);
                     }
                 }
-                
+
                 ret.result = Result.ERROR;
                 ret.errorCode = MainErrorModels.PARAMETER_ERROR;
                 ret.message = "The request body is empty.";
@@ -890,7 +896,7 @@ namespace NF.AdminSystem.Controllers
             }
             return JsonConvert.SerializeObject(ret);
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -947,7 +953,7 @@ namespace NF.AdminSystem.Controllers
         [HttpPost]
         public ActionResult<string> PostUserCallRecord(int userId)
         {
-            
+
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             try
@@ -966,7 +972,7 @@ namespace NF.AdminSystem.Controllers
                     if (content.IndexOf("\"data\": ") > 0)
                     {
                         RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-                        
+
                         record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
                     }
                     else
@@ -989,7 +995,7 @@ namespace NF.AdminSystem.Controllers
 
                     Log.WriteDebugLog("UserController::PostUserCallRecord", "{0} use time:{1} ms", content.Length, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -1025,7 +1031,7 @@ namespace NF.AdminSystem.Controllers
                     if (content.IndexOf("\"data\": ") > 0)
                     {
                         RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-                        
+
                         record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
                     }
                     else
@@ -1085,7 +1091,7 @@ namespace NF.AdminSystem.Controllers
                     if (content.IndexOf("\"data\": ") > 0)
                     {
                         RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-                        
+
                         location = JsonConvert.DeserializeObject<UserLocationModel>(Convert.ToString(body.data));
                     }
                     else
@@ -1094,7 +1100,7 @@ namespace NF.AdminSystem.Controllers
                     }
 
                     DataProviderResultModel result = UserProvider.UpdateUserLocation(location);
-                    
+
                     ret.result = result.result;
                     ret.message = result.message;
 

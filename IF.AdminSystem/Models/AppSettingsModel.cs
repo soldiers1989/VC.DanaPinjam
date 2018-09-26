@@ -11,4 +11,8 @@ public class AppSettingsModel
     public string duitkuKey { get; set; }
     public string PayMethod { get; set; }
     public string atmh5url {get;set;}
+
+    public string WaveCellSMSAccountName {get;set;}
+
+    public string WaveCellSMSAuthorization {get;set;}
 }
