@@ -7,3 +7,12 @@
 /data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.AssemblyInfo.cs
 /data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.dll
 /data/danapinjam/smssender/obj/Debug/netstandard2.0/smssender.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/bin/Debug/netstandard2.0/smssender.deps.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/bin/Debug/netstandard2.0/smssender.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/bin/Debug/netstandard2.0/smssender.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/obj/Debug/netstandard2.0/smssender.csprojAssemblyReference.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/obj/Debug/netstandard2.0/smssender.csproj.CoreCompileInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/obj/Debug/netstandard2.0/smssender.AssemblyInfoInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/obj/Debug/netstandard2.0/smssender.AssemblyInfo.cs
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/obj/Debug/netstandard2.0/smssender.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/smssender/obj/Debug/netstandard2.0/smssender.pdb

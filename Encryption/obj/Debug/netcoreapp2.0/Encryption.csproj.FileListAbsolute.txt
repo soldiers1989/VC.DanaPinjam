@@ -15,3 +15,12 @@
 /data/danapinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.AssemblyInfo.cs
 /data/danapinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.dll
 /data/danapinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/bin/Debug/netcoreapp2.0/Encryption.deps.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/bin/Debug/netcoreapp2.0/Encryption.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/bin/Debug/netcoreapp2.0/Encryption.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.csprojAssemblyReference.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.csproj.CoreCompileInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.AssemblyInfoInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.AssemblyInfo.cs
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/Encryption/obj/Debug/netcoreapp2.0/Encryption.pdb

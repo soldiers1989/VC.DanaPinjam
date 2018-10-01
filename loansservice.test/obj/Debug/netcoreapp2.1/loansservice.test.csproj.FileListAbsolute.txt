@@ -12,3 +12,17 @@
 /data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.AssemblyInfo.cs
 /data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.dll
 /data/danapinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.deps.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.runtimeconfig.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.runtimeconfig.dev.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/bin/Debug/netcoreapp2.1/loansservice.test.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.csprojAssemblyReference.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.csproj.CoreCompileInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.AssemblyInfoInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.AssemblyInfo.cs
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice.test/obj/Debug/netcoreapp2.1/loansservice.test.pdb

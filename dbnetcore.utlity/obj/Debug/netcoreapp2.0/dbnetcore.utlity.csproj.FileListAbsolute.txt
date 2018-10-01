@@ -25,3 +25,17 @@
 /data/danapinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.csproj.CopyComplete
 /data/danapinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.dll
 /data/danapinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/bin/Debug/netcoreapp2.0/dbnetcore.utlity.deps.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/bin/Debug/netcoreapp2.0/dbnetcore.utlity.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/bin/Debug/netcoreapp2.0/dbnetcore.utlity.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/bin/Debug/netcoreapp2.0/Encryption.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/bin/Debug/netcoreapp2.0/log.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/bin/Debug/netcoreapp2.0/Encryption.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/bin/Debug/netcoreapp2.0/log.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.csprojAssemblyReference.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.csproj.CoreCompileInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.AssemblyInfoInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.AssemblyInfo.cs
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.csproj.CopyComplete
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/obj/Debug/netcoreapp2.0/dbnetcore.utlity.pdb

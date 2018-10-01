@@ -7806,23 +7806,23 @@
     ]
   },
   "packageFolders": {
-    "/home/f1/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/fengyi/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/data/danapinjam/test/test.csproj",
+      "projectUniqueName": "/Users/fengyi/Documents/project/VC.DanaPinjam/test/test.csproj",
       "projectName": "test",
-      "projectPath": "/data/danapinjam/test/test.csproj",
-      "packagesPath": "/home/f1/.nuget/packages/",
-      "outputPath": "/data/danapinjam/test/obj/",
+      "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/test/test.csproj",
+      "packagesPath": "/Users/fengyi/.nuget/packages/",
+      "outputPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/test/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/f1/.nuget/NuGet/NuGet.Config"
+        "/Users/fengyi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -7833,20 +7833,20 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "/data/danapinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj": {
-              "projectPath": "/data/danapinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj"
+            "/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj": {
+              "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj"
             },
-            "/data/danapinjam/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj": {
-              "projectPath": "/data/danapinjam/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj"
+            "/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj": {
+              "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-sts/aliyun-net-sdk-sts.vscode.csproj"
             },
-            "/data/danapinjam/dbnetcore.utlity/dbnetcore.utlity.csproj": {
-              "projectPath": "/data/danapinjam/dbnetcore.utlity/dbnetcore.utlity.csproj"
+            "/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/dbnetcore.utlity.csproj": {
+              "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/dbnetcore.utlity/dbnetcore.utlity.csproj"
             },
-            "/data/danapinjam/loansservice/loansservice.csproj": {
-              "projectPath": "/data/danapinjam/loansservice/loansservice.csproj"
+            "/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice/loansservice.csproj": {
+              "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/loansservice/loansservice.csproj"
             },
-            "/data/danapinjam/redis/redis.csproj": {
-              "projectPath": "/data/danapinjam/redis/redis.csproj"
+            "/Users/fengyi/Documents/project/VC.DanaPinjam/redis/redis.csproj": {
+              "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/redis/redis.csproj"
             }
           }
         }

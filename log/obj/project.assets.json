@@ -664,23 +664,23 @@
     ]
   },
   "packageFolders": {
-    "/home/f1/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/fengyi/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/data/danapinjam/log/log.csproj",
+      "projectUniqueName": "/Users/fengyi/Documents/project/VC.DanaPinjam/log/log.csproj",
       "projectName": "log",
-      "projectPath": "/data/danapinjam/log/log.csproj",
-      "packagesPath": "/home/f1/.nuget/packages/",
-      "outputPath": "/data/danapinjam/log/obj/",
+      "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/log/log.csproj",
+      "packagesPath": "/Users/fengyi/.nuget/packages/",
+      "outputPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/log/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/f1/.nuget/NuGet/NuGet.Config"
+        "/Users/fengyi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
