@@ -669,23 +669,28 @@ namespace NF.AdminSystem.Controllers
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                ///逻辑
-                DataProviderResultModel result = UserProvider.SaveUserContactInfo(contactInfo);
+                string lockKey = "editUserInfo";
+                if (redis.LockTake(lockKey, contactInfo.userId, 10))
+                {
+                    ///逻辑
+                    DataProviderResultModel result = UserProvider.SaveUserContactInfo(contactInfo);
 
-                if (result.result == Result.SUCCESS)
-                {
-                    result.result = Result.SUCCESS;
-                    Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfoV2_{0}", contactInfo.userId);
-                    redis.KeyDelete(key);
-                }
-                else
-                {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = result.result;
-                    ret.message = result.message;
+                    if (result.result == Result.SUCCESS)
+                    {
+                        result.result = Result.SUCCESS;
+                        string key = String.Format("UserAllInfoV2_{0}", contactInfo.userId);
+                        redis.KeyDelete(key);
+                    }
+                    else
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = result.result;
+                        ret.message = result.message;
+                    }
+                    redis.LockRelease(lockKey, contactInfo.userId);
                 }
             }
             catch (Exception ex)
@@ -709,62 +714,68 @@ namespace NF.AdminSystem.Controllers
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                string content = HelperProvider.GetRequestContent(HttpContext);
-
-                if (String.IsNullOrEmpty(content))
+                string lockKey = "editUserContact";
+                string hUserId = HttpContext.Request.Headers["userId"];
+                if (redis.LockTake(lockKey, hUserId, 10))
                 {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                    ret.message = "Request content is empty.";
-                }
-                else
-                {
-                    List<UserContactInfoModel> list = null;
+                    string content = HelperProvider.GetRequestContent(HttpContext);
 
-                    if (content.IndexOf("\"data\":") > 0)
+                    if (String.IsNullOrEmpty(content))
                     {
-                        RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-                        list = JsonConvert.DeserializeObject<List<UserContactInfoModel>>(Convert.ToString(body.data));
+                        ret.result = Result.ERROR;
+                        ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                        ret.message = "Request content is empty.";
                     }
                     else
                     {
-                        list = JsonConvert.DeserializeObject<List<UserContactInfoModel>>(content);
-                    }
+                        List<UserContactInfoModel> list = null;
 
-                    int userId = 0;
-                    bool isSync = false;
-                    foreach (var contactInfo in list)
-                    {
-                        if (contactInfo.userId > 0)
+                        if (content.IndexOf("\"data\":") > 0)
                         {
-                            if (!isSync)
+                            RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
+                            list = JsonConvert.DeserializeObject<List<UserContactInfoModel>>(Convert.ToString(body.data));
+                        }
+                        else
+                        {
+                            list = JsonConvert.DeserializeObject<List<UserContactInfoModel>>(content);
+                        }
+
+                        int userId = 0;
+                        bool isSync = false;
+                        foreach (var contactInfo in list)
+                        {
+                            if (contactInfo.userId > 0)
                             {
-                                DataProviderResultModel checkResult = UserProvider.CheckStatusBeforModifyInfo(contactInfo.userId);
-                                if (checkResult.result != Result.SUCCESS)
+                                if (!isSync)
                                 {
-                                    Log.WriteDebugLog("UserController::EditUserContactInfoV2", "检查到用户【{0}】存在已提交或未还款记录，不允许修改资料。", contactInfo.userId);
-                                    ret.result = checkResult.result;
-                                    ret.message = checkResult.message;
-                                    return JsonConvert.SerializeObject(ret);
+                                    DataProviderResultModel checkResult = UserProvider.CheckStatusBeforModifyInfo(contactInfo.userId);
+                                    if (checkResult.result != Result.SUCCESS)
+                                    {
+                                        Log.WriteDebugLog("UserController::EditUserContactInfoV2", "检查到用户【{0}】存在已提交或未还款记录，不允许修改资料。", contactInfo.userId);
+                                        ret.result = checkResult.result;
+                                        ret.message = checkResult.message;
+                                        return JsonConvert.SerializeObject(ret);
+                                    }
+                                    isSync = true;
                                 }
-                                isSync = true;
-                            }
-                            ///逻辑
-                            DataProviderResultModel result = UserProvider.SaveUserContactInfo(contactInfo);
-                            if (result.result == Result.SUCCESS)
-                            {
-                                userId = contactInfo.userId;
+                                ///逻辑
+                                DataProviderResultModel result = UserProvider.SaveUserContactInfo(contactInfo);
+                                if (result.result == Result.SUCCESS)
+                                {
+                                    userId = contactInfo.userId;
+                                }
                             }
                         }
+                        if (userId > 0)
+                        {
+                            string key = String.Format("UserAllInfoV2_{0}", userId);
+                            redis.KeyDelete(key);
+                        }
                     }
-                    if (userId > 0)
-                    {
-                        Redis redis = HelperProvider.GetRedis();
-                        string key = String.Format("UserAllInfoV2_{0}", userId);
-                        redis.KeyDelete(key);
-                    }
+                    redis.LockRelease(lockKey, hUserId);
                 }
             }
             catch (Exception ex)
@@ -854,6 +865,7 @@ namespace NF.AdminSystem.Controllers
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
                 string content = HelperProvider.GetRequestContent(HttpContext);
@@ -975,46 +987,50 @@ namespace NF.AdminSystem.Controllers
 
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                if (null == HttpContext.Request.Body)
+                string lockKey = "postUserCall";
+                if (redis.LockTake(lockKey, userId, 10))
                 {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                    ret.message = "post request body is null";
-                }
-                else
-                {
-                    StreamReader read = new StreamReader(HttpContext.Request.Body);
-                    string content = read.ReadToEnd();
-                    List<CallRecord> record = null;
-                    if (content.IndexOf("\"data\": ") > 0)
+                    if (null == HttpContext.Request.Body)
                     {
-                        RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-
-                        record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                        ret.result = Result.ERROR;
+                        ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                        ret.message = "post request body is null";
                     }
                     else
                     {
-                        record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                        StreamReader read = new StreamReader(HttpContext.Request.Body);
+                        string content = read.ReadToEnd();
+                        List<CallRecord> record = null;
+                        if (content.IndexOf("\"data\": ") > 0)
+                        {
+                            RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
+
+                            record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                        }
+                        else
+                        {
+                            record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                        }
+                        var result = new DataProviderResultModel();
+                        var beginTime = DateTime.Now;
+
+                        result = UserProvider.UploadUserConacts(userId, 2, record);
+
+                        result = UserProvider.UpdateUserConactNumber(userId);
+
+                        ret.result = Result.SUCCESS;
+                        ret.data = result.data;
+
+                        string key = String.Format("UserAllInfoV2_{0}", userId);
+                        redis.KeyDelete(key);
+
+                        Log.WriteDebugLog("UserController::PostUserCallRecord", "{0} use time:{1} ms", content.Length, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
                     }
-                    var result = new DataProviderResultModel();
-                    var beginTime = DateTime.Now;
-
-                    result = UserProvider.UploadUserConacts(userId, 2, record);
-
-                    result = UserProvider.UpdateUserConactNumber(userId);
-
-                    ret.result = Result.SUCCESS;
-                    ret.data = result.data;
-
-                    Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfoV2_{0}", userId);
-                    redis.KeyDelete(key);
-
-                    Log.WriteDebugLog("UserController::PostUserCallRecord", "{0} use time:{1} ms", content.Length, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
+                    redis.LockRelease(lockKey, userId);
                 }
-
             }
             catch (Exception ex)
             {
@@ -1034,45 +1050,49 @@ namespace NF.AdminSystem.Controllers
 
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                if (null == HttpContext.Request.Body)
+                string lockKey = "postUserConcats";
+                if (redis.LockTake(lockKey, userId, 10))
                 {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                    ret.message = "post request body is null";
-                }
-                else
-                {
-                    StreamReader read = new StreamReader(HttpContext.Request.Body);
-                    string content = read.ReadToEnd();
-                    List<CallRecord> record = null;
-                    if (content.IndexOf("\"data\": ") > 0)
+                    if (null == HttpContext.Request.Body)
                     {
-                        RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-
-                        record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                        ret.result = Result.ERROR;
+                        ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                        ret.message = "post request body is null";
                     }
                     else
                     {
-                        record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                        StreamReader read = new StreamReader(HttpContext.Request.Body);
+                        string content = read.ReadToEnd();
+                        List<CallRecord> record = null;
+                        if (content.IndexOf("\"data\": ") > 0)
+                        {
+                            RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
+
+                            record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                        }
+                        else
+                        {
+                            record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                        }
+
+                        var result = new DataProviderResultModel();
+
+                        result = UserProvider.UploadUserConacts(userId, 1, record);
+
+                        result = UserProvider.UpdateUserConactNumber(userId);
+                        ret.result = Result.SUCCESS;
+                        ret.data = result.data;
+
+                        string key = String.Format("UserAllInfoV2_{0}", userId);
+                        redis.KeyDelete(key);
+
+                        Log.WriteDebugLog("UserController::PostUserConcats", "{0}", record.Count);
                     }
-
-                    var result = new DataProviderResultModel();
-
-                    result = UserProvider.UploadUserConacts(userId, 1, record);
-
-                    result = UserProvider.UpdateUserConactNumber(userId);
-                    ret.result = Result.SUCCESS;
-                    ret.data = result.data;
-
-                    Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfoV2_{0}", userId);
-                    redis.KeyDelete(key);
-
-                    Log.WriteDebugLog("UserController::PostUserConcats", "{0}", record.Count);
+                    redis.LockRelease(lockKey, userId);
                 }
-
             }
             catch (Exception ex)
             {

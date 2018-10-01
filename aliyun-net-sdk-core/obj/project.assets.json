@@ -681,23 +681,23 @@
     ]
   },
   "packageFolders": {
-    "/home/f1/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/fengyi/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/data/danapinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj",
+      "projectUniqueName": "/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj",
       "projectName": "aliyun-net-sdk-core.vscode",
-      "projectPath": "/data/danapinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj",
-      "packagesPath": "/home/f1/.nuget/packages/",
-      "outputPath": "/data/danapinjam/aliyun-net-sdk-core/obj/",
+      "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/aliyun-net-sdk-core.vscode.csproj",
+      "packagesPath": "/Users/fengyi/.nuget/packages/",
+      "outputPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/f1/.nuget/NuGet/NuGet.Config"
+        "/Users/fengyi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

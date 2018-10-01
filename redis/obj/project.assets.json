@@ -1332,23 +1332,23 @@
     ]
   },
   "packageFolders": {
-    "/home/f1/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "/Users/fengyi/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/data/danapinjam/redis/redis.csproj",
+      "projectUniqueName": "/Users/fengyi/Documents/project/VC.DanaPinjam/redis/redis.csproj",
       "projectName": "redis",
-      "projectPath": "/data/danapinjam/redis/redis.csproj",
-      "packagesPath": "/home/f1/.nuget/packages/",
-      "outputPath": "/data/danapinjam/redis/obj/",
+      "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/redis/redis.csproj",
+      "packagesPath": "/Users/fengyi/.nuget/packages/",
+      "outputPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/f1/.nuget/NuGet/NuGet.Config"
+        "/Users/fengyi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -1359,8 +1359,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "/data/danapinjam/log/log.csproj": {
-              "projectPath": "/data/danapinjam/log/log.csproj"
+            "/Users/fengyi/Documents/project/VC.DanaPinjam/log/log.csproj": {
+              "projectPath": "/Users/fengyi/Documents/project/VC.DanaPinjam/log/log.csproj"
             }
           }
         }

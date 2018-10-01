@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 using YYLog.ClassLibrary;
+using RedisPools;
 
 namespace NF.AdminSystem.Controllers
 {
@@ -46,7 +47,7 @@ namespace NF.AdminSystem.Controllers
                 {
                     float rate = 0f;
                     float overdueRate = 0f;
-                    
+
                     if (null != result.data)
                     {
                         List<float> rates = result.data as List<float>;
@@ -72,7 +73,7 @@ namespace NF.AdminSystem.Controllers
                         //实际到帐，减去手续费
                         info.actualMoney = debitMoney - info.debitFee;
                         //日息
-                        info.dailyInterest = debitMoney * rate/debitPeriod;
+                        info.dailyInterest = debitMoney * rate / debitPeriod;
                         //逾期日息
                         info.overdueDayInterest = debitMoney * overdueRate;
                         ret.data = info;
@@ -114,25 +115,31 @@ namespace NF.AdminSystem.Controllers
         /// <param name="bankId"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        public ActionResult<string> SubmitDebitRequest(int userId, float debitMoney, int bankId, string description, int debitPeriod = 0,int debitPeroid = 0)
+        public ActionResult<string> SubmitDebitRequest(int userId, float debitMoney, int bankId, string description, int debitPeriod = 0, int debitPeroid = 0)
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                debitPeriod = debitPeriod == 0 ? debitPeroid : debitPeriod;
-                ///逻辑
-                DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(userId, debitMoney, debitPeriod, bankId, description);
-                ret.result = result.result;
-                if (result.result == Result.SUCCESS)
+                string lockKey = "submitdebit";
+                if (redis.LockTake(lockKey, userId))
                 {
-                    ret.data = result.data;
-                }
-                else
-                {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = result.result;
-                    ret.message = result.message;
+                    debitPeriod = debitPeriod == 0 ? debitPeroid : debitPeriod;
+                    ///逻辑
+                    DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(userId, debitMoney, debitPeriod, bankId, description);
+                    ret.result = result.result;
+                    if (result.result == Result.SUCCESS)
+                    {
+                        ret.data = result.data;
+                    }
+                    else
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = result.result;
+                        ret.message = result.message;
+                    }
+                    redis.LockRelease(lockKey, userId);
                 }
             }
             catch (Exception ex)
@@ -180,7 +187,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("DebitController::GetUserDebitRecords", "UserId:{0}，异常：{1}", userId, ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -218,7 +225,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("DebitController::GetUserDebitRecord", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -256,7 +263,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("DebitController::GetUserDebitRecord", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -271,20 +278,26 @@ namespace NF.AdminSystem.Controllers
         /// <param name="payBackDebitMoney"></param>
         /// <param name="certificateUrl"></param>
         /// <returns></returns>
-        public ActionResult<string> SubmitPayBackDebitRequest(int userId, int debitId, float payBackDebitMoney,string certificateUrl = "")
+        public ActionResult<string> SubmitPayBackDebitRequest(int userId, int debitId, float payBackDebitMoney, string certificateUrl = "")
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                ///逻辑
-                DataProviderResultModel result = DebitProvider.PayBackDebitRequest(userId, debitId, payBackDebitMoney, certificateUrl);
-                ret.result = result.result;
-                if (result.result != Result.SUCCESS)
+                string lockKey = "submitPayback";
+                if (redis.LockTake(lockKey, userId))
                 {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = result.result;
-                    ret.message = result.message;
+                    ///逻辑
+                    DataProviderResultModel result = DebitProvider.PayBackDebitRequest(userId, debitId, payBackDebitMoney, certificateUrl);
+                    ret.result = result.result;
+                    if (result.result != Result.SUCCESS)
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = result.result;
+                        ret.message = result.message;
+                    }
+                    redis.LockRelease(lockKey, userId);
                 }
             }
             catch (Exception ex)
@@ -295,7 +308,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("DebitController::SubmitPayBackDebitRequest", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -315,16 +328,22 @@ namespace NF.AdminSystem.Controllers
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                ///逻辑
-                DataProviderResultModel result = DebitProvider.ExtendDebitRequest(userId, debitId, payBackDebitMoney, certificateUrl);
-                ret.result = result.result;
-                if (result.result != Result.SUCCESS)
+                string lockKey = "submitExtend";
+                if (redis.LockTake(lockKey, userId))
                 {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = result.result;
-                    ret.message = result.message;
+                    ///逻辑
+                    DataProviderResultModel result = DebitProvider.ExtendDebitRequest(userId, debitId, payBackDebitMoney, certificateUrl);
+                    ret.result = result.result;
+                    if (result.result != Result.SUCCESS)
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = result.result;
+                        ret.message = result.message;
+                    }
+                    redis.LockRelease(lockKey, userId);
                 }
             }
             catch (Exception ex)
@@ -335,7 +354,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("DebitController::SubmitExtendDebitRequest", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -367,7 +386,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("DebitController::GetUserCertificate", "异常：{0}", ex.Message);
             }
-            
+
             return JsonConvert.SerializeObject(ret);
         }
     }
