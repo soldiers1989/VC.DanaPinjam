@@ -246,16 +246,21 @@ namespace DBMonoUtility
                                     }
                                     else
                                     {
-                                        if (c.State != ConnectionState.Open)
-                                        {
-                                            c.Open();
+                                        conns.Remove(c);
+                                        c.Close();
 
-                                            if (c.State != ConnectionState.Open)
+                                        try
+                                        {
+                                            IDbConnection conn = getDbConnection(name);
+                                            if (conn.State == ConnectionState.Open)
                                             {
-                                                c.Close();
-                                                conns.Remove(c);
-                                                Log.WriteWarning("DataBasePool::checkProc", "尝试打开关闭的链接失败，从连接池中移除连接，c.State = {0}, 最后使用时间为：{1}", c.State, expire);
+                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
+                                                conns[conn] = DateTime.Now;
                                             }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Log.WriteErrorLog("DataBasePool::checkProc", "重新打开连接失败，{0}", ex.Message);
                                         }
 
                                         //Log.WriteWarning("DataBasePool::checkProc", "连接状态：c.State = {0}, 最后使用时间为：{1}", c.State, expire);
