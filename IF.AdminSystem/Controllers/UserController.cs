@@ -256,47 +256,51 @@ namespace NF.AdminSystem.Controllers
 
             int regType = 0;
             string qudao = String.Empty;
-
+            Redis redis = HelperProvider.GetRedis();
             qudao = HttpContext.Request.Headers["pkgName"];
             try
             {
-                Redis redis = HelperProvider.GetRedis();
-                string recordId = redis.StringGet("code_" + phone);
-                ///验证码
-                if (!String.IsNullOrEmpty(recordId))
+                string key = "reg_user";
+                if (redis.LockTake(key, phone, 10))
                 {
-                    redis.KeyDelete("code_" + phone);
-
-                    if (confrimVerificateCode(phone, recordId, code) != 0)
+                    string recordId = redis.StringGet("code_" + phone);
+                    ///验证码
+                    if (!String.IsNullOrEmpty(recordId))
                     {
-                        ret.errorCode = MainErrorModels.VERIFICATION_CODE_ERROR;
-                        ret.message = "Verification code error";
-                        return JsonConvert.SerializeObject(ret);
+                        redis.KeyDelete("code_" + phone);
+
+                        if (confrimVerificateCode(phone, recordId, code) != 0)
+                        {
+                            ret.errorCode = MainErrorModels.VERIFICATION_CODE_ERROR;
+                            ret.message = "Verification code error";
+                            return JsonConvert.SerializeObject(ret);
+                        }
                     }
-                }
-                phone = GetPhone(phone);
-                string userName = phone;
-                ///逻辑
-                result = UserProvider.UserRegister(userName, phone, password, regType, qudao);
+                    phone = GetPhone(phone);
+                    string userName = phone;
+                    ///逻辑
+                    result = UserProvider.UserRegister(userName, phone, password, regType, qudao);
 
-                if (result.result > 0)
-                {
-                    ret.result = Result.SUCCESS;
-                    ret.errorCode = 0;
-                    ret.message = result.message;
+                    if (result.result > 0)
+                    {
+                        ret.result = Result.SUCCESS;
+                        ret.errorCode = 0;
+                        ret.message = result.message;
 
-                    UserInfoModel userInfo = result.data as UserInfoModel;
-                    string guid = Guid.NewGuid().ToString();
-                    redis.StringSet(String.Format("user_guid_{0}", userInfo.userId), guid);
-                    userInfo.token = HelperProvider.MD5Encrypt32(String.Format("{0}{1}", userInfo.userId, guid));
-                    redis.StringSet(String.Format("UserInfo_{0}", userInfo.userId), JsonConvert.SerializeObject(userInfo));
-                    ret.data = userInfo;
-                }
-                else
-                {
-                    ret.result = Result.ERROR;
-                    ret.errorCode = result.result;
-                    ret.message = result.message;
+                        UserInfoModel userInfo = result.data as UserInfoModel;
+                        string guid = Guid.NewGuid().ToString();
+                        redis.StringSet(String.Format("user_guid_{0}", userInfo.userId), guid);
+                        userInfo.token = HelperProvider.MD5Encrypt32(String.Format("{0}{1}", userInfo.userId, guid));
+                        redis.StringSet(String.Format("UserInfo_{0}", userInfo.userId), JsonConvert.SerializeObject(userInfo));
+                        ret.data = userInfo;
+                    }
+                    else
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = result.result;
+                        ret.message = result.message;
+                    }
+                    redis.LockRelease(key, phone);
                 }
             }
             catch (Exception ex)
@@ -307,6 +311,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::UserRegister", "异常：{0}", ex.Message);
             }
+
             return JsonConvert.SerializeObject(ret);
         }
 
