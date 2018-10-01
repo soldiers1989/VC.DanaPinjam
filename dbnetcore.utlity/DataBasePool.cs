@@ -238,6 +238,10 @@ namespace DBMonoUtility
                                                 Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
                                                 conns[conn] = DateTime.Now;
                                             }
+                                            else
+                                            {
+                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开失败。");
+                                            }
                                         }
                                         catch (Exception ex)
                                         {
@@ -257,6 +261,10 @@ namespace DBMonoUtility
                                             {
                                                 Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
                                                 conns[conn] = DateTime.Now;
+                                            }
+                                            else
+                                            {
+                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开失败。");
                                             }
                                         }
                                         catch (Exception ex)
