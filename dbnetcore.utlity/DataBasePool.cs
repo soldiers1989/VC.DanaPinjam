@@ -227,8 +227,8 @@ namespace DBMonoUtility
                                     if (((expire.AddMilliseconds(_maxIdle)) < DateTime.Now))
                                     {
                                         Log.WriteDebugLog("DataBasePool::checkProc", "链接已超时，最后使用时间{0}，从链接池中移除，将重新打开。", expire.ToString("yyyy-MM-dd hh:mm:ss"));
-                                        c.Close();
                                         conns.Remove(c);
+                                        c.Close();
 
                                         try
                                         {
@@ -246,6 +246,7 @@ namespace DBMonoUtility
                                     }
                                     else
                                     {
+                                        Log.WriteDebugLog("DataBasePool::checkProc", "链接已超过最大空闲时间，最后使用时间{0}，从链接池中移除，将重新打开。", expire.ToString("yyyy-MM-dd hh:mm:ss"));
                                         conns.Remove(c);
                                         c.Close();
 
