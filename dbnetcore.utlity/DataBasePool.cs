@@ -233,6 +233,7 @@ namespace DBMonoUtility
                                         try
                                         {
                                             IDbConnection conn = getDbConnection(name);
+                                            conn.Open();
                                             if (conn.State == ConnectionState.Open)
                                             {
                                                 Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
@@ -257,6 +258,7 @@ namespace DBMonoUtility
                                         try
                                         {
                                             IDbConnection conn = getDbConnection(name);
+                                            conn.Open();
                                             if (conn.State == ConnectionState.Open)
                                             {
                                                 Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
