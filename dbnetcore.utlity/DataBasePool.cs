@@ -251,29 +251,31 @@ namespace DBMonoUtility
                                     }
                                     else
                                     {
-                                        Log.WriteDebugLog("DataBasePool::checkProc", "链接已超过最大空闲时间，最后使用时间{0}，从链接池中移除，将重新打开。", expire.ToString("yyyy-MM-dd hh:mm:ss"));
-                                        conns.Remove(c);
-                                        c.Close();
-
-                                        try
+                                        if (c.State != ConnectionState.Open)
                                         {
-                                            IDbConnection conn = getDbConnection(name);
-                                            conn.Open();
-                                            if (conn.State == ConnectionState.Open)
+                                            Log.WriteDebugLog("DataBasePool::checkProc", "链接已断开，最后使用时间{0}，从链接池中移除，将重新打开。", expire.ToString("yyyy-MM-dd hh:mm:ss"));
+                                            conns.Remove(c);
+                                            c.Close();
+
+                                            try
                                             {
-                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
-                                                conns[conn] = DateTime.Now;
+                                                IDbConnection conn = getDbConnection(name);
+                                                conn.Open();
+                                                if (conn.State == ConnectionState.Open)
+                                                {
+                                                    Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
+                                                    conns[conn] = DateTime.Now;
+                                                }
+                                                else
+                                                {
+                                                    Log.WriteDebugLog("DataBasePool::checkProc", "重新打开失败。");
+                                                }
                                             }
-                                            else
+                                            catch (Exception ex)
                                             {
-                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开失败。");
+                                                Log.WriteErrorLog("DataBasePool::checkProc", "重新打开连接失败，{0}", ex.Message);
                                             }
                                         }
-                                        catch (Exception ex)
-                                        {
-                                            Log.WriteErrorLog("DataBasePool::checkProc", "重新打开连接失败，{0}", ex.Message);
-                                        }
-
                                         //Log.WriteWarning("DataBasePool::checkProc", "连接状态：c.State = {0}, 最后使用时间为：{1}", c.State, expire);
                                     }
                                 }
