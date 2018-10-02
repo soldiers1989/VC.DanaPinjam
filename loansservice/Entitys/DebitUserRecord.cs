@@ -18,3 +18,14 @@ public class DebitUserRecord
     public float amountTransfer;
 }
 
+
+[Serializable]
+public class DebitRecord
+{
+    public string phone { get; set; }
+    public int debitId { get; set; }
+
+    public int overdueDay { get; set; }
+
+    public int smsSendTimes { get; set; }
+}
