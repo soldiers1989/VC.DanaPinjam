@@ -61,44 +61,57 @@ namespace NF.AdminSystem.Controllers
             string key = String.Format("CallbackRequest_{0}", request.merchantOrderId);
             try
             {
-                redis.LockTake(key, 1);
                 if (!request.IsEmpty())
                 {
-                    string signature = String.Empty;
-                    string duitkuKey = getDuitkuKey(request.merchantCode);
-                    signature = request.merchantCode + request.amount + request.merchantOrderId + duitkuKey;
-
-                    signature = HelperProvider.MD532(signature);
-                    DataProviderResultModel result = DuitkuProvider.SaveDuitkuCallbackRecord(request);
-                    string guid = Convert.ToString(result.data);
-                    ///记录调用日志，最终需要写入数据库
-                    Log.WriteLog("DuitkuController::CallbackRequest", "{0} - {1}", result.result, JsonConvert.SerializeObject(request));
-
-                    //验证签名
-                    if (signature == request.signature)
+                    if (redis.LockTake(key, 1))
                     {
-                        Log.WriteDebugLog("DuitkuController::CallbackRequest", "签名验证通过:{0} - 传入为：{1}", signature, request.signature);
-                        ///验证通过
-                        DataProviderResultModel ret = DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
-                        if (ret.result == Result.SUCCESS)
+                        try
                         {
-                            Log.WriteErrorLog("DuitkuController::CallbackRequest", "回调操作成功。");
-                            DuitkuProvider.SetDuitkuCallbackRecordStatus(guid, 1);
-                            return "Success";
-                        }
-                        else
-                        {
-                            Log.WriteErrorLog("DuitkuController::CallbackRequest", "回调操作失败。");
-                            DuitkuProvider.SetDuitkuCallbackRecordStatus(guid, -1);
+                            string signature = String.Empty;
+                            string duitkuKey = getDuitkuKey(request.merchantCode);
+                            signature = request.merchantCode + request.amount + request.merchantOrderId + duitkuKey;
 
-                            return "Error";
+                            signature = HelperProvider.MD532(signature);
+                            DataProviderResultModel result = DuitkuProvider.SaveDuitkuCallbackRecord(request);
+                            string guid = Convert.ToString(result.data);
+                            ///记录调用日志，最终需要写入数据库
+                            Log.WriteLog("DuitkuController::CallbackRequest", "{0} - {1}", result.result, JsonConvert.SerializeObject(request));
+
+                            //验证签名
+                            if (signature == request.signature)
+                            {
+                                Log.WriteDebugLog("DuitkuController::CallbackRequest", "签名验证通过:{0} - 传入为：{1}", signature, request.signature);
+                                ///验证通过
+                                DataProviderResultModel ret = DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
+                                if (ret.result == Result.SUCCESS)
+                                {
+                                    Log.WriteErrorLog("DuitkuController::CallbackRequest", "回调操作成功。");
+                                    DuitkuProvider.SetDuitkuCallbackRecordStatus(guid, 1);
+                                    return "Success";
+                                }
+                                else
+                                {
+                                    Log.WriteErrorLog("DuitkuController::CallbackRequest", "回调操作失败。");
+                                    DuitkuProvider.SetDuitkuCallbackRecordStatus(guid, -1);
+
+                                    return "Error";
+                                }
+                            }
+                            else
+                            {
+                                Log.WriteDebugLog("DuitkuController::CallbackRequest", "签名验证没有通过:{0} - 传入为：{1}", signature, request.signature);
+                                ///签名不通过
+                                return "Bad Signature";
+                            }
+                        }
+                        finally
+                        {
+                            redis.LockRelease(key, 1);
                         }
                     }
                     else
                     {
-                        Log.WriteDebugLog("DuitkuController::CallbackRequest", "签名验证没有通过:{0} - 传入为：{1}", signature, request.signature);
-                        ///签名不通过
-                        return "Bad Signature";
+                        return "Get lock failed.";
                     }
                 }
                 else
