@@ -9,6 +9,7 @@ using System.Data;
 using NF.AdminSystem.Models;
 using NF.AdminSystem.Controllers;
 using Newtonsoft.Json;
+using RedisPools;
 
 namespace NF.AdminSystem.Providers
 {
@@ -913,45 +914,55 @@ namespace NF.AdminSystem.Providers
             DataBaseOperator dbo = null;
             DataProviderResultModel result = new DataProviderResultModel();
             UserBankInfoModel bankInfo = new UserBankInfoModel();
+            Redis redis = HelperProvider.GetRedis();
             try
             {
-                dbo = new DataBaseOperator();
-                ParamCollections pc = new ParamCollections();
-                pc.Add("@iBankId", bankId);
-                pc.Add("@iUserId", userId);
-                pc.Add("@sBankName", bankName);
-                pc.Add("@sSubBankName", subBankName);
-                pc.Add("@sBankCode", bankCode);
-                pc.Add("@sContact", contact);
-                pc.Add("@sContactName", contactName);
-
-                Hashtable table = new Hashtable();
-                DataTable dt = dbo.ExecProcedure("p_user_editbankinfo", pc.GetParams(), out table);
-                if (null != dt && dt.Rows.Count == 1)
+                if (redis.LockTake("SaveUserBankInfo", userId, 10))
                 {
-                    int.TryParse(Convert.ToString(dt.Rows[0][0]), out result.result);
-                    if (result.result == Result.SUCCESS)
+                    dbo = new DataBaseOperator();
+                    ParamCollections pc = new ParamCollections();
+                    pc.Add("@iBankId", bankId);
+                    pc.Add("@iUserId", userId);
+                    pc.Add("@sBankName", bankName);
+                    pc.Add("@sSubBankName", subBankName);
+                    pc.Add("@sBankCode", bankCode);
+                    pc.Add("@sContact", contact);
+                    pc.Add("@sContactName", contactName);
+
+                    Hashtable table = new Hashtable();
+                    DataTable dt = dbo.ExecProcedure("p_user_editbankinfo", pc.GetParams(), out table);
+                    if (null != dt && dt.Rows.Count == 1)
                     {
-                        int.TryParse(Convert.ToString(dt.Rows[0][1]), out bankInfo.bankId);
-                        bankInfo.bankName = bankName;
-                        bankInfo.bankCode = bankCode;
-                        bankInfo.contact = contact;
-                        bankInfo.contactName = contactName;
-                        bankInfo.subBankName = subBankName;
+                        int.TryParse(Convert.ToString(dt.Rows[0][0]), out result.result);
+                        if (result.result == Result.SUCCESS)
+                        {
+                            int.TryParse(Convert.ToString(dt.Rows[0][1]), out bankInfo.bankId);
+                            bankInfo.bankName = bankName;
+                            bankInfo.bankCode = bankCode;
+                            bankInfo.contact = contact;
+                            bankInfo.contactName = contactName;
+                            bankInfo.subBankName = subBankName;
+                        }
+                        else
+                        {
+                            result.message = Convert.ToString(dt.Rows[0][2]);
+                            Log.WriteErrorLog("UserProvider::SaveUserBankInfo", "{0}|{1}", result.result, dt.Rows[0][1]);
+                            bankInfo.bankId = -1;
+                        }
                     }
                     else
                     {
-                        result.message = Convert.ToString(dt.Rows[0][2]);
-                        Log.WriteErrorLog("UserProvider::SaveUserBankInfo", "{0}|{1}", result.result, dt.Rows[0][1]);
-                        bankInfo.bankId = -1;
+                        result.result = MainErrorModels.LOGIC_ERROR;
+                        result.message = "The database logic error.The function is UserProvider::SaveUserBankInfo";
                     }
+                    result.data = bankInfo;
+                    redis.LockRelease("SaveUserBankInfo", userId);
                 }
                 else
                 {
                     result.result = MainErrorModels.LOGIC_ERROR;
-                    result.message = "The database logic error.The function is UserProvider::SaveUserBankInfo";
+                    result.message = "Tet the lock error.The function is UserProvider::SaveUserBankInfo";
                 }
-                result.data = bankInfo;
                 return result;
             }
             catch (Exception ex)
@@ -970,7 +981,6 @@ namespace NF.AdminSystem.Providers
             }
             return result;
         }
-
 
         public static DataProviderResultModel SaveUserBankInfoV2(UserBankInfoModel bankInfo)
         {

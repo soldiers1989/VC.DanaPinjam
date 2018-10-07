@@ -32,6 +32,8 @@ namespace NF.AdminSystem.Models
 
         public int debitPeroid = 0;
 
+        public string target = String.Empty;
+
         public float extendFee = 0f;
 
         ///下次延期到的时间
@@ -51,6 +53,8 @@ namespace NF.AdminSystem.Models
         public int debitId;
 
         public int userId;
+
+        public string target = String.Empty;
 
         ///贷款金额
         public float debitMoney = 0f;

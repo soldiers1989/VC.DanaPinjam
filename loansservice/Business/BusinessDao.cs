@@ -16,12 +16,12 @@ public class BusinessDao
         try
         {
             dbo = new DataBaseOperator();
-            string sqlStr = @"select debitId,b.BNICode,b.BankCode, b.BankName, b.userId,b.ContactName,a.actualMoney 
+            string sqlStr = @"select debitId,b.BNICode,b.BankCode, b.BankName, b.userId,b.ContactName,a.actualMoney,ifnull(a.target,'A') target
                     from IFUserDebitRecord a,IFUserBankInfo b where a.status = @iStatus and a.audit_step = @iStep and 
-                    a.userId = b.userId and b.BNICode is not null and b.BNICode != '' limit 10";
+                    a.bankId = b.bankId and b.BNICode is not null and b.BNICode != '' limit 10";
             ParamCollections pc = new ParamCollections();
             pc.Add("@iStatus", 5);
-            pc.Add("@iStep", 2);
+            pc.Add("@iStep", 3);
 
             DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
             if (null != dt && dt.Rows.Count > 0)
@@ -42,6 +42,7 @@ public class BusinessDao
                     record.debitId = tmp;
 
                     record.bankCode = Convert.ToString(dt.Rows[i]["BNICode"]);
+                    record.target = Convert.ToString(dt.Rows[i]["target"]);
                     record.bankAccount = Convert.ToString(dt.Rows[i]["BankCode"]);
                     record.purpose = "duitku auto release loan.Rp" + record.amountTransfer;
                     list.Add(record);
@@ -63,17 +64,18 @@ public class BusinessDao
         return list;
     }
 
-    public static List<string> GetNeedCheckDebitRecords()
+    public static SortedList<string, string> GetNeedCheckDebitRecords()
     {
         DataBaseOperator dbo = null;
-        List<string> list = new List<string>();
+        SortedList<string, string> list = new SortedList<string, string>();
         try
         {
             dbo = new DataBaseOperator();
-            string sqlStr = @"select id from IFUserPayBackDebitRecord 
-                where type in (3,4) and status = -2 and ifnull(reTryTimes,0) < 3 
-                and createTime < date_add(now(), interval -30 minute) 
-                and createTime > '2018-09-13 22:00:00' order by reTryTimes limit 10";
+            string sqlStr = @"select id,ifnull(b.target,'A') target from IFUserPayBackDebitRecord a,IFUserDebitRecord b
+                where a.type in (3,4) and a.status = -2 and ifnull(a.reTryTimes,0) < 3 
+				and a.debitId = b.debitId
+                and a.createTime < date_add(now(), interval -30 minute) 
+                and a.createTime > '2018-09-13 22:00:00' order by a.reTryTimes limit 10";
             ParamCollections pc = new ParamCollections();
 
             DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
@@ -81,7 +83,7 @@ public class BusinessDao
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    list.Add(Convert.ToString(dt.Rows[i]["id"]));
+                    list.Add(Convert.ToString(dt.Rows[i]["id"]), Convert.ToString(dt.Rows[i]["target"]));
                 }
             }
         }
@@ -100,7 +102,7 @@ public class BusinessDao
         return list;
     }
 
-    public static bool UpdateRedoUserPayBackRecordStatus(string orderId) 
+    public static bool UpdateRedoUserPayBackRecordStatus(string orderId)
     {
         DataBaseOperator dbo = null;
         try
@@ -109,8 +111,8 @@ public class BusinessDao
             string sqlStr = @"update IFUserPayBackDebitRecord set statusTime=now(),retryTimes=ifnull(retryTimes,0)+1 where id=@iOrderId";
             ParamCollections pc = new ParamCollections();
             pc.Add("@iOrderId", orderId);
-            dbo.ExecuteStatement(sqlStr, pc.GetParams());   
-            return true; 
+            dbo.ExecuteStatement(sqlStr, pc.GetParams());
+            return true;
         }
         catch (Exception ex)
         {

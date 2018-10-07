@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using NF.AdminSystem.Models;
@@ -23,13 +24,16 @@ public class StatusCheckThread
     {
         while (!_isbreak)
         {
-            List<string> list = BusinessDao.GetNeedCheckDebitRecords();
+            SortedList<string, string> list = BusinessDao.GetNeedCheckDebitRecords();
             Log.WriteDebugLog("StatusCheckThread::threadProc", "存在{0}个需要确认的订单。", list.Count);
-            foreach (string orderId in list)
+            foreach (string orderId in list.Keys)
             {
-                Log.WriteDebugLog("StatusCheckThread::threadProc", "准备开始确认订单{0}的状态。", orderId);
+                string target = list[orderId];
+                Log.WriteDebugLog("StatusCheckThread::threadProc", "{0} 准备开始确认订单的状态，渠道{1}。", orderId, target);
                 LoanBank bank = new LoanBank();
-                InquriyTransferResponse response = bank.DuitkuOrderStatusInquiryRequest(orderId,ConfigHelper.GetMerchantCode());
+                string merchantCode = String.Empty;
+
+                InquriyTransferResponse response = bank.DuitkuOrderStatusInquiryRequest(orderId, target);
                 if (response.statusCode == "00")
                 {
                     CallbackRequestModel callback = new CallbackRequestModel();

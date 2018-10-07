@@ -869,25 +869,37 @@ namespace NF.AdminSystem.Controllers
             try
             {
                 string content = HelperProvider.GetRequestContent(HttpContext);
+                string lockKey = "SaveUserBankInfoV2";
+
                 if (!String.IsNullOrEmpty(content))
                 {
                     UserBankInfoModel bankInfo = JsonConvert.DeserializeObject<UserBankInfoModel>(content);
-
                     if (null != bankInfo)
                     {
-                        ///逻辑
-                        DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
-                        if (result.result == Result.SUCCESS)
+                        if (redis.LockTake(lockKey, bankInfo.userId, 10))
                         {
-                            ret.data = result.data;
+                            ///逻辑
+                            DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
+                            if (result.result == Result.SUCCESS)
+                            {
+                                ret.data = result.data;
+                            }
+                            else
+                            {
+                                ret.result = Result.ERROR;
+                                ret.errorCode = result.result;
+                                ret.message = result.message;
+                            }
+                            redis.LockRelease(lockKey, bankInfo.userId);
+                            return JsonConvert.SerializeObject(ret);
                         }
                         else
                         {
                             ret.result = Result.ERROR;
-                            ret.errorCode = result.result;
-                            ret.message = result.message;
+                            ret.errorCode = MainErrorModels.LOGIC_ERROR;
+                            ret.message = "Already request.";
+                            return JsonConvert.SerializeObject(ret);
                         }
-                        return JsonConvert.SerializeObject(ret);
                     }
                 }
 

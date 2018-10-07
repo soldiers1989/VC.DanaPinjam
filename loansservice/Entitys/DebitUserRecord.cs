@@ -16,6 +16,9 @@ public class DebitUserRecord
     public string userName;
 
     public float amountTransfer;
+
+    ///标识
+    public string target = String.Empty;
 }
 
 

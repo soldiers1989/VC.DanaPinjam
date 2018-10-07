@@ -27,6 +27,31 @@ namespace NF.AdminSystem.Controllers
             ConfigSettings = settings.Value;
         }
 
+        private string getDuitkuKey(string merchantCode)
+        {
+            switch (merchantCode)
+            {
+                case "D0929":
+                    return ConfigSettings.duitkuKey;
+                case "D1024":
+                    return "70b46f25bc3c74e57120444c44b9a399";
+                default:
+                    return ConfigSettings.duitkuKey;
+            }
+        }
+
+        private string getPrefixNo(string target)
+        {
+            switch (target)
+            {
+                case "B":
+                    return "868007";
+                case "A":
+                default:
+                    return ConfigSettings.duitkuKey;
+            }
+        }
+
         [AllowAnonymous]
         [HttpPost]
         [Route("CallbackRequest")]
@@ -39,7 +64,10 @@ namespace NF.AdminSystem.Controllers
                 redis.LockTake(key, 1);
                 if (!request.IsEmpty())
                 {
-                    string signature = request.merchantCode + request.amount + request.merchantOrderId + ConfigSettings.duitkuKey;
+                    string signature = String.Empty;
+                    string duitkuKey = getDuitkuKey(request.merchantCode);
+                    signature = request.merchantCode + request.amount + request.merchantOrderId + duitkuKey;
+
                     signature = HelperProvider.MD532(signature);
                     DataProviderResultModel result = DuitkuProvider.SaveDuitkuCallbackRecord(request);
                     string guid = Convert.ToString(result.data);
@@ -108,8 +136,9 @@ namespace NF.AdminSystem.Controllers
                 if (redis.LockTake(key, 1))
                 {
                     Log.WriteDebugLog("DuitkuController::InquiryRequest", "param is {0}", JsonConvert.SerializeObject(request));
-
-                    string signature = request.merchantCode + request.action + request.vaNo + request.session + ConfigSettings.duitkuKey;
+                    string signature = String.Empty;
+                    string duitkuKey = getDuitkuKey(request.merchantCode);
+                    signature = request.merchantCode + request.action + request.vaNo + request.session + duitkuKey;
                     signature = HelperProvider.MD532(signature);
 
                     if (signature != request.signature)
@@ -130,7 +159,8 @@ namespace NF.AdminSystem.Controllers
                         }
                         else
                         {
-                            if (request.bin == "868005" || request.bin == "119905" || request.bin == "119906")
+                            /// 868005 = A，868007 = B
+                            if (request.bin == "868005" || request.bin == "868007" || request.bin == "119905" || request.bin == "119906")
                             {
                                 string vaNo = request.vaNo.Replace(request.bin, "");
                                 if (vaNo.Length == (16 - ConfigSettings.prefixNo.Length))
@@ -138,7 +168,7 @@ namespace NF.AdminSystem.Controllers
                                     string type = vaNo.Substring(0, 1);
                                     string debitId = vaNo.Substring(1);
                                     int iDebitId = -1;
-                                    request.merchantCode = String.Format("{0}{1}",request.bin, request.merchantCode);
+                                    request.merchantCode = String.Format("{0}{1}", request.bin, request.merchantCode);
                                     int.TryParse(debitId, out iDebitId);
                                     ///3 － 延期；4 － 还款
                                     if (type == "3")
@@ -284,7 +314,6 @@ namespace NF.AdminSystem.Controllers
                 {
                     ///这里验证debitId 与 用户
                     string prefix = ConfigSettings.prefixNo;//HelperProvider.PrefixOfDuitku();
-                    ViewData["prefix"] = prefix;
                     DataProviderResultModel result = null;
 
                     result = type == 3 ? DebitProvider.GetUserExtendRecord(debitId) : DebitProvider.GetUserDebitRecord(debitId);
@@ -296,15 +325,18 @@ namespace NF.AdminSystem.Controllers
                         {
                             DebitExtendModel model = result.data as DebitExtendModel;
                             dataUserId = model.userId;
+                            prefix = getPrefixNo(model.target);
+
                             ViewData["money"] = (model.extendFee + model.overdueMoney - model.partMoney).ToString("N0").Replace(",", ".");
                         }
                         else
                         {
                             DebitInfoModel model = result.data as DebitInfoModel;
                             dataUserId = model.userId;
-
+                            prefix = getPrefixNo(model.target);
                             ViewData["money"] = (model.payBackMoney).ToString("N0").Replace(",", ".");
                         }
+                        ViewData["prefix"] = prefix;
 
                         if (userId == dataUserId)
                         {
