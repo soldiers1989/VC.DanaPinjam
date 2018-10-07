@@ -25,7 +25,8 @@ public class TaskThread
             int week = Convert.ToInt32(DateTime.Now.DayOfWeek.ToString("d"));
             int beginHour = 8;
             int endHour = 21;
-            if (week > 0 && week < 6)
+            //if (week > 0 && week < 6)
+            if (true)
             {
                 //if (DateTime.Now.Hour >= beginHour && DateTime.Now.Hour <= endHour)
                 if (true)
