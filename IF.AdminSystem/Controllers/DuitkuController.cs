@@ -133,7 +133,7 @@ namespace NF.AdminSystem.Controllers
             DuitkuInquriyResponseModel response = new DuitkuInquriyResponseModel();
             try
             {
-                if (redis.LockTake(key, 1))
+                if (redis.LockTake(key, 1, 10))
                 {
                     Log.WriteDebugLog("DuitkuController::InquiryRequest", "param is {0}", JsonConvert.SerializeObject(request));
                     string signature = String.Empty;
@@ -275,21 +275,18 @@ namespace NF.AdminSystem.Controllers
                             }
                         }
                     }
+                    redis.LockRelease(key, 1);
                 }
                 else
                 {
-                    Log.WriteErrorLog("UserController::InquiryRequest", "get lock fail.{0}", JsonConvert.SerializeObject(request));
+                    Log.WriteErrorLog("DuitkuController::InquiryRequest", "get lock fail.{0}", JsonConvert.SerializeObject(request));
                 }
             }
             catch (Exception ex)
             {
                 response.statusCode = "01";
                 response.statusMessage = ex.Message;
-                Log.WriteErrorLog("UserController::InquiryRequest", "异常：{0}", ex.Message);
-            }
-            finally
-            {
-                redis.LockRelease(key, 1);
+                Log.WriteErrorLog("DuitkuController::InquiryRequest", "异常：{0}", ex.Message);
             }
             return JsonConvert.SerializeObject(response);
         }
