@@ -111,6 +111,7 @@ namespace NF.AdminSystem.Controllers
                     }
                     else
                     {
+                        Log.WriteDebugLog("DuitkuController::CallbackRequest", "{0}", JsonConvert.SerializeObject(request));
                         return "Get lock failed.";
                     }
                 }
