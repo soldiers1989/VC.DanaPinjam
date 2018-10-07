@@ -10,3 +10,15 @@
 /data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.csproj.CopyComplete
 /data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.dll
 /data/danapinjam/redis/obj/Debug/netcoreapp2.0/redis.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/bin/Debug/netcoreapp2.0/redis.deps.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/bin/Debug/netcoreapp2.0/redis.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/bin/Debug/netcoreapp2.0/redis.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/bin/Debug/netcoreapp2.0/log.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/bin/Debug/netcoreapp2.0/log.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/Debug/netcoreapp2.0/redis.csprojAssemblyReference.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/Debug/netcoreapp2.0/redis.csproj.CoreCompileInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/Debug/netcoreapp2.0/redis.AssemblyInfoInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/Debug/netcoreapp2.0/redis.AssemblyInfo.cs
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/Debug/netcoreapp2.0/redis.csproj.CopyComplete
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/Debug/netcoreapp2.0/redis.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/redis/obj/Debug/netcoreapp2.0/redis.pdb

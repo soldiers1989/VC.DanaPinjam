@@ -280,7 +280,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"select debitId,userId, debitMoney, ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
+                string sqlStr = @"select debitId,userId,ifnull(a.target,'A') target, debitMoney, ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
 certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
 (select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
                     from IFUserDebitRecord a where DebitId = @iDebitId";
@@ -305,6 +305,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
 
                     info.payBackMoney = info.payBackMoney + info.overdueMoney - info.partMoney;
                     info.createTime = Convert.ToString(dt.Rows[0]["createTime"]);
+                    info.target = Convert.ToString(dt.Rows[0]["target"]);
                     info.description = Convert.ToString(dt.Rows[0]["description"]);
                     info.releaseLoanTime = Convert.ToString(dt.Rows[0]["releaseLoanTime"]);
                     info.auditTime = Convert.ToString(dt.Rows[0]["statusTime"]);
@@ -351,7 +352,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"select debitId,userId,a.target, debitMoney, ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
+                string sqlStr = @"select debitId,userId,ifnull(a.target,'A') target, debitMoney, ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
 certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
 (select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
                     from IFUserDebitRecord a where DebitId = @iDebitId";
@@ -377,6 +378,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     info.description = Convert.ToString(dt.Rows[0]["description"]);
                     info.releaseLoanTime = Convert.ToString(dt.Rows[0]["releaseLoanTime"]);
                     info.auditTime = Convert.ToString(dt.Rows[0]["statusTime"]);
+                    info.target = Convert.ToString(dt.Rows[0]["target"]);
                     info.repaymentTime = Convert.ToString(dt.Rows[0]["payBackDayTime"]);
 
                     info.certificate = Convert.ToString(dt.Rows[0]["certificate"]);
@@ -391,6 +393,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     extend.userId = info.userId;
                     extend.debitId = info.debitId;
                     extend.status = info.status;
+                    extend.target = info.target;
                     extend.partMoney = info.partMoney;
                     extend.debitMoney = info.debitMoney;
                     extend.debitPeroid = info.debitPeroid;

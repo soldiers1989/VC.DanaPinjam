@@ -17,3 +17,13 @@
 /data/danapinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.dll
 /data/danapinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb
 /data/danapinjam/aliyun-net-sdk-core/bin/Debug/netcoreapp2.1/Regions/endpoints.xml
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/bin/Debug/netcoreapp2.1/Regions/endpoints.xml
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.deps.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/bin/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.csprojAssemblyReference.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.csproj.CoreCompileInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.AssemblyInfoInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.AssemblyInfo.cs
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/aliyun-net-sdk-core/obj/Debug/netcoreapp2.1/aliyun-net-sdk-core.vscode.pdb

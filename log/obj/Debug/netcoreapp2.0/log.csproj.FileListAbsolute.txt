@@ -16,3 +16,12 @@
 /data/danapinjam/log/obj/Debug/netcoreapp2.0/log.AssemblyInfo.cs
 /data/danapinjam/log/obj/Debug/netcoreapp2.0/log.dll
 /data/danapinjam/log/obj/Debug/netcoreapp2.0/log.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/bin/Debug/netcoreapp2.0/log.deps.json
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/bin/Debug/netcoreapp2.0/log.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/bin/Debug/netcoreapp2.0/log.pdb
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/obj/Debug/netcoreapp2.0/log.csprojAssemblyReference.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/obj/Debug/netcoreapp2.0/log.csproj.CoreCompileInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/obj/Debug/netcoreapp2.0/log.AssemblyInfoInputs.cache
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/obj/Debug/netcoreapp2.0/log.AssemblyInfo.cs
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/obj/Debug/netcoreapp2.0/log.dll
+/Users/fengyi/Documents/project/VC.DanaPinjam/log/obj/Debug/netcoreapp2.0/log.pdb

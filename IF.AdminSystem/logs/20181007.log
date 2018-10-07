@@ -1,0 +1,63 @@
+20:48:15 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:48:20 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:48:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:48:20 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+20:48:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:48:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:48:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:49:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:49:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:49:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:49:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:49:38 [Error] UserController::GetDuitkuVAInfo [1]号服务器::异常：Non-negative number required.
+Parameter name: totalWidth
+20:49:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:49:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:50:06 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:50:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:50:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:50:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:51:50 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:51:54 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:51:54 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+20:51:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:52:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:52:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:52:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:52:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:52:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:53:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:53:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:53:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:53:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:54:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:54:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:54:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:54:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:54:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:55:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:55:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:55:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:55:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:55:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:56:20 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:56:24 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:56:24 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+20:56:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:56:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:56:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:59:45 [Debug] Startup::Startup [1]号服务器::Begin connect db
+20:59:48 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+20:59:48 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+20:59:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+20:59:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:00:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:00:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:00:20 [Error] Redis::StringSet [1]号服务器::False No connection is available to service this operation: GET BankCodes; UnableToConnect on 127.0.0.1:6379/Interactive, Initializing, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, unanswered-write: 54357s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago; IOCP: (Busy=0,Free=2048,Min=100,Max=2048), WORKER: (Busy=1,Free=2047,Min=100,Max=2048), Local-CPU: n/a
+21:00:20 [Error] Redis::StringSet [1]号服务器::False No connection is available to service this operation: SETEX BankCodes; UnableToConnect on 127.0.0.1:6379/Interactive, Initializing, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, unanswered-write: 54357s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago; IOCP: (Busy=0,Free=2048,Min=100,Max=2048), WORKER: (Busy=1,Free=2047,Min=100,Max=2048), Local-CPU: n/a
+21:00:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:00:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:00:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:01:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:01:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+21:01:36 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0

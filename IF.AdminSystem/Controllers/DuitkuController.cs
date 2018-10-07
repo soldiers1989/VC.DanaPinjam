@@ -48,7 +48,7 @@ namespace NF.AdminSystem.Controllers
                     return "868007";
                 case "A":
                 default:
-                    return ConfigSettings.duitkuKey;
+                    return ConfigSettings.prefixNo;
             }
         }
 
