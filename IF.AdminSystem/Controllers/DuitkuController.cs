@@ -176,7 +176,7 @@ namespace NF.AdminSystem.Controllers
                             if (request.bin == "868005" || request.bin == "868007" || request.bin == "119905" || request.bin == "119906")
                             {
                                 string vaNo = request.vaNo.Replace(request.bin, "");
-                                if (vaNo.Length == (16 - ConfigSettings.prefixNo.Length))
+                                if (vaNo.Length == (16 - request.bin.Length))
                                 {
                                     string type = vaNo.Substring(0, 1);
                                     string debitId = vaNo.Substring(1);
