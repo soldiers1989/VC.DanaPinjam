@@ -30,5 +30,6 @@ public class DebitRecord
 
     public int overdueDay { get; set; }
 
+    public string money { get; set; }
     public int smsSendTimes { get; set; }
 }

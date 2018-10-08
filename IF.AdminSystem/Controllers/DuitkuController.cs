@@ -85,7 +85,7 @@ namespace NF.AdminSystem.Controllers
                                 DataProviderResultModel ret = DuitkuProvider.SetDuitkuPaybackRecordStaus(request);
                                 if (ret.result == Result.SUCCESS)
                                 {
-                                    Log.WriteErrorLog("DuitkuController::CallbackRequest", "回调操作成功。");
+                                    Log.WriteDebugLog("DuitkuController::CallbackRequest", "回调操作成功。");
                                     DuitkuProvider.SetDuitkuCallbackRecordStatus(guid, 1);
                                     return "Success";
                                 }
@@ -111,7 +111,7 @@ namespace NF.AdminSystem.Controllers
                     }
                     else
                     {
-                        Log.WriteDebugLog("DuitkuController::CallbackRequest", "{0}", JsonConvert.SerializeObject(request));
+                        Log.WriteDebugLog("DuitkuController::CallbackRequest", "获取锁失败。{0}", JsonConvert.SerializeObject(request));
                         return "Get lock failed.";
                     }
                 }

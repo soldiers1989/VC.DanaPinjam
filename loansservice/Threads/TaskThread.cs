@@ -47,6 +47,11 @@ public class TaskThread
                                 if (bank.Transfer(record, out errMsg))
                                 {
                                     BusinessDao.SetDebitRecordStatus(record.debitId, 1, "Uang anda telah berhasil di transfer(10002).");
+                                    //在此处可增加放款成功的短信通知
+                                    WaveCellSMSSingleSender sms = new WaveCellSMSSingleSender();
+                                    WaveCellSMSSingleSender.Authorization = "Bearer yCCTxuCM7nIbdEuIxENllGMuqlF90qjtMlhb201S0bI";
+                                    WaveCellSMSSingleSender.SubAccountName = "Prodigy_DANA";
+                                    
                                 }
                                 else
                                 {

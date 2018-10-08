@@ -10,6 +10,8 @@ namespace loansservice
         private TaskThread taskThread = null;
 
         private StatusCheckThread statusThread = null;
+
+        private PinjamSMSSendter sMSSendter = null;
         public void Start()
         {
             taskThread = new TaskThread();
@@ -17,12 +19,16 @@ namespace loansservice
 
             statusThread = new StatusCheckThread();
             statusThread.Start();
+
+            sMSSendter = new PinjamSMSSendter();
+            sMSSendter.Start(); 
         }
 
         public void Stop()
         {
             taskThread.Stop();
             statusThread.Stop();
+            sMSSendter.Stop();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Newtonsoft.Json;
+using RedisPools;
 using stockmoniter.Dao;
 using YYLog.ClassLibrary;
 
@@ -41,7 +42,6 @@ public class PinjamSMSSendter
     {
         while (!_isBreak)
         {
-
             if (DateTime.Now.Hour > 9)
             {
                 List<DebitRecord> list = SMSSendDao.GetDebitRecords();
@@ -63,21 +63,23 @@ public class PinjamSMSSendter
                             if (debitRecord.smsSendTimes == 0)
                             {
                                 hasSend = true;
-                                result = sms.Send("+62"+debitRecord.phone, @"Pinjaman anda akan jatuh 2 hari lagi, Jumlah: Rp.2 000.000. Info cara pengembalian dan perpanjangan ada di aplikasi. Terima kasih");
+                                result = sms.Send("+62"+debitRecord.phone, 
+                                String.Format(@"Pinjaman anda akan jatuh 2 hari lagi,Jumlah: Rp.{0}. Info cara pengembalian dan perpanjangan ada di aplikasi. Terima kasih", debitRecord.money));
                             }
                             break;
                         case 1:
                             if (debitRecord.smsSendTimes <= 1)
                             {
                                 hasSend = true;
-                                result = sms.Send("+62"+debitRecord.phone, @"1 hari lagi akan jatuh Tempo Pinjaman anda. Jumlah:Rp.2 000.000.Info cara pengembalian dan perpanjangan ada diaplikasi.Terima kasih");
+                                result = sms.Send("+62"+debitRecord.phone, 
+                                String.Format(@"1 hari lagi akan jatuh Tempo Pinjaman anda.Jumlah:Rp.{0}.Info cara pengembalian dan perpanjangan ada diaplikasi.Terima kasih", debitRecord.money));
                             }
                             break;
                         case 0:
                             if (debitRecord.smsSendTimes <= 2)
                             {
                                 hasSend = true;
-                                result = sms.Send("+62" + debitRecord.phone, @"TRANSFER KE BANK MANDIRI 168 000 1281 722 PT. ANUGERAH DIGITAL NIAGA untuk menghindari data anda diproses OJK & COLLECTOR.");
+                                result = sms.Send("+62" + debitRecord.phone, @"Pinjaman anda jatuh tempo hari ini,Jika anda terlambat membayar anda akan di kenakan denda keterlambatan.Silakan buka Aplikasi anda dan pilih pengembalian.Jika ada pertanyaan,hubungi:087788876279");
                             }
                             break;
                         default:
