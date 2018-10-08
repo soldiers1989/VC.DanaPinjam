@@ -92,7 +92,7 @@ public class PinjamSMSSendter
                         {
                             day2++;
                             SMSSendDao.UpdateDebitSMSStatus(debitRecord);
-                            Log.WriteSystemLog("PinjamSMSSendter::moniter", "发送成功：{0} , {1}", debitRecord.phone, debitRecord.overdueDay
+                            Log.WriteSystemLog("PinjamSMSSendter::moniter", "发送成功：{0} , {1}", debitRecord.phone, debitRecord.overdueDay);
                         }
 
                         if (debitRecord.overdueDay == 1)
