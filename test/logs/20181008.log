@@ -1,0 +1,92 @@
+16:57:04 [Debug] ControlCenter::Startup [1]号服务器::Begin connect db
+16:57:06 [Debug] ControlCenter::Startup [1]号服务器::server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+16:57:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:57:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:57:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:57:57 [SystemLog] PinjamSMSSendter::moniter [1]号服务器::day2 = 0| day1 = 0 | day0 = 0
+16:58:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:58:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:58:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:58:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:58:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:58:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:59:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+16:59:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:00:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:00:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:00:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:00:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:01:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:01:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:01:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:01:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:01:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:01:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 04:57:05，从链接池中移除，将重新打开。
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 04:57:05，从链接池中移除，将重新打开。
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 04:57:05，从链接池中移除，将重新打开。
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:02:09 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 04:57:06，从链接池中移除，将重新打开。
+17:02:10 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:02:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:02:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:02:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:02:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:02:50 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 04:57:41，从链接池中移除，将重新打开。
+17:02:50 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:03:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:03:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:03:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:03:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:03:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:03:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:04:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:04:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:04:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:04:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:04:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:04:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:05:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:05:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:05:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:05:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:05:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:05:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:06:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:06:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:06:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:06:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:06:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:06:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:07:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 05:02:09，从链接池中移除，将重新打开。
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 05:02:09，从链接池中移除，将重新打开。
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 05:02:10，从链接池中移除，将重新打开。
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-08 05:02:09，从链接池中移除，将重新打开。
+17:07:10 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+17:07:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:07:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:07:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:07:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:12:10 [Debug] ControlCenter::Startup [1]号服务器::Begin connect db
+17:12:12 [Debug] ControlCenter::Startup [1]号服务器::server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+17:12:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:12:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:12:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:13:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:13:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:13:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:13:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:13:45 [SystemLog] PinjamSMSSendter::moniter [1]号服务器::发送成功：15988482677 , 1
+17:13:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:14:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:14:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:14:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+17:14:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0

@@ -962,6 +962,7 @@ namespace NF.AdminSystem.Providers
                 {
                     result.result = MainErrorModels.LOGIC_ERROR;
                     result.message = "Tet the lock error.The function is UserProvider::SaveUserBankInfo";
+                    Log.WriteDebugLog("UserProvider::SaveUserBankInfo", result.message);
                 }
                 return result;
             }

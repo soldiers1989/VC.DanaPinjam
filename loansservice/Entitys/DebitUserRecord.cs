@@ -17,6 +17,8 @@ public class DebitUserRecord
 
     public float amountTransfer;
 
+    public string phone = String.Empty;
+
     ///标识
     public string target = String.Empty;
 }

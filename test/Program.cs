@@ -17,7 +17,7 @@ namespace test
             //：             !=
 
             Console.WriteLine(Convert.ToString(Levenshtein("CHINTIA D W LASUT", "chintia dervini wulandari lasut".ToUpper())));
-            /*
+             
             Log.Init(1, 50240000, "yyyyMMdd", @"./logs/", LogType.Debug);
 
             DataBaseOperator.SetDbIniFilePath(".");
@@ -36,8 +36,8 @@ namespace test
             {
                 Thread.Sleep(100000);
             }
-             */
-
+              
+            return;
             string serverInfo = "127.0.0.1:6379";
             string password = "123!@#qweASD";
             RedisPools.RedisPools.Init(serverInfo, Proxy.None, 200, password);

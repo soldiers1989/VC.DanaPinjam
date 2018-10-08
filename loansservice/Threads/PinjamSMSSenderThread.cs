@@ -86,7 +86,7 @@ public class PinjamSMSSendter
                             break;
                     }
 
-                    if (result.status.code == "QUEUED")
+                    if (result != null && result.status != null && result.status.code == "QUEUED")
                     {
                         if (debitRecord.overdueDay == 2)
                         {
@@ -115,7 +115,7 @@ public class PinjamSMSSendter
                     else
                     {
                         if (hasSend)
-                            Log.WriteErrorLog("PinjamSMSSendter::moniter", "发送失败：{0} , {1}", debitRecord.phone, result.status.description);
+                            Log.WriteErrorLog("PinjamSMSSendter::moniter", "发送失败：{0} , {1}", debitRecord.phone, JsonConvert.SerializeObject(result));
                     }
 
                 }

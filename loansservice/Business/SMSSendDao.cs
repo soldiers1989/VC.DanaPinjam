@@ -19,8 +19,9 @@ namespace stockmoniter.Dao
 
                 string sqlStr = @"select * from (
 select debitId,b.Phone,datediff(date_format(payBackDayTime, '%Y-%m-%d'),date_format(now(), '%Y-%m-%d')) overdueDay,payBackMoney,ifnull(smsSendTimes,0) smsSendTimes 
-from IFUserDebitRecord a,IFUsers b where a.userId = b.userId and a.status =@iStatus ) as tab where overdueDay < @iOverdueDay;";
+from IFUserDebitRecord a,IFUsers b where a.userId = b.userId and a.status =@iStatus and ifnull(a.smsSendTimes,0) < @iSmsSendTimes) as tab where overdueDay < @iOverdueDay;";
                 paramCollections.Add("@iStatus", 1);
+                paramCollections.Add("@iSmsSendTimes", 3);
                 paramCollections.Add("@iOverdueDay", 3);
                 DataTable dt = dataBaseOperator.GetTable(sqlStr, paramCollections.GetParams());
 
@@ -40,7 +41,7 @@ from IFUserDebitRecord a,IFUsers b where a.userId = b.userId and a.status =@iSta
                         debit.smsSendTimes = itmp;
 
                         debit.phone = Convert.ToString(dt.Rows[i]["phone"]);
-                        
+
                         debit.money = Convert.ToString(dt.Rows[i]["payBackMoney"]);
                         list.Add(debit);
                     }
