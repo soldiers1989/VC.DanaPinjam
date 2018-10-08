@@ -44,7 +44,7 @@ public class BusinessDao
                     record.bankCode = Convert.ToString(dt.Rows[i]["BNICode"]);
                     record.target = Convert.ToString(dt.Rows[i]["target"]);
                     record.bankAccount = Convert.ToString(dt.Rows[i]["BankCode"]);
-                    record.purpose = "duitku auto release loan.Rp" + record.amountTransfer;
+                    record.purpose = "auto release loan.Rp" + record.amountTransfer;
                     list.Add(record);
                 }
             }
