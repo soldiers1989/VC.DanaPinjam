@@ -15,10 +15,10 @@ namespace loansservice
         public void Start()
         {
             taskThread = new TaskThread();
-            //taskThread.Start();
+            taskThread.Start();
 
             statusThread = new StatusCheckThread();
-            //statusThread.Start();
+            statusThread.Start();
 
             sMSSendter = new PinjamSMSSendter();
             sMSSendter.Start(); 
