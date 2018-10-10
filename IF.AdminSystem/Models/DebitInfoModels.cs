@@ -140,5 +140,8 @@ namespace NF.AdminSystem.Models
         /// 实际到帐
         /// </summary>
         public float actualMoney = 0f;
+
+        ///显示状态 0 - 不可选 1 - 可选
+        public int displayStyle = 1;
     }
 }

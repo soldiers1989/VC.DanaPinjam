@@ -137,7 +137,7 @@ namespace NF.AdminSystem.Controllers
                         DebitInfo info = new DebitInfo();
                         info.debitMoney = style;
                         info.debitPeriod = period;
-                        
+
                         info.description = "Ketika Anda melakukan pinjam\r\nBiaya admin harus dibayar diawal";
                         DataProviderResultModel result = DebitProvider.GetInterestRateByDebitStyle(style, period);
                         if (result.result == Result.SUCCESS)
@@ -172,6 +172,96 @@ namespace NF.AdminSystem.Controllers
 
                                 //逾期日息
                                 info.overdueDayInterest = style * overdueRate;
+                                list.Add(info);
+                            }
+                        }
+                    }
+                    retList.Add(new { debitMoney = style, debitCombination = list });
+                }
+
+                ret.data = retList;
+
+            }
+            catch (Exception ex)
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.LOGIC_ERROR;
+                ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
+
+                Log.WriteErrorLog("MainController::GetInitDebitStyle", "异常：{0}", ex.Message);
+            }
+            return JsonConvert.SerializeObject(ret);
+        }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        [HttpGet]
+        [Route("GetInitDebitStyleV3")]
+        /// <summary>
+        /// 获取贷款种类
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult<string> GetInitDebitStyleV3()
+        {
+            HttpResultModel ret = new HttpResultModel();
+            ret.result = Result.SUCCESS;
+            try
+            {
+                var debitStyle = new List<float> { 1500000.00f, 2100000.00f, 2700000.00f };
+                var debitDesc = new SortedList<float, string>();
+                debitDesc.Add(1500000.00f, "ISI LENGKAP DATA PRIBADI ANDA DENGAN BENAR MAKA SYSTEM CREDIT KITA AKAN MELAKUKAN PENGECEKAN DAN PINJAMAN AKAN DIBERIKAN SECARA AUTOMATIS BILA LOLOS VERIFIKASI. TERIMA KASIH");
+                debitDesc.Add(2100000.00f, "PEMINJAMAN DENGAN NOMINAL INI HANYA BISA DIPINJAMKAN KALAU SUDAH PERNAH MELAKUKAN PEMBAYARAN TEPAT WAKTU ATAU PERPANJANGAN PRODUCT A DENGAN NOMINAL RP 1.500.000 SEBANYAK 2 KALI PEMINJAMAN");
+                debitDesc.Add(2700000.00f, "PEMINJAMAN DENGAN NOMINAL INI HANYA BISA DIPINJAMKAN KALAU SUDAH PERNAH MELAKUKAN PEMBAYARAN TEPAT WAKTU ATAU PERPANJANGAN PRODUCT B DENGAN NOMINAL RP 2.100.000 SEBANYAK 2 KALI PEMINJAMAN");
+
+                var debitPeriod = new List<int> { 7 };
+                List<object> retList = new List<object>();
+                foreach (var style in debitStyle)
+                {
+                    List<DebitInfo> list = new List<DebitInfo>();
+                    foreach (var period in debitPeriod)
+                    {
+                        DebitInfo info = new DebitInfo();
+                        info.debitMoney = style;
+                        info.debitPeriod = period;
+
+                        info.description = "Ketika Anda melakukan pinjam\r\nBiaya admin harus dibayar diawal";
+                        DataProviderResultModel result = DebitProvider.GetInterestRateByDebitStyle(style, period);
+                        if (result.result == Result.SUCCESS)
+                        {
+                            float rate = 0f;
+                            float overdueRate = 0f;
+
+                            if (null != result.data)
+                            {
+                                List<float> rates = result.data as List<float>;
+
+                                rate = rates[0];
+                                overdueRate = rates[1];
+                                //贷多少，还多少
+                                info.payBackMoney = style;
+                                //手续费，一次性
+                                if (rate >= 1)
+                                {
+                                    info.debitFee = rate;
+                                    //日息
+                                    info.dailyInterest = rate / period;
+                                }
+                                else
+                                {
+                                    info.debitFee = style * rate;
+                                    //日息
+                                    info.dailyInterest = style * rate / period;
+                                }
+                                info.adminFee = String.Format("Biaya Admin Rp {0}", info.debitFee);
+                                //实际到帐，减去手续费
+                                info.actualMoney = style - info.debitFee;
+
+                                //逾期日息
+                                info.overdueDayInterest = info.actualMoney * overdueRate;
+
+                                //描述
+                                info.description = debitDesc[style];
                                 list.Add(info);
                             }
                         }
@@ -275,6 +365,8 @@ namespace NF.AdminSystem.Controllers
                 list.Add("bucketName", "yjddebit");
                 list.Add("ossEndPoint", "http://oss-ap-southeast-5.aliyuncs.com");
                 list.Add("ossUrl", "http://yjddebit.oss-ap-southeast-5.aliyuncs.com");
+
+                list.Add("indexIntro", "Lakukan Pembayaran Tepat Waktu\r\n&\r\nNikmati Pinjaman Yang Lebih Besar");
 
                 ret.data = list;
             }
