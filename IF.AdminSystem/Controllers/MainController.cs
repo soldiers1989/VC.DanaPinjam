@@ -126,8 +126,8 @@ namespace NF.AdminSystem.Controllers
             ret.result = Result.SUCCESS;
             try
             {
-                var debitStyle = new List<float> { 500000.00f };
-                var debitPeriod = new List<int> { 15 };
+                var debitStyle = new List<float> { 1500000.00f };
+                var debitPeriod = new List<int> { 7 };
                 List<object> retList = new List<object>();
                 foreach (var style in debitStyle)
                 {
