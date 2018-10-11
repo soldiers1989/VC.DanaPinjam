@@ -1381,7 +1381,7 @@ where id = @iId;";
             return result;
         }
 
-        public DataProviderResultModel CheckUserConactsInfo(int userId)
+        public static DataProviderResultModel CheckUserConactsInfo(int userId)
         {
             DataBaseOperator dbo = null;
             DataProviderResultModel result = new DataProviderResultModel();
