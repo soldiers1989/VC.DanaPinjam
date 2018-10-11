@@ -225,7 +225,7 @@ namespace NF.AdminSystem.Providers
                     ifnull(residentialProvince,'') residentialProvince, ifnull(maritalStatus,-1) maritalStatus, RegTime, ifnull(CanDebitMoney, 0) CanDebitMoney, 
                     ifnull(AlreadyDebitMoney,0) AlreadyDebitMoney,ifnull(FrozenDebitMoney,0) FrozenDebitMoney,ifnull(DebitCount,0) DebitCount,ifnull(typeOfWork, '') typeOfWork, ifnull(monthIncome,0) monthIncome,companyName,
                     ifnull(companyProvince, '') companyProvince, ifnull(companyCity,-1) companyCity, ifnull(companyDistrics,-1) companyDistrics,
-                    ifnull(companyDistricts, -1) companyDistricts,companyAddress,companyPhone,
+                    ifnull(companyDistricts, -1) companyDistricts,companyAddress,companyPhone,ifnull(level,0) userLevel
                     ifnull(contactUploadNumber,0) contactUploadNumber,ifnull(callRecordUploadNumber,0) callRecordUploadNumber,ifnull(locationX,-1) locationX,ifnull(locationY,-1) locationY,sum(if(facebookId is null, 0, 1)) facebookId
                     from IFUsers where userId  = @iUserId;";
 
@@ -240,6 +240,9 @@ namespace NF.AdminSystem.Providers
                 if (dt.Rows.Count == 1)
                 {
                     #region workingInfo init...
+
+                    int.TryParse(Convert.ToString(dt.Rows[0]["userLevel"]), out tmp);
+                    userInfo.userLevel = tmp;
 
                     workingInfo.address = Convert.ToString(dt.Rows[0]["companyAddress"]);
                     //userInfo.allPercent++;
@@ -1317,8 +1320,26 @@ namespace NF.AdminSystem.Providers
 
                 string strPhone = model.phone.Replace(" ", "");
                 strPhone = UserController.GetPhone(strPhone);
+
                 if (model.id < 1)
                 {
+                    sqlStr = @"select count(1) from IFUserContactInfo 
+                        where userId = @iUserId and relationShip = @iRelationShip";
+
+                    pc.Add("@iUserId", model.userId);
+                    pc.Add("@iRelationShip", model.relationShip);
+
+                    int count = dbo.GetCount(sqlStr, pc.GetParams(true));
+                    if (count > 0)
+                    {
+                        sqlStr = @"delete from IFUserContactInfo 
+                        where userId = @iUserId and relationShip = @iRelationShip";
+
+                        pc.Add("@iUserId", model.userId);
+                        pc.Add("@iRelationShip", model.relationShip);
+                        dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
+                    }
+
                     sqlStr = @"insert into IFUserContactInfo(userId, relationShip, relationUserName, phone, address)
     values(@iUserId, @iRelationShip, @sRelationUserName, @sPhone, @sAddress); ";
 
@@ -1358,6 +1379,57 @@ where id = @iId;";
                 }
             }
             return result;
+        }
+
+        public DataProviderResultModel CheckUserConactsInfo(int userId)
+        {
+            DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
+            SortedList<string, int> list = new SortedList<string, int>();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                string sqlStr = @"select ifnull(sum(if(c.relationShip = 1, 1, 0)),0) A1,ifnull(sum(if(c.relationShip = 2, 1, 0)),0) A2,ifnull(sum(if(c.relationShip = 3, 1, 0)),0) A3,ifnull(sum(if(c.relationShip = 4, 1, 0)),0) A4
+	from IFUserContactInfo c,IFUserContacts d 
+	where c.userId = d.userId and c.phone = d.phone and c.userId = @iUserId and d.recordType = 1;";
+
+                pc.Add("@iUserId", userId);
+                DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
+                if (dt.Rows.Count == 1)
+                {
+                    list.Add("1", int.Parse(Convert.ToString(dt.Rows[0]["A1"])));
+                    list.Add("2", int.Parse(Convert.ToString(dt.Rows[0]["A2"])));
+                    list.Add("3", int.Parse(Convert.ToString(dt.Rows[0]["A3"])));
+                    list.Add("4", int.Parse(Convert.ToString(dt.Rows[0]["A4"])));
+                }
+                else
+                {
+                    list.Add("1", 0);
+                    list.Add("2", 0);
+                    list.Add("3", 0);
+                    list.Add("4", 0);
+                }
+                result.data = list;
+
+                result.result = list["1"] > 0 && list["2"] > 0 && (list["3"]> 0 || list["4"] > 0) ? Result.SUCCESS : Result.ERROR;
+            }
+            catch (Exception ex)
+            {
+                result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
+                result.message = "The database logic error.The function is UserProvider::CheckUserConactsInfo";
+                Log.WriteErrorLog("UserProvider::CheckUserConactsInfo", "获取失败：{0}，异常：{1}", userId, ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+
         }
     }
 }

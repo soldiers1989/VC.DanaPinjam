@@ -157,6 +157,11 @@ namespace NF.AdminSystem.Models
         public int otherInfoPercent = 0;
 
         /// <summary>
+        /// 用户等级
+        /// </summary>
+        public int userLevel = 0;
+
+        /// <summary>
         /// 用户关系人的联系信息
         /// </summary>
         public List<UserContactInfoModel> userContactInfo = new List<UserContactInfoModel>();

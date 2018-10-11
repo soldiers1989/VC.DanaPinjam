@@ -206,8 +206,30 @@ namespace NF.AdminSystem.Controllers
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            Redis redis = HelperProvider.GetRedis();
             try
             {
+                string userId = HttpContext.Request.Headers["userId"];
+                var iUserId = 0;
+                var userLevel = 0;
+                int.TryParse(userId, out iUserId);
+                if (iUserId > 0)
+                {
+                    string key = String.Format("UserAllInfoV2_{0}", userId);
+                    string info = redis.StringGet(key);
+                    if (!String.IsNullOrEmpty(info))
+                    {
+                        UserAllInfoModel userInfo = JsonConvert.DeserializeObject<UserAllInfoModel>(info);
+                        userLevel = userInfo.userLevel;
+
+                        Log.WriteDebugLog("MainController::GetInitDebitStyleV3", "用户的等级是：{0}", userLevel);
+                    }
+                }
+                else
+                {
+                    userLevel = 0;
+                }
+
                 var debitStyle = new List<float> { 1500000.00f, 2100000.00f, 2700000.00f };
                 var debitDesc = new SortedList<float, string>();
                 debitDesc.Add(1500000.00f, "ISI LENGKAP DATA PRIBADI ANDA DENGAN BENAR MAKA SYSTEM CREDIT KITA AKAN MELAKUKAN PENGECEKAN DAN PINJAMAN AKAN DIBERIKAN SECARA AUTOMATIS BILA LOLOS VERIFIKASI. TERIMA KASIH");
@@ -262,6 +284,21 @@ namespace NF.AdminSystem.Controllers
 
                                 //描述
                                 info.description = debitDesc[style];
+
+                                if (userLevel == 0)
+                                {
+                                    if (style > 1500000)
+                                    {
+                                        info.displayStyle = 0;
+                                    }
+                                }
+                                if (userLevel == 1)
+                                {
+                                    if (style > 2100000)
+                                    {
+                                        info.displayStyle = 0;
+                                    }
+                                }
                                 list.Add(info);
                             }
                         }

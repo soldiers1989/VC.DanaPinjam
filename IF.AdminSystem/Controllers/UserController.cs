@@ -773,6 +773,9 @@ namespace NF.AdminSystem.Controllers
                         {
                             string key = String.Format("UserAllInfoV2_{0}", userId);
                             redis.KeyDelete(key);
+                            DataProviderResultModel result2 = UserProvider.CheckUserConactsInfo(userId);
+                            ret.data = result2.data;
+                            ret.result = result2.result;
                         }
                     }
                     redis.LockRelease(lockKey, hUserId);

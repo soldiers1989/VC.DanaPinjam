@@ -1,0 +1,326 @@
+13:53:22 [Debug] Startup::Startup [1]号服务器::Begin connect db
+13:53:25 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+13:53:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:53:25 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+13:53:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:53:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:53:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:54:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:54:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:54:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:54:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:54:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:54:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:55:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:55:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:55:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:55:28 [Error] Redis::StringSet [1]号服务器::False No connection is available to service this operation: GET UserAllInfoV2_27; UnableToConnect on 127.0.0.1:6379/Interactive, Initializing, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, unanswered-write: 137985s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago; IOCP: (Busy=0,Free=2048,Min=100,Max=2048), WORKER: (Busy=1,Free=2047,Min=100,Max=2048), Local-CPU: n/a
+13:55:28 [Error] MainController::GetInitDebitStyle [1]号服务器::异常：Object reference not set to an instance of an object.
+13:55:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:55:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:55:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:56:54 [Debug] Startup::Startup [1]号服务器::Begin connect db
+13:56:57 [Debug] WebApiApplication::Application_Start [1]号服务器::数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+13:56:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:56:57 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+13:57:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:57:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:57:27 [Error] Redis::StringSet [1]号服务器::False No connection is available to service this operation: GET UserAllInfoV2_27; UnableToConnect on 127.0.0.1:6379/Interactive, Initializing, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, unanswered-write: 138196s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago; IOCP: (Busy=0,Free=2048,Min=100,Max=2048), WORKER: (Busy=1,Free=2047,Min=100,Max=2048), Local-CPU: n/a
+13:57:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:57:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:57:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:58:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:58:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:58:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:58:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:58:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:58:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:59:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:59:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:59:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:59:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:59:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:59:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:00:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:00:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:00:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:00:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:00:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:00:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:01:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:01:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:01:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:01:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:01:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:01:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 01:56:55，从链接池中移除，将重新打开。
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 01:56:55，从链接池中移除，将重新打开。
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 01:56:56，从链接池中移除，将重新打开。
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 01:56:56，从链接池中移除，将重新打开。
+14:02:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:02:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:02:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:02:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:02:31 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 01:57:31，从链接池中移除，将重新打开。
+14:02:31 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:02:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:02:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:03:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:03:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:03:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:03:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:03:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:03:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:04:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:04:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:04:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:04:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:04:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:04:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:05:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:05:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:05:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:05:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:05:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:05:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:06:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:06:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:06:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:06:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:06:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:06:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:02:01，从链接池中移除，将重新打开。
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:02:01，从链接池中移除，将重新打开。
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:02:01，从链接池中移除，将重新打开。
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:02:01，从链接池中移除，将重新打开。
+14:07:02 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:07:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:07:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:07:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:07:32 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:02:32，从链接池中移除，将重新打开。
+14:07:32 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:07:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:07:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:08:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:08:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:08:22 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:08:32 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:08:42 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:08:52 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:09:02 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:09:12 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:09:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:09:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:09:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:09:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:10:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:10:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:10:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:10:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:10:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:10:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:11:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:11:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:11:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:11:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:11:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:11:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:07:02，从链接池中移除，将重新打开。
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:07:02，从链接池中移除，将重新打开。
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:07:02，从链接池中移除，将重新打开。
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:07:02，从链接池中移除，将重新打开。
+14:12:03 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:12:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:12:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:12:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:12:33 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:07:32，从链接池中移除，将重新打开。
+14:12:33 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:12:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:12:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:12:03，从链接池中移除，将重新打开。
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:12:03，从链接池中移除，将重新打开。
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:12:03，从链接池中移除，将重新打开。
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:12:03，从链接池中移除，将重新打开。
+14:17:04 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:17:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:34 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:12:33，从链接池中移除，将重新打开。
+14:17:34 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:17:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:17:04，从链接池中移除，将重新打开。
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:17:04，从链接池中移除，将重新打开。
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:17:04，从链接池中移除，将重新打开。
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:17:04，从链接池中移除，将重新打开。
+14:22:05 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:22:15 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:25 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:35 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:35 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:17:34，从链接池中移除，将重新打开。
+14:22:35 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:22:45 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:56 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:06 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:16 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:36 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:46 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:56 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:06 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:16 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:36 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:46 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:56 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:06 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:16 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:36 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:46 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:56 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:06 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:16 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:36 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:46 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:56 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:06 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:06 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:22:05，从链接池中移除，将重新打开。
+14:27:06 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:27:06 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:22:05，从链接池中移除，将重新打开。
+14:27:06 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:27:06 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:22:05，从链接池中移除，将重新打开。
+14:27:07 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:27:07 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:22:05，从链接池中移除，将重新打开。
+14:27:07 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:27:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:37 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:22:35，从链接池中移除，将重新打开。
+14:27:37 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:27:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:28:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:28:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:28:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:28:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:28:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:28:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:31:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:31:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:31:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:31:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:31:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:31:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:27:07，从链接池中移除，将重新打开。
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:27:07，从链接池中移除，将重新打开。
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:27:06，从链接池中移除，将重新打开。
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:27:06，从链接池中移除，将重新打开。
+14:32:08 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:32:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:32:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:32:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:32:38 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:27:37，从链接池中移除，将重新打开。
+14:32:38 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:32:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:32:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:33:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:33:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:33:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:33:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:33:48 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:33:58 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:34:08 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:34:18 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:34:28 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:34:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:38:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:38:26 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:32:08，从链接池中移除，将重新打开。
+14:39:05 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:39:05 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-10-11 02:32:08，从链接池中移除，将重新打开。
+14:39:33 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
