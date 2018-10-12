@@ -123,14 +123,21 @@ namespace DBMonoUtility
             poolName = poolName.ToLower().Trim();
             IDbConnection conn = null;
             Hashtable conns = null;
-
+            Random r = new Random();
             lock (_pools)
             {
                 conns = _pools[poolName] as Hashtable;
                 if (null != conns && conns.Count > 0)
                 {
+                    int index = r.Next(0, conns.Count);
+                    int i = 0;
                     foreach (IDbConnection c in new IteratorIsolateCollection(conns.Keys))
                     {
+                        if (i != index)
+                        {
+                            i ++;
+                            continue;
+                        }
                         if (c.State == ConnectionState.Open)
                         {
                             conn = c;
@@ -142,6 +149,7 @@ namespace DBMonoUtility
                             Log.WriteWarning("DataBasePool::GetConnection", "检查连接的[{0}]!=Open,将关闭该连接。", c.State);
                             c.Close();
                             conns.Remove(c);
+                            break;
                         }
                     }
                 }
@@ -199,7 +207,7 @@ namespace DBMonoUtility
             {
                 conns = _pools[poolName] as Hashtable;
 
-                if (null != conns)
+                if (null != conns && conn.State == ConnectionState.Open)
                 {
                     conns[conn] = DateTime.Now;
                     _pools[poolName] = conns;
@@ -232,16 +240,19 @@ namespace DBMonoUtility
 
                                         try
                                         {
-                                            IDbConnection conn = getDbConnection(name);
-                                            conn.Open();
-                                            if (conn.State == ConnectionState.Open)
+                                            if (_minConns > (conns.Count + _busyPools.Count))
                                             {
-                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
-                                                conns[conn] = DateTime.Now;
-                                            }
-                                            else
-                                            {
-                                                Log.WriteDebugLog("DataBasePool::checkProc", "重新打开失败。");
+                                                IDbConnection conn = getDbConnection(name);
+                                                conn.Open();
+                                                if (conn.State == ConnectionState.Open)
+                                                {
+                                                    Log.WriteDebugLog("DataBasePool::checkProc", "重新打开成功。");
+                                                    conns[conn] = DateTime.Now;
+                                                }
+                                                else
+                                                {
+                                                    Log.WriteDebugLog("DataBasePool::checkProc", "重新打开失败。");
+                                                }
                                             }
                                         }
                                         catch (Exception ex)
