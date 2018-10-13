@@ -1381,7 +1381,7 @@ where id = @iId;";
             return result;
         }
 
-        public static DataProviderResultModel CheckUserConactsInfo(int userId)
+        public static DataProviderResultModel CheckUserConactsInfo(CheckUserConactsRequestBodyModel model)
         {
             DataBaseOperator dbo = null;
             DataProviderResultModel result = new DataProviderResultModel();
@@ -1390,35 +1390,25 @@ where id = @iId;";
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"select ifnull(sum(if(c.relationShip = 1, 1, 0)),0) A1,ifnull(sum(if(c.relationShip = 2, 1, 0)),0) A2,ifnull(sum(if(c.relationShip = 3, 1, 0)),0) A3,ifnull(sum(if(c.relationShip = 4, 1, 0)),0) A4
-	from IFUserContactInfo c,IFUserContacts d 
-	where c.userId = d.userId and c.phone = d.phone and c.userId = @iUserId and d.recordType = 1;";
+                string sqlStr = @"select count(1)
+                        from IFUserContactInfo c,IFUserContacts d 
+                        where c.userId = d.userId and c.phone = d.phone and c.userId = @iUserId 
+                        and c.phone = @sPhone and d.recordType = @iRecordType and c.relationShip = @iRelationShip;";
 
-                pc.Add("@iUserId", userId);
-                DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
-                if (dt.Rows.Count == 1)
-                {
-                    list.Add("1", int.Parse(Convert.ToString(dt.Rows[0]["A1"])));
-                    list.Add("2", int.Parse(Convert.ToString(dt.Rows[0]["A2"])));
-                    list.Add("3", int.Parse(Convert.ToString(dt.Rows[0]["A3"])));
-                    list.Add("4", int.Parse(Convert.ToString(dt.Rows[0]["A4"])));
-                }
-                else
-                {
-                    list.Add("1", 0);
-                    list.Add("2", 0);
-                    list.Add("3", 0);
-                    list.Add("4", 0);
-                }
-                result.data = list;
-
-                result.result = list["1"] > 0 && list["2"] > 0 && (list["3"]> 0 || list["4"] > 0) ? Result.SUCCESS : Result.ERROR;
+                pc.Add("@iUserId", model.userId);
+                pc.Add("@sPhone", model.phone);
+                pc.Add("@iRecordType", 1);
+                pc.Add("@iRelationShip", model.relationShip);
+                int count = dbo.GetCount(sqlStr, pc.GetParams());
+                
+                result.result = Result.SUCCESS;
+                result.data = count;
             }
             catch (Exception ex)
             {
                 result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
                 result.message = "The database logic error.The function is UserProvider::CheckUserConactsInfo";
-                Log.WriteErrorLog("UserProvider::CheckUserConactsInfo", "获取失败：{0}，异常：{1}", userId, ex.Message);
+                Log.WriteErrorLog("UserProvider::CheckUserConactsInfo", "获取失败：{0}{1}{2}，异常：{3}", model.userId, model.phone, model.relationShip, ex.Message);
             }
             finally
             {

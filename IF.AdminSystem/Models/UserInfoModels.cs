@@ -21,6 +21,15 @@ namespace NF.AdminSystem.Models
         public string verified = String.Empty;
     }
 
+    ///联系人是否存在于通讯录中的请求包体
+    [Serializable]
+    public class CheckUserConactsRequestBodyModel
+    {
+        public int userId = -1;
+        public int relationShip = 0;
+        public string phone = String.Empty;
+    }
+
     [Serializable]
     public class RequestBodyModel
     {

@@ -769,13 +769,17 @@ namespace NF.AdminSystem.Controllers
                                 }
                             }
                         }
+
                         if (userId > 0)
                         {
                             string key = String.Format("UserAllInfoV2_{0}", userId);
                             redis.KeyDelete(key);
+
+                            /*
                             DataProviderResultModel result2 = UserProvider.CheckUserConactsInfo(userId);
                             ret.data = result2.data;
                             ret.result = result2.result;
+                            */
                         }
                     }
                     redis.LockRelease(lockKey, hUserId);
@@ -1116,6 +1120,47 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::PostUserConcats function.";
 
                 Log.WriteErrorLog("UserController::PostUserConcats", "异常：{0}", ex.Message);
+            }
+            return JsonConvert.SerializeObject(ret);
+        }
+
+        [Route("PostUserLocation")]
+        [AllowAnonymous]
+        public ActionResult<string> CheckUserConactsInfo()
+        {
+            HttpResultModel ret = new HttpResultModel();
+            ret.result = Result.SUCCESS;
+            try
+            {
+                string content = HelperProvider.GetRequestContent(HttpContext);
+                if (String.IsNullOrEmpty(content))
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                    ret.message = "Request body content is empty.";
+                    return JsonConvert.SerializeObject(ret);
+                }
+                else
+                {
+                    CheckUserConactsRequestBodyModel requestBody = null;
+                    requestBody = JsonConvert.DeserializeObject<CheckUserConactsRequestBodyModel>(content);
+
+                    DataProviderResultModel result = UserProvider.CheckUserConactsInfo(requestBody);
+
+                    ret.result = result.result;
+                    ret.data = result.data;
+                    ret.message = result.message;
+
+                    Log.WriteDebugLog("UserController::CheckUserConactsInfo", "Return json is {0}", JsonConvert.SerializeObject(ret));
+                }
+            }
+            catch (Exception ex)
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.LOGIC_ERROR;
+                ret.message = "The program logic error from the UserController::CheckUserConactsInfo function.";
+
+                Log.WriteErrorLog("UserController::CheckUserConactsInfo", "异常：{0}", ex.Message);
             }
             return JsonConvert.SerializeObject(ret);
         }
