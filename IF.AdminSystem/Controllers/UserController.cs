@@ -1124,8 +1124,9 @@ namespace NF.AdminSystem.Controllers
             return JsonConvert.SerializeObject(ret);
         }
 
-        [Route("PostUserLocation")]
+        [Route("CheckUserConactsInfo")]
         [AllowAnonymous]
+        [HttpPost]
         public ActionResult<string> CheckUserConactsInfo()
         {
             HttpResultModel ret = new HttpResultModel();
