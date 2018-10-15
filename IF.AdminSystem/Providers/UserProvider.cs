@@ -406,7 +406,9 @@ namespace NF.AdminSystem.Providers
                     userInfo.otherInfo = otherInfo;
                 }
 
-                sqlStr = "select id,userId,relationShip,relationUserName,phone,address from IFUserContactInfo where userId = @iUserId order by relationShip limit 4";
+                sqlStr = @"select id,userId,relationShip,relationUserName,phone,address,
+                            (select count(1) from IFUserContacts a where a.phone = b.phone and a.recordType = 1) isCompele
+                            from IFUserContactInfo b where userId = @iUserId order by relationShip limit 4";
                 pc.Add("@iUserId", userId);
 
                 DataTable relationShip = dbo.GetTable(sqlStr, pc.GetParams(true));
@@ -436,6 +438,9 @@ namespace NF.AdminSystem.Providers
 
                         int.TryParse(Convert.ToString(relationShip.Rows[i]["relationShip"]), out tmp);
                         contactInfo.relationShip = tmp;
+
+                        int.TryParse(Convert.ToString(relationShip.Rows[i]["isCompele"]), out tmp);
+                        contactInfo.isCompele = tmp;
                         //if (contactInfo.relationShip > 0)
                         //{
                         //    userInfo.contactPercent++;

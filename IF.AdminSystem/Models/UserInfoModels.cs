@@ -258,6 +258,11 @@ namespace NF.AdminSystem.Models
         /// 住址
         /// </summary>
         public string address { get; set; } = String.Empty;
+
+        /// <summary>
+        /// 是否在通讯录中存在
+        /// </summary>
+        public int isCompele { get; set; } = 0;
     }
 
     /// <summary>
