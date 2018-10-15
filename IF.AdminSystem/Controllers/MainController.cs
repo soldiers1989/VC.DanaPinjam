@@ -215,7 +215,7 @@ namespace NF.AdminSystem.Controllers
                 int.TryParse(userId, out iUserId);
                 if (iUserId > 0)
                 {
-                    string key = String.Format("UserAllInfoV2_{0}", userId);
+                    string key = String.Format("UserAllInfoV4_{0}", userId);
                     string info = redis.StringGet(key);
                     if (!String.IsNullOrEmpty(info))
                     {
