@@ -115,7 +115,7 @@ namespace NF.AdminSystem.Controllers
         /// <param name="bankId"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        public ActionResult<string> SubmitDebitRequest(int userId, float debitMoney, int bankId, string description, int debitPeriod = 0, int debitPeroid = 0)
+        public ActionResult<string> SubmitDebitRequest(int userId, float debitMoney, int bankId, string description, int debitPeriod = 0, int debitPeroid = 0, string deviceId = "")
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
@@ -127,7 +127,7 @@ namespace NF.AdminSystem.Controllers
                 {
                     debitPeriod = debitPeriod == 0 ? debitPeroid : debitPeriod;
                     ///逻辑
-                    DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(userId, debitMoney, debitPeriod, bankId, description);
+                    DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(userId, debitMoney, debitPeriod, bankId, description, deviceId);
                     ret.result = result.result;
                     if (result.result == Result.SUCCESS)
                     {

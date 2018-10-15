@@ -77,7 +77,7 @@ namespace NF.AdminSystem.Providers
         /// <param name="bankId"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        public static DataProviderResultModel SubmitDebitReuqest(int userId, float debitMoney, int debitPeroid, int bankId, string description)
+        public static DataProviderResultModel SubmitDebitReuqest(int userId, float debitMoney, int debitPeroid, int bankId, string description, string deviceId)
         {
             DataBaseOperator dbo = null;
             DataProviderResultModel result = new DataProviderResultModel();
@@ -90,6 +90,7 @@ namespace NF.AdminSystem.Providers
                 pc.Add("@iDebitPeroid", debitPeroid);
                 pc.Add("@iBankId", bankId);
                 pc.Add("@sDescription", description);
+                pc.Add("@sDeviceId", deviceId);
 
                 Hashtable table = new Hashtable();
                 DataTable dt = dbo.ExecProcedure("p_debit_submitrequest", pc.GetParams(), out table);
