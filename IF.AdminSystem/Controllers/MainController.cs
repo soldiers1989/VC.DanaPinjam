@@ -226,7 +226,17 @@ namespace NF.AdminSystem.Controllers
                     }
                     else
                     {
-                        Log.WriteDebugLog("MainController::GetInitDebitStyleV3", "获取缓存为空：{0}", userId);
+                        DataProviderResultModel dataProviderResult = UserProvider.GetUserAllInfo(userId);
+                        if (dataProviderResult.result == Result.SUCCESS)
+                        {
+                            UserAllInfoModel userInfo = dataProviderResult.data as UserAllInfoModel;
+                            userLevel = userInfo.userLevel;
+                            redis.StringSet(key, JsonConvert.SerializeObject(userInfo));
+                        }
+                        else
+                        {
+                            Log.WriteDebugLog("MainController::GetInitDebitStyleV3", "获取缓存与数据库为空：{0}", userId);
+                        }
                     }
                 }
                 else
