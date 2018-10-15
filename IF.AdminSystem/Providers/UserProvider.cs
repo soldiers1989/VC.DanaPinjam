@@ -225,7 +225,7 @@ namespace NF.AdminSystem.Providers
                     ifnull(residentialProvince,'') residentialProvince, ifnull(maritalStatus,-1) maritalStatus, RegTime, ifnull(CanDebitMoney, 0) CanDebitMoney, 
                     ifnull(AlreadyDebitMoney,0) AlreadyDebitMoney,ifnull(FrozenDebitMoney,0) FrozenDebitMoney,ifnull(DebitCount,0) DebitCount,ifnull(typeOfWork, '') typeOfWork, ifnull(monthIncome,0) monthIncome,companyName,
                     ifnull(companyProvince, '') companyProvince, ifnull(companyCity,-1) companyCity, ifnull(companyDistrics,-1) companyDistrics,
-                    ifnull(companyDistricts, -1) companyDistricts,companyAddress,companyPhone,ifnull(level,0) userLevel
+                    ifnull(companyDistricts, -1) companyDistricts,companyAddress,companyPhone,ifnull(level,0) userLevel,
                     ifnull(contactUploadNumber,0) contactUploadNumber,ifnull(callRecordUploadNumber,0) callRecordUploadNumber,ifnull(locationX,-1) locationX,ifnull(locationY,-1) locationY,sum(if(facebookId is null, 0, 1)) facebookId
                     from IFUsers where userId  = @iUserId;";
 
