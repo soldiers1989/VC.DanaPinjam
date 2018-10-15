@@ -407,7 +407,7 @@ namespace NF.AdminSystem.Providers
                 }
 
                 sqlStr = @"select id,userId,relationShip,relationUserName,phone,address,
-                            (select count(1) from IFUserContacts a where a.phone = b.phone and a.recordType = 1) isCompele
+                            (select count(1) from IFUserContacts a where a.phone = b.phone and a.recordType = 1) isComplete
                             from IFUserContactInfo b where userId = @iUserId order by relationShip limit 4";
                 pc.Add("@iUserId", userId);
 
@@ -439,8 +439,8 @@ namespace NF.AdminSystem.Providers
                         int.TryParse(Convert.ToString(relationShip.Rows[i]["relationShip"]), out tmp);
                         contactInfo.relationShip = tmp;
 
-                        int.TryParse(Convert.ToString(relationShip.Rows[i]["isCompele"]), out tmp);
-                        contactInfo.isCompele = tmp;
+                        int.TryParse(Convert.ToString(relationShip.Rows[i]["isComplete"]), out tmp);
+                        contactInfo.isComplete = tmp;
                         //if (contactInfo.relationShip > 0)
                         //{
                         //    userInfo.contactPercent++;
