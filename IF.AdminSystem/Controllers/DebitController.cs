@@ -126,6 +126,10 @@ namespace NF.AdminSystem.Controllers
                 if (redis.LockTake(lockKey, userId))
                 {
                     debitPeriod = debitPeriod == 0 ? debitPeroid : debitPeriod;
+                    if (String.IsNullOrEmpty(deviceId))
+                    {
+                        deviceId = HttpContext.Request.Headers["deviceNo"];
+                    }
                     ///逻辑
                     DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(userId, debitMoney, debitPeriod, bankId, description, deviceId);
                     ret.result = result.result;
