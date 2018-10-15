@@ -262,7 +262,7 @@ namespace NF.AdminSystem.Models
         /// <summary>
         /// 是否在通讯录中存在
         /// </summary>
-        public int isCompele { get; set; } = 0;
+        public int isComplete { get; set; } = 0;
     }
 
     /// <summary>
