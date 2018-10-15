@@ -224,9 +224,14 @@ namespace NF.AdminSystem.Controllers
 
                         Log.WriteDebugLog("MainController::GetInitDebitStyleV3", "用户的等级是：{0}", userLevel);
                     }
+                    else
+                    {
+                        Log.WriteDebugLog("MainController::GetInitDebitStyleV3", "获取缓存为空：{0}", userId);
+                    }
                 }
                 else
                 {
+                    Log.WriteDebugLog("MainController::GetInitDebitStyleV3", "用户ID没有传入");
                     userLevel = 0;
                 }
 
@@ -284,7 +289,7 @@ namespace NF.AdminSystem.Controllers
 
                                 //描述
                                 info.description = debitDesc[style];
-
+                                info.displayStyle = 1;
                                 if (userLevel == 0)
                                 {
                                     if (style > 1500000)
