@@ -32,7 +32,7 @@ namespace NF.AdminSystem.Controllers
         [Route("Index")]
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Home Page 2.0";
 
             return View();
         }
