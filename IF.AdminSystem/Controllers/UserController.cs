@@ -1145,7 +1145,7 @@ namespace NF.AdminSystem.Controllers
                 {
                     CheckUserConactsRequestBodyModel requestBody = null;
                     requestBody = JsonConvert.DeserializeObject<CheckUserConactsRequestBodyModel>(content);
-
+                    requestBody.phone = GetPhone(requestBody.phone);
                     DataProviderResultModel result = UserProvider.CheckUserConactsInfo(requestBody);
 
                     ret.result = result.result;
