@@ -1395,15 +1395,13 @@ where id = @iId;";
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = @"select count(1)
-                        from IFUserContactInfo c,IFUserContacts d 
-                        where c.userId = d.userId and c.phone = d.phone and c.userId = @iUserId 
-                        and c.phone = @sPhone and d.recordType = @iRecordType and c.relationShip = @iRelationShip;";
+                string sqlStr = @"select count(1) from IFUserContacts d 
+                        where d.userId = @iUserId 
+                        and d.phone = @sPhone and d.recordType = @iRecordType;";
 
                 pc.Add("@iUserId", model.userId);
                 pc.Add("@sPhone", model.phone);
                 pc.Add("@iRecordType", 1);
-                pc.Add("@iRelationShip", model.relationShip);
                 int count = dbo.GetCount(sqlStr, pc.GetParams());
                 
                 result.result = Result.SUCCESS;
