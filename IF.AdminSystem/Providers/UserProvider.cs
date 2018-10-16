@@ -1398,7 +1398,7 @@ where id = @iId;";
                 string sqlStr = @"select count(1) from IFUserContacts d 
                         where d.userId = @iUserId 
                         and d.phone = @sPhone and d.recordType = @iRecordType;";
-
+                
                 pc.Add("@iUserId", model.userId);
                 pc.Add("@sPhone", model.phone);
                 pc.Add("@iRecordType", 1);
