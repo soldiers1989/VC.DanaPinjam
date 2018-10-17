@@ -418,7 +418,7 @@ namespace NF.AdminSystem.Controllers
                 list.Add("ossEndPoint", "http://oss-ap-southeast-5.aliyuncs.com");
                 list.Add("ossUrl", "http://yjddebit.oss-ap-southeast-5.aliyuncs.com");
 
-                list.Add("privacyPolicy", "http://api.smalldebit.club/api/Home/Privacy");
+                list.Add("privacyPolicy", "http://api.smalldebit.club/static/html/privacy.html");
                 list.Add("indexIntro", "Lakukan Pembayaran Tepat Waktu\r\n&\r\nNikmati Pinjaman Yang Lebih Besar");
 
                 ret.data = list;
