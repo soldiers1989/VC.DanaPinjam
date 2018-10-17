@@ -728,6 +728,8 @@ namespace NF.AdminSystem.Controllers
                         ret.result = Result.ERROR;
                         ret.errorCode = MainErrorModels.PARAMETER_ERROR;
                         ret.message = "Request content is empty.";
+
+                        Log.WriteDebugLog("UserController::EditUserContactInfoV2", "{0}Request content is empty.", hUserId);
                     }
                     else
                     {
@@ -757,6 +759,8 @@ namespace NF.AdminSystem.Controllers
                                         Log.WriteDebugLog("UserController::EditUserContactInfoV2", "检查到用户【{0}】存在已提交或未还款记录，不允许修改资料。", contactInfo.userId);
                                         ret.result = checkResult.result;
                                         ret.message = checkResult.message;
+
+                                        redis.LockRelease(lockKey, hUserId);
                                         return JsonConvert.SerializeObject(ret);
                                     }
                                     isSync = true;
@@ -767,6 +771,10 @@ namespace NF.AdminSystem.Controllers
                                 {
                                     userId = contactInfo.userId;
                                 }
+                            }
+                            else
+                            {
+                                Log.WriteDebugLog("UserController::EditUserContactInfoV2", "{0} contactInfo.userId is empty.", hUserId);
                             }
                         }
 
@@ -783,6 +791,10 @@ namespace NF.AdminSystem.Controllers
                         }
                     }
                     redis.LockRelease(lockKey, hUserId);
+                }
+                else
+                {
+                    Log.WriteDebugLog("UserController::EditUserContactInfoV2", "{0} 获取修改锁失败.", hUserId);
                 }
             }
             catch (Exception ex)
