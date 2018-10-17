@@ -18,6 +18,15 @@ namespace NF.AdminSystem.Controllers
 
             return View();
         }
+        
+        [AllowAnonymous]
+        [Route("Privacy")]
+        public ActionResult Privacy()
+        {
+            ViewBag.Title = "Privacy Policy";
+
+            return View();
+        }
 
         [AllowAnonymous]
         [Route("agreement2")]
