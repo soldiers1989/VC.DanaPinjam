@@ -305,6 +305,14 @@ namespace NF.AdminSystem.Controllers
                             }
                         }
                     }
+                    else
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = MainErrorModels.VERIFICATION_CODE_ERROR;
+                        ret.message = "Verification code error";
+                        redis.LockRelease(key, phone);
+                        return JsonConvert.SerializeObject(ret);
+                    }
 
                     redis.LockRelease(key, phone);
                 }
