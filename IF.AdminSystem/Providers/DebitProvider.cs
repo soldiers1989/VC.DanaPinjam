@@ -68,6 +68,46 @@ namespace NF.AdminSystem.Providers
             }
             return result;
         }
+
+        public static DataProviderResultModel GetUserBankId(int userId)
+        {
+            DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                pc.Add("@iUserId", userId);
+                string sqlStr = "select bankId from IFUserBankInfo where userId = @iUserId order by updateTime desc limit 1";
+                DataTable dt = dbo.GetTable(sqlStr, pc.GetParams(true));
+                if (null != dt && dt.Rows.Count == 1)
+                {
+                    result.data = dt.Rows[0][0];
+                }
+                else
+                {
+                    result.result = MainErrorModels.LOGIC_ERROR;
+                    result.message = "The bankInfo is empty.";
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
+                result.message = "The database logic error.The function is GetUserBankId";
+                Log.WriteErrorLog("DebitProvider::GetUserBankId", "获取失败：{0}，异常：{1}", userId, ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -102,7 +142,7 @@ namespace NF.AdminSystem.Providers
                     if (result.result < 0)
                     {
                         result.message = Convert.ToString(dt.Rows[0][1]);
-                        result.data = new { debitRecordId  = -1};
+                        result.data = new { debitRecordId = -1 };
                         Log.WriteErrorLog("DebitProvider::SubmitDebitReuqest", "提交申请失败：{0}|{1}|{2}|{3}|{4},结果是：{5}", userId, debitMoney, debitPeroid, bankId, description, dt.Rows[0][1]);
                     }
                     else
@@ -206,7 +246,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             }
             return result;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -311,7 +351,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     info.releaseLoanTime = Convert.ToString(dt.Rows[0]["releaseLoanTime"]);
                     info.auditTime = Convert.ToString(dt.Rows[0]["statusTime"]);
                     info.repaymentTime = Convert.ToString(dt.Rows[0]["payBackDayTime"]);
-                    
+
                     info.certificate = Convert.ToString(dt.Rows[0]["certificate"]);
                     info.auditInfo = Convert.ToString(dt.Rows[0]["auditInfo"]);
                     result.data = info;
@@ -406,13 +446,13 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                     {
                         List<float> rate = rateResult.data as List<float>;
 
-                        if(rate[0] > 1)
+                        if (rate[0] > 1)
                         {
                             extend.extendFee = rate[0];
                         }
                         else
                         {
-                           extend.extendFee = rate[0] * info.debitMoney;
+                            extend.extendFee = rate[0] * info.debitMoney;
                         }
                     }
                 }

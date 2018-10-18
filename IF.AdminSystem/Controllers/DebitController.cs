@@ -115,7 +115,7 @@ namespace NF.AdminSystem.Controllers
         /// <param name="bankId"></param>
         /// <param name="description"></param>
         /// <returns></returns>
-        public ActionResult<string> SubmitDebitRequest(int userId, float debitMoney, int bankId, string description, int debitPeriod = 0, int debitPeroid = 0, string deviceId = "")
+        public ActionResult<string> SubmitDebitRequest(int userId, float debitMoney, string description, int bankId = 0, int debitPeriod = 0, int debitPeroid = 0, string deviceId = "")
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
@@ -129,6 +129,24 @@ namespace NF.AdminSystem.Controllers
                     if (String.IsNullOrEmpty(deviceId))
                     {
                         deviceId = HttpContext.Request.Headers["deviceNo"];
+                    }
+
+                    if (bankId == 0)
+                    {
+                        DataProviderResultModel bankInfoResult = DebitProvider.GetUserBankId(userId);
+                        if (bankInfoResult.result == Result.SUCCESS)
+                        {
+                            int.TryParse(Convert.ToString(bankInfoResult.data), out bankId);
+                        }
+                        else
+                        {
+                            ret.result = Result.ERROR;
+                            ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                            ret.message = bankInfoResult.message;
+                            redis.LockRelease(lockKey, userId);
+                            return JsonConvert.SerializeObject(ret);
+                        }
+                        Log.WriteWarning("DebitController::SubmitDebitRequest", "警告：用户【{0}】提交时BankId为空，可能是老版本。", userId);
                     }
                     ///逻辑
                     DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(userId, debitMoney, debitPeriod, bankId, description, deviceId);
