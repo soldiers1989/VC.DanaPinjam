@@ -405,7 +405,7 @@ namespace NF.AdminSystem.Controllers
                 list.Add("aboutUrl", "http://api.danapinjam.com/api/Home/about");
                 list.Add("helpUrl", "http://api.danapinjam.com/api/Home/Help");
                 list.Add("contactusUrl", "http://api.danapinjam.com/api/Home/contactus");
-                list.Add("agreementUrl2", "http://api.danapinjam.com/api/Home/agreement2");
+                list.Add("agreementUrl2", "http://api.smalldebit.club/static/html/privacy.html");
                 list.Add("agreementUrl", "http://api.danapinjam.com/api/Home/agreement");
 
                 ///下面是第三方支付的说明页面

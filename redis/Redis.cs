@@ -93,10 +93,17 @@ namespace RedisPools
 
             try
             {
-                conn = _pool.GetConnection();
-                IDatabase db = conn.GetDatabase();
+                if (RedisValue.Null != value)
+                {
+                    conn = _pool.GetConnection();
+                    IDatabase db = conn.GetDatabase();
 
-                return db.LockTake(key, value, new TimeSpan(0, 0, t));
+                    return db.LockTake(key, value, new TimeSpan(0, 0, t));
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -119,9 +126,16 @@ namespace RedisPools
 
             try
             {
-                conn = _pool.GetConnection();
-                IDatabase db = conn.GetDatabase();
-                return db.LockRelease(key, value);
+                if (RedisValue.Null != value)
+                {
+                    conn = _pool.GetConnection();
+                    IDatabase db = conn.GetDatabase();
+                    return db.LockRelease(key, value);
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {
