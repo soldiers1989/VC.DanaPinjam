@@ -260,6 +260,7 @@ namespace NF.AdminSystem.Controllers
             qudao = HttpContext.Request.Headers["pkgName"];
             try
             {
+                phone = GetPhone(phone);
                 string key = "reg_user";
                 if (redis.LockTake(key, phone, 10))
                 {
@@ -271,35 +272,40 @@ namespace NF.AdminSystem.Controllers
 
                         if (confrimVerificateCode(phone, recordId, code) != 0)
                         {
+                            ret.result = Result.ERROR;
                             ret.errorCode = MainErrorModels.VERIFICATION_CODE_ERROR;
                             ret.message = "Verification code error";
+                            redis.LockRelease(key, phone);
                             return JsonConvert.SerializeObject(ret);
                         }
-                    }
-                    phone = GetPhone(phone);
-                    string userName = phone;
-                    ///逻辑
-                    result = UserProvider.UserRegister(userName, phone, password, regType, qudao);
+                        else
+                        {
+                            string userName = phone;
+                            ///逻辑
+                            result = UserProvider.UserRegister(userName, phone, password, regType, qudao);
 
-                    if (result.result > 0)
-                    {
-                        ret.result = Result.SUCCESS;
-                        ret.errorCode = 0;
-                        ret.message = result.message;
+                            if (result.result > 0)
+                            {
+                                ret.result = Result.SUCCESS;
+                                ret.errorCode = 0;
+                                ret.message = result.message;
 
-                        UserInfoModel userInfo = result.data as UserInfoModel;
-                        string guid = Guid.NewGuid().ToString();
-                        redis.StringSet(String.Format("user_guid_{0}", userInfo.userId), guid);
-                        userInfo.token = HelperProvider.MD5Encrypt32(String.Format("{0}{1}", userInfo.userId, guid));
-                        redis.StringSet(String.Format("UserInfo_{0}", userInfo.userId), JsonConvert.SerializeObject(userInfo));
-                        ret.data = userInfo;
+                                UserInfoModel userInfo = result.data as UserInfoModel;
+                                string guid = Guid.NewGuid().ToString();
+                                redis.StringSet(String.Format("user_guid_{0}", userInfo.userId), guid);
+                                userInfo.token = HelperProvider.MD5Encrypt32(String.Format("{0}{1}", userInfo.userId, guid));
+                                redis.StringSet(String.Format("UserInfo_{0}", userInfo.userId), JsonConvert.SerializeObject(userInfo));
+                                ret.data = userInfo;
+                            }
+                            else
+                            {
+                                ret.result = Result.ERROR;
+                                ret.errorCode = result.result;
+                                ret.message = result.message;
+                            }
+                        }
                     }
-                    else
-                    {
-                        ret.result = Result.ERROR;
-                        ret.errorCode = result.result;
-                        ret.message = result.message;
-                    }
+
                     redis.LockRelease(key, phone);
                 }
             }
