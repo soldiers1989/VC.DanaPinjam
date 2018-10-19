@@ -427,6 +427,11 @@ namespace NF.AdminSystem.Providers
                         if (!String.IsNullOrEmpty(contactInfo.phone))
                         {
                             userInfo.contactPercent++;
+                            contactInfo.isComplete = 1;
+                        }
+                        else
+                        {
+                            contactInfo.isComplete = 0;
                         }
                         contactNumber++;
                         contactInfo.relationUserName = Convert.ToString(relationShip.Rows[i]["relationUserName"]);
@@ -439,8 +444,8 @@ namespace NF.AdminSystem.Providers
                         int.TryParse(Convert.ToString(relationShip.Rows[i]["relationShip"]), out tmp);
                         contactInfo.relationShip = tmp;
 
-                        int.TryParse(Convert.ToString(relationShip.Rows[i]["isComplete"]), out tmp);
-                        contactInfo.isComplete = tmp;
+                        //int.TryParse(Convert.ToString(relationShip.Rows[i]["isComplete"]), out tmp);
+                        //contactInfo.isComplete = tmp;
                         //if (contactInfo.relationShip > 0)
                         //{
                         //    userInfo.contactPercent++;
