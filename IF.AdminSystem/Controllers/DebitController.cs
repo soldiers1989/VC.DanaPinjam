@@ -148,7 +148,7 @@ namespace NF.AdminSystem.Controllers
                         }
                         Log.WriteWarning("DebitController::SubmitDebitRequest", "警告：用户【{0}】提交时BankId为空，可能是老版本。", userId);
                     }
-                    
+
                     ///逻辑
                     DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(userId, debitMoney, debitPeriod, bankId, description, deviceId);
                     ret.result = result.result;
@@ -330,6 +330,12 @@ namespace NF.AdminSystem.Controllers
                     }
                     redis.LockRelease(lockKey, userId);
                 }
+                else
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
+                    ret.message = "already submit request.";
+                }
             }
             catch (Exception ex)
             {
@@ -375,6 +381,12 @@ namespace NF.AdminSystem.Controllers
                         ret.message = result.message;
                     }
                     redis.LockRelease(lockKey, userId);
+                }
+                else
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
+                    ret.message = "already submit request.";
                 }
             }
             catch (Exception ex)
