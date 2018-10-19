@@ -803,6 +803,9 @@ namespace NF.AdminSystem.Controllers
                                 if (result.result == Result.SUCCESS)
                                 {
                                     userId = contactInfo.userId;
+
+                                    Log.WriteDebugLog("UserController::EditUserContactInfoV2", "{0} 修改成功.", hUserId);
+
                                 }
                             }
                             else
