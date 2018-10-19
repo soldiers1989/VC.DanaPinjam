@@ -775,6 +775,7 @@ namespace NF.AdminSystem.Controllers
                         bool isSync = false;
                         foreach (var contactInfo in list)
                         {
+                            contactInfo.userId = Convert.ToInt32(hUserId);
                             if (contactInfo.userId > 0)
                             {
                                 if (!isSync)
