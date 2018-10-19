@@ -272,6 +272,7 @@ namespace NF.AdminSystem.Controllers
 
                         if (confrimVerificateCode(phone, recordId, code) != 0)
                         {
+                            Log.WriteDebugLog("UserController::UserRegister", "Verification code error");
                             ret.result = Result.ERROR;
                             ret.errorCode = MainErrorModels.VERIFICATION_CODE_ERROR;
                             ret.message = "Verification code error";
@@ -280,6 +281,7 @@ namespace NF.AdminSystem.Controllers
                         }
                         else
                         {
+                            Log.WriteDebugLog("UserController::UserRegister", "Verification code Ok");
                             string userName = phone;
                             ///逻辑
                             result = UserProvider.UserRegister(userName, phone, password, regType, qudao);
@@ -299,6 +301,7 @@ namespace NF.AdminSystem.Controllers
                             }
                             else
                             {
+                                Log.WriteDebugLog("UserController::UserRegister", "注册失败[{0}]", phone);
                                 ret.result = Result.ERROR;
                                 ret.errorCode = result.result;
                                 ret.message = result.message;
@@ -307,6 +310,7 @@ namespace NF.AdminSystem.Controllers
                     }
                     else
                     {
+                        Log.WriteDebugLog("UserController::UserRegister", "recordId 为空");
                         ret.result = Result.ERROR;
                         ret.errorCode = MainErrorModels.VERIFICATION_CODE_ERROR;
                         ret.message = "Verification code error";
@@ -321,6 +325,7 @@ namespace NF.AdminSystem.Controllers
                     ret.result = Result.ERROR;
                     ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
                     ret.message = "already submit request.";
+                    Log.WriteDebugLog("UserController::UserRegister", "already submit request.");
                 }
             }
             catch (Exception ex)
