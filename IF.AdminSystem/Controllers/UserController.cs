@@ -1180,7 +1180,7 @@ namespace NF.AdminSystem.Controllers
                     ret.message = result.message;
 
                     Log.WriteDebugLog("UserController::CheckUserConactsInfo", "Return json is {0}", JsonConvert.SerializeObject(ret));
-                     */
+                    */
                     ret.result = Result.SUCCESS;
                     ret.data = 1;
                     ret.message = "";
@@ -1196,6 +1196,7 @@ namespace NF.AdminSystem.Controllers
             }
             return JsonConvert.SerializeObject(ret);
         }
+
         /// <summary>
         /// 
         /// </summary>
