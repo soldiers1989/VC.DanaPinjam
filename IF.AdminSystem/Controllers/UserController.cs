@@ -927,7 +927,11 @@ namespace NF.AdminSystem.Controllers
                     {
                         if (redis.LockTake(lockKey, bankInfo.userId, 10))
                         {
-                            if (!String.IsNullOrEmpty(bankInfo.bniBankCode))
+                            string version = HttpContext.Request.Headers["version"];
+                            int iVersion = 0;
+                            int.TryParse(version, out iVersion);
+                            
+                            if (!String.IsNullOrEmpty(bankInfo.bniBankCode) && iVersion < 48)
                             {
                                 ///逻辑
                                 DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
@@ -946,7 +950,7 @@ namespace NF.AdminSystem.Controllers
                             {
                                 ret.result = Result.ERROR;
                                 ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                                ret.message = "Please choese Bank Name.";
+                                ret.message = "Please choose Bank Name.";
                             }
                             redis.LockRelease(lockKey, bankInfo.userId);
                             return JsonConvert.SerializeObject(ret);
