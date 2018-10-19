@@ -95,5 +95,7 @@ namespace NF.AdminSystem.Models
         /// idcard号已被使用
         /// </summary>
         public const int IDCARD_ALREADY_USEED = -100017;
+
+        public const int ALREADY_SUBMIT_REQUEST = -100018;
     }
 }

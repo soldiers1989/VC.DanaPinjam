@@ -163,6 +163,12 @@ namespace NF.AdminSystem.Controllers
                     }
                     redis.LockRelease(lockKey, userId);
                 }
+                else
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
+                    ret.message = "already submit request.";
+                }
             }
             catch (Exception ex)
             {
