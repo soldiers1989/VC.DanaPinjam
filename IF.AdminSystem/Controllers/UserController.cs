@@ -930,8 +930,14 @@ namespace NF.AdminSystem.Controllers
                             string version = HttpContext.Request.Headers["version"];
                             int iVersion = 0;
                             int.TryParse(version, out iVersion);
-                            
-                            if (!String.IsNullOrEmpty(bankInfo.bniBankCode) && iVersion < 48)
+
+                            if (String.IsNullOrEmpty(bankInfo.bniBankCode) && iVersion > 47)
+                            {
+                                ret.result = Result.ERROR;
+                                ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                                ret.message = "Please choose Bank Name.";
+                            }
+                            else
                             {
                                 ///逻辑
                                 DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
@@ -945,12 +951,6 @@ namespace NF.AdminSystem.Controllers
                                     ret.errorCode = result.result;
                                     ret.message = result.message;
                                 }
-                            }
-                            else
-                            {
-                                ret.result = Result.ERROR;
-                                ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                                ret.message = "Please choose Bank Name.";
                             }
                             redis.LockRelease(lockKey, bankInfo.userId);
                             return JsonConvert.SerializeObject(ret);
