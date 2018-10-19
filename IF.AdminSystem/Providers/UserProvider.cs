@@ -434,12 +434,15 @@ namespace NF.AdminSystem.Providers
                             contactInfo.isComplete = 0;
                         }
                         contactNumber++;
+
+                        /*
                         contactInfo.relationUserName = Convert.ToString(relationShip.Rows[i]["relationUserName"]);
                         if (!String.IsNullOrEmpty(contactInfo.relationUserName))
                         {
                             userInfo.contactPercent++;
                         }
                         contactNumber++;
+                         */
 
                         int.TryParse(Convert.ToString(relationShip.Rows[i]["relationShip"]), out tmp);
                         contactInfo.relationShip = tmp;
