@@ -117,6 +117,7 @@ namespace NF.AdminSystem.Controllers
                         string returnJson = String.Empty;
                         DateTime beginTime = DateTime.Now;
                         phone = GetPhone(phone);
+                        string keyPhone = phone;
                         string code = new Random().Next(666666, 999999).ToString();
                         string guid = Guid.NewGuid().ToString();
 
@@ -137,7 +138,7 @@ namespace NF.AdminSystem.Controllers
                             }
                             else
                             {
-                                redis.StringSet("code_" + phone, guid, 300);
+                                redis.StringSet("code_" + keyPhone, guid, 300);
                                 ret.data = new { recordId = guid };
                                 redis.StringSet(guid, code);
                             }
