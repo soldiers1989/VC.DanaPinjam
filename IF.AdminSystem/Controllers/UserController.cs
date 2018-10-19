@@ -927,17 +927,26 @@ namespace NF.AdminSystem.Controllers
                     {
                         if (redis.LockTake(lockKey, bankInfo.userId, 10))
                         {
-                            ///逻辑
-                            DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
-                            if (result.result == Result.SUCCESS)
+                            if (!String.IsNullOrEmpty(bankInfo.bniBankCode))
                             {
-                                ret.data = result.data;
+                                ///逻辑
+                                DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
+                                if (result.result == Result.SUCCESS)
+                                {
+                                    ret.data = result.data;
+                                }
+                                else
+                                {
+                                    ret.result = Result.ERROR;
+                                    ret.errorCode = result.result;
+                                    ret.message = result.message;
+                                }
                             }
                             else
                             {
                                 ret.result = Result.ERROR;
-                                ret.errorCode = result.result;
-                                ret.message = result.message;
+                                ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                                ret.message = "Please choese Bank Name.";
                             }
                             redis.LockRelease(lockKey, bankInfo.userId);
                             return JsonConvert.SerializeObject(ret);
