@@ -458,7 +458,7 @@ namespace NF.AdminSystem.Providers
                 int already = userInfo.userContactInfo.Count;
                 for (int i = 0; i < 4 - already; i++)
                 {
-                    userInfo.userContactInfo.Add(new UserContactInfoModel { id = -1 });
+                    userInfo.userContactInfo.Add(new UserContactInfoModel { id = -1,userId = Convert.ToInt32(userId) });
                     contactNumber += 2;
                 }
 
