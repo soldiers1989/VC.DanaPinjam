@@ -159,7 +159,7 @@ namespace NF.AdminSystem.Providers
             {
                 dbo = new DataBaseOperator();
                 ParamCollections pc = new ParamCollections();
-                string sqlStr = "select bankId,BankName,SubBankName,BankCode,Contact,ContactName,BNICode from IFUserBankInfo where userId = @iUserId order by updateTime desc limit 1";
+                string sqlStr = "select bankId,userId,BankName,SubBankName,BankCode,Contact,ContactName,BNICode from IFUserBankInfo where userId = @iUserId order by updateTime desc limit 1";
                 pc.Add("@iUserId", userId);
 
                 DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
@@ -168,6 +168,9 @@ namespace NF.AdminSystem.Providers
                 {
                     int.TryParse(Convert.ToString(dt.Rows[0]["bankId"]), out bankInfo.bankId);
                     bankInfo.bankCode = Convert.ToString(dt.Rows[0]["bankCode"]);
+                    
+                    int.TryParse(Convert.ToString(dt.Rows[0]["userId"]), out bankInfo.userId);
+
                     bankInfo.bankName = Convert.ToString(dt.Rows[0]["BankName"]);
                     bankInfo.subBankName = Convert.ToString(dt.Rows[0]["SubBankName"]);
                     bankInfo.contact = Convert.ToString(dt.Rows[0]["Contact"]);
@@ -434,9 +437,10 @@ namespace NF.AdminSystem.Providers
                             contactInfo.isComplete = 0;
                         }
                         contactNumber++;
+                        
+                        contactInfo.relationUserName = Convert.ToString(relationShip.Rows[i]["relationUserName"]);
 
                         /*
-                        contactInfo.relationUserName = Convert.ToString(relationShip.Rows[i]["relationUserName"]);
                         if (!String.IsNullOrEmpty(contactInfo.relationUserName))
                         {
                             userInfo.contactPercent++;
