@@ -1220,7 +1220,6 @@ namespace NF.AdminSystem.Controllers
                 }
                 else
                 {
-                    /*
                     CheckUserConactsRequestBodyModel requestBody = null;
                     requestBody = JsonConvert.DeserializeObject<CheckUserConactsRequestBodyModel>(content);
                     requestBody.phone = GetPhone(requestBody.phone);
@@ -1231,10 +1230,6 @@ namespace NF.AdminSystem.Controllers
                     ret.message = result.message;
 
                     Log.WriteDebugLog("UserController::CheckUserConactsInfo", "Return json is {0}", JsonConvert.SerializeObject(ret));
-                    */
-                    ret.result = Result.SUCCESS;
-                    ret.data = 1;
-                    ret.message = "";
                 }
             }
             catch (Exception ex)
