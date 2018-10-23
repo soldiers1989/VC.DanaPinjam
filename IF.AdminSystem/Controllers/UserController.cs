@@ -487,7 +487,7 @@ namespace NF.AdminSystem.Controllers
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
                 ret.message = "The program logic error.";
 
-                Log.WriteErrorLog("UserController::UserLogin", "异常：{0}", ex.Message);
+                Log.WriteErrorLog("UserController::UserLogin", "[{0}] 异常:{1}", phone, ex.Message);
             }
             return JsonConvert.SerializeObject(ret);
         }
