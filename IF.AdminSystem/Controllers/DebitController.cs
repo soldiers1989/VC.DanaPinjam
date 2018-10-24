@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 using YYLog.ClassLibrary;
 using RedisPools;
+using Microsoft.Extensions.Options;
 
 namespace NF.AdminSystem.Controllers
 {
@@ -21,6 +22,13 @@ namespace NF.AdminSystem.Controllers
     /// </summary>
     public class DebitController : ControllerBase
     {
+        private AppSettingsModel ConfigSettings { get; set; }
+
+        public DebitController(IOptions<AppSettingsModel> settings)
+        {
+            ConfigSettings = settings.Value;
+        }
+
         [AllowAnonymous]
         [Route("CalcInterestRate")]
         [HttpPost]
@@ -122,6 +130,26 @@ namespace NF.AdminSystem.Controllers
             Redis redis = HelperProvider.GetRedis();
             try
             {
+                string pkgName = HttpContext.Request.Headers["pkgName"];
+                if (String.IsNullOrEmpty(pkgName) && String.IsNullOrEmpty(redis.StringGet(String.Format("attention_{0}", userId))))
+                {
+                    Log.WriteDebugLog("DebitController::SubmitDebitRequest", "[{0}] 用的是老版本，发短信通知他去下载最新版", userId);
+                    WaveCellSMSSingleSender.Authorization = ConfigSettings.WaveCellSMSAuthorization;
+                    WaveCellSMSSingleSender.SubAccountName = ConfigSettings.WaveCellSMSAccountName;
+                    WaveCellSMSSingleSender waveCellSMSSender = new WaveCellSMSSingleSender();
+
+                    string key = String.Format("UserAllInfoV5_{0}", userId);
+                    string info = redis.StringGet(key);
+                    if (!String.IsNullOrEmpty(info))
+                    {
+                        UserAllInfoModel userInfo = JsonConvert.DeserializeObject<UserAllInfoModel>(info);
+                        string phone = "+62" + userInfo.userPersonalInfo.userName;
+                        string msg = "Your app version is too old.Please go http://www.danapinjam.com to download new version.";
+                        WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send(phone, msg);
+
+                        redis.StringSet(String.Format("attention_{0}", userId), "1");
+                    }
+                }
                 string lockKey = "submitdebit";
                 if (redis.LockTake(lockKey, userId))
                 {
@@ -180,7 +208,8 @@ namespace NF.AdminSystem.Controllers
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
                 Log.WriteErrorLog("DebitController::SubmitDebitRequest", "异常：{0}", ex.Message);
-            }finally
+            }
+            finally
             {
                 Log.WriteDebugLog("UserController::SubmitDebitRequest", "{0}", HelperProvider.GetHeader(HttpContext));
             }
