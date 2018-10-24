@@ -188,6 +188,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::getVertificateCode", "异常：{0}", ex.Message);
             }
+            finally
+            {
+                Log.WriteDebugLog("UserController::getVertificateCode", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -234,6 +238,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
                 Log.WriteErrorLog("UserController::GetVertificateCode", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::GetVertificateCode", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return -1;
         }
@@ -337,7 +345,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::UserRegister", "异常：{0}", ex.Message);
             }
-
+            finally
+            {
+                Log.WriteDebugLog("UserController::UserRegister", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -381,6 +392,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
                 Log.WriteErrorLog("UserController::SyncUserRegistration", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::SyncUserRegistration", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -434,6 +449,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
                 Log.WriteErrorLog("UserController::SyncUserThirdPartyInfo", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::SyncUserThirdPartyInfo", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -489,6 +508,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::UserLogin", "[{0}] 异常:{1}", phone, ex.Message);
             }
+            finally
+            {
+                Log.WriteDebugLog("UserController::UserLogin", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -533,6 +556,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
                 Log.WriteErrorLog("UserController::UserLogout", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::UserLogout", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -586,6 +613,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::GetUserAllInfo", "异常：{0}", ex.Message);
             }
+            finally
+            {
+                Log.WriteDebugLog("UserController::GetUserAllInfo", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -632,6 +663,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::EditUserPersonalInfo function.";
 
                 Log.WriteErrorLog("UserController::EditUserPersonalInfo", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::EditUserPersonalInfo", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -680,6 +715,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::EditUserWorkingInfo function.";
 
                 Log.WriteErrorLog("UserController::EditUserWorkingInfo", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::EditUserWorkingInfo", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -732,6 +771,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::EditUserContactInfo function.";
 
                 Log.WriteErrorLog("UserController::EditUserContactInfo", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::EditUserContactInfo", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -845,6 +888,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::EditUserContactInfoV2", "异常：{0}", ex.Message);
             }
+            finally
+            {
+                Log.WriteDebugLog("UserController::EditUserContactInfoV2", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -881,6 +928,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::GetUserBankInfo function.";
                 Log.WriteErrorLog("UserController::GetUserBankInfo", "异常：{0}", ex.Message);
             }
+            finally
+            {
+                Log.WriteDebugLog("UserController::GetUserBankInfo", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -912,6 +963,10 @@ namespace NF.AdminSystem.Controllers
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
                 ret.message = "The program logic error from the UserController::SaveUserBankInfo function.";
                 Log.WriteErrorLog("UserController::SaveUserBankInfo", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::SaveUserBankInfo", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -983,8 +1038,12 @@ namespace NF.AdminSystem.Controllers
             {
                 ret.result = Result.ERROR;
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
-                ret.message = "The program logic error from the UserController::SaveUserBankInfo function.";
-                Log.WriteErrorLog("UserController::SaveUserBankInfo", "异常：{0}", ex.Message);
+                ret.message = "The program logic error from the UserController::SaveUserBankInfoV2 function.";
+                Log.WriteErrorLog("UserController::SaveUserBankInfoV2", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::SaveUserBankInfoV2", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -1008,6 +1067,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
                 Log.WriteErrorLog("UserController::GetUserCertificate", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::GetUserCertificate", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -1060,6 +1123,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::UploadUserCertificate function.";
 
                 Log.WriteErrorLog("UserController::UploadUserCertificate", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::UploadUserCertificate", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -1130,6 +1197,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::PostUserCallRecord", "异常：{0}", ex.Message);
             }
+            finally
+            {
+                Log.WriteDebugLog("UserController::PostUserCallRecord", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -1198,6 +1269,10 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("UserController::PostUserConcats", "异常：{0}", ex.Message);
             }
+            finally
+            {
+                Log.WriteDebugLog("UserController::PostUserConcats", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
             return JsonConvert.SerializeObject(ret);
         }
 
@@ -1239,6 +1314,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::CheckUserConactsInfo function.";
 
                 Log.WriteErrorLog("UserController::CheckUserConactsInfo", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::CheckUserConactsInfo", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -1297,6 +1376,10 @@ namespace NF.AdminSystem.Controllers
                 ret.message = "The program logic error from the UserController::PostUserLocation function.";
 
                 Log.WriteErrorLog("UserController::PostUserLocation", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("UserController::PostUserLocation", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }

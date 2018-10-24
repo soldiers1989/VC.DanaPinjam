@@ -180,6 +180,9 @@ namespace NF.AdminSystem.Controllers
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
                 Log.WriteErrorLog("DebitController::SubmitDebitRequest", "异常：{0}", ex.Message);
+            }finally
+            {
+                Log.WriteDebugLog("UserController::SubmitDebitRequest", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
