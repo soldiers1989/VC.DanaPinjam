@@ -144,7 +144,7 @@ namespace NF.AdminSystem.Controllers
                     {
                         UserAllInfoModel userInfo = JsonConvert.DeserializeObject<UserAllInfoModel>(info);
                         string phone = "+62" + userInfo.userPersonalInfo.userName;
-                        string msg = "Your app version is too old.Please go http://www.danapinjam.com to download new version.";
+                        string msg = "Anda masih menggunakan aplikasi versi lama, silahkan klik  https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.";
                         WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send(phone, msg);
 
                         redis.StringSet(String.Format("attention_{0}", userId), "1");

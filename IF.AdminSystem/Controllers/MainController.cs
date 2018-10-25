@@ -33,6 +33,43 @@ namespace NF.AdminSystem.Controllers
         [AllowAnonymous]
         [HttpPost]
         [HttpGet]
+        [Route("Test")]
+        public ActionResult<string> Test(string phone)
+        {
+            HttpResultModel ret = new HttpResultModel();
+            //Redis redis = HelperProvider.GetRedis();
+            ret.result = Result.SUCCESS;
+            try
+            {
+                WaveCellSMSSingleSender.Authorization = ConfigSettings.WaveCellSMSAuthorization;
+                WaveCellSMSSingleSender.SubAccountName = ConfigSettings.WaveCellSMSAccountName;
+                WaveCellSMSSingleSender waveCellSMSSender = new WaveCellSMSSingleSender();
+
+                //if (String.IsNullOrEmpty(redis.StringGet(String.Format("attention_{0}", phone))))
+                {
+                    phone = "+62" + phone;
+                    string msg = "Anda masih menggunakan aplikasi versi lama, silahkan klik https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.";
+                    WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send(phone, msg);
+                    ret.data = sendRet;
+                    //    redis.StringSet(String.Format("attention_{0}", phone), "1");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.LOGIC_ERROR;
+                ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
+
+                Log.WriteErrorLog("MainController::Test", "异常：{0}", ex.Message);
+            }
+
+            return JsonConvert.SerializeObject(ret);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [HttpGet]
         [Route("GetBankCodes")]
         /// <summary>
         /// 获取贷款种类
