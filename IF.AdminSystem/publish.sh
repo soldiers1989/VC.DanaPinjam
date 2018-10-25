@@ -54,7 +54,8 @@ tailf nohup.out
 
 #zip -r /data/www/test.zip /data/www/api.smalldebit.club/*
 
-
+#版本还原
 #unzip -o -d / /data/www/test.zip
 
+#日期删除
 #find /data/www/api.smalldebit.club/ -mtime +15 -name "*.log" -exec rm -rf {} \;
