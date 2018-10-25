@@ -211,7 +211,7 @@ namespace NF.AdminSystem.Controllers
                 string cacheCode = redis.StringGet(recordId);
                 if (!String.IsNullOrEmpty(cacheCode))
                 {
-                    Log.WriteDebugLog("UserController::confrimVerificateCode", "走到这个逻辑，说明调用了腾讯云的短信发送，准备开始验证。缓存中的值为：{0}，用户输入的值为：{1}", cacheCode, code);
+                    Log.WriteDebugLog("UserController::confrimVerificateCode", "走到这个逻辑，说明调用了新的短信发送，准备开始验证。缓存中的值为：{0}，用户输入的值为：{1}", cacheCode, code);
                     if (cacheCode == code.Trim())
                     {
                         return 0;

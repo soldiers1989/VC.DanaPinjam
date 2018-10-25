@@ -72,7 +72,7 @@ namespace NF.AdminSystem.Providers
             string version = context.Request.Headers["version"];
             string pkgName = context.Request.Headers["pkgName"];
 
-            return String.Format("用户：{0}的token：{1}，qudao：{2},version：{3}，pkgName：{4}", userId, token, qudao, version, pkgName);
+            return String.Format("用户[{0}] token：{1}，qudao：{2},version：{3}，pkgName：{4}", userId, token, qudao, version, pkgName);
         }
 
         public static string SendCertificate(string phone, string code)
