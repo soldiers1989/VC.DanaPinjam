@@ -75,20 +75,6 @@ namespace NF.AdminSystem.Providers
             return String.Format("用户[{0}] token：{1}，qudao：{2},version：{3}，pkgName：{4}", userId, token, qudao, version, pkgName);
         }
 
-        public static string SendCertificate(string phone, string code)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                Log.WriteErrorLog("HelperProvider::SendCertificate", "验证码发送失败：{0}|{1},异常：{2}", phone, code, ex.Message);
-                return ex.Message;
-            }
-            return String.Empty;
-        }
-
         /// <summary>
         /// 32位MD5加密
         /// </summary>
