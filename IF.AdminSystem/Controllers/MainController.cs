@@ -418,8 +418,8 @@ namespace NF.AdminSystem.Controllers
             ret.result = Result.SUCCESS;
             try
             {
-
                 string version = HttpContext.Request.Headers["version"];
+                string pkgName = HttpContext.Request.Headers["pkgName"];
                 int iVersion = 0;
                 int.TryParse(version, out iVersion);
 
@@ -431,14 +431,27 @@ namespace NF.AdminSystem.Controllers
                 int updateIsMust = 0;
                 int.TryParse(redis.StringGet("updateIsMust"), out updateIsMust);
                 SortedList<string, string> list = new SortedList<string, string>();
-                list.Add("isUpdate", Convert.ToString(newVersion > iVersion ? 1 : 0));
-                list.Add("version", Convert.ToString(newVersion));
-                list.Add("isMust", Convert.ToString(updateIsMust));
+                if (String.IsNullOrEmpty(pkgName))
+                {
+                    list.Add("isUpdate", "1");
+                    list.Add("version", Convert.ToString(newVersion));
+                    list.Add("isMust", "0");
+
+                    Log.WriteDebugLog("MainController::GetInitAppConfig", "老版本：提示升级，{0}", HelperProvider.GetHeader(HttpContext));
+                }
+                else
+                {
+                    list.Add("isUpdate", Convert.ToString(newVersion > iVersion ? 1 : 0));
+                    list.Add("version", Convert.ToString(newVersion));
+                    list.Add("isMust", Convert.ToString(updateIsMust));
+                }
 
                 list.Add("appName", "PINJAM CEPAT");
                 list.Add("totalLoan", "3000000");
                 list.Add("totalPeople", "1000");
-                list.Add("downloadUrl", "http://www.danapinjam.com/");
+
+                //Anda masih menggunakan aplikasi versi lama, silahkan klik https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.
+                list.Add("downloadUrl", "https://play.google.com/store/apps/details?id=com.danapinjam.vip");
                 list.Add("aboutUrl", "http://api.danapinjam.com/api/Home/about");
                 list.Add("helpUrl", "http://api.danapinjam.com/api/Home/Help");
                 list.Add("contactusUrl", "http://api.danapinjam.com/api/Home/contactus");
