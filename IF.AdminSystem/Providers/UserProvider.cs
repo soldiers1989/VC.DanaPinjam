@@ -168,7 +168,7 @@ namespace NF.AdminSystem.Providers
                 {
                     int.TryParse(Convert.ToString(dt.Rows[0]["bankId"]), out bankInfo.bankId);
                     bankInfo.bankCode = Convert.ToString(dt.Rows[0]["bankCode"]);
-                    
+
                     int.TryParse(Convert.ToString(dt.Rows[0]["userId"]), out bankInfo.userId);
 
                     bankInfo.bankName = Convert.ToString(dt.Rows[0]["BankName"]);
@@ -465,7 +465,7 @@ namespace NF.AdminSystem.Providers
                 int already = userInfo.userContactInfo.Count;
                 for (int i = 0; i < 4 - already; i++)
                 {
-                    userInfo.userContactInfo.Add(new UserContactInfoModel { id = -1,userId = Convert.ToInt32(userId),relationShip = (i+1) });
+                    userInfo.userContactInfo.Add(new UserContactInfoModel { id = -1, userId = Convert.ToInt32(userId), relationShip = (i + 1) });
                     contactNumber += 2;
                 }
 
@@ -1338,24 +1338,21 @@ namespace NF.AdminSystem.Providers
                 string strPhone = model.phone.Replace(" ", "");
                 strPhone = UserController.GetPhone(strPhone);
 
-                if (model.id < 1)
+                sqlStr = @"select count(1) from IFUserContactInfo 
+                        where userId = @iUserId and relationShip = @iRelationShip";
+
+                pc.Add("@iUserId", model.userId);
+                pc.Add("@iRelationShip", model.relationShip);
+
+                int count = dbo.GetCount(sqlStr, pc.GetParams(true));
+                if (count > 1)
                 {
-                    sqlStr = @"select count(1) from IFUserContactInfo 
+                    sqlStr = @"delete from IFUserContactInfo 
                         where userId = @iUserId and relationShip = @iRelationShip";
 
                     pc.Add("@iUserId", model.userId);
                     pc.Add("@iRelationShip", model.relationShip);
-
-                    int count = dbo.GetCount(sqlStr, pc.GetParams(true));
-                    if (count > 0)
-                    {
-                        sqlStr = @"delete from IFUserContactInfo 
-                        where userId = @iUserId and relationShip = @iRelationShip";
-
-                        pc.Add("@iUserId", model.userId);
-                        pc.Add("@iRelationShip", model.relationShip);
-                        dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
-                    }
+                    dbo.ExecuteStatement(sqlStr, pc.GetParams(true));
 
                     sqlStr = @"insert into IFUserContactInfo(userId, relationShip, relationUserName, phone, address)
     values(@iUserId, @iRelationShip, @sRelationUserName, @sPhone, @sAddress); ";
@@ -1366,18 +1363,28 @@ namespace NF.AdminSystem.Providers
                     pc.Add("@sPhone", strPhone);
                     pc.Add("@sAddress", model.address);
                 }
-                else
+                else if (count == 1)
                 {
                     sqlStr = @"update IFUserContactInfo
-set relationShip = @iRelationShip, relationUserName = @sRelationUserName, phone = @sPhone, address = @sAddress
-where id = @iId;";
+set relationUserName = @sRelationUserName, phone = @sPhone, address = @sAddress
+where relationShip = @iRelationShip and userId = @iUserId;";
+                    pc.Add("@sRelationUserName", model.relationUserName);
+                    pc.Add("@sPhone", strPhone);
+                    pc.Add("@sAddress", model.address);
+                    pc.Add("@iRelationShip", model.relationShip);
+                    pc.Add("@iUserId", model.userId);
+                }
+                else
+                {
+                    sqlStr = @"insert into IFUserContactInfo(userId, relationShip, relationUserName, phone, address)
+    values(@iUserId, @iRelationShip, @sRelationUserName, @sPhone, @sAddress); ";
+
+                    pc.Add("@iUserId", model.userId);
                     pc.Add("@iRelationShip", model.relationShip);
                     pc.Add("@sRelationUserName", model.relationUserName);
                     pc.Add("@sPhone", strPhone);
                     pc.Add("@sAddress", model.address);
-                    pc.Add("@iId", model.id);
                 }
-
                 dbo.ExecuteStatement(sqlStr, pc.GetParams());
                 result.result = Result.SUCCESS;
             }
@@ -1410,12 +1417,12 @@ where id = @iId;";
                 string sqlStr = @"select count(1) from IFUserContacts d 
                         where d.userId = @iUserId 
                         and d.phone = @sPhone and d.recordType = @iRecordType;";
-                
+
                 pc.Add("@iUserId", model.userId);
                 pc.Add("@sPhone", model.phone);
                 pc.Add("@iRecordType", 1);
                 int count = dbo.GetCount(sqlStr, pc.GetParams());
-                
+
                 result.result = Result.SUCCESS;
                 result.data = count;
             }

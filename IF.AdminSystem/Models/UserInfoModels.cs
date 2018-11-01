@@ -9,6 +9,8 @@ namespace NF.AdminSystem.Models
     [Serializable]
     public class FaseBookUserInfo
     {
+        public string userId { get; set; }
+        public int type { get; set; }
         public string id = String.Empty;
         public string birthday = String.Empty;
         public string first_name = String.Empty;
@@ -126,6 +128,50 @@ namespace NF.AdminSystem.Models
         /// 签名
         /// </summary>
         public string token = String.Empty;
+    }
+
+
+    /// <summary>
+    /// 用户的所有信息
+    /// </summary>
+    [Serializable]
+    public class UserInfoPercentModel
+    {
+        [Display(Name = "资料完整性")]
+        /// <summary>
+        /// 资料完整性
+        /// </summary>
+        public int allPercent = 0;
+
+        /// <summary>
+        /// 联系人完整性
+        /// </summary>
+        public int contactPercent = 0;
+
+        /// <summary>
+        /// 工作资料完整性
+        /// </summary>
+        public int workingPercent = 0;
+
+        /// <summary>
+        /// 基本信息完整性
+        /// </summary>
+        public int personalPercent = 0;
+
+        /// <summary>
+        /// 证件完整性
+        /// </summary>
+        public int cardPercent = 0;
+
+        /// <summary>
+        /// 其它信息完整性
+        /// </summary>
+        public int otherInfoPercent = 0;
+
+        /// <summary>
+        /// 用户等级
+        /// </summary>
+        public int userLevel = 0;
     }
 
     /// <summary>

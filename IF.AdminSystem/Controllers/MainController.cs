@@ -37,6 +37,8 @@ namespace NF.AdminSystem.Controllers
         public ActionResult<string> Test(string phone)
         {
             HttpResultModel ret = new HttpResultModel();
+            ret.data = new UserLocationModel();
+            /*
             //Redis redis = HelperProvider.GetRedis();
             ret.result = Result.SUCCESS;
             try
@@ -63,6 +65,7 @@ namespace NF.AdminSystem.Controllers
 
                 Log.WriteErrorLog("MainController::Test", "异常：{0}", ex.Message);
             }
+ */
 
             return JsonConvert.SerializeObject(ret);
         }
