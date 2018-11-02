@@ -670,16 +670,28 @@ namespace NF.AdminSystem.Controllers
             ret.result = Result.SUCCESS;
             try
             {
-                ///逻辑
-                DataProviderResultModel result = MainInfoProvider.GetNotices();
-                if (result.result == Result.SUCCESS)
+                string pkgName = HttpContext.Request.Headers["pkgName"];
+                if (String.IsNullOrEmpty(pkgName))
                 {
-                    ret.data = result.data;
+                    List<NoticeModel> infos = new List<NoticeModel>();
+                    NoticeModel info = new NoticeModel();
+                    info.title = "Warning";
+                    info.content = "Anda masih menggunakan aplikasi versi lama, silahkan klik  https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.";
+                    ret.data = info;
                 }
                 else
                 {
-                    ret.result = result.result;
-                    ret.message = result.message;
+                    ///逻辑
+                    DataProviderResultModel result = MainInfoProvider.GetNotices();
+                    if (result.result == Result.SUCCESS)
+                    {
+                        ret.data = result.data;
+                    }
+                    else
+                    {
+                        ret.result = result.result;
+                        ret.message = result.message;
+                    }
                 }
             }
             catch (Exception ex)
