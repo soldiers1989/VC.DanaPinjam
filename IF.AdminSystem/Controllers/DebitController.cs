@@ -146,9 +146,8 @@ namespace NF.AdminSystem.Controllers
                         string phone = "+62" + userInfo.userPersonalInfo.userName;
                         string msg = "Anda masih menggunakan aplikasi versi lama, silahkan klik  https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.";
                         WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send(phone, msg);
-
-                        redis.StringSet(String.Format("attention_{0}", userId), "1");
                     }
+                    redis.StringSet(String.Format("attention_{0}", userId), "1");
                 }
 
                 if (userId > 146724 && String.IsNullOrEmpty(pkgName))
