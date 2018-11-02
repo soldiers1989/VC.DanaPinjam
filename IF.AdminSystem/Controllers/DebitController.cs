@@ -150,6 +150,16 @@ namespace NF.AdminSystem.Controllers
                         redis.StringSet(String.Format("attention_{0}", userId), "1");
                     }
                 }
+
+                if (userId > 146724 && String.IsNullOrEmpty(pkgName))
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                    ret.message = "Anda masih menggunakan aplikasi versi lama, silahkan klik  https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.";
+
+                    Log.WriteWarning("DebitController::SubmitDebitRequest", "新用户，老版本将不允许借款。{0}", HelperProvider.GetHeader(HttpContext));
+                    return JsonConvert.SerializeObject(ret);
+                }
                 string lockKey = "submitdebit";
                 if (redis.LockTake(lockKey, userId))
                 {
