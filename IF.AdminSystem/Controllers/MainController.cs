@@ -677,7 +677,8 @@ namespace NF.AdminSystem.Controllers
                     NoticeModel info = new NoticeModel();
                     info.title = "Warning";
                     info.content = "Anda masih menggunakan aplikasi versi lama, silahkan klik  https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.";
-                    ret.data = info;
+                    infos.Add(info);
+                    ret.data = infos;
                 }
                 else
                 {
