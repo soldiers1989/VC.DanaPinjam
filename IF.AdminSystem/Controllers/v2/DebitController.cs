@@ -173,7 +173,7 @@ namespace NF.AdminSystem.Controllers.v2
                         ret.message = "The bankId is empty.";
                         redis.LockRelease(lockKey, requestBody.userId);
                         
-                        Log.WriteWarning("DebitController::SubmitDebitRequest", "警告：用户【{0}】提交时BankId为空。", requestBody.userId);
+                        Log.WriteWarning("v2::DebitController::SubmitDebitRequest", "警告：用户【{0}】提交时BankId为空。", requestBody.userId);
                         return JsonConvert.SerializeObject(ret);
                     }
 
@@ -198,7 +198,7 @@ namespace NF.AdminSystem.Controllers.v2
                     ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
                     ret.message = "already submit request.";
 
-                    Log.WriteDebugLog("DebitController::SubmitDebitRequest", "[{0}] 重复请求。", requestBody.userId);
+                    Log.WriteDebugLog("v2::DebitController::SubmitDebitRequest", "[{0}] 重复请求。", requestBody.userId);
                 }
             }
             catch (Exception ex)
@@ -207,11 +207,11 @@ namespace NF.AdminSystem.Controllers.v2
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
                 ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
 
-                Log.WriteErrorLog("DebitController::SubmitDebitRequest", "异常：{0}", ex.Message);
+                Log.WriteErrorLog("v2::DebitController::SubmitDebitRequest", "异常：{0}", ex.Message);
             }
             finally
             {
-                Log.WriteDebugLog("UserController::SubmitDebitRequest", "{0}", HelperProvider.GetHeader(HttpContext));
+                Log.WriteDebugLog("v2::DebitController::SubmitDebitRequest", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
