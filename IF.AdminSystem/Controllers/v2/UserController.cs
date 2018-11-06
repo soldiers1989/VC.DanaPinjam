@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using YYLog.ClassLibrary;
 using Microsoft.Extensions.Options;
+using NF.AdminSystem.Models.v2;
 
 namespace NF.AdminSystem.Controllers.v2
 {
@@ -1646,16 +1647,16 @@ namespace NF.AdminSystem.Controllers.v2
             return JsonConvert.SerializeObject(ret);
         }
 
-        [Route("PostUserConcats")]
+        [Route("PostUserContacts")]
         [HttpPost]
-        public ActionResult<string> PostUserConcats(int userId)
+        public ActionResult<string> PostUserContacts(int userId)
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             Redis redis = HelperProvider.GetRedis();
             try
             {
-                string lockKey = "postUserConcats";
+                string lockKey = "PostUserContacts";
                 if (redis.LockTake(lockKey, userId, 10))
                 {
                     if (null == HttpContext.Request.Body)
@@ -1691,7 +1692,7 @@ namespace NF.AdminSystem.Controllers.v2
                         string key = String.Format("UserAllInfoV5_{0}", userId);
                         redis.KeyDelete(key);
 
-                        Log.WriteDebugLog("UserController::PostUserConcats", "{0}", record.Count);
+                        Log.WriteDebugLog("UserController::PostUserContacts", "{0}", record.Count);
                     }
                     redis.LockRelease(lockKey, userId);
                 }
@@ -1706,13 +1707,13 @@ namespace NF.AdminSystem.Controllers.v2
             {
                 ret.result = Result.ERROR;
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
-                ret.message = "The program logic error from the UserController::PostUserConcats function.";
+                ret.message = "The program logic error from the UserController::PostUserContacts function.";
 
-                Log.WriteErrorLog("UserController::PostUserConcats", "异常：{0}", ex.Message);
+                Log.WriteErrorLog("UserController::PostUserContacts", "异常：{0}", ex.Message);
             }
             finally
             {
-                Log.WriteDebugLog("UserController::PostUserConcats", "{0}", HelperProvider.GetHeader(HttpContext));
+                Log.WriteDebugLog("UserController::PostUserContacts", "{0}", HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
