@@ -77,7 +77,7 @@ namespace NF.AdminSystem.Controllers.v2
                         ret.errorCode = MainErrorModels.PARAMETER_ERROR;
                         ret.message = "The bankId is empty.";
                         redis.LockRelease(lockKey, requestBody.userId);
-                        
+
                         Log.WriteWarning("v2::DebitController::SubmitDebitRequest", "警告：用户【{0}】提交时BankId为空。", requestBody.userId);
                         return JsonConvert.SerializeObject(ret);
                     }
@@ -129,14 +129,27 @@ namespace NF.AdminSystem.Controllers.v2
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public ActionResult<string> GetUserDebitRecords(int userId)
+        public ActionResult<string> GetUserDebitRecords()
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+
+            string content = HelperProvider.GetRequestContent(HttpContext);
+            if (String.IsNullOrEmpty(content))
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                ret.message = "The request body is empty.";
+
+                Log.WriteErrorLog("v2:DebitController::SubmitDebitRequest", "请求参数为空。{0}", HelperProvider.GetHeader(HttpContext));
+                return JsonConvert.SerializeObject(ret);
+            }
             try
             {
+                var requestBody = JsonConvert.DeserializeObject<DebitRecordsRequestBody>(content);
+                
                 ///逻辑
-                DataProviderResultModel result = DebitProvider.GetUserDebitRecords(userId);
+                DataProviderResultModel result = DebitProvider.GetUserDebitRecords(requestBody.userId);
                 if (result.result == Result.SUCCESS)
                 {
                     ret.data = result.data;
@@ -153,7 +166,7 @@ namespace NF.AdminSystem.Controllers.v2
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
                 ret.message = "The program logic error from the DebitController::GetUserDebitRecords function.";
 
-                Log.WriteErrorLog("DebitController::GetUserDebitRecords", "UserId:{0}，异常：{1}", userId, ex.Message);
+                Log.WriteErrorLog("DebitController::GetUserDebitRecords", "UserId:{0}，异常：{1}", content, ex.Message);
             }
 
             return JsonConvert.SerializeObject(ret);
@@ -192,76 +205,6 @@ namespace NF.AdminSystem.Controllers.v2
                 ret.message = "The program logic error from the DebitController::GetUserDebitRecord function.";
 
                 Log.WriteErrorLog("DebitController::GetUserDebitRecord", "异常：{0}", ex.Message);
-            }
-
-            return JsonConvert.SerializeObject(ret);
-        }
-
-        [Route("GetUserExtendInfo")]
-        [HttpPost]
-        [HttpGet]
-        /// <summary>
-        /// 获取某条贷款记录
-        /// </summary>
-        /// <param name="debitId"></param>
-        /// <returns></returns>
-        public ActionResult<string> GetUserExtendInfo(int debitId)
-        {
-            HttpResultModel ret = new HttpResultModel();
-            ret.result = Result.SUCCESS;
-            try
-            {
-                ///逻辑
-                DataProviderResultModel result = DebitProvider.GetUserExtendRecord(debitId);
-                if (result.result == Result.SUCCESS)
-                {
-                    ret.data = result.data;
-                }
-                else
-                {
-                    ret.result = result.result;
-                    ret.message = result.message;
-                }
-            }
-            catch (Exception ex)
-            {
-                ret.result = Result.ERROR;
-                ret.errorCode = MainErrorModels.LOGIC_ERROR;
-                ret.message = "The program logic error from the DebitController::GetUserDebitRecord function.";
-
-                Log.WriteErrorLog("DebitController::GetUserDebitRecord", "异常：{0}", ex.Message);
-            }
-
-            return JsonConvert.SerializeObject(ret);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="objectId"></param>
-        /// <param name="userId"></param>
-        /// <param name="certificateType"></param>
-        /// <returns></returns>
-        [Route("GetUserCertificate")]
-        [AllowAnonymous]
-        [HttpPost]
-        [HttpGet]
-        public ActionResult<string> GetUserCertificate(int objectId, int userId, int certificateType)
-        {
-            HttpResultModel ret = new HttpResultModel();
-            ret.result = Result.SUCCESS;
-            try
-            {
-                ///逻辑
-                ret.data = UserProvider.GetUserCertificate(objectId, userId);
-            }
-            catch (Exception ex)
-            {
-                ret.result = Result.ERROR;
-                ret.errorCode = MainErrorModels.LOGIC_ERROR;
-                ret.message = Convert.ToString(MainErrorModels.LOGIC_ERROR);
-
-                Log.WriteErrorLog("DebitController::GetUserCertificate", "异常：{0}", ex.Message);
             }
 
             return JsonConvert.SerializeObject(ret);

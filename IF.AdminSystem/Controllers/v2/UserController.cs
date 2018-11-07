@@ -429,7 +429,6 @@ namespace NF.AdminSystem.Controllers.v2
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [Route("SyncUserThirdPartyInfo")]
         public ActionResult<string> SyncUserThirdPartyInfo()
         {
@@ -438,6 +437,7 @@ namespace NF.AdminSystem.Controllers.v2
             ret.result = Result.SUCCESS;
             try
             {
+                string userId = HttpContext.Request.Headers["userId"];
                 string content = HelperProvider.GetRequestContent(HttpContext);
                 if (String.IsNullOrEmpty(content))
                 {
@@ -456,7 +456,7 @@ namespace NF.AdminSystem.Controllers.v2
                         return JsonConvert.SerializeObject(ret);
                     }
                     FaseBookUserInfo fbUserInfo = JsonConvert.DeserializeObject<FaseBookUserInfo>(content);
-                    result = UserProvider.SyncFaceBookUserInfo(fbUserInfo.userId, fbUserInfo);
+                    result = UserProvider.SyncFaceBookUserInfo(userId, fbUserInfo);
 
                     if (result.result != Result.SUCCESS)
                     {

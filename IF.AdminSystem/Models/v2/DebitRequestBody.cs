@@ -23,4 +23,11 @@ namespace NF.AdminSystem.Models.v2
 
         public string deviceId { get; set; }
     }
+
+    public class DebitRecordsRequestBody
+    {
+        public int userId {get;set;}
+
+        public int status {get;set;}
+    }
 }

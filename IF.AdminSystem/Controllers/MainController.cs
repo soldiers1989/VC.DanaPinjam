@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using YYLog.ClassLibrary;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
+using NF.AdminSystem.Models.v2;
 
 namespace NF.AdminSystem.Controllers
 {
@@ -37,7 +38,7 @@ namespace NF.AdminSystem.Controllers
         public ActionResult<string> Test(string phone)
         {
             HttpResultModel ret = new HttpResultModel();
-            ret.data = new UserLocationModel();
+            ret.data = new SubmitDebitRequestBody();
             /*
             //Redis redis = HelperProvider.GetRedis();
             ret.result = Result.SUCCESS;

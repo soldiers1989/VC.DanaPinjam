@@ -9,7 +9,6 @@ namespace NF.AdminSystem.Models
     [Serializable]
     public class FaseBookUserInfo
     {
-        public string userId { get; set; }
         public int type { get; set; }
         public string id = String.Empty;
         public string birthday = String.Empty;
