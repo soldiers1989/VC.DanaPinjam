@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using YYLog.ClassLibrary;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
+using NF.AdminSystem.Models.v2;
 
 namespace NF.AdminSystem.Controllers.v2
 {
@@ -348,8 +349,6 @@ namespace NF.AdminSystem.Controllers.v2
         }
 
         [HttpPost]
-        [HttpGet]
-        [AllowAnonymous]
         [Route("GetSTSToken")]
         public ActionResult<string> GetSTSToken()
         {
@@ -417,14 +416,27 @@ namespace NF.AdminSystem.Controllers.v2
         [HttpGet]
         [HttpPost]
         [Route("GetUserDebitAttention")]
-        public ActionResult<string> GetUserDebitAttention(int userId)
+        public ActionResult<string> GetUserDebitAttention()
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             try
             {
+                string content = HelperProvider.GetRequestContent(HttpContext);
+                if (String.IsNullOrEmpty(content))
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                    ret.message = "The request body is empty.";
+
+                    Log.WriteErrorLog("v2:MainController::GetUserDebitAttention", "请求参数为空。{0}", HelperProvider.GetHeader(HttpContext));
+                    return JsonConvert.SerializeObject(ret);
+                }
+
+                var requestBody = JsonConvert.DeserializeObject<UserInfoRequestBody>(content);
+
                 ///逻辑
-                DataProviderResultModel result = DebitProvider.GetUserDebitAttention(userId);
+                DataProviderResultModel result = DebitProvider.GetUserDebitAttention(requestBody.userId);
                 if (result.result == Result.SUCCESS)
                 {
                     ret.data = result.data;

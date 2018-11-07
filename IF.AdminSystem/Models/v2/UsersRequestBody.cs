@@ -35,7 +35,7 @@ namespace NF.AdminSystem.Models.v2
 
     public class UserInfoRequestBody
     {
-        public string userId { get; set; }
+        public int userId { get; set; }
     }
 
     public class UserPhotosRequestBody
