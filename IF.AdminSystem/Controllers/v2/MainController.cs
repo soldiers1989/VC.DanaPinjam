@@ -434,9 +434,10 @@ namespace NF.AdminSystem.Controllers.v2
                 }
 
                 var requestBody = JsonConvert.DeserializeObject<UserInfoRequestBody>(content);
-
+                int iUserId = 0;
+                int.TryParse(requestBody.userId, out iUserId);
                 ///逻辑
-                DataProviderResultModel result = DebitProvider.GetUserDebitAttention(requestBody.userId);
+                DataProviderResultModel result = DebitProvider.GetUserDebitAttention(iUserId);
                 if (result.result == Result.SUCCESS)
                 {
                     ret.data = result.data;
