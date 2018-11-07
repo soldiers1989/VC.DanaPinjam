@@ -63,7 +63,7 @@ namespace NF.AdminSystem.Controllers
             {
                 if (!request.IsEmpty())
                 {
-                    if (redis.LockTake(key, 1))
+                    if (redis.LockTake(key, 1, 20))
                     {
                         try
                         {

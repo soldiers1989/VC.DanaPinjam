@@ -33,7 +33,7 @@ namespace NF.AdminSystem.Providers
                 if (count > 0)
                 {
                     //重置状态。
-                    sqlStr = @"update IFUserPayBackDebitRecord set statusTime=now(),reTryTimes=0,merchantCode=@sMerchantCode
+                    sqlStr = @"update IFUserPayBackDebitRecord set createTime=now(),statusTime=now(),reTryTimes=0,merchantCode=@sMerchantCode
                         where debitId = @iDebitId and status = @iStatus and type = @iType";
                     pc.Add("@sMerchantCode", merchantCode);
                     pc.Add("@iDebitId", debitId);
@@ -242,6 +242,7 @@ namespace NF.AdminSystem.Providers
                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]查询到用户应还时间{1}"
                         , request.merchantOrderId, debitInfo.Rows[0]["payBackDayTime"]);
 
+                        string extendLogSql = String.Empty;
                         //tran = conn.BeginTransaction();
                         ///3 － 延期；4 － 还款
                         if (type == "3")
@@ -284,6 +285,7 @@ namespace NF.AdminSystem.Providers
                                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]金额大于最小延期费，系统自动审核。用户[{1}]。", request.merchantOrderId, extendInfo.userId);
                                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间。", request.merchantOrderId);
                                         TimeSpan ts = payback.Subtract(now);
+
                                         if (ts.Days >= 0)
                                         {
                                             sqlStr = @"update IFUserDebitRecord set status = @iStatus,paybackdayTime=date_add(paybackdayTime, interval 7 day)
@@ -310,6 +312,23 @@ namespace NF.AdminSystem.Providers
                                         pc.Add("@iDebitId", debitId);
                                         dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]更新贷款记录表状态及最后还款时间 成功({1})。", request.merchantOrderId, dbret);
+
+                                        //插日志
+                                        extendLogSql = @"insert into IFUserDebitPaybackTimeChange(debitId, beforTime, changeDays, afterTime,
+                                                                                                     changeType, remarks,createTime,adminId,objectId)
+                                                                                    values(@iDebitId, @dBeforTime, @iChangeDays, @dAfterTime, 
+                                                                                                    @iChangeType, @sRemarks, now(), @iAdminId, @iObjectId);";
+                                        pc.Add("@iDebitId", debitId);
+                                        pc.Add("@dBeforTime", payback.ToString("yyyy-MM-dd"));
+                                        pc.Add("@iChangeDays", ts.Days >= 0 ? ts.Days + 7 : 7);
+                                        pc.Add("@dAfterTime", ts.Days >= 0 ? payback.AddDays(7).ToString("yyyy-MM-dd") : now.AddDays(7).ToString("yyyy-MM-dd"));
+                                        pc.Add("@iChangeType", 4);
+                                        pc.Add("@sRemarks", "Extend Success(10001).");
+                                        pc.Add("@iAdminId", "-1");
+                                        pc.Add("@iObjectId", request.merchantOrderId);
+
+                                        dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true));
+                                        Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}] 插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
                                     }
                                     else
                                     {
@@ -348,6 +367,23 @@ namespace NF.AdminSystem.Providers
 
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
+
+                                    extendLogSql = @"insert into IFUserDebitPaybackTimeChange(debitId, beforTime, changeDays, afterTime,
+                                                                                                     changeType, remarks,createTime,adminId,objectId)
+                                                                                    values(@iDebitId, @dBeforTime, @iChangeDays, @dAfterTime, 
+                                                                                                    @iChangeType, @sRemarks, now(), @iAdminId, @iObjectId);";
+                                    pc.Add("@iDebitId", debitId);
+                                    pc.Add("@dBeforTime", payback.ToString("yyyy-MM-dd"));
+                                    pc.Add("@iChangeDays", 7);
+                                    pc.Add("@dAfterTime", payback.AddDays(7).ToString("yyyy-MM-dd"));
+                                    pc.Add("@iChangeType", 4);
+                                    pc.Add("@sRemarks", "Proses perpanjangan disetujui(10002).");
+                                    pc.Add("@iAdminId", "-1");
+                                    pc.Add("@iObjectId", request.merchantOrderId);
+
+                                    dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true));
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
+
                                     #endregion
                                 }
                                 else
@@ -386,14 +422,30 @@ namespace NF.AdminSystem.Providers
                                     float needPaybackMoney = extendInfo.debitMoney + extendInfo.overdueMoney - amoutMoney - extendInfo.partMoney;
                                     //已支付Rp100.000，还款还需要支付Rp140.000，延期到2018-09-21还需要支付Rp400.000
                                     //Sudah bayar 100 harus d bayarkan 1.400.000 sepenuhnya dibayar dan untuk diperpanjang sampai 21 -09- 2018 harus bayar 400.000
+                                    string desc = String.Format("Sudah bayar {0} harus dibayarkan {1} sepenuhnya dan untuk diperpanjang sampai {2} harus bayar {3}.\r\nJika ada pertanyaan silakan hubungi:\r\n0813 1682 3995\r\n0813 8366 2454."
+                                        , amoutMoney.ToString("N0").Replace(",", "."), needPaybackMoney.ToString("N0").Replace(",", "."), extendNextPayback, (needPayMoney - amoutMoney).ToString("N0").Replace(",", "."));
                                     pc.Add("@iAuditType", 2);
                                     pc.Add("@iDebitId", debitId);
                                     pc.Add("@iAuditStatus", 1);
-                                    pc.Add("@sAuditDescription", String.Format("Sudah bayar {0} harus dibayarkan {1} sepenuhnya dan untuk diperpanjang sampai {2} harus bayar {3}.\r\nJika ada pertanyaan silakan hubungi:\r\n0813 1682 3995\r\n0813 8366 2454."
-                                        , amoutMoney.ToString("N0").Replace(",", "."), needPaybackMoney.ToString("N0").Replace(",", "."), extendNextPayback, (needPayMoney - amoutMoney).ToString("N0").Replace(",", ".")));//延期申请（审核中）
+                                    pc.Add("@sAuditDescription", desc);//延期申请（审核中）
                                     pc.Add("@iUserId", -1);
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
+
+                                    extendLogSql = @"insert into IFUserDebitPaybackTimeChange(debitId, changeDays,
+                                                                                                     changeType, remarks,createTime,adminId,objectId)
+                                                                                    values(@iDebitId, @iChangeDays, 
+                                                                                                    @iChangeType, @sRemarks, now(), @iAdminId, @iObjectId);";
+                                    pc.Add("@iDebitId", debitId);
+                                    pc.Add("@iChangeDays", 0);
+                                    pc.Add("@iChangeType", -1);
+                                    pc.Add("@sRemarks", desc);
+                                    pc.Add("@iAdminId", "-1");
+                                    pc.Add("@iObjectId", request.merchantOrderId);
+
+                                    dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true));
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
+
                                     #endregion
                                 }
                             }
@@ -458,6 +510,21 @@ namespace NF.AdminSystem.Providers
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
+
+                                    extendLogSql = @"insert into IFUserDebitPaybackTimeChange(debitId, changeDays,
+                                                                                                     changeType, remarks,createTime,adminId,objectId)
+                                                                                    values(@iDebitId, @iChangeDays, 
+                                                                                                    @iChangeType, @sRemarks, now(), @iAdminId, @iObjectId);";
+                                    pc.Add("@iDebitId", debitId);
+                                    pc.Add("@iChangeDays", 0);
+                                    pc.Add("@iChangeType", 6);
+                                    pc.Add("@sRemarks", "Proses pembayaran disetujui(10002).");
+                                    pc.Add("@iAdminId", "-1");
+                                    pc.Add("@iObjectId", request.merchantOrderId);
+
+                                    dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true), conn);
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
+
                                     #endregion
                                 }
                                 else
@@ -489,15 +556,32 @@ namespace NF.AdminSystem.Providers
                                     sqlStr = @"insert into IFUserAduitDebitRecord(AduitType,debitId,status,description,adminId,auditTime)
 	                                    values(@iAuditType, @iDebitId, @iAuditStatus, @sAuditDescription, @iUserId, now());";
 
+                                    string desc = String.Format("Sudah membayar Rp {0}.\r\nuntuk pelunasan silakan bayarkan kembali sisanya sebesar Rp {1}.\r\nJika ada pertanyaan silakan hubungi:\r\n0813 1682 3995\r\n0813 8366 2454."
+                                                                        , amoutMoney.ToString("N0").Replace(",", "."), (debitModel.payBackMoney - amoutMoney).ToString("N0").Replace(",", "."));
                                     pc.Add("@iAuditType", 3);
                                     pc.Add("@iDebitId", debitId);
                                     pc.Add("@iAuditStatus", 1);
-                                    pc.Add("@sAuditDescription", String.Format("Sudah membayar Rp {0}.\r\nuntuk pelunasan silakan bayarkan kembali sisanya sebesar Rp {1}.\r\nJika ada pertanyaan silakan hubungi:\r\n0813 1682 3995\r\n0813 8366 2454."
-                                    , amoutMoney.ToString("N0").Replace(",", "."), (debitModel.payBackMoney - amoutMoney).ToString("N0").Replace(",", ".")));
+                                    pc.Add("@sAuditDescription", desc);
                                     pc.Add("@iUserId", -1);
 
                                     dbret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入审核记录 成功({1})。", request.merchantOrderId, dbret);
+
+
+                                    extendLogSql = @"insert into IFUserDebitPaybackTimeChange(debitId, changeDays,
+                                                                                                     changeType, remarks,createTime,adminId,objectId)
+                                                                                    values(@iDebitId, @iChangeDays, 
+                                                                                                    @iChangeType, @sRemarks, now(), @iAdminId, @iObjectId);";
+                                    pc.Add("@iDebitId", debitId);
+                                    pc.Add("@iChangeDays", 0);
+                                    pc.Add("@iChangeType", 7);
+                                    pc.Add("@sRemarks", desc);
+                                    pc.Add("@iAdminId", "-1");
+                                    pc.Add("@iObjectId", request.merchantOrderId);
+
+                                    dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true), conn);
+                                    Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
+
                                     #endregion
                                 }
                             }

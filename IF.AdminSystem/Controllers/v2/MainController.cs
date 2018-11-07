@@ -205,11 +205,8 @@ namespace NF.AdminSystem.Controllers.v2
                             }
                         }
                     }
-                    //retList.Add(new { debitMoney = style, debitCombination = list });
                 }
-
                 ret.data = list;
-
             }
             catch (Exception ex)
             {

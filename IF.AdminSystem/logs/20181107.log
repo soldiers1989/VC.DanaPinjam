@@ -1,0 +1,469 @@
+13:21:17 [Debug] Startup::Startup [1]号服务器::Begin connect db
+13:21:19 [Debug] WebApiApplication::Application_Start [1]号服务器::New 数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+13:21:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:21:19 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+13:21:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:21:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:21:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:21:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:22:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:22:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:22:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:22:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:22:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:22:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:23:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:23:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:23:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:23:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:23:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:23:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:24:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:24:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:24:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:24:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:24:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:24:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:25:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:25:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:25:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:25:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:25:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:25:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:25:59 [Error] Redis::LockTake [1]号服务器::No connection is available to service this operation: SET CallbackRequest_101; UnableToConnect on 127.0.0.1:6379/Interactive, Initializing, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, unanswered-write: 653276s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago; IOCP: (Busy=0,Free=2048,Min=100,Max=2048), WORKER: (Busy=1,Free=2047,Min=100,Max=2048), Local-CPU: n/a
+13:25:59 [Debug] DuitkuController::CallbackRequest [1]号服务器::获取锁失败。{"merchantCode":"D4199","amount":"1000000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"c221e1ec80f18bb2d1a0190a6effc7bf","issuer_name":null,"issuer_bank":null}
+13:26:00 [Error] Redis::LockRelease [1]号服务器::No connection is available to service this operation: EXEC; UnableToConnect on 127.0.0.1:6379/Interactive, Initializing, last: NONE, origin: BeginConnectAsync, outstanding: 0, last-read: 0s ago, last-write: 0s ago, unanswered-write: 653276s ago, keep-alive: 60s, state: Connecting, mgr: 10 of 10 available, last-heartbeat: never, global: 0s ago; IOCP: (Busy=0,Free=2048,Min=100,Max=2048), WORKER: (Busy=1,Free=2047,Min=100,Max=2048), Local-CPU: n/a
+13:26:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:26:17 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1000000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"c221e1ec80f18bb2d1a0190a6effc7bf","issuer_name":null,"issuer_bank":null}
+13:26:38 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:26:38 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 01:21:19，从链接池中移除，将重新打开。
+13:26:41 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:c221e1ec80f18bb2d1a0190a6effc7bf - 传入为：c221e1ec80f18bb2d1a0190a6effc7bf
+13:26:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+13:26:57 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+13:26:57 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 01:21:18，从链接池中移除，将重新打开。
+13:26:57 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+13:26:57 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 01:21:18，从链接池中移除，将重新打开。
+13:26:57 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+13:26:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：724、还款类型:3、贷款记录ID:887。
+13:26:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+13:26:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+13:27:01 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-06-14
+13:27:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+13:27:20 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]核对应还金额 needPayMoney:1.76E+07 - amoutMoney:1000000
+13:28:33 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+13:28:33 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]金额大于最小延期费，系统自动审核。用户[724]。
+13:28:33 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及最后还款时间，因为没有支付逾期费，所以。
+13:28:33 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及最后还款时间 成功(1)。
+13:28:33 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始插入审核记录。
+13:28:33 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入审核记录 成功(1)。
+13:28:34 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101] 插入贷款的还款时间变更记录 成功(1)。
+13:28:34 [Debug] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+13:28:43 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:28:53 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:03 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:13 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+13:29:23 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:28 [Debug] Startup::Startup [1]号服务器::Begin connect db
+14:13:30 [Debug] WebApiApplication::Application_Start [1]号服务器::New 数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+14:13:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:30 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+14:13:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:13:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:14:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:15:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:16:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:17 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000887","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+14:17:17 [Debug] DuitkuController::InquiryRequest [1]号服务器::签名验证没有通过:c1fc9eaad1bbb1b0664deaf9e8c08ed0 - 传入为：cf885eaa09b8ebfef5944ab3e9434d03
+14:17:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:46 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000887","session":"gfagafdgfda","action":"inquiry","signature":"cf885eaa09b8ebfef5944ab3e9434d03"}
+14:17:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:17:54 [Debug] DuitkuController::InquiryRequest [1]号服务器::签名验证没有通过:c1fc9eaad1bbb1b0664deaf9e8c08ed0 - 传入为：cf885eaa09b8ebfef5944ab3e9434d03
+14:17:59 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000887","session":"gfagafdgfda","action":"inquiry","signature":"c1fc9eaad1bbb1b0664deaf9e8c08ed0"}
+14:18:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:34 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:13:30，从链接池中移除，将重新打开。
+14:18:34 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:18:34 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:13:29，从链接池中移除，将重新打开。
+14:18:34 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:18:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:18:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:19:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:20:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:21:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:22:54 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:04 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:04 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:18:01，从链接池中移除，将重新打开。
+14:23:04 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:23:04 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:18:01，从链接池中移除，将重新打开。
+14:23:04 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:23:07 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"17100000","merchantOrderId":"7946","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"c221e1ec80f18bb2d1a0190a6effc7bf","issuer_name":null,"issuer_bank":null}
+14:23:13 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证没有通过:2a258783a5057b6952c82823ae5e4f4e - 传入为：c221e1ec80f18bb2d1a0190a6effc7bf
+14:23:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:23:25 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"17100000","merchantOrderId":"7946","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"2a258783a5057b6952c82823ae5e4f4e","issuer_name":null,"issuer_bank":null}
+14:23:29 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:2a258783a5057b6952c82823ae5e4f4e - 传入为：2a258783a5057b6952c82823ae5e4f4e
+14:23:29 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+14:23:29 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]查询到还款记录，用户：724、还款类型:4、贷款记录ID:887。
+14:23:29 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]开始更新还款记录表的状态
+14:23:29 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]更新还款记录表的状态，结果为：1
+14:23:36 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+14:23:37 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]查询到用户应还时间2018-06-21
+14:23:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+14:23:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]核对应还金额 needPayMoney:1.86E+07 - amoutMoney:1.71E+07
+14:23:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]金额对不上，进入人工审核。
+14:23:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]应支付：1.86E+07，收到用户支付：1.71E+07，差额：1500000，历史支付：1000000。
+14:23:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]更新贷款记录表状态及还款时间 成功(1)。
+14:23:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]开始插入审核记录。
+14:23:49 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7946]插入审核记录 成功(1)。
+14:23:49 [Debug] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+14:23:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:24:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:25:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:06 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000887","session":"gfagafdgfda","action":"inquiry","signature":"c1fc9eaad1bbb1b0664deaf9e8c08ed0"}
+14:26:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:26:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+14:26:51 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"100000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"2a258783a5057b6952c82823ae5e4f4e","issuer_name":null,"issuer_bank":null}
+14:26:58 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证没有通过:19c657855d8fee3762484d293f89297f - 传入为：2a258783a5057b6952c82823ae5e4f4e
+14:27:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:03 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"100000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"19c657855d8fee3762484d293f89297f","issuer_name":null,"issuer_bank":null}
+14:27:07 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:19c657855d8fee3762484d293f89297f - 传入为：19c657855d8fee3762484d293f89297f
+14:27:08 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+14:27:08 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::根据订单ID查找贷款ID失败，有可能该订单已处理。101
+14:27:14 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:14 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作失败。
+14:27:24 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:34 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:44 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:48 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"100000","merchantOrderId":"101","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"19c657855d8fee3762484d293f89297f","issuer_name":null,"issuer_bank":null}
+14:27:55 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:27:57 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:19c657855d8fee3762484d293f89297f - 传入为：19c657855d8fee3762484d293f89297f
+14:27:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+14:27:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到还款记录，用户：724、还款类型:3、贷款记录ID:887。
+14:27:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始更新还款记录表的状态
+14:27:57 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新还款记录表的状态，结果为：1
+14:28:02 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]查询到用户应还时间2018-06-21
+14:28:02 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]核对应还金额 needPayMoney:0 - amoutMoney:100000
+14:28:02 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::逾期费用：1.76E+07，开始清算。
+14:28:03 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101][887]清算逾期费用 成功(93)。
+14:28:03 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]金额大于最小延期费，系统自动审核。用户[724]。
+14:28:03 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及最后还款时间。
+14:28:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：4，处理中连接：1
+14:28:51 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]更新贷款记录表状态及最后还款时间 成功(1)。
+14:28:51 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101] 插入贷款的还款时间变更记录 成功(1)。
+14:28:53 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]开始插入审核记录。
+14:28:53 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入审核记录 成功(1)。
+14:28:54 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[101]插入贷款的还款时间变更记录 成功(1)。
+14:28:54 [Debug] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+14:29:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:29:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:30:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:38:24 [Debug] Startup::Startup [1]号服务器::Begin connect db
+14:38:26 [Debug] WebApiApplication::Application_Start [1]号服务器::New 数据库连接串：server=sh-cdb-ot9416xk.sql.tencentcdb.com;port=63360;uid=root;pwd=123!@#qweASD;database=debit;Min Pool Size=0;Pooling=true;connect timeout=120;CharSet=utf8;AllowUserVariables=true;AllowZeroDatetime=True;SslMode=None
+14:38:26 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:38:27 [Debug] RedisPools::Init [1]号服务器::准备初使化Redis连接池,配置信息：127.0.0.1:6379
+14:38:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:38:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:38:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:39:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:39:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:39:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:39:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:39:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:39:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:40:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:40:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:40:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:40:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:40:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:40:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:41:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:41:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:41:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:41:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:41:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:41:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:42:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:42:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:42:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:42:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:42:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:42:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:43:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:43:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:38:26，从链接池中移除，将重新打开。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:38:26，从链接池中移除，将重新打开。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:38:25，从链接池中移除，将重新打开。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:38:26，从链接池中移除，将重新打开。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:38:26，从链接池中移除，将重新打开。
+14:43:27 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:43:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:43:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:43:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:44:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:44:17 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:44:27 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:44:37 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:44:47 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:44:51 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1800000","merchantOrderId":"7947","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"19c657855d8fee3762484d293f89297f","issuer_name":null,"issuer_bank":null}
+14:44:54 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证没有通过:38e2fbb686db2e6c998e2a5a8c19205b - 传入为：19c657855d8fee3762484d293f89297f
+14:44:57 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:45:07 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:45:13 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1800000","merchantOrderId":"7947","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"19c657855d8fee3762484d293f89297f","issuer_name":null,"issuer_bank":null}
+14:45:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:45:19 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证没有通过:38e2fbb686db2e6c998e2a5a8c19205b - 传入为：19c657855d8fee3762484d293f89297f
+14:45:25 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1800000","merchantOrderId":"7947","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"38e2fbb686db2e6c998e2a5a8c19205b","issuer_name":null,"issuer_bank":null}
+14:45:27 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:38e2fbb686db2e6c998e2a5a8c19205b - 传入为：38e2fbb686db2e6c998e2a5a8c19205b
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]查询到还款记录，用户：724、还款类型:4、贷款记录ID:887。
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]开始更新还款记录表的状态
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]更新还款记录表的状态，结果为：1
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]查询到用户应还时间2018-11-14
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]核对应还金额 needPayMoney:1900000 - amoutMoney:1800000
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]金额对不上，进入人工审核。
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]应支付：1900000，收到用户支付：1800000，差额：100000，历史支付：100000。
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]更新贷款记录表状态及还款时间 成功(1)。
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]开始插入审核记录。
+14:45:27 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]插入审核记录 成功(1)。
+14:45:28 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]插入贷款的还款时间变更记录 成功(1)。
+14:45:28 [Debug] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+14:45:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:45:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:45:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:46:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:46:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:46:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:46:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:46:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:46:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:46:52 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"1800000","merchantOrderId":"7947","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"38e2fbb686db2e6c998e2a5a8c19205b","issuer_name":null,"issuer_bank":null}
+14:46:56 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:38e2fbb686db2e6c998e2a5a8c19205b - 传入为：38e2fbb686db2e6c998e2a5a8c19205b
+14:46:56 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7947]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+14:46:56 [Error] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::根据订单ID查找贷款ID失败，有可能该订单已处理。7947
+14:46:56 [Error] DuitkuController::CallbackRequest [1]号服务器::回调操作失败。
+14:47:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:47:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:47:17 [Debug] DuitkuController::InquiryRequest [1]号服务器::param is {"merchantCode":"D4199","bin":"119905","vaNo":"1199054000000887","session":"gfagafdgfda","action":"inquiry","signature":"c1fc9eaad1bbb1b0664deaf9e8c08ed0"}
+14:47:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:47:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:47:36 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"100000","merchantOrderId":"7948","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"38e2fbb686db2e6c998e2a5a8c19205b","issuer_name":null,"issuer_bank":null}
+14:47:46 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:47:46 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证没有通过:6ea52d1fca40e92852dea2acccb3c5ab - 传入为：38e2fbb686db2e6c998e2a5a8c19205b
+14:47:53 [Success] DuitkuController::CallbackRequest [1]号服务器::0 - {"merchantCode":"D4199","amount":"100000","merchantOrderId":"7948","productDetail":"VA CIMB NIAGA","additionalParam":null,"paymentCode":"B1","resultCode":"00","merchantUserId":"null","reference":"D4199C6UAXJ0M","signature":"6ea52d1fca40e92852dea2acccb3c5ab","issuer_name":null,"issuer_bank":null}
+14:47:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:47:59 [Debug] DuitkuController::CallbackRequest [1]号服务器::签名验证通过:6ea52d1fca40e92852dea2acccb3c5ab - 传入为：6ea52d1fca40e92852dea2acccb3c5ab
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]查询还款记录表的数据，用户、还款类型、贷款记录ID。
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]查询到还款记录，用户：724、还款类型:4、贷款记录ID:887。
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]开始更新还款记录表的状态
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]更新还款记录表的状态，结果为：1
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]查询到用户应还时间2018-11-14
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]核对应还金额 needPayMoney:100000 - amoutMoney:100000
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]金额对上，系统自动审核。用户[724]全额还款次数＋1。
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]更新用户全额还款次数成功（1）。
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]更新贷款记录表状态及还款时间 成功(1)。
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]开始插入审核记录。
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]插入审核记录 成功(1)。
+14:47:59 [Debug] DuitkuProvider::SetDuitkuPaybackRecordStaus [1]号服务器::[7948]插入贷款的还款时间变更记录 成功(1)。
+14:47:59 [Debug] DuitkuController::CallbackRequest [1]号服务器::回调操作成功。
+14:48:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:48:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:48:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:48:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:48:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:48:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:49:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:49:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:49:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:49:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:49:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:49:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:50:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:50:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:50:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:50:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:50:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:50:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:51:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:51:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:51:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:51:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:51:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:51:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:52:09 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:52:19 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:52:29 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:52:39 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:52:49 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:52:59 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:52:59 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:47:59，从链接池中移除，将重新打开。
+14:53:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:53:00 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:47:59，从链接池中移除，将重新打开。
+14:53:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:53:00 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:47:59，从链接池中移除，将重新打开。
+14:53:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:53:00 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:47:59，从链接池中移除，将重新打开。
+14:53:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:53:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:53:10 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:48:00，从链接池中移除，将重新打开。
+14:53:10 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:53:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:53:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:53:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:53:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:54:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:54:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:54:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:54:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:54:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:54:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:55:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:55:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:55:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:55:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:55:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:55:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:56:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:40 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:57:50 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:53:00，从链接池中移除，将重新打开。
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:53:00，从链接池中移除，将重新打开。
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:53:00，从链接池中移除，将重新打开。
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:53:00，从链接池中移除，将重新打开。
+14:58:00 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:58:10 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:10 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:53:10，从链接池中移除，将重新打开。
+14:58:10 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+14:58:20 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:30 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:58:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+14:59:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:00:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:01:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:01:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:01:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:01:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:01:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:01:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:02:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:02:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:02:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:02:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:02:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:02:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:58:00，从链接池中移除，将重新打开。
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:58:00，从链接池中移除，将重新打开。
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:58:00，从链接池中移除，将重新打开。
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:58:00，从链接池中移除，将重新打开。
+15:03:01 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+15:03:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:03:11 [Debug] DataBasePool::checkProc [1]号服务器::链接已超时，最后使用时间2018-11-07 02:58:10，从链接池中移除，将重新打开。
+15:03:11 [Debug] DataBasePool::checkProc [1]号服务器::重新打开成功。
+15:03:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:03:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:03:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:03:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:04:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:04:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:04:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:04:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:04:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:04:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:05:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:05:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:05:21 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:05:31 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:05:41 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:05:51 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:06:01 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
+15:06:11 [Debug] DataBasePool::checkProc [1]号服务器::空闲连接数为：5，处理中连接：0
