@@ -1030,7 +1030,7 @@ namespace NF.AdminSystem.Providers
                     int.TryParse(Convert.ToString(dt.Rows[0][0]), out result.result);
                     if (result.result == Result.SUCCESS)
                     {
-                        Log.WriteErrorLog("UserProvider::SaveUserBankInfoV2", "{0}|{1} 保存成功：{2}", result.result, dt.Rows[0][1], JsonConvert.SerializeObject(bankInfo));
+                        Log.WriteDebugLog("UserProvider::SaveUserBankInfoV2", "{0}|{1} 保存成功：{2}", result.result, dt.Rows[0][1], JsonConvert.SerializeObject(bankInfo));
                         int.TryParse(Convert.ToString(dt.Rows[0][1]), out bankInfo.bankId);
                     }
                     else
