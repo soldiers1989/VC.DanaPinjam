@@ -139,10 +139,10 @@ namespace NF.AdminSystem.Controllers.v2
                 debitDesc.Add(2700000.00f, "PEMINJAMAN DENGAN NOMINAL INI HANYA BISA DIPINJAMKAN KALAU SUDAH PERNAH MELAKUKAN PEMBAYARAN TEPAT WAKTU ATAU PERPANJANGAN PRODUCT B DENGAN NOMINAL RP 2.100.000 SEBANYAK 2 KALI PEMINJAMAN");
 
                 var debitPeriod = new List<int> { 7 };
-                List<object> retList = new List<object>();
+                //List<object> retList = new List<object>();
+                List<DebitInfo> list = new List<DebitInfo>();
                 foreach (var style in debitStyle)
                 {
-                    List<DebitInfo> list = new List<DebitInfo>();
                     foreach (var period in debitPeriod)
                     {
                         DebitInfo info = new DebitInfo();
@@ -205,10 +205,10 @@ namespace NF.AdminSystem.Controllers.v2
                             }
                         }
                     }
-                    retList.Add(new { debitMoney = style, debitCombination = list });
+                    //retList.Add(new { debitMoney = style, debitCombination = list });
                 }
 
-                ret.data = retList;
+                ret.data = list;
 
             }
             catch (Exception ex)
