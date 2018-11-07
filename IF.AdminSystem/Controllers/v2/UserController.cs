@@ -435,9 +435,9 @@ namespace NF.AdminSystem.Controllers.v2
             DataProviderResultModel result = new DataProviderResultModel();
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+            string userId = HttpContext.Request.Headers["userId"];
             try
             {
-                string userId = HttpContext.Request.Headers["userId"];
                 string content = HelperProvider.GetRequestContent(HttpContext);
                 if (String.IsNullOrEmpty(content))
                 {
@@ -465,7 +465,7 @@ namespace NF.AdminSystem.Controllers.v2
                     }
 
                     Redis redis = HelperProvider.GetRedis();
-                    string key = String.Format("UserAllInfoV5_{0}", fbUserInfo.userId);
+                    string key = String.Format("UserAllInfoV5_{0}", userId);
                     redis.KeyDelete(key);
                 }
             }
@@ -479,7 +479,7 @@ namespace NF.AdminSystem.Controllers.v2
             }
             finally
             {
-                Log.WriteDebugLog("UserController::SyncUserThirdPartyInfo", "{0}", HelperProvider.GetHeader(HttpContext));
+                Log.WriteDebugLog("UserController::SyncUserThirdPartyInfo", "{0}-{1}", userId, HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
