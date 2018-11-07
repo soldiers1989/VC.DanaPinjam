@@ -173,6 +173,22 @@ public class BusinessDao
             ret = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
             Log.WriteDebugLog("BusinesssDao::SetDebitRecordStatus", "执行成功({0}){1} － {2}", ret, debitId, status);
 
+            if (status == 1)
+            {
+                string releaseLogSql = @"insert into IFUserDebitPaybackTimeChange(debitId, changeDays, afterTime,
+                                                                                                     changeType, remarks,createTime,adminId,objectId)
+                                                                                    values(@iDebitId, @iChangeDays, date_add(now(),interval 7 day), 
+                                                                                                    @iChangeType, @sRemarks, now(), @iAdminId, @iObjectId);";
+                pc.Add("@iDebitId", debitId);
+                pc.Add("@iChangeDays", 7);
+                pc.Add("@iChangeType", 3);
+                pc.Add("@sRemarks", auditMsg);
+                pc.Add("@iAdminId", "-1");
+                pc.Add("@iObjectId", debitId);
+
+                int dbret = dbo.ExecuteStatement(releaseLogSql, pc.GetParams(true), conn);
+                Log.WriteDebugLog("BusinesssDao::SetDebitRecordStatus", "[{0}]插入贷款的还款时间变更记录 成功({1})。", debitId, dbret);
+            }
             tran.Commit();
 
             return true;

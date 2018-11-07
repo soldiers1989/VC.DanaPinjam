@@ -323,11 +323,11 @@ namespace NF.AdminSystem.Providers
                                         pc.Add("@iChangeDays", ts.Days >= 0 ? ts.Days + 7 : 7 + (ts.Days * -1));
                                         pc.Add("@dAfterTime", ts.Days >= 0 ? payback.AddDays(7).ToString("yyyy-MM-dd") : now.AddDays(7).ToString("yyyy-MM-dd"));
                                         pc.Add("@iChangeType", 4);
-                                        pc.Add("@sRemarks", "Extend Success(10001).");
+                                        pc.Add("@sRemarks", "Proses perpanjangan disetujui(10001).");
                                         pc.Add("@iAdminId", "-1");
                                         pc.Add("@iObjectId", request.merchantOrderId);
 
-                                        dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true));
+                                        dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true), conn);
                                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}] 插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
                                     }
                                     else
@@ -367,7 +367,7 @@ namespace NF.AdminSystem.Providers
                                         pc.Add("@iAdminId", "-1");
                                         pc.Add("@iObjectId", request.merchantOrderId);
 
-                                        dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true));
+                                        dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true), conn);
                                         Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
                                     }
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]开始插入审核记录。", request.merchantOrderId);
@@ -442,7 +442,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iAdminId", "-1");
                                     pc.Add("@iObjectId", request.merchantOrderId);
 
-                                    dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true));
+                                    dbret = dbo.ExecuteStatement(extendLogSql, pc.GetParams(true), conn);
                                     Log.WriteDebugLog("DuitkuProvider::SetDuitkuPaybackRecordStaus", "[{0}]插入贷款的还款时间变更记录 成功({1})。", request.merchantOrderId, dbret);
 
                                     #endregion
