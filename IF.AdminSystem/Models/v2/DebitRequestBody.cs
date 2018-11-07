@@ -12,6 +12,7 @@ namespace NF.AdminSystem.Models.v2
     public class SubmitDebitRequestBody
     {
         public int userId { get; set; }
+
         public float debitMoney { get; set; }
 
         public string description { get; set; }
@@ -21,11 +22,5 @@ namespace NF.AdminSystem.Models.v2
         public int debitPeriod { get; set; }
 
         public string deviceId { get; set; }
-
-        public string bankCode { get; set; }
-
-        public string bankName { get; set; }
-
-        public string bniCode { get; set; }
     }
 }

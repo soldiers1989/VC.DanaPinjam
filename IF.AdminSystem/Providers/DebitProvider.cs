@@ -176,6 +176,75 @@ namespace NF.AdminSystem.Providers
             return result;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="debitMoney"></param>
+        /// <param name="debitPeroid"></param>
+        /// <param name="bankId"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
+        public static DataProviderResultModel SubmitDebitReuqestV2(int userId, float debitMoney, int debitPeroid, int bankId, string description, string deviceId)
+        {
+            DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                pc.Add("@iUserId", userId);
+                pc.Add("@dDebitMoney", debitMoney);
+                pc.Add("@iDebitPeroid", debitPeroid);
+                pc.Add("@iBankId", bankId);
+                pc.Add("@sDescription", description);
+                pc.Add("@sDeviceId", deviceId);
+
+                Hashtable table = new Hashtable();
+                DataTable dt = dbo.ExecProcedure("p_debit_submitrequest_v2", pc.GetParams(), out table);
+                if (null != dt && dt.Rows.Count == 1)
+                {
+
+                    int.TryParse(Convert.ToString(dt.Rows[0][0]), out result.result);
+
+                    if (result.result < 0)
+                    {
+                        result.message = Convert.ToString(dt.Rows[0][1]);
+                        result.data = new { debitRecordId = -1 };
+                        Log.WriteErrorLog("DebitProvider::SubmitDebitReuqest", "提交申请失败：{0}|{1}|{2}|{3}|{4},结果是：{5}", userId, debitMoney, debitPeroid, bankId, description, dt.Rows[0][1]);
+                    }
+                    else
+                    {
+                        result.result = Result.SUCCESS;
+                        ///记录ID
+                        result.data = new { debitRecordId = Convert.ToString(dt.Rows[0][2]) };
+                    }
+                }
+                else
+                {
+                    result.result = MainErrorModels.LOGIC_ERROR;
+                    result.message = "error from the submit debit request.";
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
+                result.message = "The database logic error.The function is SubmitDebitReuqest";
+                Log.WriteErrorLog("DebitProvider::GetUserBankInfo", "获取失败：{0}，异常：{1}", userId, ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
+
         public static DataProviderResultModel GetUserDebitRecords(int userId)
         {
             DataBaseOperator dbo = null;

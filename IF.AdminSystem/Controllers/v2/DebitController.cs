@@ -83,7 +83,7 @@ namespace NF.AdminSystem.Controllers.v2
                     }
 
                     ///逻辑
-                    DataProviderResultModel result = DebitProvider.SubmitDebitReuqest(requestBody.userId, requestBody.debitMoney, requestBody.debitPeriod, requestBody.bankId, requestBody.description, requestBody.deviceId);
+                    DataProviderResultModel result = DebitProvider.SubmitDebitReuqestV2(requestBody.userId, requestBody.debitMoney, requestBody.debitPeriod, requestBody.bankId, requestBody.description, requestBody.deviceId);
                     ret.result = result.result;
                     if (result.result == Result.SUCCESS)
                     {
