@@ -128,6 +128,11 @@ namespace NF.AdminSystem.Models
         /// 签名
         /// </summary>
         public string token = String.Empty;
+
+        ///<summary>
+        /// 等级
+        ///</summary>
+        public int userLevel { get; set; }
     }
 
 

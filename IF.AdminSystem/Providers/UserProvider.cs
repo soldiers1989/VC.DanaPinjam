@@ -114,7 +114,6 @@ namespace NF.AdminSystem.Providers
                 Hashtable outAl = new Hashtable();
                 DataTable dt = dbo.ExecProcedure("p_user_login_v2", pc.GetParams(), out outAl);
 
-                int ret = 0;
                 string message = String.Empty;
                 if (null != dt && dt.Rows.Count > 0)
                 {
@@ -124,6 +123,10 @@ namespace NF.AdminSystem.Providers
                     {
                         int.TryParse(Convert.ToString(dt.Rows[0][2]), out userInfo.userId);
                         userInfo.userName = Convert.ToString(dt.Rows[0][3]);
+                        int iTmp = 0;
+                        int.TryParse(Convert.ToString(dt.Rows[0][4]), out iTmp);
+                        userInfo.userLevel = iTmp;
+
                         result.data = userInfo;
                     }
                 }

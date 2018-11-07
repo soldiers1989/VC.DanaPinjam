@@ -533,19 +533,10 @@ namespace NF.AdminSystem.Controllers.v2
 
                     string key = String.Format("UserAllInfoV5_{0}", userInfo.userId);
 
-                    if (String.IsNullOrEmpty(qudao) && String.IsNullOrEmpty(redis.StringGet(String.Format("attention_{0}", userInfo.userId))))
+                    if (!String.IsNullOrEmpty(key))
                     {
-                        Log.WriteDebugLog("DebitController::SubmitDebitRequest", "[{0}] 用的是老版本，发短信通知他去下载最新版", userInfo.userId);
-                        WaveCellSMSSingleSender.Authorization = ConfigSettings.WaveCellSMSAuthorization;
-                        WaveCellSMSSingleSender.SubAccountName = ConfigSettings.WaveCellSMSAccountName;
-                        WaveCellSMSSingleSender waveCellSMSSender = new WaveCellSMSSingleSender();
-
-                        string msg = "Anda masih menggunakan aplikasi versi lama, silahkan klik  https://play.google.com/store/apps/details?id=com.danapinjam.vip untuk mengunduh versi terbaru.";
-                        WaveCellSMSResponseModels sendRet = waveCellSMSSender.Send("+62" + requestBody.phone, msg);
-
-                        redis.StringSet(String.Format("attention_{0}", userInfo.userId), "1");
+                        redis.KeyDelete(key);
                     }
-                    redis.KeyDelete(key);
                 }
                 else
                 {
