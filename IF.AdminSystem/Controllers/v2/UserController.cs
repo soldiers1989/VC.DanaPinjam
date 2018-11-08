@@ -1371,6 +1371,57 @@ namespace NF.AdminSystem.Controllers.v2
 
         [HttpPost]
         [HttpGet]
+        [Route("GetUserAllBankInfo")]
+        /// <summary>
+        /// 获取用户的银行卡信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult<string> GetUserAllBankInfo()
+        {
+            HttpResultModel ret = new HttpResultModel();
+            ret.result = Result.SUCCESS;
+            try
+            {
+                string content = HelperProvider.GetRequestContent(HttpContext);
+                if (String.IsNullOrEmpty(content))
+                {
+                    ret.result = Result.ERROR;
+                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                    ret.message = "The request body is empty.";
+
+                    Log.WriteErrorLog("v2:UserController::GetUserAllBankInfo", "请求参数为空。{0}", HelperProvider.GetHeader(HttpContext));
+                    return JsonConvert.SerializeObject(ret);
+                }
+                var userInfo = JsonConvert.DeserializeObject<UserInfoRequestBody>(content);
+
+                ///逻辑
+                DataProviderResultModel result = UserProvider.GetUserAllBankInfo(userInfo.userId);
+                if (result.result == Result.SUCCESS)
+                {
+                    ret.data = result.data;
+                }
+                else
+                {
+                    ret.result = result.result;
+                    ret.message = result.message;
+                }
+            }
+            catch (Exception ex)
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.LOGIC_ERROR;
+                ret.message = "The program logic error from the UserController::GetUserAllBankInfo function.";
+                Log.WriteErrorLog("v2::UserController::GetUserAllBankInfo", "异常：{0}", ex.Message);
+            }
+            finally
+            {
+                Log.WriteDebugLog("v2::UserController::GetUserAllBankInfo", "{0}", HelperProvider.GetHeader(HttpContext));
+            }
+            return JsonConvert.SerializeObject(ret);
+        }
+
+        [HttpPost]
+        [HttpGet]
         [Route("SaveUserBankInfo")]
         public ActionResult<string> SaveUserBankInfo()
         {

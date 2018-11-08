@@ -1,6 +1,6 @@
 ﻿
 using NF.AdminSystem.Models;
-using NF.AdminSystem.Providers;
+using NF.AdminSystem.Providers.v2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -149,7 +149,7 @@ namespace NF.AdminSystem.Controllers.v2
                 var requestBody = JsonConvert.DeserializeObject<DebitRecordsRequestBody>(content);
                 
                 ///逻辑
-                DataProviderResultModel result = DebitProvider.GetUserDebitRecords(requestBody.userId);
+                DataProviderResultModel result = DebitProvider.GetUserDebitRecords(requestBody);
                 if (result.result == Result.SUCCESS)
                 {
                     ret.data = result.data;
@@ -166,7 +166,7 @@ namespace NF.AdminSystem.Controllers.v2
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
                 ret.message = "The program logic error from the DebitController::GetUserDebitRecords function.";
 
-                Log.WriteErrorLog("DebitController::GetUserDebitRecords", "UserId:{0}，异常：{1}", content, ex.Message);
+                Log.WriteErrorLog("v2::DebitController::GetUserDebitRecords", "UserId:{0}，异常：{1}", content, ex.Message);
             }
 
             return JsonConvert.SerializeObject(ret);

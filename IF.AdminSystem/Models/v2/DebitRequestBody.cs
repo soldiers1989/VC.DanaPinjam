@@ -26,8 +26,10 @@ namespace NF.AdminSystem.Models.v2
 
     public class DebitRecordsRequestBody
     {
-        public int userId {get;set;}
+        public int userId { get; set; }
 
-        public int status {get;set;}
+        public int status { get; set; }
+
+        public int index { get; set; }
     }
 }

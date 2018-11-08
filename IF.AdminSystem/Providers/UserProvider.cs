@@ -207,6 +207,60 @@ namespace NF.AdminSystem.Providers
             return result;
         }
 
+        public static DataProviderResultModel GetUserAllBankInfo(string userId)
+        {
+            DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
+            UserBankInfoModel bankInfo = new UserBankInfoModel();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                string sqlStr = "select bankId,userId,BankName,SubBankName,BankCode,Contact,ContactName,BNICode from IFUserBankInfo where userId = @iUserId order by updateTime desc";
+                pc.Add("@iUserId", userId);
+
+                DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
+
+                List<UserBankInfoModel> list = new List<UserBankInfoModel>();
+                if (null != dt && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        int.TryParse(Convert.ToString(dt.Rows[0]["bankId"]), out bankInfo.bankId);
+                        bankInfo.bankCode = Convert.ToString(dt.Rows[0]["bankCode"]);
+
+                        int.TryParse(Convert.ToString(dt.Rows[0]["userId"]), out bankInfo.userId);
+
+                        bankInfo.bankName = Convert.ToString(dt.Rows[0]["BankName"]);
+                        bankInfo.subBankName = Convert.ToString(dt.Rows[0]["SubBankName"]);
+                        bankInfo.contact = Convert.ToString(dt.Rows[0]["Contact"]);
+                        bankInfo.contactName = Convert.ToString(dt.Rows[0]["ContactName"]);
+                        bankInfo.bniBankCode = Convert.ToString(dt.Rows[0]["BNICode"]);
+                        list.Add(bankInfo);
+                    }
+                }
+
+                result.result = Result.SUCCESS;
+                result.data = list;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
+                result.message = "Database logic error from the GetUserBankInfo function.";
+                Log.WriteErrorLog("UserProvider::GetUserAllBankInfo", "获取失败：{0}，异常：{1}", userId, ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
