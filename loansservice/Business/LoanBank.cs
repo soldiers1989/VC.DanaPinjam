@@ -126,7 +126,7 @@ public class LoanBank
                             if (response.responseCode == "00")
                             {
                                 Log.WriteDebugLog("LoanBank::Transfer", "[{0}] 转帐成功,将结果写入缓存，避免重复打款。：{1}", record.debitId, response.responseDesc);
-                                redis.StringSet(retKey, JsonConvert.SerializeObject(response), 7200);
+                                redis.StringSet(retKey, JsonConvert.SerializeObject(response));
                                 return true;
                             }
                             else
