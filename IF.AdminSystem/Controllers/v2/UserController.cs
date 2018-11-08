@@ -1618,60 +1618,71 @@ namespace NF.AdminSystem.Controllers.v2
 
         [Route("PostUserCallRecord")]
         [HttpPost]
-        public ActionResult<string> PostUserCallRecord(int userId)
+        public ActionResult<string> PostUserCallRecord()
         {
-
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             Redis redis = HelperProvider.GetRedis();
             try
             {
-                string lockKey = "postUserCall";
-                if (redis.LockTake(lockKey, userId, 10))
+                int userId = 0;
+                string sUserId = HttpContext.Request.Headers["userId"];
+                int.TryParse(sUserId, out userId);
+                if (userId > 0)
                 {
-                    if (null == HttpContext.Request.Body)
+                    string lockKey = "postUserCall";
+                    if (redis.LockTake(lockKey, userId, 10))
                     {
-                        ret.result = Result.ERROR;
-                        ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                        ret.message = "post request body is null";
-                    }
-                    else
-                    {
-                        StreamReader read = new StreamReader(HttpContext.Request.Body);
-                        string content = read.ReadToEnd();
-                        List<CallRecord> record = null;
-                        if (content.IndexOf("\"data\": ") > 0)
+                        if (null == HttpContext.Request.Body)
                         {
-                            RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-
-                            record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                            ret.result = Result.ERROR;
+                            ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                            ret.message = "post request body is null";
                         }
                         else
                         {
-                            record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                            StreamReader read = new StreamReader(HttpContext.Request.Body);
+                            string content = read.ReadToEnd();
+                            List<CallRecord> record = null;
+                            if (content.IndexOf("\"data\": ") > 0)
+                            {
+                                RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
+
+                                record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                            }
+                            else
+                            {
+                                record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                            }
+                            var result = new DataProviderResultModel();
+                            var beginTime = DateTime.Now;
+
+                            result = UserProvider.UploadUserConacts(userId, 2, record);
+
+                            result = UserProvider.UpdateUserConactNumber(userId);
+
+                            ret.result = Result.SUCCESS;
+                            ret.data = result.data;
+
+                            string key = String.Format("UserAllInfoV5_{0}", userId);
+                            redis.KeyDelete(key);
+
+                            Log.WriteDebugLog("UserController::PostUserCallRecord", "{0} use time:{1} ms", content.Length, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
                         }
-                        var result = new DataProviderResultModel();
-                        var beginTime = DateTime.Now;
-
-                        result = UserProvider.UploadUserConacts(userId, 2, record);
-
-                        result = UserProvider.UpdateUserConactNumber(userId);
-
-                        ret.result = Result.SUCCESS;
-                        ret.data = result.data;
-
-                        string key = String.Format("UserAllInfoV5_{0}", userId);
-                        redis.KeyDelete(key);
-
-                        Log.WriteDebugLog("UserController::PostUserCallRecord", "{0} use time:{1} ms", content.Length, DateTime.Now.Subtract(beginTime).TotalMilliseconds);
+                        redis.LockRelease(lockKey, userId);
                     }
-                    redis.LockRelease(lockKey, userId);
+                    else
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
+                        ret.message = "already submit request.";
+                    }
                 }
                 else
                 {
                     ret.result = Result.ERROR;
-                    ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
-                    ret.message = "already submit request.";
+                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                    ret.message = "The request userId is empty.";
                 }
             }
             catch (Exception ex)
@@ -1691,58 +1702,70 @@ namespace NF.AdminSystem.Controllers.v2
 
         [Route("PostUserContacts")]
         [HttpPost]
-        public ActionResult<string> PostUserContacts(int userId)
+        public ActionResult<string> PostUserContacts()
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             Redis redis = HelperProvider.GetRedis();
             try
             {
-                string lockKey = "PostUserContacts";
-                if (redis.LockTake(lockKey, userId, 10))
+                int userId = 0;
+                string sUserId = HttpContext.Request.Headers["userId"];
+                int.TryParse(sUserId, out userId);
+                if (userId > 0)
                 {
-                    if (null == HttpContext.Request.Body)
+                    string lockKey = "PostUserContacts";
+                    if (redis.LockTake(lockKey, userId, 10))
                     {
-                        ret.result = Result.ERROR;
-                        ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                        ret.message = "post request body is null";
-                    }
-                    else
-                    {
-                        StreamReader read = new StreamReader(HttpContext.Request.Body);
-                        string content = read.ReadToEnd();
-                        List<CallRecord> record = null;
-                        if (content.IndexOf("\"data\": ") > 0)
+                        if (null == HttpContext.Request.Body)
                         {
-                            RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
-
-                            record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                            ret.result = Result.ERROR;
+                            ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                            ret.message = "post request body is null";
                         }
                         else
                         {
-                            record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                            StreamReader read = new StreamReader(HttpContext.Request.Body);
+                            string content = read.ReadToEnd();
+                            List<CallRecord> record = null;
+                            if (content.IndexOf("\"data\": ") > 0)
+                            {
+                                RequestBodyModel body = JsonConvert.DeserializeObject<RequestBodyModel>(content);
+
+                                record = JsonConvert.DeserializeObject<List<CallRecord>>(Convert.ToString(body.data));
+                            }
+                            else
+                            {
+                                record = JsonConvert.DeserializeObject<List<CallRecord>>(content);
+                            }
+
+                            var result = new DataProviderResultModel();
+
+                            result = UserProvider.UploadUserConacts(userId, 1, record);
+
+                            result = UserProvider.UpdateUserConactNumber(userId);
+                            ret.result = Result.SUCCESS;
+                            ret.data = result.data;
+
+                            string key = String.Format("UserAllInfoV5_{0}", userId);
+                            redis.KeyDelete(key);
+
+                            Log.WriteDebugLog("UserController::PostUserContacts", "{0}", record.Count);
                         }
-
-                        var result = new DataProviderResultModel();
-
-                        result = UserProvider.UploadUserConacts(userId, 1, record);
-
-                        result = UserProvider.UpdateUserConactNumber(userId);
-                        ret.result = Result.SUCCESS;
-                        ret.data = result.data;
-
-                        string key = String.Format("UserAllInfoV5_{0}", userId);
-                        redis.KeyDelete(key);
-
-                        Log.WriteDebugLog("UserController::PostUserContacts", "{0}", record.Count);
+                        redis.LockRelease(lockKey, userId);
                     }
-                    redis.LockRelease(lockKey, userId);
+                    else
+                    {
+                        ret.result = Result.ERROR;
+                        ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
+                        ret.message = "already submit request.";
+                    }
                 }
                 else
                 {
                     ret.result = Result.ERROR;
-                    ret.errorCode = MainErrorModels.ALREADY_SUBMIT_REQUEST;
-                    ret.message = "already submit request.";
+                    ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                    ret.message = "The request userId is empty.";
                 }
             }
             catch (Exception ex)
