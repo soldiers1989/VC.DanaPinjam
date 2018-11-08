@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using NF.AdminSystem.Models;
-using NF.AdminSystem.Providers;
+using NF.AdminSystem.Providers.v2;
 using RedisPools;
 using System;
 using System.Collections.Generic;
@@ -1420,6 +1420,15 @@ namespace NF.AdminSystem.Controllers.v2
             return JsonConvert.SerializeObject(ret);
         }
 
+
+        [HttpPost]
+        [HttpGet]
+        [Route("CreateUserBankInfo")]
+        public ActionResult<string> CreateUserBankInfo()
+        {
+            return SaveUserBankInfo();
+        }
+        
         [HttpPost]
         [HttpGet]
         [Route("SaveUserBankInfo")]
@@ -1453,7 +1462,7 @@ namespace NF.AdminSystem.Controllers.v2
                             else
                             {
                                 ///逻辑
-                                DataProviderResultModel result = UserProvider.SaveUserBankInfoV2(bankInfo);
+                                DataProviderResultModel result = UserProvider.SaveUserBankInfo(bankInfo);
                                 if (result.result == Result.SUCCESS)
                                 {
                                     ret.data = result.data;
