@@ -1571,34 +1571,38 @@ namespace NF.AdminSystem.Controllers.v2
                     Log.WriteErrorLog("v2:UserController::EditUserPhotos", "请求参数为空。{0}", HelperProvider.GetHeader(HttpContext));
                     return JsonConvert.SerializeObject(ret);
                 }
-                var requestBody = JsonConvert.DeserializeObject<UserPhotosRequestBody>(content);
+                var requestBodyList = JsonConvert.DeserializeObject<List<UserPhotosRequestBody>>(content);
 
-                if (redis.LockTake(lockKey, requestBody.userId))
+                foreach (var requestBody in requestBodyList)
                 {
-                    if (String.IsNullOrEmpty(requestBody.url))
+                    if (redis.LockTake(lockKey, requestBody.userId))
                     {
-                        ret.result = Result.ERROR;
-                        ret.errorCode = MainErrorModels.PARAMETER_ERROR;
-                        ret.message = "The photo is empty.";
-                        return JsonConvert.SerializeObject(ret);
-                    }
-                    DataProviderResultModel result = UserProvider.UploadUserCertficate(requestBody.userId, requestBody.url, requestBody.type);
-                    ret.result = result.result;
-                    if (result.result != Result.SUCCESS)
-                    {
-                        Log.WriteDebugLog("UserController::EditUserPhotos", "保存失败，原因：{0}", result.message);
-                        ret.message = result.message;
-                    }
-                    else
-                    {
-                        Log.WriteDebugLog("UserController::EditUserPhotos", "保存成功，清除用户缓存。");
-                        ret.message = "success";
+                        if (String.IsNullOrEmpty(requestBody.url))
+                        {
+                            ret.result = Result.ERROR;
+                            ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                            ret.message = "The photo is empty.";
+                            redis.LockRelease(lockKey, requestBody.userId);
+                            return JsonConvert.SerializeObject(ret);
+                        }
+                        DataProviderResultModel result = UserProvider.UploadUserCertficate(requestBody.userId, requestBody.url, requestBody.type);
+                        ret.result = result.result;
+                        if (result.result != Result.SUCCESS)
+                        {
+                            Log.WriteDebugLog("UserController::EditUserPhotos", "保存失败，原因：{0}", result.message);
+                            ret.message = result.message;
+                        }
+                        else
+                        {
+                            Log.WriteDebugLog("UserController::EditUserPhotos", "保存成功，清除用户缓存。");
+                            ret.message = "success";
 
-                        string key = String.Format("UserAllInfoV5_{0}", requestBody.userId);
-                        long lret = redis.KeyDelete(key);
-                        Log.WriteDebugLog("UserController::EditUserPhotos", "清除用户缓存。({0})", lret);
+                            string key = String.Format("UserAllInfoV5_{0}", requestBody.userId);
+                            long lret = redis.KeyDelete(key);
+                            Log.WriteDebugLog("UserController::EditUserPhotos", "清除用户缓存。({0})", lret);
+                        }
+                        redis.LockRelease(lockKey, requestBody.userId);
                     }
-                    redis.LockRelease(lockKey, requestBody.userId);
                 }
             }
             catch (Exception ex)
