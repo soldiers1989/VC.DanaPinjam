@@ -414,6 +414,63 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             return result;
         }
 
+        public static DataProviderResultModel GetUserDebitRecordLogs(int debitId)
+        {
+            DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                string sqlStr = @"select changeType, remarks, createTime, afterTime 
+                from IFUserDebitPaybackTimeChange where debitId = @iDebitId order by id;";
+                pc.Add("@iDebitId", debitId);
+
+                DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
+
+                List<DebitRecordLogModel> list = new List<DebitRecordLogModel>(); 
+                if (null != dt && dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        DebitRecordLogModel log = new DebitRecordLogModel();
+                        log.description = Convert.ToString(dt.Rows[i]["remarks"]);
+                        int iTmp = 0;
+                        int.TryParse(Convert.ToString(dt.Rows[i]["changeType"]), out iTmp);
+                        log.changeType = iTmp;
+
+                        log.changeTime = Convert.ToString(dt.Rows[i]["createTime"]);
+                        log.afterTime = Convert.ToString(dt.Rows[i]["afterTime"]);
+
+                        list.Add(log);
+                    }
+                    result.result = Result.SUCCESS;
+                    result.data = list;
+                }
+                else
+                {
+                    result.result = Result.SUCCESS;
+                    result.data = list;
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
+                result.message = "The database logic error.The function is DebitProvider::GetUserDebitRecordLogs";
+                Log.WriteErrorLog("v2::DebitProvider::GetUserDebitRecordLogs", "获取失败：{0}，异常：{1}", debitId, ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

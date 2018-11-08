@@ -25,6 +25,10 @@ namespace NF.AdminSystem.Models.v2
         public string deviceId { get; set; }
     }
 
+    public class DebitInfoRequestBody
+    {
+        public int debitId { get; set; }
+    }
     public class DebitRecordsRequestBody
     {
         public int userId { get; set; }
@@ -39,6 +43,8 @@ namespace NF.AdminSystem.Models.v2
         public int changeType { get; set; }
         public string changeTime { get; set; }
         public string description { get; set; }
+
+        public string afterTime { get; set; }
     }
     public class DebitRecordLogResponse
     {

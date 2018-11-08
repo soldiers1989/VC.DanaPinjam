@@ -71,7 +71,7 @@ namespace NF.AdminSystem.Controllers.v2
                         requestBody.deviceId = HttpContext.Request.Headers["deviceNo"];
                     }
 
-                    if (requestBody.bankId == 0)
+                    if (requestBody.bankId < 1)
                     {
                         ret.result = Result.ERROR;
                         ret.errorCode = MainErrorModels.PARAMETER_ERROR;
@@ -172,26 +172,34 @@ namespace NF.AdminSystem.Controllers.v2
             return JsonConvert.SerializeObject(ret);
         }
 
-        [Route("GetUserDebitRecord")]
+        [Route("GetUserDebitRecordDetail")]
         [HttpPost]
         [HttpGet]
-        /// <summary>
-        /// 获取某条贷款记录
-        /// </summary>
-        /// <param name="debitId"></param>
-        /// <returns></returns>
-        public ActionResult<string> GetUserDebitRecordDetail(int debitId)
+        public ActionResult<string> GetUserDebitRecordDetail()
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
+
+            string content = HelperProvider.GetRequestContent(HttpContext);
+            if (String.IsNullOrEmpty(content))
+            {
+                ret.result = Result.ERROR;
+                ret.errorCode = MainErrorModels.PARAMETER_ERROR;
+                ret.message = "The request body is empty.";
+
+                Log.WriteErrorLog("v2:DebitController::SubmitDebitRequest", "请求参数为空。{0}", HelperProvider.GetHeader(HttpContext));
+                return JsonConvert.SerializeObject(ret);
+            }
+
             try
             {
+                var requestBody = JsonConvert.DeserializeObject<DebitInfoRequestBody>(content);
                 DebitRecordLogResponse response = new DebitRecordLogResponse();
-                DataProviderResultModel result = DebitProvider.GetUserDebitRecord(debitId);
+                DataProviderResultModel result = DebitProvider.GetUserDebitRecord(requestBody.debitId);
                 if (result.result == Result.SUCCESS)
                 {
                     response.debitInfo = result.data as DebitInfoModel;
-                    result = DebitProvider.GetUserDebitRecordLogs(debitId);
+                    result = DebitProvider.GetUserDebitRecordLogs(requestBody.debitId);
                     if (result.result == Result.SUCCESS)
                     { 
                         response.logs = result.data as List<DebitRecordLogModel>;
