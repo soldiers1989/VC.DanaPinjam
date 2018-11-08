@@ -147,7 +147,7 @@ namespace NF.AdminSystem.Controllers.v2
             try
             {
                 var requestBody = JsonConvert.DeserializeObject<DebitRecordsRequestBody>(content);
-                
+
                 ///逻辑
                 DataProviderResultModel result = DebitProvider.GetUserDebitRecords(requestBody);
                 if (result.result == Result.SUCCESS)
@@ -180,17 +180,29 @@ namespace NF.AdminSystem.Controllers.v2
         /// </summary>
         /// <param name="debitId"></param>
         /// <returns></returns>
-        public ActionResult<string> GetUserDebitRecord(int debitId)
+        public ActionResult<string> GetUserDebitRecordDetail(int debitId)
         {
             HttpResultModel ret = new HttpResultModel();
             ret.result = Result.SUCCESS;
             try
             {
-                ///逻辑
+                DebitRecordLogResponse response = new DebitRecordLogResponse();
                 DataProviderResultModel result = DebitProvider.GetUserDebitRecord(debitId);
                 if (result.result == Result.SUCCESS)
                 {
-                    ret.data = result.data;
+                    response.debitInfo = result.data as DebitInfoModel;
+                    result = DebitProvider.GetUserDebitRecordLogs(debitId);
+                    if (result.result == Result.SUCCESS)
+                    { 
+                        response.logs = result.data as List<DebitRecordLogModel>;
+                        ret.data = response;
+                        ret.result = Result.SUCCESS;
+                    }
+                    else
+                    {
+                        ret.result = result.result;
+                        ret.message = result.message;
+                    }
                 }
                 else
                 {
@@ -202,9 +214,9 @@ namespace NF.AdminSystem.Controllers.v2
             {
                 ret.result = Result.ERROR;
                 ret.errorCode = MainErrorModels.LOGIC_ERROR;
-                ret.message = "The program logic error from the DebitController::GetUserDebitRecord function.";
+                ret.message = "The program logic error from the DebitController::GetUserDebitRecordDetail function.";
 
-                Log.WriteErrorLog("DebitController::GetUserDebitRecord", "异常：{0}", ex.Message);
+                Log.WriteErrorLog("v2::DebitController::GetUserDebitRecordDetail", "异常：{0}", ex.Message);
             }
 
             return JsonConvert.SerializeObject(ret);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace NF.AdminSystem.Models.v2
 {
@@ -31,5 +32,17 @@ namespace NF.AdminSystem.Models.v2
         public int status { get; set; }
 
         public int index { get; set; }
+    }
+
+    public class DebitRecordLogModel
+    {
+        public int changeType { get; set; }
+        public string changeTime { get; set; }
+        public string description { get; set; }
+    }
+    public class DebitRecordLogResponse
+    {
+        public DebitInfoModel debitInfo { get; set; }
+        public List<DebitRecordLogModel> logs { get; set; }
     }
 }
