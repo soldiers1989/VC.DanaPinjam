@@ -399,7 +399,7 @@ namespace NF.AdminSystem.Providers
                                     pc.Add("@iId", request.merchantOrderId);
                                     result.data = dbo.ExecuteStatement(sqlStr, pc.GetParams(true), conn);
 
-                                    sqlStr = @"update IFUserDebitRecord set status = if(payBackDayTime < now(), 4, 1)
+                                    sqlStr = @"update IFUserDebitRecord set status = if(date_format(payBackDayTime,'%Y-%m-%d') < date_format(now(),'%Y-%m-%d'), 4, 1)
                                             ,partMoney=ifnull(partMoney,0)+@fMoney,statusTime = now() 
                                         where debitId = @iDebitId";
 

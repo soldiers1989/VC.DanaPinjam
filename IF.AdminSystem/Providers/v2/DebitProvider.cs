@@ -189,7 +189,8 @@ namespace NF.AdminSystem.Providers.v2
                 ParamCollections pc = new ParamCollections();
                 string sqlStr = @"select debitId,userId, debitMoney,ifnull(partMoney,0) partMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
 certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
-(select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
+(select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset,
+bankCode,bankName,contactName
                     from IFUserDebitRecord a where userId = @iUserId";
 
                 pc.Add("@iUserId", request.userId);
@@ -252,6 +253,9 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
                         info.releaseLoanTime = Convert.ToString(dt.Rows[i]["releaseLoanTime"]);
                         info.auditTime = Convert.ToString(dt.Rows[i]["statusTime"]);
                         info.repaymentTime = Convert.ToString(dt.Rows[i]["payBackDayTime"]);
+                        info.bankCode = Convert.ToString(dt.Rows[i]["bankCode"]);
+                        info.bankName = Convert.ToString(dt.Rows[i]["bankName"]);
+                        info.bankUserName = Convert.ToString(dt.Rows[i]["contactName"]);
 
                         infos.Add(info);
                     }
@@ -428,7 +432,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
 
                 DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
 
-                List<DebitRecordLogModel> list = new List<DebitRecordLogModel>(); 
+                List<DebitRecordLogModel> list = new List<DebitRecordLogModel>();
                 if (null != dt && dt.Rows.Count > 0)
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)

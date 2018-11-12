@@ -91,6 +91,12 @@ namespace NF.AdminSystem.Models
         public float dayInterset = 0f;
 
         public string auditInfo = String.Empty;
+
+        public string bankName { get; set; }
+
+        public string bankCode { get; set; }
+
+        public string bankUserName { get; set; }
     }
 
     [Serializable]

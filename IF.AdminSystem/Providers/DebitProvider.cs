@@ -316,6 +316,73 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             return result;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public static DataProviderResultModel GetUserDebitAttentionv2(int userId)
+        {
+            DataBaseOperator dbo = null;
+            DataProviderResultModel result = new DataProviderResultModel();
+            try
+            {
+                dbo = new DataBaseOperator();
+                ParamCollections pc = new ParamCollections();
+                string sqlStr = @"select debitId,userId, debitMoney, Status, date_format(createTime, '%Y-%m-%d') createTime, description,ifnull(overdueMoney, 0) overdueMoney,ifnull(overdueDay,0) overdueDay, bankId,date_format(releaseLoanTime, '%Y-%m-%d') releaseLoanTime,date_format(payBackDayTime, '%Y-%m-%d') payBackDayTime, 
+certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBackMoney,(select b.Description from IFUserAduitDebitRecord b where b.debitId = a.DebitId order by id desc limit 1) auditInfo,
+(select if(a.Status = 4, overdueDayInterest,b.interestRate)*a.DebitMoney from IFDebitStyle b where b.money = a.DebitMoney and b.period = a.DebitPeroid) dayInterset
+                    from IFUserDebitRecord a where userId = @iUserId and status in (0,5,-2,1,2,4) limit 1;";
+                pc.Add("@iUserId", userId);
+
+                DataTable dt = dbo.GetTable(sqlStr, pc.GetParams());
+
+                DebitInfoModel info = new DebitInfoModel();
+                if (null != dt && dt.Rows.Count > 0)
+                {
+                    int.TryParse(Convert.ToString(dt.Rows[0]["userId"]), out info.userId);
+                    int.TryParse(Convert.ToString(dt.Rows[0]["debitId"]), out info.debitId);
+                    float.TryParse(Convert.ToString(dt.Rows[0]["dayInterset"]), out info.dayInterset);
+                    float.TryParse(Convert.ToString(dt.Rows[0]["overdueMoney"]), out info.overdueMoney);
+                    float.TryParse(Convert.ToString(dt.Rows[0]["debitMoney"]), out info.debitMoney);
+                    int.TryParse(Convert.ToString(dt.Rows[0]["Status"]), out info.status);
+                    int.TryParse(Convert.ToString(dt.Rows[0]["bankId"]), out info.bankId);
+                    int.TryParse(Convert.ToString(dt.Rows[0]["debitPeroid"]), out info.debitPeroid);
+                    float.TryParse(Convert.ToString(dt.Rows[0]["payBackMoney"]), out info.payBackMoney);
+                    info.createTime = Convert.ToString(dt.Rows[0]["createTime"]);
+                    info.description = Convert.ToString(dt.Rows[0]["description"]);
+                    info.releaseLoanTime = Convert.ToString(dt.Rows[0]["releaseLoanTime"]);
+                    info.auditTime = Convert.ToString(dt.Rows[0]["statusTime"]);
+                    info.repaymentTime = Convert.ToString(dt.Rows[0]["payBackDayTime"]);
+
+                    info.certificate = Convert.ToString(dt.Rows[0]["certificate"]);
+                    info.auditInfo = Convert.ToString(dt.Rows[0]["auditInfo"]);
+                }
+                else
+                {
+                    result.result = Result.SUCCESS;
+                }
+                result.data = info;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
+                result.message = "The database logic error.The function is DebitProvider::GetUserDebitAttentionv2";
+                Log.WriteErrorLog("DebitProvider::GetUserDebitAttentionv2", "获取失败：{0}，异常：{1}", userId, ex.Message);
+            }
+            finally
+            {
+                if (null != dbo)
+                {
+                    dbo.Close();
+                    dbo = null;
+                }
+            }
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -369,7 +436,7 @@ certificate, date_format(statusTime, '%Y-%m-%d') statusTime, debitPeroid, payBac
             {
                 result.result = MainErrorModels.DATABASE_REQUEST_ERROR;
                 result.message = "The database logic error.The function is DebitProvider::GetUserDebitAttention";
-                Log.WriteErrorLog("DebitProvider::GetUserDebitRecords", "获取失败：{0}，异常：{1}", userId, ex.Message);
+                Log.WriteErrorLog("DebitProvider::GetUserDebitAttention", "获取失败：{0}，异常：{1}", userId, ex.Message);
             }
             finally
             {
