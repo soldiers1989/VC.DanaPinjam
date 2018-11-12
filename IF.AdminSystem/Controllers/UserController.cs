@@ -347,7 +347,7 @@ namespace NF.AdminSystem.Controllers
             }
             finally
             {
-                Log.WriteDebugLog("UserController::UserRegister", "{0}", HelperProvider.GetHeader(HttpContext));
+                Log.WriteDebugLog("UserController::UserRegister", "{0}",phone, HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }
@@ -523,7 +523,7 @@ namespace NF.AdminSystem.Controllers
             }
             finally
             {
-                Log.WriteDebugLog("UserController::UserLogin", "{0}", HelperProvider.GetHeader(HttpContext));
+                Log.WriteDebugLog("UserController::UserLogin", "{0} - {1}", phone, HelperProvider.GetHeader(HttpContext));
             }
             return JsonConvert.SerializeObject(ret);
         }

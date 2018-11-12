@@ -226,16 +226,16 @@ namespace NF.AdminSystem.Providers.v2
                 {
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        int.TryParse(Convert.ToString(dt.Rows[0]["bankId"]), out bankInfo.bankId);
-                        bankInfo.bankCode = Convert.ToString(dt.Rows[0]["bankCode"]);
+                        int.TryParse(Convert.ToString(dt.Rows[i]["bankId"]), out bankInfo.bankId);
+                        bankInfo.bankCode = Convert.ToString(dt.Rows[i]["bankCode"]);
 
-                        int.TryParse(Convert.ToString(dt.Rows[0]["userId"]), out bankInfo.userId);
+                        int.TryParse(Convert.ToString(dt.Rows[i]["userId"]), out bankInfo.userId);
 
-                        bankInfo.bankName = Convert.ToString(dt.Rows[0]["BankName"]);
-                        bankInfo.subBankName = Convert.ToString(dt.Rows[0]["SubBankName"]);
-                        bankInfo.contact = Convert.ToString(dt.Rows[0]["Contact"]);
-                        bankInfo.contactName = Convert.ToString(dt.Rows[0]["ContactName"]);
-                        bankInfo.bniBankCode = Convert.ToString(dt.Rows[0]["BNICode"]);
+                        bankInfo.bankName = Convert.ToString(dt.Rows[i]["BankName"]);
+                        bankInfo.subBankName = Convert.ToString(dt.Rows[i]["SubBankName"]);
+                        bankInfo.contact = Convert.ToString(dt.Rows[i]["Contact"]);
+                        bankInfo.contactName = Convert.ToString(dt.Rows[i]["ContactName"]);
+                        bankInfo.bniBankCode = Convert.ToString(dt.Rows[i]["BNICode"]);
                         list.Add(bankInfo);
                     }
                 }
