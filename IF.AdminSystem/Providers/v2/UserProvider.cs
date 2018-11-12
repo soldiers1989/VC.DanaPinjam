@@ -54,6 +54,9 @@ namespace NF.AdminSystem.Providers.v2
                         int.TryParse(Convert.ToString(dt.Rows[0][1]), out userInfo.userId);
                         userInfo.userName = userName;
                         userInfo.token = Guid.NewGuid().ToString();
+                        int iTmp = 0;
+                        int.TryParse(Convert.ToString(dt.Rows[0][3]), out iTmp);
+                        userInfo.userLevel = iTmp;
                         result.data = userInfo;
 
                     }
